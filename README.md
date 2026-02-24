@@ -1,4 +1,4 @@
-# endure_mobile_app
+# endurance_mobile_app
 
 A new Flutter project.
 

@@ -1,5 +1,5 @@
-import 'package:endure_mobile_app/app/router.dart';
-import 'package:endure_mobile_app/app/themes.dart';
+import 'package:endurance_mobile_app/app/router.dart';
+import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:flutter/material.dart';
 
 void main() {

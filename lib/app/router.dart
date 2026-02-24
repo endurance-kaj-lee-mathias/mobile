@@ -1,5 +1,6 @@
-﻿import 'package:endure_mobile_app/features/landing/presentation/pages/landing_page.dart';
-import 'package:go_router/go_router.dart';
+﻿import 'package:go_router/go_router.dart';
+
+import '../pages/landing.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: "/landing",
