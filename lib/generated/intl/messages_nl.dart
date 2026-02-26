@@ -61,7 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
-    "navProfile": MessageLookupByLibrary.simpleMessage("Profiel"),
+    "navProfile": MessageLookupByLibrary.simpleMessage("Jij"),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",

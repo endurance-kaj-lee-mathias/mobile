@@ -1,3 +1,5 @@
+import 'package:endurance_mobile_app/app/router.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,44 +7,50 @@ import 'package:go_router/go_router.dart';
 
 class MainShell extends StatelessWidget {
   final Widget child;
-  final int selectedIndex;
 
   const MainShell({
     required this.child,
-    required this.selectedIndex,
     super.key,
   });
 
+  static const _tabs = [AppRoutes.home, AppRoutes.chats, AppRoutes.profile];
+
+  int _selectedIndex(BuildContext context) {
+    final name = GoRouterState
+        .of(context)
+        .topRoute
+        ?.name ?? '';
+    final index = _tabs.indexOf(name);
+    return index < 0 ? 0 : index;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return Scaffold(
       body: child,
       bottomNavigationBar: Obx(() {
-        final userCtrl = Get.find<UserController>();
-        final user = userCtrl.user.value;
+        final selectedIndex = _selectedIndex(context);
+        final user = Get
+            .find<UserController>()
+            .user
+            .value;
 
         return NavigationBar(
           selectedIndex: selectedIndex,
-          onDestinationSelected: (index) {
-            switch (index) {
-              case 0:
-                context.go('/home');
-              case 1:
-                context.go('/chats');
-              case 2:
-                context.go('/profile');
-            }
-          },
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+          onDestinationSelected: (index) => context.goNamed(_tabs[index]),
           destinations: [
-            const NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home),
-              label: 'Home',
+            NavigationDestination(
+              icon: const Icon(Icons.home_outlined),
+              selectedIcon: const Icon(Icons.home),
+              label: s.navHome,
             ),
-            const NavigationDestination(
-              icon: Icon(Icons.chat_bubble_outline),
-              selectedIcon: Icon(Icons.chat_bubble),
-              label: 'Chats',
+            NavigationDestination(
+              icon: const Icon(Icons.chat_bubble_outline),
+              selectedIcon: const Icon(Icons.chat_bubble),
+              label: s.navChats,
             ),
             NavigationDestination(
               icon: _ProfileNavIcon(
@@ -55,7 +63,7 @@ class MainShell extends StatelessWidget {
                 name: user?.name,
                 isActive: true,
               ),
-              label: user?.name ?? 'Profile',
+              label: user?.name ?? s.navProfile,
             ),
           ],
         );

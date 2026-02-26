@@ -219,9 +219,9 @@ class S {
     return Intl.message('Chats', name: 'navChats', desc: '', args: []);
   }
 
-  /// `Profile`
+  /// `You`
   String get navProfile {
-    return Intl.message('Profile', name: 'navProfile', desc: '', args: []);
+    return Intl.message('You', name: 'navProfile', desc: '', args: []);
   }
 
   /// `Chats — coming soon`

@@ -11,6 +11,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
+abstract class AppRoutes {
+  static const home = 'home';
+  static const chats = 'chats';
+  static const profile = 'profile';
+}
+
 // Bridges GetX reactive state to GoRouter so the router re-evaluates its
 // redirect whenever auth state or the initialization flag changes.
 class _AuthStateNotifier extends ChangeNotifier {
@@ -53,25 +59,23 @@ final GoRouter router = GoRouter(
       builder: (_, _) => const WelcomePage(),
     ),
     ShellRoute(
-      builder: (context, state, child) {
-        int index = 0;
-        if (state.matchedLocation.startsWith('/chats')) index = 1;
-        if (state.matchedLocation.startsWith('/profile')) index = 2;
-        return MainShell(selectedIndex: index, child: child);
-      },
+      builder: (context, state, child) => MainShell(child: child),
       routes: [
         GoRoute(
           path: '/home',
+          name: AppRoutes.home,
           redirect: RouteGuard.veteranOnly,
           builder: (_, _) => const HomePage(),
         ),
         GoRoute(
           path: '/chats',
+          name: AppRoutes.chats,
           redirect: RouteGuard.veteranOnly,
           builder: (_, _) => const ChatsPage(),
         ),
         GoRoute(
           path: '/profile',
+          name: AppRoutes.profile,
           redirect: RouteGuard.veteranOnly,
           builder: (_, _) => const ProfilePage(),
         ),
