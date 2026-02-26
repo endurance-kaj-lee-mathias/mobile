@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "chatsSoon": MessageLookupByLibrary.simpleMessage(
+      "Chats — binnenkort beschikbaar",
+    ),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Neem contact op met vrienden, familie, therapeuten en medeveteranen op één veilige plek.",
     ),
@@ -56,6 +59,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Welkom terug. Je staat er niet alleen voor.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
+    "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
+    "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
+    "navProfile": MessageLookupByLibrary.simpleMessage("Profiel"),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",

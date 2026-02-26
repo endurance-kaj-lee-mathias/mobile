@@ -208,6 +208,31 @@ class S {
   String get getStarted {
     return Intl.message('Get Started', name: 'getStarted', desc: '', args: []);
   }
+
+  /// `Home`
+  String get navHome {
+    return Intl.message('Home', name: 'navHome', desc: '', args: []);
+  }
+
+  /// `Chats`
+  String get navChats {
+    return Intl.message('Chats', name: 'navChats', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get navProfile {
+    return Intl.message('Profile', name: 'navProfile', desc: '', args: []);
+  }
+
+  /// `Chats — coming soon`
+  String get chatsSoon {
+    return Intl.message(
+      'Chats — coming soon',
+      name: 'chatsSoon',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

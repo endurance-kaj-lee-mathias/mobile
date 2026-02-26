@@ -3,18 +3,14 @@ import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:get/get.dart' as getx;
 
-/// Shared Dio instance used by all services.
-///
-/// Automatically attaches the Bearer token from [AuthController] to every
-/// request and logs all traffic to the debug console.
 final Dio apiClient = Dio(BaseOptions(baseUrl: AppConfig.apiBaseUrl))
   ..interceptors.addAll([
     _AuthInterceptor(),
     LogInterceptor(
-      requestHeader: true,
-      requestBody: true,
+      requestHeader: false,
+      requestBody: false,
       responseHeader: false,
-      responseBody: true,
+      responseBody: false,
       error: true,
     ),
   ]);
