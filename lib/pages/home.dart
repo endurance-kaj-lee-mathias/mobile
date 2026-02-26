@@ -11,25 +11,16 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Endurance',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0.0,
+        title: const Text('Endurance'),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout, color: Colors.black),
+            icon: const Icon(Icons.logout),
             onPressed: auth.logout,
           ),
         ],
       ),
-      body: const Center(child: Text('Welcome home, veteran!')),
+      body: const Center(child: Text('Welcome back. You are not alone.')),
     );
   }
 }

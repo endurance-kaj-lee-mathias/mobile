@@ -18,6 +18,13 @@ class SplashPage extends StatelessWidget {
                 context,
               ).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 8),
+            Text(
+              'Services Beyond Service',
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(letterSpacing: 0.5),
+            ),
             const SizedBox(height: 32),
             const CircularProgressIndicator(),
           ],
