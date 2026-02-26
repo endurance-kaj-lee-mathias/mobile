@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/notification/fcm_token_model.dart';
 import 'package:endurance_mobile_app/services/notification/notification_service.dart';
@@ -88,9 +89,10 @@ class NotificationController extends GetxController {
   }
 
   void _handleMessage(RemoteMessage message) {
-    // Navigate based on message.data, e.g.:
-    // final route = message.data['route'];
-    // if (route != null) Get.toNamed(route);
     debugPrint('Notification tapped: ${message.data}');
+    final route = message.data['route'] as String?;
+    if (route != null) {
+      router.go(route);
+    }
   }
 }
