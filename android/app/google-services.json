@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "800764258288",
+    "project_id": "endurance-6db66",
+    "storage_bucket": "endurance-6db66.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800764258288:android:2e319ea8414282dd755f35",
+        "android_client_info": {
+          "package_name": "be.kdg.endurance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv4V0viQfMBXPEpa5xy-CeCe8C-0EiSqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
