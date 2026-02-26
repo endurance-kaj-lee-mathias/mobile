@@ -21,7 +21,6 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'uk';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Доступ Обмежено"),
     "accessRestrictedBody": MessageLookupByLibrary.simpleMessage(
