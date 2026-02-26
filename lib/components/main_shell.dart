@@ -1,4 +1,5 @@
 import 'package:endurance_mobile_app/app/router.dart';
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
@@ -43,13 +44,13 @@ class MainShell extends StatelessWidget {
           onDestinationSelected: (index) => context.goNamed(_tabs[index]),
           destinations: [
             NavigationDestination(
-              icon: const Icon(Icons.home_outlined),
-              selectedIcon: const Icon(Icons.home),
+              icon: const HeroIcon(HeroIcons.homeOutline),
+              selectedIcon: const HeroIcon(HeroIcons.homeSolid),
               label: s.navHome,
             ),
             NavigationDestination(
-              icon: const Icon(Icons.chat_bubble_outline),
-              selectedIcon: const Icon(Icons.chat_bubble),
+              icon: const HeroIcon(HeroIcons.chatOutline),
+              selectedIcon: const HeroIcon(HeroIcons.chatSolid),
               label: s.navChats,
             ),
             NavigationDestination(

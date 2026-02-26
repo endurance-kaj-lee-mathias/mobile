@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,10 @@ class ProfilePage extends StatelessWidget {
         title: const Text('Profile'),
         centerTitle: true,
         actions: [
-          IconButton(icon: const Icon(Icons.logout), onPressed: auth.logout),
+          IconButton(
+            icon: const HeroIcon(HeroIcons.logoutOutline),
+            onPressed: auth.logout,
+          ),
         ],
       ),
       body: Obx(() {
