@@ -15,5 +15,13 @@
   "featureConnectedDesc": "Свяжитесь с друзьями, семьёй, терапевтами и сослуживцами в одном безопасном месте.",
   "featureSharingTitle": "Совместный доступ на основе разрешений",
   "featureSharingDesc": "Вы решаете, что именно может видеть ваша сеть поддержки. Отозвать доступ можно в любое время.",
-  "getStarted": "Начать"
+  "getStarted": "Начать",
+  "navHome": "Главная",
+  "navChats": "Чаты",
+  "navNetwork": "Моя Сеть",
+  "navProfile": "Профиль",
+  "chatsSoon": "Чаты — скоро",
+  "profileTitle": "Профиль",
+  "networkTitle": "Моя Сеть",
+  "networkSoon": "Сеть — скоро"
 }

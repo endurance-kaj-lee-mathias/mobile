@@ -208,6 +208,56 @@ class S {
   String get getStarted {
     return Intl.message('Get Started', name: 'getStarted', desc: '', args: []);
   }
+
+  /// `Home`
+  String get navHome {
+    return Intl.message('Home', name: 'navHome', desc: '', args: []);
+  }
+
+  /// `Chats`
+  String get navChats {
+    return Intl.message('Chats', name: 'navChats', desc: '', args: []);
+  }
+
+  /// `My Network`
+  String get navNetwork {
+    return Intl.message('My Network', name: 'navNetwork', desc: '', args: []);
+  }
+
+  /// `You`
+  String get navProfile {
+    return Intl.message('You', name: 'navProfile', desc: '', args: []);
+  }
+
+  /// `Chats — coming soon`
+  String get chatsSoon {
+    return Intl.message(
+      'Chats — coming soon',
+      name: 'chatsSoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profileTitle {
+    return Intl.message('Profile', name: 'profileTitle', desc: '', args: []);
+  }
+
+  /// `My Network`
+  String get networkTitle {
+    return Intl.message('My Network', name: 'networkTitle', desc: '', args: []);
+  }
+
+  /// `Network — coming soon`
+  String get networkSoon {
+    return Intl.message(
+      'Network — coming soon',
+      name: 'networkSoon',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

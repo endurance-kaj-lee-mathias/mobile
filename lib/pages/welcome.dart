@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
@@ -45,25 +46,25 @@ class WelcomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     _FeatureTile(
-                      icon: Icons.shield_outlined,
+                      icon: HeroIcons.shieldOutline,
                       title: l10n.featurePrivacyTitle,
                       description: l10n.featurePrivacyDesc,
                     ),
                     const SizedBox(height: 20),
                     _FeatureTile(
-                      icon: Icons.favorite_border,
+                      icon: HeroIcons.heartOutline,
                       title: l10n.featureMentalHealthTitle,
                       description: l10n.featureMentalHealthDesc,
                     ),
                     const SizedBox(height: 20),
                     _FeatureTile(
-                      icon: Icons.people_outline,
+                      icon: HeroIcons.userGroupOutline,
                       title: l10n.featureConnectedTitle,
                       description: l10n.featureConnectedDesc,
                     ),
                     const SizedBox(height: 20),
                     _FeatureTile(
-                      icon: Icons.lock_outline,
+                      icon: HeroIcons.lockOutline,
                       title: l10n.featureSharingTitle,
                       description: l10n.featureSharingDesc,
                     ),
@@ -109,7 +110,7 @@ class _FeatureTile extends StatelessWidget {
     required this.description,
   });
 
-  final IconData icon;
+  final String icon;
   final String title;
   final String description;
 
@@ -119,7 +120,7 @@ class _FeatureTile extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: 28, color: theme.colorScheme.primary),
+        HeroIcon(icon, size: 28, color: theme.colorScheme.primary),
         const SizedBox(width: 16),
         Expanded(
           child: Column(

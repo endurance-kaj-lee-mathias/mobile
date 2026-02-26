@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,11 @@ class UnauthorizedPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(Icons.block, size: 72, color: Theme
-                  .of(context)
-                  .colorScheme
-                  .error),
+              HeroIcon(
+                HeroIcons.noSymbolOutline,
+                size: 72,
+                color: Theme.of(context).colorScheme.error,
+              ),
               const SizedBox(height: 24),
               Text(
                 l10n.accessRestricted,

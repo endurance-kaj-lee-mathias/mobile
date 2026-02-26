@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "chatsSoon": MessageLookupByLibrary.simpleMessage("Chats — coming soon"),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Reach out to friends, family, therapists and fellow veterans in one secure place.",
     ),
@@ -58,6 +59,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Welcome back. You are not alone.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
+    "navHome": MessageLookupByLibrary.simpleMessage("Home"),
+    "navNetwork": MessageLookupByLibrary.simpleMessage("My Network"),
+    "navProfile": MessageLookupByLibrary.simpleMessage("You"),
+    "networkSoon": MessageLookupByLibrary.simpleMessage(
+      "Network — coming soon",
+    ),
+    "networkTitle": MessageLookupByLibrary.simpleMessage("My Network"),
+    "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
     "tagline": MessageLookupByLibrary.simpleMessage("Services Beyond Service"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Use our web version instead",

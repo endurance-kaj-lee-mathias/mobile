@@ -21,13 +21,15 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'nl';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Toegang Beperkt"),
     "accessRestrictedBody": MessageLookupByLibrary.simpleMessage(
       "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "chatsSoon": MessageLookupByLibrary.simpleMessage(
+      "Chats — binnenkort beschikbaar",
+    ),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Neem contact op met vrienden, familie, therapeuten en medeveteranen op één veilige plek.",
     ),
@@ -57,6 +59,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Welkom terug. Je staat er niet alleen voor.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
+    "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
+    "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
+    "navNetwork": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
+    "navProfile": MessageLookupByLibrary.simpleMessage("Jij"),
+    "networkSoon": MessageLookupByLibrary.simpleMessage(
+      "Netwerk — binnenkort beschikbaar",
+    ),
+    "networkTitle": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
+    "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",

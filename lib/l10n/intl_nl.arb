@@ -15,5 +15,13 @@
   "featureConnectedDesc": "Neem contact op met vrienden, familie, therapeuten en medeveteranen op één veilige plek.",
   "featureSharingTitle": "Delen op basis van toestemming",
   "featureSharingDesc": "U bepaalt precies wat uw ondersteuningsnetwerk kan zien. Toegang intrekken op elk moment.",
-  "getStarted": "Aan de slag"
+  "getStarted": "Aan de slag",
+  "navHome": "Thuis",
+  "navChats": "Chats",
+  "navNetwork": "Mijn Netwerk",
+  "navProfile": "Jij",
+  "chatsSoon": "Chats — binnenkort beschikbaar",
+  "profileTitle": "Profiel",
+  "networkTitle": "Mijn Netwerk",
+  "networkSoon": "Netwerk — binnenkort beschikbaar"
 }

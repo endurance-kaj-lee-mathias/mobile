@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Извините, доступ к Endurance зарезервирован для проверенных ветеранов. Ваша учётная запись в настоящее время не имеет необходимого доступа.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "chatsSoon": MessageLookupByLibrary.simpleMessage("Чаты — скоро"),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Свяжитесь с друзьями, семьёй, терапевтами и сослуживцами в одном безопасном месте.",
     ),
@@ -58,6 +59,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "С возвращением. Вы не одиноки.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Выйти"),
+    "navChats": MessageLookupByLibrary.simpleMessage("Чаты"),
+    "navHome": MessageLookupByLibrary.simpleMessage("Главная"),
+    "navNetwork": MessageLookupByLibrary.simpleMessage("Моя Сеть"),
+    "navProfile": MessageLookupByLibrary.simpleMessage("Профиль"),
+    "networkSoon": MessageLookupByLibrary.simpleMessage("Сеть — скоро"),
+    "networkTitle": MessageLookupByLibrary.simpleMessage("Моя Сеть"),
+    "profileTitle": MessageLookupByLibrary.simpleMessage("Профиль"),
     "tagline": MessageLookupByLibrary.simpleMessage("Услуги Сверх Службы"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Используйте нашу веб-версию",
