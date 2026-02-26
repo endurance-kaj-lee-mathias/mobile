@@ -8,9 +8,9 @@ import 'package:go_router/go_router.dart';
 /// Bridges GetX reactive state to GoRouter's refreshListenable.
 class _AuthStateNotifier extends ChangeNotifier {
   _AuthStateNotifier() {
-    ever(Get
-        .find<AuthController>()
-        .isAuthenticated, (_) => notifyListeners());
+    final ctrl = Get.find<AuthController>();
+    ever(ctrl.isAuthenticated, (_) => notifyListeners());
+    ever(ctrl.isLoading, (_) => notifyListeners());
   }
 }
 
@@ -20,10 +20,10 @@ final GoRouter router = GoRouter(
   initialLocation: '/login',
   refreshListenable: _authNotifier,
   redirect: (context, state) {
-    final isAuth = Get
-        .find<AuthController>()
-        .isAuthenticated
-        .value;
+    final ctrl = Get.find<AuthController>();
+    // While restoring session, stay put — don't redirect yet.
+    if (ctrl.isLoading.value) return null;
+    final isAuth = ctrl.isAuthenticated.value;
     final onLogin = state.matchedLocation == '/login';
     if (!isAuth && !onLogin) return '/login';
     if (isAuth && onLogin) return '/home';
