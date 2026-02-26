@@ -1,0 +1,19 @@
+{
+  "appTitle": "Endurance",
+  "tagline": "Services Beyond Service",
+  "homeWelcome": "Welcome back. You are not alone.",
+  "accessRestricted": "Access Restricted",
+  "accessRestrictedBody": "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
+  "useWebVersion": "Use our web version instead",
+  "logout": "Logout",
+  "welcomeDescription": "A safe space built for those who served. Endurance connects you with the people who matter most, on your own terms, at your own pace.",
+  "featurePrivacyTitle": "Your privacy, always",
+  "featurePrivacyDesc": "No tracking, no surveillance. You are in full control of who sees what.",
+  "featureMentalHealthTitle": "Mental health insights",
+  "featureMentalHealthDesc": "Share your daily check-ins and smartwatch data with your therapist, only if you choose to.",
+  "featureConnectedTitle": "Stay connected",
+  "featureConnectedDesc": "Reach out to friends, family, therapists and fellow veterans in one secure place.",
+  "featureSharingTitle": "Permission-based sharing",
+  "featureSharingDesc": "You decide exactly what your support network can see. Revoke access any time.",
+  "getStarted": "Get Started"
+}

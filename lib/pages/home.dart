@@ -1,5 +1,6 @@
 ﻿import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,10 +9,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = Get.find<AuthController>();
+    final l10n = S.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Endurance'),
+        title: Text(l10n.appTitle),
         centerTitle: true,
         actions: [
           IconButton(
@@ -20,7 +22,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(child: Text('Welcome back. You are not alone.')),
+      body: Center(child: Text(l10n.homeWelcome)),
     );
   }
 }

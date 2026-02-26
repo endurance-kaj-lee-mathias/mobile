@@ -1,0 +1,19 @@
+{
+  "appTitle": "Endurance",
+  "tagline": "Diensten Boven Dienst",
+  "homeWelcome": "Welkom terug. Je staat er niet alleen voor.",
+  "accessRestricted": "Toegang Beperkt",
+  "accessRestrictedBody": "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
+  "useWebVersion": "Gebruik onze webversie",
+  "logout": "Uitloggen",
+  "welcomeDescription": "Een veilige plek gebouwd voor degenen die gediend hebben. Endurance verbindt u met de mensen die er het meest toe doen, op uw eigen voorwaarden, in uw eigen tempo.",
+  "featurePrivacyTitle": "Uw privacy, altijd",
+  "featurePrivacyDesc": "Geen tracking, geen surveillance. U heeft volledige controle over wie wat ziet.",
+  "featureMentalHealthTitle": "Inzichten in geestelijke gezondheid",
+  "featureMentalHealthDesc": "Deel uw dagelijkse check-ins en smartwatchgegevens met uw therapeut, alleen als u dat wilt.",
+  "featureConnectedTitle": "Blijf verbonden",
+  "featureConnectedDesc": "Neem contact op met vrienden, familie, therapeuten en medeveteranen op één veilige plek.",
+  "featureSharingTitle": "Delen op basis van toestemming",
+  "featureSharingDesc": "U bepaalt precies wat uw ondersteuningsnetwerk kan zien. Toegang intrekken op elk moment.",
+  "getStarted": "Aan de slag"
+}

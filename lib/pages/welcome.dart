@@ -1,5 +1,6 @@
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:get/get.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -9,6 +10,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = Get.find<AuthController>();
     final theme = Theme.of(context);
+    final l10n = S.of(context);
 
     return Scaffold(
       body: SafeArea(
@@ -22,14 +24,14 @@ class WelcomePage extends StatelessWidget {
                   children: [
                     const SizedBox(height: 56),
                     Text(
-                      'Endurance',
+                      l10n.appTitle,
                       style: theme.textTheme.displaySmall?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'Services Beyond Service',
+                      l10n.tagline,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: theme.colorScheme.primary,
                         fontWeight: FontWeight.w600,
@@ -38,38 +40,32 @@ class WelcomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     Text(
-                      'A safe space built for those who served. '
-                      'Endurance connects you with the people who matter most, '
-                      'on your own terms, at your own pace.',
+                      l10n.welcomeDescription,
                       style: theme.textTheme.bodyLarge,
                     ),
                     const SizedBox(height: 40),
                     _FeatureTile(
                       icon: Icons.shield_outlined,
-                      title: 'Your privacy, always',
-                      description:
-                          'No tracking, no surveillance. You are in full control of who sees what.',
+                      title: l10n.featurePrivacyTitle,
+                      description: l10n.featurePrivacyDesc,
                     ),
                     const SizedBox(height: 20),
                     _FeatureTile(
                       icon: Icons.favorite_border,
-                      title: 'Mental health insights',
-                      description:
-                          'Share your daily check-ins and smartwatch data with your therapist, only if you choose to.',
+                      title: l10n.featureMentalHealthTitle,
+                      description: l10n.featureMentalHealthDesc,
                     ),
                     const SizedBox(height: 20),
                     _FeatureTile(
                       icon: Icons.people_outline,
-                      title: 'Stay connected',
-                      description:
-                          'Reach out to friends, family, therapists and fellow veterans in one secure place.',
+                      title: l10n.featureConnectedTitle,
+                      description: l10n.featureConnectedDesc,
                     ),
                     const SizedBox(height: 20),
                     _FeatureTile(
                       icon: Icons.lock_outline,
-                      title: 'Permission-based sharing',
-                      description:
-                          'You decide exactly what your support network can see. Revoke access any time.',
+                      title: l10n.featureSharingTitle,
+                      description: l10n.featureSharingDesc,
                     ),
                     const SizedBox(height: 24),
                   ],
@@ -94,7 +90,7 @@ class WelcomePage extends StatelessWidget {
                             width: 20,
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
-                        : const Text('Get Started'),
+                        : Text(l10n.getStarted),
                   ),
                 ),
               ),

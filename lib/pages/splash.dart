@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 
 /// Shown on startup while [AuthController.isInitializing] is true.
 /// The router automatically redirects away once the session restore completes.
@@ -7,20 +8,21 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Endurance',
+              l10n.appTitle,
               style: Theme.of(
                 context,
               ).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Text(
-              'Services Beyond Service',
+              l10n.tagline,
               style: Theme.of(
                 context,
               ).textTheme.bodyMedium?.copyWith(letterSpacing: 0.5),
