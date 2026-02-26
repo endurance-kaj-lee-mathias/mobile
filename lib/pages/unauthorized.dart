@@ -18,7 +18,10 @@ class UnauthorizedPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(Icons.block, size: 72, color: Colors.red),
+              Icon(Icons.block, size: 72, color: Theme
+                  .of(context)
+                  .colorScheme
+                  .error),
               const SizedBox(height: 24),
               Text(
                 'Access Restricted',
@@ -29,8 +32,8 @@ class UnauthorizedPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'Sorry, this app is designed exclusively for veteran athletes. '
-                'Your account does not have the required access.',
+                'Sorry, access to Endurance is reserved for verified veterans. '
+                    'Your account does not currently have the required access.',
                 style: Theme.of(context).textTheme.bodyLarge,
                 textAlign: TextAlign.center,
               ),
