@@ -1,4 +1,4 @@
-package be.kdg.endure_mobile_app
+package be.kdg.endurance_mobile_app
 
 import io.flutter.embedding.android.FlutterActivity
 
