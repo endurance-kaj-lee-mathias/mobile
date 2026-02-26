@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
-  final authController = Get.put(AuthController());
+  final authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
