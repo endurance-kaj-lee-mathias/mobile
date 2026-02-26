@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "be.kdg.endure_mobile_app"
+    namespace = "be.kdg.endurance_mobile_app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,13 +21,16 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "be.kdg.endure_mobile_app"
+        applicationId = "be.kdg.endurance_mobile_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        manifestPlaceholders += mapOf(
+            "appAuthRedirectScheme" to "be.kdg.endurance"
+        )
     }
 
     buildTypes {
