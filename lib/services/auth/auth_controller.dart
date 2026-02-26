@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/token_model.dart';
 import 'package:endurance_mobile_app/services/auth/auth_storage_service.dart';
 import 'package:flutter/foundation.dart';
@@ -44,9 +45,9 @@ class AuthController extends GetxController {
   final _appAuth = FlutterAppAuth();
   final _storage = AuthStorageService();
 
-  static const _issuer = 'https://10.0.2.2:8443/realms/endurance';
-  static const _clientId = 'mobile';
-  static const _redirectUri = 'be.kdg.endurance://oauthredirect';
+  static const _issuer = AppConfig.keycloakIssuer;
+  static const _clientId = AppConfig.keycloakClientId;
+  static const _redirectUri = AppConfig.keycloakRedirectUri;
 
   // ── Lifecycle ──────────────────────────────────────────────────────────────
 
@@ -141,7 +142,6 @@ class AuthController extends GetxController {
         await _storage.clearTokens();
       }
     } catch (_) {
-      // Refresh token revoked or server unreachable — force re-login.
       await _storage.clearTokens();
     } finally {
       isInitializing.value = false;

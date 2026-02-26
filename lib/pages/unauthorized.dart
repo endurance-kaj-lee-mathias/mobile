@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,7 +41,7 @@ class UnauthorizedPage extends StatelessWidget {
               const SizedBox(height: 12),
               TextButton(
                 onPressed: () =>
-                    launchUrl(Uri.parse('https://endurance.kdg.be')),
+                    launchUrl(Uri.parse(AppConfig.webAppUrl)),
                 child: const Text('Use our web version instead'),
               ),
               const SizedBox(height: 32),
