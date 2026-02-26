@@ -3,17 +3,18 @@ import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:get/get.dart' as getx;
 
-final Dio apiClient = Dio(BaseOptions(baseUrl: AppConfig.apiBaseUrl))
-  ..interceptors.addAll([
-    _AuthInterceptor(),
-    LogInterceptor(
-      requestHeader: false,
-      requestBody: false,
-      responseHeader: false,
-      responseBody: false,
-      error: true,
-    ),
-  ]);
+Dio buildApiClient() =>
+    Dio(BaseOptions(baseUrl: AppConfig.apiBaseUrl))
+      ..interceptors.addAll([
+        _AuthInterceptor(),
+        LogInterceptor(
+          requestHeader: false,
+          requestBody: false,
+          responseHeader: false,
+          responseBody: false,
+          error: true,
+        ),
+      ]);
 
 class _AuthInterceptor extends Interceptor {
   @override

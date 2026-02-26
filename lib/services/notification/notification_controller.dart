@@ -14,8 +14,11 @@ Future<void> _backgroundMessageHandler(RemoteMessage message) async {
 }
 
 class NotificationController extends GetxController {
-  final _fcm = FirebaseMessaging.instance;
-  final _notificationService = NotificationService();
+  NotificationController({NotificationService? notificationService})
+    : _notificationService = notificationService ?? NotificationService();
+
+  final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+  final NotificationService _notificationService;
 
   @override
   void onInit() {
@@ -48,7 +51,6 @@ class NotificationController extends GetxController {
       // Show an in-app banner here if desired
     });
 
-    // Keep backend up to date if the token rotates
     _fcm.onTokenRefresh.listen(_sendToken);
   }
 

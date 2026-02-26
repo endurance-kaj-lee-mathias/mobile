@@ -1,6 +1,7 @@
 import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
+import 'package:endurance_mobile_app/services/api_client.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/notification/notification_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
@@ -13,6 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  Get.put(buildApiClient());
   Get.put(AuthController());
   Get.put(UserController());
   Get.put(NotificationController());
