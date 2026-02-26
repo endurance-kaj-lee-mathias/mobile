@@ -1,6 +1,9 @@
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/app/route_guard.dart';
+import 'package:endurance_mobile_app/components/main_shell.dart';
+import 'package:endurance_mobile_app/pages/chats.dart';
 import 'package:endurance_mobile_app/pages/home.dart';
+import 'package:endurance_mobile_app/pages/profile.dart';
 import 'package:endurance_mobile_app/pages/splash.dart';
 import 'package:endurance_mobile_app/pages/unauthorized.dart';
 import 'package:endurance_mobile_app/pages/welcome.dart';
@@ -49,10 +52,30 @@ final GoRouter router = GoRouter(
       redirect: RouteGuard.unauthenticatedOnly,
       builder: (_, _) => const WelcomePage(),
     ),
-    GoRoute(
-      path: '/home',
-      redirect: RouteGuard.veteranOnly,
-      builder: (_, _) => const HomePage(),
+    ShellRoute(
+      builder: (context, state, child) {
+        int index = 0;
+        if (state.matchedLocation.startsWith('/chats')) index = 1;
+        if (state.matchedLocation.startsWith('/profile')) index = 2;
+        return MainShell(selectedIndex: index, child: child);
+      },
+      routes: [
+        GoRoute(
+          path: '/home',
+          redirect: RouteGuard.veteranOnly,
+          builder: (_, _) => const HomePage(),
+        ),
+        GoRoute(
+          path: '/chats',
+          redirect: RouteGuard.veteranOnly,
+          builder: (_, _) => const ChatsPage(),
+        ),
+        GoRoute(
+          path: '/profile',
+          redirect: RouteGuard.veteranOnly,
+          builder: (_, _) => const ProfilePage(),
+        ),
+      ],
     ),
     GoRoute(
       path: '/unauthorized',
