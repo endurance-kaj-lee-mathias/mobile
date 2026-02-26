@@ -1,17 +1,20 @@
-import 'package:endurance_mobile_app/authentication/controller/auth_controller.dart';
+import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
+import 'package:endurance_mobile_app/app/route_guard.dart';
 import 'package:endurance_mobile_app/pages/home.dart';
+import 'package:endurance_mobile_app/pages/splash.dart';
 import 'package:endurance_mobile_app/pages/unauthorized.dart';
 import 'package:endurance_mobile_app/pages/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-/// Bridges GetX reactive state to GoRouter's refreshListenable.
+// Bridges GetX reactive state to GoRouter so the router re-evaluates its
+// redirect whenever auth state or the initialization flag changes.
 class _AuthStateNotifier extends ChangeNotifier {
   _AuthStateNotifier() {
     final ctrl = Get.find<AuthController>();
+    ever(ctrl.isInitializing, (_) => notifyListeners());
     ever(ctrl.isAuthenticated, (_) => notifyListeners());
-    ever(ctrl.isLoading, (_) => notifyListeners());
     ever(ctrl.userRoles, (_) => notifyListeners());
   }
 }
@@ -19,38 +22,43 @@ class _AuthStateNotifier extends ChangeNotifier {
 final _authNotifier = _AuthStateNotifier();
 
 final GoRouter router = GoRouter(
-  initialLocation: '/welcome',
+  initialLocation: '/splash',
   refreshListenable: _authNotifier,
   redirect: (context, state) {
     final ctrl = Get.find<AuthController>();
-    if (ctrl.isLoading.value) return null;
-
-    final isAuth = ctrl.isAuthenticated.value;
     final loc = state.matchedLocation;
 
-    if (!isAuth) {
-      return loc == '/welcome' ? null : '/welcome';
+    if (ctrl.isInitializing.value) {
+      return loc == '/splash' ? null : '/splash';
     }
 
-    if (ctrl.isVeteran) {
-      if (loc == '/welcome' || loc == '/unauthorized') return '/home';
-      return null;
-    } else {
-      return loc == '/unauthorized' ? null : '/unauthorized';
+    if (loc == '/splash') {
+      if (!ctrl.isAuthenticated.value) return '/welcome';
+      return ctrl.isVeteran ? '/home' : '/unauthorized';
     }
+
+    return null;
   },
   routes: [
     GoRoute(
+      path: '/splash',
+      builder: (_, _) => const SplashPage(),
+    ),
+    GoRoute(
       path: '/welcome',
-      builder: (context, state) => const WelcomePage(),
+      redirect: RouteGuard.unauthenticatedOnly,
+      builder: (_, _) => const WelcomePage(),
     ),
     GoRoute(
       path: '/home',
-      builder: (context, state) => const HomePage(),
+      redirect: RouteGuard.veteranOnly,
+      builder: (_, _) => const HomePage(),
     ),
     GoRoute(
       path: '/unauthorized',
-      builder: (context, state) => const UnauthorizedPage(),
+      redirect: RouteGuard.authenticatedOnly,
+      builder: (_, _) => const UnauthorizedPage(),
     ),
   ],
 );
+
