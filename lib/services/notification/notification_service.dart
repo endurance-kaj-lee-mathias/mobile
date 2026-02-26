@@ -8,10 +8,10 @@ class NotificationService {
   final Dio _client;
 
   Future<void> updateFcmToken(FcmTokenModel model) async {
-    await _client.put<void>('/users/fcm-token', data: model.toJson());
+    await _client.put<void>('/users/device', data: model.toJson());
   }
 
   Future<void> deleteFcmToken() async {
-    await _client.delete<void>('/users/fcm-token');
+    await _client.delete<void>('/users/device');
   }
 }

@@ -46,3 +46,5 @@ app.*.map.json
 
 # Environment variables (copy .env.json.example to .env.json and fill in values)
 .env.json
+
+/.github/
