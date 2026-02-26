@@ -1,6 +1,7 @@
 import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:endurance_mobile_app/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,6 +11,7 @@ class UnauthorizedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = Get.find<AuthController>();
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: SafeArea(
@@ -25,7 +27,7 @@ class UnauthorizedPage extends StatelessWidget {
                   .error),
               const SizedBox(height: 24),
               Text(
-                'Access Restricted',
+                l10n.accessRestricted,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -33,8 +35,7 @@ class UnauthorizedPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'Sorry, access to Endurance is reserved for verified veterans. '
-                    'Your account does not currently have the required access.',
+                l10n.accessRestrictedBody,
                 style: Theme.of(context).textTheme.bodyLarge,
                 textAlign: TextAlign.center,
               ),
@@ -42,7 +43,7 @@ class UnauthorizedPage extends StatelessWidget {
               TextButton(
                 onPressed: () =>
                     launchUrl(Uri.parse(AppConfig.webAppUrl)),
-                child: const Text('Use our web version instead'),
+                child: Text(l10n.useWebVersion),
               ),
               const SizedBox(height: 32),
               SizedBox(
@@ -52,7 +53,7 @@ class UnauthorizedPage extends StatelessWidget {
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  child: const Text('Logout'),
+                  child: Text(l10n.logout),
                 ),
               ),
             ],
