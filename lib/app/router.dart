@@ -1,6 +1,7 @@
 import 'package:endurance_mobile_app/authentication/controller/auth_controller.dart';
-import 'package:endurance_mobile_app/pages/landing.dart';
-import 'package:endurance_mobile_app/pages/login_screen.dart';
+import 'package:endurance_mobile_app/pages/home.dart';
+import 'package:endurance_mobile_app/pages/unauthorized.dart';
+import 'package:endurance_mobile_app/pages/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -11,32 +12,45 @@ class _AuthStateNotifier extends ChangeNotifier {
     final ctrl = Get.find<AuthController>();
     ever(ctrl.isAuthenticated, (_) => notifyListeners());
     ever(ctrl.isLoading, (_) => notifyListeners());
+    ever(ctrl.userRoles, (_) => notifyListeners());
   }
 }
 
 final _authNotifier = _AuthStateNotifier();
 
 final GoRouter router = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/welcome',
   refreshListenable: _authNotifier,
   redirect: (context, state) {
     final ctrl = Get.find<AuthController>();
-    // While restoring session, stay put — don't redirect yet.
     if (ctrl.isLoading.value) return null;
+
     final isAuth = ctrl.isAuthenticated.value;
-    final onLogin = state.matchedLocation == '/login';
-    if (!isAuth && !onLogin) return '/login';
-    if (isAuth && onLogin) return '/home';
-    return null;
+    final loc = state.matchedLocation;
+
+    if (!isAuth) {
+      return loc == '/welcome' ? null : '/welcome';
+    }
+
+    if (ctrl.isVeteran) {
+      if (loc == '/welcome' || loc == '/unauthorized') return '/home';
+      return null;
+    } else {
+      return loc == '/unauthorized' ? null : '/unauthorized';
+    }
   },
   routes: [
     GoRoute(
-      path: '/login',
-      builder: (context, state) => LoginScreen(),
+      path: '/welcome',
+      builder: (context, state) => const WelcomePage(),
     ),
     GoRoute(
       path: '/home',
-      builder: (context, state) => const LandingPage(),
+      builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      path: '/unauthorized',
+      builder: (context, state) => const UnauthorizedPage(),
     ),
   ],
 );
