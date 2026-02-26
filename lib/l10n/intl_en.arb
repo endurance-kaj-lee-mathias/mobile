@@ -18,6 +18,10 @@
   "getStarted": "Get Started",
   "navHome": "Home",
   "navChats": "Chats",
+  "navNetwork": "My Network",
   "navProfile": "You",
-  "chatsSoon": "Chats — coming soon"
+  "chatsSoon": "Chats — coming soon",
+  "profileTitle": "Profile",
+  "networkTitle": "My Network",
+  "networkSoon": "Network — coming soon"
 }

@@ -18,6 +18,10 @@
   "getStarted": "Почати",
   "navHome": "Головна",
   "navChats": "Чати",
+  "navNetwork": "Моя Мережа",
   "navProfile": "Профіль",
-  "chatsSoon": "Чати — незабаром"
+  "chatsSoon": "Чати — незабаром",
+  "profileTitle": "Профіль",
+  "networkTitle": "Моя Мережа",
+  "networkSoon": "Мережа — незабаром"
 }

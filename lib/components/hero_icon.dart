@@ -23,11 +23,6 @@ class HeroIcon extends StatelessWidget {
   }
 }
 
-/// Asset path constants for all Hero Icons used in this app.
-///
-/// Drop the matching SVG files from https://heroicons.com into the paths below:
-///   assets/icons/outline/  → outline (24px) variants
-///   assets/icons/solid/    → solid (24px) variants
 abstract final class HeroIcons {
   // Navigation
   static const String homeOutline = 'assets/icons/outline/home.svg';
@@ -41,6 +36,7 @@ abstract final class HeroIcons {
   static const String shieldOutline = 'assets/icons/outline/shield-check.svg';
   static const String heartOutline = 'assets/icons/outline/heart.svg';
   static const String userGroupOutline = 'assets/icons/outline/user-group.svg';
+  static const String userGroupSolid = 'assets/icons/solid/user-group.svg';
   static const String lockOutline = 'assets/icons/outline/lock-closed.svg';
 
   // Unauthorized page

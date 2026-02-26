@@ -59,7 +59,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Вийти"),
     "navChats": MessageLookupByLibrary.simpleMessage("Чати"),
     "navHome": MessageLookupByLibrary.simpleMessage("Головна"),
+    "navNetwork": MessageLookupByLibrary.simpleMessage("Моя Мережа"),
     "navProfile": MessageLookupByLibrary.simpleMessage("Профіль"),
+    "networkSoon": MessageLookupByLibrary.simpleMessage("Мережа — незабаром"),
+    "networkTitle": MessageLookupByLibrary.simpleMessage("Моя Мережа"),
+    "profileTitle": MessageLookupByLibrary.simpleMessage("Профіль"),
     "tagline": MessageLookupByLibrary.simpleMessage("Послуги Понад Службою"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Скористайтеся нашою веб-версією",

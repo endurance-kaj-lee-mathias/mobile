@@ -219,6 +219,11 @@ class S {
     return Intl.message('Chats', name: 'navChats', desc: '', args: []);
   }
 
+  /// `My Network`
+  String get navNetwork {
+    return Intl.message('My Network', name: 'navNetwork', desc: '', args: []);
+  }
+
   /// `You`
   String get navProfile {
     return Intl.message('You', name: 'navProfile', desc: '', args: []);
@@ -229,6 +234,26 @@ class S {
     return Intl.message(
       'Chats — coming soon',
       name: 'chatsSoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profileTitle {
+    return Intl.message('Profile', name: 'profileTitle', desc: '', args: []);
+  }
+
+  /// `My Network`
+  String get networkTitle {
+    return Intl.message('My Network', name: 'networkTitle', desc: '', args: []);
+  }
+
+  /// `Network — coming soon`
+  String get networkSoon {
+    return Intl.message(
+      'Network — coming soon',
+      name: 'networkSoon',
       desc: '',
       args: [],
     );

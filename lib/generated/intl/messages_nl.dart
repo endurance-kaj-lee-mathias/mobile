@@ -61,7 +61,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
+    "navNetwork": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
     "navProfile": MessageLookupByLibrary.simpleMessage("Jij"),
+    "networkSoon": MessageLookupByLibrary.simpleMessage(
+      "Netwerk — binnenkort beschikbaar",
+    ),
+    "networkTitle": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
+    "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",

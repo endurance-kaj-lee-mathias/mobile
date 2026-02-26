@@ -18,6 +18,10 @@
   "getStarted": "Aan de slag",
   "navHome": "Thuis",
   "navChats": "Chats",
+  "navNetwork": "Mijn Netwerk",
   "navProfile": "Jij",
-  "chatsSoon": "Chats — binnenkort beschikbaar"
+  "chatsSoon": "Chats — binnenkort beschikbaar",
+  "profileTitle": "Profiel",
+  "networkTitle": "Mijn Netwerk",
+  "networkSoon": "Netwerk — binnenkort beschikbaar"
 }

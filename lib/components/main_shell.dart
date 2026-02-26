@@ -14,7 +14,12 @@ class MainShell extends StatelessWidget {
     super.key,
   });
 
-  static const _tabs = [AppRoutes.home, AppRoutes.chats, AppRoutes.profile];
+  static const _tabs = [
+    AppRoutes.home,
+    AppRoutes.chats,
+    AppRoutes.network,
+    AppRoutes.profile,
+  ];
 
   int _selectedIndex(BuildContext context) {
     final name = GoRouterState
@@ -52,6 +57,11 @@ class MainShell extends StatelessWidget {
               icon: const HeroIcon(HeroIcons.chatOutline),
               selectedIcon: const HeroIcon(HeroIcons.chatSolid),
               label: s.navChats,
+            ),
+            NavigationDestination(
+              icon: const HeroIcon(HeroIcons.userGroupOutline),
+              selectedIcon: const HeroIcon(HeroIcons.userGroupSolid),
+              label: s.navNetwork,
             ),
             NavigationDestination(
               icon: _ProfileNavIcon(

@@ -1,4 +1,5 @@
 import 'package:endurance_mobile_app/components/hero_icon.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,11 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = Get.find<AuthController>();
     final userCtrl = Get.find<UserController>();
+    final l10n = S.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: Text(l10n.profileTitle),
         centerTitle: true,
         actions: [
           IconButton(

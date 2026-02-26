@@ -61,7 +61,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Home"),
+    "navNetwork": MessageLookupByLibrary.simpleMessage("My Network"),
     "navProfile": MessageLookupByLibrary.simpleMessage("You"),
+    "networkSoon": MessageLookupByLibrary.simpleMessage(
+      "Network — coming soon",
+    ),
+    "networkTitle": MessageLookupByLibrary.simpleMessage("My Network"),
+    "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
     "tagline": MessageLookupByLibrary.simpleMessage("Services Beyond Service"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Use our web version instead",
