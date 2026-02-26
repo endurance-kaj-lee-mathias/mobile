@@ -66,15 +66,15 @@ class MainShell extends StatelessWidget {
             NavigationDestination(
               icon: _ProfileNavIcon(
                 pictureUrl: user?.image,
-                name: user?.name,
+                name: user?.firstName,
                 isActive: false,
               ),
               selectedIcon: _ProfileNavIcon(
                 pictureUrl: user?.image,
-                name: user?.name,
+                name: user?.firstName,
                 isActive: true,
               ),
-              label: user?.name ?? s.navProfile,
+              label: user?.firstName ?? s.navProfile,
             ),
           ],
         );

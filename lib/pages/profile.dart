@@ -39,8 +39,8 @@ class ProfilePage extends StatelessWidget {
                     : null,
                 child: user?.image == null
                     ? Text(
-                        user != null && user.name.isNotEmpty
-                            ? user.name[0].toUpperCase()
+                        user != null && user.firstName.isNotEmpty
+                            ? user.firstName[0].toUpperCase()
                             : '?',
                         style: const TextStyle(fontSize: 32),
                       )
@@ -48,7 +48,10 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               if (user != null) ...[
-                Text(user.name, style: Theme.of(context).textTheme.bodyLarge),
+                Text(
+                  "${user.firstName}${user.lastName != null && user.lastName!.isNotEmpty ? ' ${user.lastName}' : ''}",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
                 const SizedBox(height: 4),
                 Text(
                   '@${user.username}',

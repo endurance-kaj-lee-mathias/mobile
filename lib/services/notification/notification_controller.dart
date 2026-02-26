@@ -27,7 +27,11 @@ class NotificationController extends GetxController {
 
     final auth = Get.find<AuthController>();
     ever(auth.isAuthenticated, (bool authenticated) {
-      if (authenticated) _syncToken();
+      if (authenticated) {
+        _syncToken();
+      } else {
+        _clearToken();
+      }
     });
 
     if (auth.isAuthenticated.value) _syncToken();
@@ -35,8 +39,6 @@ class NotificationController extends GetxController {
 
   Future<void> _initHandlers() async {
     FirebaseMessaging.onBackgroundMessage(_backgroundMessageHandler);
-
-    await _fcm.requestPermission();
 
     // App was fully terminated when notification was tapped
     final initial = await _fcm.getInitialMessage();
@@ -56,10 +58,20 @@ class NotificationController extends GetxController {
 
   Future<void> _syncToken() async {
     try {
+      await _fcm.requestPermission();
       final token = await _fcm.getToken();
       if (token != null) await _sendToken(token);
     } catch (e) {
       debugPrint('Failed to sync FCM token: $e');
+    }
+  }
+
+  Future<void> _clearToken() async {
+    try {
+      await _notificationService.deleteFcmToken();
+      await _fcm.deleteToken();
+    } catch (e) {
+      debugPrint('Failed to clear FCM token: $e');
     }
   }
 

@@ -10,4 +10,8 @@ class NotificationService {
   Future<void> updateFcmToken(FcmTokenModel model) async {
     await _client.put<void>('/users/fcm-token', data: model.toJson());
   }
+
+  Future<void> deleteFcmToken() async {
+    await _client.delete<void>('/users/fcm-token');
+  }
 }
