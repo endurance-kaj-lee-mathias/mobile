@@ -1,7 +1,7 @@
 import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:endurance_mobile_app/l10n/app_localizations.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,7 +11,7 @@ class UnauthorizedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = Get.find<AuthController>();
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = S.of(context);
 
     return Scaffold(
       body: SafeArea(

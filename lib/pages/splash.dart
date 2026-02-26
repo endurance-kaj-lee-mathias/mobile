@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:endurance_mobile_app/l10n/app_localizations.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 
 /// Shown on startup while [AuthController.isInitializing] is true.
 /// The router automatically redirects away once the session restore completes.
@@ -8,7 +8,7 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = S.of(context);
     return Scaffold(
       body: Center(
         child: Column(
