@@ -24,25 +24,21 @@ class HeroIcon extends StatelessWidget {
 }
 
 abstract final class HeroIcons {
-  // Navigation
-  static const String homeOutline = 'assets/icons/outline/home.svg';
+  // Solid
   static const String homeSolid = 'assets/icons/solid/home.svg';
-  static const String chatOutline =
-      'assets/icons/outline/chat-bubble-left-right.svg';
   static const String chatSolid =
       'assets/icons/solid/chat-bubble-left-right.svg';
+  static const String userGroupSolid = 'assets/icons/solid/user-group.svg';
 
-  // Welcome page features
+  // Outline
   static const String shieldOutline = 'assets/icons/outline/shield-check.svg';
   static const String heartOutline = 'assets/icons/outline/heart.svg';
   static const String userGroupOutline = 'assets/icons/outline/user-group.svg';
-  static const String userGroupSolid = 'assets/icons/solid/user-group.svg';
   static const String lockOutline = 'assets/icons/outline/lock-closed.svg';
-
-  // Unauthorized page
   static const String noSymbolOutline = 'assets/icons/outline/no-symbol.svg';
-
-  // Profile page
   static const String logoutOutline =
       'assets/icons/outline/arrow-right-on-rectangle.svg';
+  static const String chatOutline =
+      'assets/icons/outline/chat-bubble-left-right.svg';
+  static const String homeOutline = 'assets/icons/outline/home.svg';
 }
