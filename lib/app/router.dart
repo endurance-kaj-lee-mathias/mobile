@@ -94,6 +94,14 @@ final GoRouter router = GoRouter(
       redirect: RouteGuard.authenticatedOnly,
       builder: (_, _) => const UnauthorizedPage(),
     ),
+    GoRoute(
+      path: '/:path(.*)',
+      redirect: (context, state) {
+        final ctrl = Get.find<AuthController>();
+        if (!ctrl.isAuthenticated.value) return '/welcome';
+        return ctrl.isVeteran ? '/home' : '/unauthorized';
+      },
+    ),
   ],
 );
 

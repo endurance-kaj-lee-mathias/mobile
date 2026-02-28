@@ -5,10 +5,12 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {
+  UserController({UserService? service}) : _service = service ?? UserService();
+
+  final UserService _service;
+
   final Rxn<UserModel> user = Rxn<UserModel>();
   final RxBool isLoading = false.obs;
-
-  final _service = UserService();
 
   @override
   void onInit() {
