@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(score) => "Mood score: ${score}/10";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage(
@@ -29,7 +31,27 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "cancelLabel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage("Chats — coming soon"),
+    "checkInError": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong. Please try again.",
+    ),
+    "checkInSubmitting": MessageLookupByLibrary.simpleMessage("Submitting…"),
+    "checkInSuccess": MessageLookupByLibrary.simpleMessage(
+      "Check-in submitted!",
+    ),
+    "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
+      "Complete check-in",
+    ),
+    "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
+      "Check-in complete",
+    ),
+    "dailyCheckInDoneSubtitle": m0,
+    "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
+      "How are you feeling today?",
+    ),
+    "dailyCheckInTitle": MessageLookupByLibrary.simpleMessage("Daily Check-In"),
+    "dailyCheckInUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Reach out to friends, family, therapists and fellow veterans in one secure place.",
     ),
@@ -55,10 +77,23 @@ class MessageLookup extends MessageLookupByLibrary {
       "Permission-based sharing",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
+      "Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.",
+    ),
+    "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
+      "Allow access",
+    ),
+    "healthPermissionSkip": MessageLookupByLibrary.simpleMessage(
+      "Skip for now",
+    ),
+    "healthPermissionTitle": MessageLookupByLibrary.simpleMessage(
+      "Health data",
+    ),
     "homeWelcome": MessageLookupByLibrary.simpleMessage(
       "Welcome back. You are not alone.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "moodScoreLabel": MessageLookupByLibrary.simpleMessage("Mood score"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Home"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("My Network"),
@@ -67,7 +102,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Network — coming soon",
     ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("My Network"),
+    "notesHint": MessageLookupByLibrary.simpleMessage(
+      "How was your day? (max 500 characters)",
+    ),
+    "notesLabel": MessageLookupByLibrary.simpleMessage("Notes (optional)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
+    "submitLabel": MessageLookupByLibrary.simpleMessage("Submit"),
     "tagline": MessageLookupByLibrary.simpleMessage("Services Beyond Service"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Use our web version instead",

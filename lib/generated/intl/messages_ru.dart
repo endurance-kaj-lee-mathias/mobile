@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
+  static String m0(score) => "Настроение: ${score}/10";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage(
@@ -29,7 +31,31 @@ class MessageLookup extends MessageLookupByLibrary {
       "Извините, доступ к Endurance зарезервирован для проверенных ветеранов. Ваша учётная запись в настоящее время не имеет необходимого доступа.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "cancelLabel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage("Чаты — скоро"),
+    "checkInError": MessageLookupByLibrary.simpleMessage(
+      "Что-то пошло не так. Повторите попытку.",
+    ),
+    "checkInSubmitting": MessageLookupByLibrary.simpleMessage("Отправка…"),
+    "checkInSuccess": MessageLookupByLibrary.simpleMessage(
+      "Отметка отправлена!",
+    ),
+    "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
+      "Заполнить отметку",
+    ),
+    "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
+      "Отметка выполнена",
+    ),
+    "dailyCheckInDoneSubtitle": m0,
+    "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
+      "Как вы себя чувствуете сегодня?",
+    ),
+    "dailyCheckInTitle": MessageLookupByLibrary.simpleMessage(
+      "Ежедневная отметка",
+    ),
+    "dailyCheckInUpdateButton": MessageLookupByLibrary.simpleMessage(
+      "Обновить",
+    ),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Свяжитесь с друзьями, семьёй, терапевтами и сослуживцами в одном безопасном месте.",
     ),
@@ -55,17 +81,35 @@ class MessageLookup extends MessageLookupByLibrary {
       "Совместный доступ на основе разрешений",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Начать"),
+    "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
+      "Разрешите Endurance читать данные о здоровье (пульс, шаги, сон) для обогащения отметки.",
+    ),
+    "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
+      "Разрешить доступ",
+    ),
+    "healthPermissionSkip": MessageLookupByLibrary.simpleMessage("Пропустить"),
+    "healthPermissionTitle": MessageLookupByLibrary.simpleMessage(
+      "Данные о здоровье",
+    ),
     "homeWelcome": MessageLookupByLibrary.simpleMessage(
       "С возвращением. Вы не одиноки.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Выйти"),
+    "moodScoreLabel": MessageLookupByLibrary.simpleMessage("Оценка настроения"),
     "navChats": MessageLookupByLibrary.simpleMessage("Чаты"),
     "navHome": MessageLookupByLibrary.simpleMessage("Главная"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Моя Сеть"),
     "navProfile": MessageLookupByLibrary.simpleMessage("Профиль"),
     "networkSoon": MessageLookupByLibrary.simpleMessage("Сеть — скоро"),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Моя Сеть"),
+    "notesHint": MessageLookupByLibrary.simpleMessage(
+      "Как прошёл ваш день? (макс. 500 символов)",
+    ),
+    "notesLabel": MessageLookupByLibrary.simpleMessage(
+      "Заметки (необязательно)",
+    ),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Профиль"),
+    "submitLabel": MessageLookupByLibrary.simpleMessage("Отправить"),
     "tagline": MessageLookupByLibrary.simpleMessage("Услуги Сверх Службы"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Используйте нашу веб-версию",

@@ -23,5 +23,30 @@
   "chatsSoon": "Чати — незабаром",
   "profileTitle": "Профіль",
   "networkTitle": "Моя Мережа",
-  "networkSoon": "Мережа — незабаром"
+  "networkSoon": "Мережа — незабаром",
+  "dailyCheckInTitle": "Щоденна перевірка",
+  "dailyCheckInPending": "Як ви себе почуваєте сьогодні?",
+  "dailyCheckInDone": "Перевірку завершено",
+  "dailyCheckInDoneSubtitle": "Настрій: {score}/10",
+  "@dailyCheckInDoneSubtitle": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyCheckInButton": "Виконати перевірку",
+  "dailyCheckInUpdateButton": "Оновити",
+  "moodScoreLabel": "Оцінка настрою",
+  "notesLabel": "Нотатки (необов'язково)",
+  "notesHint": "Як пройшов ваш день? (макс. 500 символів)",
+  "submitLabel": "Надіслати",
+  "cancelLabel": "Скасувати",
+  "healthPermissionTitle": "Дані про здоров'я",
+  "healthPermissionBody": "Дозвольте Endurance читати дані про здоров'я (пульс, кроки, сон) для збагачення перевірки.",
+  "healthPermissionGrant": "Надати доступ",
+  "healthPermissionSkip": "Пропустити",
+  "checkInSubmitting": "Надсилання…",
+  "checkInSuccess": "Перевірку надіслано!",
+  "checkInError": "Щось пішло не так. Спробуйте ще раз."
 }

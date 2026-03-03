@@ -3,6 +3,7 @@ import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/api_client.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
+import 'package:endurance_mobile_app/services/mood/daily_checkin_controller.dart';
 import 'package:endurance_mobile_app/services/notification/notification_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,6 +19,7 @@ void main() async {
   Get.put(AuthController());
   Get.put(UserController());
   Get.put(NotificationController());
+  Get.put(DailyCheckInController());
   runApp(const MyApp());
 }
 

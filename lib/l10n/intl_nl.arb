@@ -23,5 +23,30 @@
   "chatsSoon": "Chats — binnenkort beschikbaar",
   "profileTitle": "Profiel",
   "networkTitle": "Mijn Netwerk",
-  "networkSoon": "Netwerk — binnenkort beschikbaar"
+  "networkSoon": "Netwerk — binnenkort beschikbaar",
+  "dailyCheckInTitle": "Dagelijkse check-in",
+  "dailyCheckInPending": "Hoe voel je je vandaag?",
+  "dailyCheckInDone": "Check-in voltooid",
+  "dailyCheckInDoneSubtitle": "Stemming: {score}/10",
+  "@dailyCheckInDoneSubtitle": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyCheckInButton": "Check-in voltooien",
+  "dailyCheckInUpdateButton": "Bijwerken",
+  "moodScoreLabel": "Stemmingsscore",
+  "notesLabel": "Notities (optioneel)",
+  "notesHint": "Hoe was uw dag? (max. 500 tekens)",
+  "submitLabel": "Indienen",
+  "cancelLabel": "Annuleren",
+  "healthPermissionTitle": "Gezondheidsgegevens",
+  "healthPermissionBody": "Sta Endurance toe uw gezondheidsgegevens (hartslag, stappen, slaap) te lezen om uw check-in te verrijken.",
+  "healthPermissionGrant": "Toegang verlenen",
+  "healthPermissionSkip": "Voorlopig overslaan",
+  "checkInSubmitting": "Verzenden…",
+  "checkInSuccess": "Check-in ingediend!",
+  "checkInError": "Er is iets misgegaan. Probeer het opnieuw."
 }

@@ -23,5 +23,30 @@
   "chatsSoon": "Чаты — скоро",
   "profileTitle": "Профиль",
   "networkTitle": "Моя Сеть",
-  "networkSoon": "Сеть — скоро"
+  "networkSoon": "Сеть — скоро",
+  "dailyCheckInTitle": "Ежедневная отметка",
+  "dailyCheckInPending": "Как вы себя чувствуете сегодня?",
+  "dailyCheckInDone": "Отметка выполнена",
+  "dailyCheckInDoneSubtitle": "Настроение: {score}/10",
+  "@dailyCheckInDoneSubtitle": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyCheckInButton": "Заполнить отметку",
+  "dailyCheckInUpdateButton": "Обновить",
+  "moodScoreLabel": "Оценка настроения",
+  "notesLabel": "Заметки (необязательно)",
+  "notesHint": "Как прошёл ваш день? (макс. 500 символов)",
+  "submitLabel": "Отправить",
+  "cancelLabel": "Отмена",
+  "healthPermissionTitle": "Данные о здоровье",
+  "healthPermissionBody": "Разрешите Endurance читать данные о здоровье (пульс, шаги, сон) для обогащения отметки.",
+  "healthPermissionGrant": "Разрешить доступ",
+  "healthPermissionSkip": "Пропустить",
+  "checkInSubmitting": "Отправка…",
+  "checkInSuccess": "Отметка отправлена!",
+  "checkInError": "Что-то пошло не так. Повторите попытку."
 }

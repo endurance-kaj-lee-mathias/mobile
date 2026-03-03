@@ -45,6 +45,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Endurance reads your health data (heart rate, steps, sleep) to help track your wellbeing and share insights with your support network — only with your permission.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Endurance does not write health data.</string>
 	<key>CFBundleURLTypes</key>
     <array>
       <dict>

@@ -23,5 +23,30 @@
   "chatsSoon": "Chats — coming soon",
   "profileTitle": "Profile",
   "networkTitle": "My Network",
-  "networkSoon": "Network — coming soon"
+  "networkSoon": "Network — coming soon",
+  "dailyCheckInTitle": "Daily Check-In",
+  "dailyCheckInPending": "How are you feeling today?",
+  "dailyCheckInDone": "Check-in complete",
+  "dailyCheckInDoneSubtitle": "Mood score: {score}/10",
+  "@dailyCheckInDoneSubtitle": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyCheckInButton": "Complete check-in",
+  "dailyCheckInUpdateButton": "Update",
+  "moodScoreLabel": "Mood score",
+  "notesLabel": "Notes (optional)",
+  "notesHint": "How was your day? (max 500 characters)",
+  "submitLabel": "Submit",
+  "cancelLabel": "Cancel",
+  "healthPermissionTitle": "Health data",
+  "healthPermissionBody": "Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.",
+  "healthPermissionGrant": "Allow access",
+  "healthPermissionSkip": "Skip for now",
+  "checkInSubmitting": "Submitting…",
+  "checkInSuccess": "Check-in submitted!",
+  "checkInError": "Something went wrong. Please try again."
 }

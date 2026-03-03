@@ -258,6 +258,176 @@ class S {
       args: [],
     );
   }
+
+  /// `Daily Check-In`
+  String get dailyCheckInTitle {
+    return Intl.message(
+      'Daily Check-In',
+      name: 'dailyCheckInTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How are you feeling today?`
+  String get dailyCheckInPending {
+    return Intl.message(
+      'How are you feeling today?',
+      name: 'dailyCheckInPending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-in complete`
+  String get dailyCheckInDone {
+    return Intl.message(
+      'Check-in complete',
+      name: 'dailyCheckInDone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mood score: {score}/10`
+  String dailyCheckInDoneSubtitle(int score) {
+    return Intl.message(
+      'Mood score: $score/10',
+      name: 'dailyCheckInDoneSubtitle',
+      desc: '',
+      args: [score],
+    );
+  }
+
+  /// `Complete check-in`
+  String get dailyCheckInButton {
+    return Intl.message(
+      'Complete check-in',
+      name: 'dailyCheckInButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get dailyCheckInUpdateButton {
+    return Intl.message(
+      'Update',
+      name: 'dailyCheckInUpdateButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mood score`
+  String get moodScoreLabel {
+    return Intl.message(
+      'Mood score',
+      name: 'moodScoreLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes (optional)`
+  String get notesLabel {
+    return Intl.message(
+      'Notes (optional)',
+      name: 'notesLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How was your day? (max 500 characters)`
+  String get notesHint {
+    return Intl.message(
+      'How was your day? (max 500 characters)',
+      name: 'notesHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submitLabel {
+    return Intl.message('Submit', name: 'submitLabel', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancelLabel {
+    return Intl.message('Cancel', name: 'cancelLabel', desc: '', args: []);
+  }
+
+  /// `Health data`
+  String get healthPermissionTitle {
+    return Intl.message(
+      'Health data',
+      name: 'healthPermissionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.`
+  String get healthPermissionBody {
+    return Intl.message(
+      'Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.',
+      name: 'healthPermissionBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allow access`
+  String get healthPermissionGrant {
+    return Intl.message(
+      'Allow access',
+      name: 'healthPermissionGrant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip for now`
+  String get healthPermissionSkip {
+    return Intl.message(
+      'Skip for now',
+      name: 'healthPermissionSkip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submitting…`
+  String get checkInSubmitting {
+    return Intl.message(
+      'Submitting…',
+      name: 'checkInSubmitting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-in submitted!`
+  String get checkInSuccess {
+    return Intl.message(
+      'Check-in submitted!',
+      name: 'checkInSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong. Please try again.`
+  String get checkInError {
+    return Intl.message(
+      'Something went wrong. Please try again.',
+      name: 'checkInError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

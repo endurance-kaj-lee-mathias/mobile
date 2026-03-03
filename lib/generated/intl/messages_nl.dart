@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'nl';
 
+  static String m0(score) => "Stemming: ${score}/10";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Toegang Beperkt"),
@@ -27,8 +29,32 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "cancelLabel": MessageLookupByLibrary.simpleMessage("Annuleren"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage(
       "Chats — binnenkort beschikbaar",
+    ),
+    "checkInError": MessageLookupByLibrary.simpleMessage(
+      "Er is iets misgegaan. Probeer het opnieuw.",
+    ),
+    "checkInSubmitting": MessageLookupByLibrary.simpleMessage("Verzenden…"),
+    "checkInSuccess": MessageLookupByLibrary.simpleMessage(
+      "Check-in ingediend!",
+    ),
+    "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
+      "Check-in voltooien",
+    ),
+    "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
+      "Check-in voltooid",
+    ),
+    "dailyCheckInDoneSubtitle": m0,
+    "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
+      "Hoe voel je je vandaag?",
+    ),
+    "dailyCheckInTitle": MessageLookupByLibrary.simpleMessage(
+      "Dagelijkse check-in",
+    ),
+    "dailyCheckInUpdateButton": MessageLookupByLibrary.simpleMessage(
+      "Bijwerken",
     ),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Neem contact op met vrienden, familie, therapeuten en medeveteranen op één veilige plek.",
@@ -55,10 +81,23 @@ class MessageLookup extends MessageLookupByLibrary {
       "Delen op basis van toestemming",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Aan de slag"),
+    "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
+      "Sta Endurance toe uw gezondheidsgegevens (hartslag, stappen, slaap) te lezen om uw check-in te verrijken.",
+    ),
+    "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
+      "Toegang verlenen",
+    ),
+    "healthPermissionSkip": MessageLookupByLibrary.simpleMessage(
+      "Voorlopig overslaan",
+    ),
+    "healthPermissionTitle": MessageLookupByLibrary.simpleMessage(
+      "Gezondheidsgegevens",
+    ),
     "homeWelcome": MessageLookupByLibrary.simpleMessage(
       "Welkom terug. Je staat er niet alleen voor.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
+    "moodScoreLabel": MessageLookupByLibrary.simpleMessage("Stemmingsscore"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
@@ -67,7 +106,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Netwerk — binnenkort beschikbaar",
     ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
+    "notesHint": MessageLookupByLibrary.simpleMessage(
+      "Hoe was uw dag? (max. 500 tekens)",
+    ),
+    "notesLabel": MessageLookupByLibrary.simpleMessage("Notities (optioneel)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),
+    "submitLabel": MessageLookupByLibrary.simpleMessage("Indienen"),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",
