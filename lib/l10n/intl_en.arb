@@ -1,7 +1,15 @@
 {
   "appTitle": "Endurance",
   "tagline": "Services Beyond Service",
-  "homeWelcome": "Welcome back. You are not alone.",
+  "homeWelcomePrefix": "Welcome back,",
+  "homeWelcome": "Welcome back, {name}.",
+  "@homeWelcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "accessRestricted": "Access Restricted",
   "accessRestrictedBody": "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
   "useWebVersion": "Use our web version instead",

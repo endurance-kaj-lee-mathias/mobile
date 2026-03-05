@@ -1,7 +1,15 @@
 {
   "appTitle": "Endurance",
   "tagline": "Услуги Сверх Службы",
-  "homeWelcome": "С возвращением. Вы не одиноки.",
+  "homeWelcomePrefix": "С возвращением,",
+  "homeWelcome": "С возвращением, {name}.",
+  "@homeWelcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "accessRestricted": "Доступ Ограничен",
   "accessRestrictedBody": "Извините, доступ к Endurance зарезервирован для проверенных ветеранов. Ваша учётная запись в настоящее время не имеет необходимого доступа.",
   "useWebVersion": "Используйте нашу веб-версию",

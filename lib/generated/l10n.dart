@@ -69,13 +69,23 @@ class S {
     );
   }
 
-  /// `Welcome back. You are not alone.`
-  String get homeWelcome {
+  /// `Welcome back,`
+  String get homeWelcomePrefix {
     return Intl.message(
-      'Welcome back. You are not alone.',
-      name: 'homeWelcome',
+      'Welcome back,',
+      name: 'homeWelcomePrefix',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Welcome back, {name}.`
+  String homeWelcome(String name) {
+    return Intl.message(
+      'Welcome back, $name.',
+      name: 'homeWelcome',
+      desc: '',
+      args: [name],
     );
   }
 

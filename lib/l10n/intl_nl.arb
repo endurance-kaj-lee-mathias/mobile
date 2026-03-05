@@ -1,7 +1,15 @@
 {
   "appTitle": "Endurance",
   "tagline": "Diensten Boven Dienst",
-  "homeWelcome": "Welkom terug. Je staat er niet alleen voor.",
+  "homeWelcomePrefix": "Welkom terug,",
+  "homeWelcome": "Welkom terug, {name}.",
+  "@homeWelcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "accessRestricted": "Toegang Beperkt",
   "accessRestrictedBody": "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
   "useWebVersion": "Gebruik onze webversie",

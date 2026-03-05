@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(score) => "Mood score: ${score}/10";
 
+  static String m1(name) => "Welcome back, ${name}.";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage(
@@ -89,9 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "healthPermissionTitle": MessageLookupByLibrary.simpleMessage(
       "Health data",
     ),
-    "homeWelcome": MessageLookupByLibrary.simpleMessage(
-      "Welcome back. You are not alone.",
-    ),
+    "homeWelcome": m1,
+    "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("Welcome back,"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "moodScoreLabel": MessageLookupByLibrary.simpleMessage("Mood score"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
