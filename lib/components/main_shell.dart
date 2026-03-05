@@ -96,20 +96,29 @@ class _ProfileNavIcon extends StatelessWidget {
         ? Theme.of(context).colorScheme.primary
         : Theme.of(context).colorScheme.onSurfaceVariant;
 
+    final initial = Text(
+      name != null && name!.isNotEmpty ? name![0].toUpperCase() : '?',
+      style: TextStyle(
+        fontSize: 12,
+        color: color,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+
     return CircleAvatar(
       radius: 12,
       backgroundColor: color.withValues(alpha: 0.15),
-      backgroundImage: pictureUrl != null ? NetworkImage(pictureUrl!) : null,
-      child: pictureUrl == null
-          ? Text(
-              name != null && name!.isNotEmpty ? name![0].toUpperCase() : '?',
-              style: TextStyle(
-                fontSize: 12,
-                color: color,
-                fontWeight: FontWeight.w600,
+      child: pictureUrl != null
+          ? ClipOval(
+        child: Image.network(
+          pictureUrl!,
+          width: 24,
+          height: 24,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => initial,
               ),
             )
-          : null,
+          : initial,
     );
   }
 }

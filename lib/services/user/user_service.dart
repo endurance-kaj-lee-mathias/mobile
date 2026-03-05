@@ -8,7 +8,7 @@ class UserService {
   final Dio _client;
 
   Future<UserModel> getProfile() async {
-    final response = await _client.get<Map<String, dynamic>>('/users');
+    final response = await _client.get<Map<String, dynamic>>('/users/me');
     return UserModel.fromJson(response.data!);
   }
 }
