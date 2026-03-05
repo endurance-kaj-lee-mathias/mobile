@@ -3,6 +3,12 @@ import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/pages/home/daily_check_in_card.dart';
+import 'package:endurance_mobile_app/pages/home/mood_trend_card.dart';
+import 'package:endurance_mobile_app/pages/home/quick_actions_section.dart';
+import 'package:endurance_mobile_app/pages/home/quote_banner.dart';
+import 'package:endurance_mobile_app/pages/home/resources_section.dart';
+import 'package:endurance_mobile_app/pages/home/support_network_section.dart';
+import 'package:endurance_mobile_app/pages/home/upcoming_appointment_card.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,8 +27,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.appTitle), centerTitle: true),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
+        padding: const EdgeInsets.fromLTRB(16, 24, 16, 32),
         children: [
+          // ── Welcome header ───────────────────────────────────────────────
           Obx(() {
             final user = userController.user.value;
             final name = (user?.firstName.isNotEmpty ?? false)
@@ -62,8 +69,34 @@ class HomePage extends StatelessWidget {
               ],
             );
           }),
-          const SizedBox(height: 28),
+          const SizedBox(height: 20),
+
+          // ── Quote of the day ─────────────────────────────────────────────
+          const QuoteBanner(),
+          const SizedBox(height: 24),
+
+          // ── Daily check-in ───────────────────────────────────────────────
           const DailyCheckInCard(),
+          const SizedBox(height: 24),
+
+          // ── Quick actions ────────────────────────────────────────────────
+          const QuickActionsSection(),
+          const SizedBox(height: 24),
+
+          // ── Upcoming appointment ─────────────────────────────────────────
+          const UpcomingAppointmentCard(),
+          const SizedBox(height: 24),
+
+          // ── Support network ──────────────────────────────────────────────
+          const SupportNetworkSection(),
+          const SizedBox(height: 24),
+
+          // ── Mood trend ───────────────────────────────────────────────────
+          const MoodTrendCard(),
+          const SizedBox(height: 24),
+
+          // ── Resources ────────────────────────────────────────────────────
+          const ResourcesSection(),
         ],
       ),
     );

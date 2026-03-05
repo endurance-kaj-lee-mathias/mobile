@@ -2,14 +2,6 @@
   "appTitle": "Endurance",
   "tagline": "Services Beyond Service",
   "homeWelcomePrefix": "Welcome back,",
-  "homeWelcome": "Welcome back, {name}.",
-  "@homeWelcome": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
   "accessRestricted": "Access Restricted",
   "accessRestrictedBody": "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
   "useWebVersion": "Use our web version instead",
@@ -45,16 +37,23 @@
   },
   "dailyCheckInButton": "Complete check-in",
   "dailyCheckInUpdateButton": "Update",
-  "moodScoreLabel": "Mood score",
   "notesLabel": "Notes (optional)",
   "notesHint": "How was your day? (max 500 characters)",
   "submitLabel": "Submit",
   "cancelLabel": "Cancel",
-  "healthPermissionTitle": "Health data",
   "healthPermissionBody": "Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.",
   "healthPermissionGrant": "Allow access",
-  "healthPermissionSkip": "Skip for now",
-  "checkInSubmitting": "Submitting…",
+  "healthDataIncluded": "Health data will be included",
   "checkInSuccess": "Check-in submitted!",
-  "checkInError": "Something went wrong. Please try again."
+  "checkInError": "Something went wrong. Please try again.",
+  "quickActionsSectionTitle": "QUICK ACTIONS",
+  "quickActionsCrisisLine": "Crisis\nLine",
+  "quickActionsMessageBuddy": "Message\nBuddy",
+  "quickActionsFindTherapist": "Find\nTherapist",
+  "upcomingSectionTitle": "UPCOMING",
+  "supportNetworkSectionTitle": "MY SUPPORT NETWORK",
+  "supportNetworkMore": "more",
+  "moodTrendSectionTitle": "THIS WEEK",
+  "moodOverviewTitle": "Mood Overview",
+  "resourcesSectionTitle": "RESOURCES"
 }

@@ -79,16 +79,6 @@ class S {
     );
   }
 
-  /// `Welcome back, {name}.`
-  String homeWelcome(String name) {
-    return Intl.message(
-      'Welcome back, $name.',
-      name: 'homeWelcome',
-      desc: '',
-      args: [name],
-    );
-  }
-
   /// `Access Restricted`
   String get accessRestricted {
     return Intl.message(
@@ -329,16 +319,6 @@ class S {
     );
   }
 
-  /// `Mood score`
-  String get moodScoreLabel {
-    return Intl.message(
-      'Mood score',
-      name: 'moodScoreLabel',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Notes (optional)`
   String get notesLabel {
     return Intl.message(
@@ -369,16 +349,6 @@ class S {
     return Intl.message('Cancel', name: 'cancelLabel', desc: '', args: []);
   }
 
-  /// `Health data`
-  String get healthPermissionTitle {
-    return Intl.message(
-      'Health data',
-      name: 'healthPermissionTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.`
   String get healthPermissionBody {
     return Intl.message(
@@ -399,21 +369,11 @@ class S {
     );
   }
 
-  /// `Skip for now`
-  String get healthPermissionSkip {
+  /// `Health data will be included`
+  String get healthDataIncluded {
     return Intl.message(
-      'Skip for now',
-      name: 'healthPermissionSkip',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Submitting…`
-  String get checkInSubmitting {
-    return Intl.message(
-      'Submitting…',
-      name: 'checkInSubmitting',
+      'Health data will be included',
+      name: 'healthDataIncluded',
       desc: '',
       args: [],
     );
@@ -434,6 +394,101 @@ class S {
     return Intl.message(
       'Something went wrong. Please try again.',
       name: 'checkInError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `QUICK ACTIONS`
+  String get quickActionsSectionTitle {
+    return Intl.message(
+      'QUICK ACTIONS',
+      name: 'quickActionsSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crisis\nLine`
+  String get quickActionsCrisisLine {
+    return Intl.message(
+      'Crisis\nLine',
+      name: 'quickActionsCrisisLine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message\nBuddy`
+  String get quickActionsMessageBuddy {
+    return Intl.message(
+      'Message\nBuddy',
+      name: 'quickActionsMessageBuddy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find\nTherapist`
+  String get quickActionsFindTherapist {
+    return Intl.message(
+      'Find\nTherapist',
+      name: 'quickActionsFindTherapist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPCOMING`
+  String get upcomingSectionTitle {
+    return Intl.message(
+      'UPCOMING',
+      name: 'upcomingSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MY SUPPORT NETWORK`
+  String get supportNetworkSectionTitle {
+    return Intl.message(
+      'MY SUPPORT NETWORK',
+      name: 'supportNetworkSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `more`
+  String get supportNetworkMore {
+    return Intl.message('more', name: 'supportNetworkMore', desc: '', args: []);
+  }
+
+  /// `THIS WEEK`
+  String get moodTrendSectionTitle {
+    return Intl.message(
+      'THIS WEEK',
+      name: 'moodTrendSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mood Overview`
+  String get moodOverviewTitle {
+    return Intl.message(
+      'Mood Overview',
+      name: 'moodOverviewTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RESOURCES`
+  String get resourcesSectionTitle {
+    return Intl.message(
+      'RESOURCES',
+      name: 'resourcesSectionTitle',
       desc: '',
       args: [],
     );

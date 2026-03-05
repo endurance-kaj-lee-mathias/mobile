@@ -22,8 +22,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(score) => "Mood score: ${score}/10";
 
-  static String m1(name) => "Welcome back, ${name}.";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage(
@@ -38,7 +36,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Something went wrong. Please try again.",
     ),
-    "checkInSubmitting": MessageLookupByLibrary.simpleMessage("Submitting…"),
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Check-in submitted!",
     ),
@@ -79,22 +76,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "Permission-based sharing",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
+      "Health data will be included",
+    ),
     "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
       "Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Allow access",
     ),
-    "healthPermissionSkip": MessageLookupByLibrary.simpleMessage(
-      "Skip for now",
-    ),
-    "healthPermissionTitle": MessageLookupByLibrary.simpleMessage(
-      "Health data",
-    ),
-    "homeWelcome": m1,
     "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("Welcome back,"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-    "moodScoreLabel": MessageLookupByLibrary.simpleMessage("Mood score"),
+    "moodOverviewTitle": MessageLookupByLibrary.simpleMessage("Mood Overview"),
+    "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage("THIS WEEK"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Home"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("My Network"),
@@ -108,8 +102,26 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage("Notes (optional)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
+    "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
+      "Crisis\nLine",
+    ),
+    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
+      "Find\nTherapist",
+    ),
+    "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
+      "Message\nBuddy",
+    ),
+    "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "QUICK ACTIONS",
+    ),
+    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("RESOURCES"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Submit"),
+    "supportNetworkMore": MessageLookupByLibrary.simpleMessage("more"),
+    "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "MY SUPPORT NETWORK",
+    ),
     "tagline": MessageLookupByLibrary.simpleMessage("Services Beyond Service"),
+    "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("UPCOMING"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Use our web version instead",
     ),

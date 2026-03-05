@@ -22,8 +22,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(score) => "Настрій: ${score}/10";
 
-  static String m1(name) => "З поверненням, ${name}.";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Доступ Обмежено"),
@@ -36,7 +34,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Щось пішло не так. Спробуйте ще раз.",
     ),
-    "checkInSubmitting": MessageLookupByLibrary.simpleMessage("Надсилання…"),
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Перевірку надіслано!",
     ),
@@ -79,20 +76,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "Спільний доступ на основі дозволів",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Почати"),
+    "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
+      "Дані про здоров\'я будуть включені",
+    ),
     "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
       "Дозвольте Endurance читати дані про здоров\'я (пульс, кроки, сон) для збагачення перевірки.",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Надати доступ",
     ),
-    "healthPermissionSkip": MessageLookupByLibrary.simpleMessage("Пропустити"),
-    "healthPermissionTitle": MessageLookupByLibrary.simpleMessage(
-      "Дані про здоров\'я",
-    ),
-    "homeWelcome": m1,
     "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("З поверненням,"),
     "logout": MessageLookupByLibrary.simpleMessage("Вийти"),
-    "moodScoreLabel": MessageLookupByLibrary.simpleMessage("Оцінка настрою"),
+    "moodOverviewTitle": MessageLookupByLibrary.simpleMessage("Огляд настрою"),
+    "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "ЦЕЙ ТИЖДЕНЬ",
+    ),
     "navChats": MessageLookupByLibrary.simpleMessage("Чати"),
     "navHome": MessageLookupByLibrary.simpleMessage("Головна"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Моя Мережа"),
@@ -106,8 +104,26 @@ class MessageLookup extends MessageLookupByLibrary {
       "Нотатки (необов\'язково)",
     ),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Профіль"),
+    "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
+      "Лінія\nкризи",
+    ),
+    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
+      "Знайти\nтерапевта",
+    ),
+    "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
+      "Написати\nдругу",
+    ),
+    "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "ШВИДКІ ДІЇ",
+    ),
+    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("РЕСУРСИ"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Надіслати"),
+    "supportNetworkMore": MessageLookupByLibrary.simpleMessage("ще"),
+    "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "МОЯ МЕРЕЖА ПІДТРИМКИ",
+    ),
     "tagline": MessageLookupByLibrary.simpleMessage("Послуги Понад Службою"),
+    "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("НАЙБЛИЖЧЕ"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Скористайтеся нашою веб-версією",
     ),

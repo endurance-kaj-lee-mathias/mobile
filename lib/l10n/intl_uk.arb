@@ -2,14 +2,6 @@
   "appTitle": "Endurance",
   "tagline": "Послуги Понад Службою",
   "homeWelcomePrefix": "З поверненням,",
-  "homeWelcome": "З поверненням, {name}.",
-  "@homeWelcome": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
   "accessRestricted": "Доступ Обмежено",
   "accessRestrictedBody": "Вибачте, доступ до Endurance зарезервований для перевірених ветеранів. Ваш обліковий запис наразі не має необхідного доступу.",
   "useWebVersion": "Скористайтеся нашою веб-версією",
@@ -45,16 +37,23 @@
   },
   "dailyCheckInButton": "Виконати перевірку",
   "dailyCheckInUpdateButton": "Оновити",
-  "moodScoreLabel": "Оцінка настрою",
   "notesLabel": "Нотатки (необов'язково)",
   "notesHint": "Як пройшов ваш день? (макс. 500 символів)",
   "submitLabel": "Надіслати",
   "cancelLabel": "Скасувати",
-  "healthPermissionTitle": "Дані про здоров'я",
   "healthPermissionBody": "Дозвольте Endurance читати дані про здоров'я (пульс, кроки, сон) для збагачення перевірки.",
   "healthPermissionGrant": "Надати доступ",
-  "healthPermissionSkip": "Пропустити",
-  "checkInSubmitting": "Надсилання…",
+  "healthDataIncluded": "Дані про здоров'я будуть включені",
   "checkInSuccess": "Перевірку надіслано!",
-  "checkInError": "Щось пішло не так. Спробуйте ще раз."
+  "checkInError": "Щось пішло не так. Спробуйте ще раз.",
+  "quickActionsSectionTitle": "ШВИДКІ ДІЇ",
+  "quickActionsCrisisLine": "Лінія\nкризи",
+  "quickActionsMessageBuddy": "Написати\nдругу",
+  "quickActionsFindTherapist": "Знайти\nтерапевта",
+  "upcomingSectionTitle": "НАЙБЛИЖЧЕ",
+  "supportNetworkSectionTitle": "МОЯ МЕРЕЖА ПІДТРИМКИ",
+  "supportNetworkMore": "ще",
+  "moodTrendSectionTitle": "ЦЕЙ ТИЖДЕНЬ",
+  "moodOverviewTitle": "Огляд настрою",
+  "resourcesSectionTitle": "РЕСУРСИ"
 }

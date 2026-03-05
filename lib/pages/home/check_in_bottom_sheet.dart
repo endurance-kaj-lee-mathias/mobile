@@ -110,7 +110,7 @@ class _CheckInBottomSheetState extends State<CheckInBottomSheet> {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      'Health data will be included',
+                      l10n.healthDataIncluded,
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],

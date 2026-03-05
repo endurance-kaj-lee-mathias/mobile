@@ -2,14 +2,6 @@
   "appTitle": "Endurance",
   "tagline": "Услуги Сверх Службы",
   "homeWelcomePrefix": "С возвращением,",
-  "homeWelcome": "С возвращением, {name}.",
-  "@homeWelcome": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
   "accessRestricted": "Доступ Ограничен",
   "accessRestrictedBody": "Извините, доступ к Endurance зарезервирован для проверенных ветеранов. Ваша учётная запись в настоящее время не имеет необходимого доступа.",
   "useWebVersion": "Используйте нашу веб-версию",
@@ -45,16 +37,23 @@
   },
   "dailyCheckInButton": "Заполнить отметку",
   "dailyCheckInUpdateButton": "Обновить",
-  "moodScoreLabel": "Оценка настроения",
   "notesLabel": "Заметки (необязательно)",
   "notesHint": "Как прошёл ваш день? (макс. 500 символов)",
   "submitLabel": "Отправить",
   "cancelLabel": "Отмена",
-  "healthPermissionTitle": "Данные о здоровье",
   "healthPermissionBody": "Разрешите Endurance читать данные о здоровье (пульс, шаги, сон) для обогащения отметки.",
   "healthPermissionGrant": "Разрешить доступ",
-  "healthPermissionSkip": "Пропустить",
-  "checkInSubmitting": "Отправка…",
+  "healthDataIncluded": "Данные о здоровье будут включены",
   "checkInSuccess": "Отметка отправлена!",
-  "checkInError": "Что-то пошло не так. Повторите попытку."
+  "checkInError": "Что-то пошло не так. Повторите попытку.",
+  "quickActionsSectionTitle": "БЫСТРЫЕ ДЕЙСТВИЯ",
+  "quickActionsCrisisLine": "Линия\nкризиса",
+  "quickActionsMessageBuddy": "Написать\nдругу",
+  "quickActionsFindTherapist": "Найти\nтерапевта",
+  "upcomingSectionTitle": "ПРЕДСТОЯЩЕЕ",
+  "supportNetworkSectionTitle": "МОЯ СЕТЬ ПОДДЕРЖКИ",
+  "supportNetworkMore": "ещё",
+  "moodTrendSectionTitle": "ЭТА НЕДЕЛЯ",
+  "moodOverviewTitle": "Обзор настроения",
+  "resourcesSectionTitle": "РЕСУРСЫ"
 }

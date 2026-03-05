@@ -2,14 +2,6 @@
   "appTitle": "Endurance",
   "tagline": "Diensten Boven Dienst",
   "homeWelcomePrefix": "Welkom terug,",
-  "homeWelcome": "Welkom terug, {name}.",
-  "@homeWelcome": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
   "accessRestricted": "Toegang Beperkt",
   "accessRestrictedBody": "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
   "useWebVersion": "Gebruik onze webversie",
@@ -45,16 +37,23 @@
   },
   "dailyCheckInButton": "Check-in voltooien",
   "dailyCheckInUpdateButton": "Bijwerken",
-  "moodScoreLabel": "Stemmingsscore",
   "notesLabel": "Notities (optioneel)",
   "notesHint": "Hoe was uw dag? (max. 500 tekens)",
   "submitLabel": "Indienen",
   "cancelLabel": "Annuleren",
-  "healthPermissionTitle": "Gezondheidsgegevens",
   "healthPermissionBody": "Sta Endurance toe uw gezondheidsgegevens (hartslag, stappen, slaap) te lezen om uw check-in te verrijken.",
   "healthPermissionGrant": "Toegang verlenen",
-  "healthPermissionSkip": "Voorlopig overslaan",
-  "checkInSubmitting": "Verzenden…",
+  "healthDataIncluded": "Gezondheidsgegevens worden opgenomen",
   "checkInSuccess": "Check-in ingediend!",
-  "checkInError": "Er is iets misgegaan. Probeer het opnieuw."
+  "checkInError": "Er is iets misgegaan. Probeer het opnieuw.",
+  "quickActionsSectionTitle": "SNELLE ACTIES",
+  "quickActionsCrisisLine": "Crisis-\nlijn",
+  "quickActionsMessageBuddy": "Bericht\nVriend",
+  "quickActionsFindTherapist": "Vind\nTherapeut",
+  "upcomingSectionTitle": "AANKOMEND",
+  "supportNetworkSectionTitle": "MIJN STEUNNETWERK",
+  "supportNetworkMore": "meer",
+  "moodTrendSectionTitle": "DEZE WEEK",
+  "moodOverviewTitle": "Stemmingsoverzicht",
+  "resourcesSectionTitle": "BRONNEN"
 }

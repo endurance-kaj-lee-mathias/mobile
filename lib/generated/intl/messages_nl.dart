@@ -22,8 +22,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(score) => "Stemming: ${score}/10";
 
-  static String m1(name) => "Welkom terug, ${name}.";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Toegang Beperkt"),
@@ -38,7 +36,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Er is iets misgegaan. Probeer het opnieuw.",
     ),
-    "checkInSubmitting": MessageLookupByLibrary.simpleMessage("Verzenden…"),
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Check-in ingediend!",
     ),
@@ -83,22 +80,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "Delen op basis van toestemming",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Aan de slag"),
+    "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
+      "Gezondheidsgegevens worden opgenomen",
+    ),
     "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
       "Sta Endurance toe uw gezondheidsgegevens (hartslag, stappen, slaap) te lezen om uw check-in te verrijken.",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Toegang verlenen",
     ),
-    "healthPermissionSkip": MessageLookupByLibrary.simpleMessage(
-      "Voorlopig overslaan",
-    ),
-    "healthPermissionTitle": MessageLookupByLibrary.simpleMessage(
-      "Gezondheidsgegevens",
-    ),
-    "homeWelcome": m1,
     "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("Welkom terug,"),
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
-    "moodScoreLabel": MessageLookupByLibrary.simpleMessage("Stemmingsscore"),
+    "moodOverviewTitle": MessageLookupByLibrary.simpleMessage(
+      "Stemmingsoverzicht",
+    ),
+    "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage("DEZE WEEK"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
@@ -112,8 +108,26 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage("Notities (optioneel)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),
+    "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
+      "Crisis-\nlijn",
+    ),
+    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
+      "Vind\nTherapeut",
+    ),
+    "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
+      "Bericht\nVriend",
+    ),
+    "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "SNELLE ACTIES",
+    ),
+    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("BRONNEN"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Indienen"),
+    "supportNetworkMore": MessageLookupByLibrary.simpleMessage("meer"),
+    "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "MIJN STEUNNETWERK",
+    ),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
+    "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("AANKOMEND"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",
     ),
