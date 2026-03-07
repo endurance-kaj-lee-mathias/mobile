@@ -1,4 +1,5 @@
 import 'package:endurance_mobile_app/app/themes.dart';
+import 'package:endurance_mobile_app/components/emoji_image.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/pages/home/check_in_bottom_sheet.dart';
 import 'package:endurance_mobile_app/pages/home/mood_picker.dart';
@@ -59,9 +60,9 @@ class DailyCheckInCard extends StatelessWidget {
               if (done && score != null) ...[
                 Row(
                   children: [
-                    Text(
+                    EmojiImage(
                       MoodPicker.emojiForScore(score),
-                      style: const TextStyle(fontSize: 28),
+                      size: 28,
                     ),
                     const SizedBox(width: 8),
                     Text(
@@ -107,6 +108,7 @@ class DailyCheckInCard extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       useSafeArea: true,
+      enableDrag: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),

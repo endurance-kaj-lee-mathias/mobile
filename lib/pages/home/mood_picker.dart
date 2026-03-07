@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../components/emoji_image.dart';
+
 /// Emoji + gradient slider for selecting a mood score from 0 to 10.
 class MoodPicker extends StatelessWidget {
   const MoodPicker({super.key, required this.score, required this.onChanged});
@@ -75,7 +77,7 @@ class MoodPicker extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Text(emoji, style: const TextStyle(fontSize: 56)),
+              EmojiImage(emoji, size: 56),
               const SizedBox(height: 6),
               AnimatedDefaultTextStyle(
                 duration: const Duration(milliseconds: 200),
@@ -176,9 +178,9 @@ class MoodPicker extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              Text('😢', style: TextStyle(fontSize: 18)),
-              Text('😐', style: TextStyle(fontSize: 18)),
-              Text('🤩', style: TextStyle(fontSize: 18)),
+              EmojiImage('😢', size: 18),
+              EmojiImage('😐', size: 18),
+              EmojiImage('🤩', size: 18),
             ],
           ),
         ),

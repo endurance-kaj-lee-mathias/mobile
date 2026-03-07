@@ -1,4 +1,5 @@
 import 'package:endurance_mobile_app/app/themes.dart';
+import 'package:endurance_mobile_app/components/emoji_image.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/pages/home/mood_picker.dart';
 import 'package:flutter/material.dart';
@@ -106,10 +107,7 @@ class _DayBar extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (score != null)
-          Text(
-            MoodPicker.emojiForScore(score!),
-            style: const TextStyle(fontSize: 14),
-          )
+          EmojiImage(MoodPicker.emojiForScore(score!), size: 14)
         else
           const SizedBox(height: 20),
         const SizedBox(height: 4),
