@@ -138,5 +138,47 @@
     "placeholders": {
       "minutes": { "type": "int" }
     }
-  }
+  },
+  "profileSectionIntroduction": "INTRODUCTIE",
+  "profileSectionAbout": "OVER MIJ",
+  "profileLabelEmail": "E-mail",
+  "profileLabelPhone": "Telefoon",
+  "profileLabelPrivacy": "Privacy",
+  "profileLabelAddress": "Adres",
+  "profilePrivateAccount": "Privéaccount",
+  "profilePublicAccount": "Openbaar account",
+  "profileUsernameCopied": "Gebruikersnaam gekopieerd naar klembord",
+  "profileEditButton": "Profiel bewerken",
+  "profileSignOut": "Uitloggen",
+  "profileDeleteAccountButton": "Account verwijderen",
+  "profileDeleteTitle": "Account verwijderen",
+  "profileDeleteMessage": "Weet u zeker dat u uw account permanent wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt en al uw gegevens gaan verloren.",
+  "profileDeleteError": "Fout bij verwijderen: {error}",
+  "@profileDeleteError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "profileUpdateSuccess": "Profiel succesvol bijgewerkt",
+  "profileUpdateError": "Fout bij bijwerken: {error}",
+  "@profileUpdateError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "profileEditTitle": "Profiel bewerken",
+  "profileEditSaveButton": "Wijzigingen opslaan",
+  "profileEditSectionName": "NAAM",
+  "profileEditSectionContact": "CONTACT",
+  "profileEditSectionAddress": "ADRES",
+  "profileEditSectionBio": "BIO",
+  "profileEditFirstName": "Voornaam",
+  "profileEditLastName": "Achternaam",
+  "profileEditPhone": "Telefoonnummer",
+  "profileEditStreet": "Straat",
+  "profileEditCity": "Stad",
+  "profileEditRegion": "Regio / Staat",
+  "profileEditPostalCode": "Postcode",
+  "profileEditCountry": "Land",
+  "profileEditIntroduction": "Introductie",
+  "profileEditIntroductionHint": "Een korte introductie over wie je bent",
+  "profileEditAbout": "Over mij",
+  "profileEditAboutHint": "Meer details over jezelf (max. 500 tekens)",
+  "profileEditFirstNameRequired": "Voornaam is verplicht"
 }

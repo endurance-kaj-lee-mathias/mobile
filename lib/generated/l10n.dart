@@ -1046,6 +1046,341 @@ class S {
       args: [minutes],
     );
   }
+
+  /// `INTRODUCTION`
+  String get profileSectionIntroduction {
+    return Intl.message(
+      'INTRODUCTION',
+      name: 'profileSectionIntroduction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ABOUT`
+  String get profileSectionAbout {
+    return Intl.message(
+      'ABOUT',
+      name: 'profileSectionAbout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get profileLabelEmail {
+    return Intl.message('Email', name: 'profileLabelEmail', desc: '', args: []);
+  }
+
+  /// `Phone`
+  String get profileLabelPhone {
+    return Intl.message('Phone', name: 'profileLabelPhone', desc: '', args: []);
+  }
+
+  /// `Privacy`
+  String get profileLabelPrivacy {
+    return Intl.message(
+      'Privacy',
+      name: 'profileLabelPrivacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get profileLabelAddress {
+    return Intl.message(
+      'Address',
+      name: 'profileLabelAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Private Account`
+  String get profilePrivateAccount {
+    return Intl.message(
+      'Private Account',
+      name: 'profilePrivateAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Public Account`
+  String get profilePublicAccount {
+    return Intl.message(
+      'Public Account',
+      name: 'profilePublicAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username copied to clipboard`
+  String get profileUsernameCopied {
+    return Intl.message(
+      'Username copied to clipboard',
+      name: 'profileUsernameCopied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get profileEditButton {
+    return Intl.message(
+      'Edit Profile',
+      name: 'profileEditButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Out`
+  String get profileSignOut {
+    return Intl.message('Sign Out', name: 'profileSignOut', desc: '', args: []);
+  }
+
+  /// `Delete Account`
+  String get profileDeleteAccountButton {
+    return Intl.message(
+      'Delete Account',
+      name: 'profileDeleteAccountButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Account`
+  String get profileDeleteTitle {
+    return Intl.message(
+      'Delete Account',
+      name: 'profileDeleteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be lost.`
+  String get profileDeleteMessage {
+    return Intl.message(
+      'Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be lost.',
+      name: 'profileDeleteMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error deleting account: {error}`
+  String profileDeleteError(String error) {
+    return Intl.message(
+      'Error deleting account: $error',
+      name: 'profileDeleteError',
+      desc: '',
+      args: [error],
+    );
+  }
+
+  /// `Profile updated successfully`
+  String get profileUpdateSuccess {
+    return Intl.message(
+      'Profile updated successfully',
+      name: 'profileUpdateSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error updating profile: {error}`
+  String profileUpdateError(String error) {
+    return Intl.message(
+      'Error updating profile: $error',
+      name: 'profileUpdateError',
+      desc: '',
+      args: [error],
+    );
+  }
+
+  /// `Edit Profile`
+  String get profileEditTitle {
+    return Intl.message(
+      'Edit Profile',
+      name: 'profileEditTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get profileEditSaveButton {
+    return Intl.message(
+      'Save Changes',
+      name: 'profileEditSaveButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NAME`
+  String get profileEditSectionName {
+    return Intl.message(
+      'NAME',
+      name: 'profileEditSectionName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CONTACT`
+  String get profileEditSectionContact {
+    return Intl.message(
+      'CONTACT',
+      name: 'profileEditSectionContact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ADDRESS`
+  String get profileEditSectionAddress {
+    return Intl.message(
+      'ADDRESS',
+      name: 'profileEditSectionAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `BIO`
+  String get profileEditSectionBio {
+    return Intl.message(
+      'BIO',
+      name: 'profileEditSectionBio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get profileEditFirstName {
+    return Intl.message(
+      'First Name',
+      name: 'profileEditFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get profileEditLastName {
+    return Intl.message(
+      'Last Name',
+      name: 'profileEditLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get profileEditPhone {
+    return Intl.message(
+      'Phone Number',
+      name: 'profileEditPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Street`
+  String get profileEditStreet {
+    return Intl.message(
+      'Street',
+      name: 'profileEditStreet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get profileEditCity {
+    return Intl.message('City', name: 'profileEditCity', desc: '', args: []);
+  }
+
+  /// `Region / State`
+  String get profileEditRegion {
+    return Intl.message(
+      'Region / State',
+      name: 'profileEditRegion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Postal Code`
+  String get profileEditPostalCode {
+    return Intl.message(
+      'Postal Code',
+      name: 'profileEditPostalCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country`
+  String get profileEditCountry {
+    return Intl.message(
+      'Country',
+      name: 'profileEditCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Introduction`
+  String get profileEditIntroduction {
+    return Intl.message(
+      'Introduction',
+      name: 'profileEditIntroduction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A short intro to tell people who you are`
+  String get profileEditIntroductionHint {
+    return Intl.message(
+      'A short intro to tell people who you are',
+      name: 'profileEditIntroductionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get profileEditAbout {
+    return Intl.message('About', name: 'profileEditAbout', desc: '', args: []);
+  }
+
+  /// `More details about you (max 500 characters)`
+  String get profileEditAboutHint {
+    return Intl.message(
+      'More details about you (max 500 characters)',
+      name: 'profileEditAboutHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First name is required`
+  String get profileEditFirstNameRequired {
+    return Intl.message(
+      'First name is required',
+      name: 'profileEditFirstNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -138,5 +138,47 @@
     "placeholders": {
       "minutes": { "type": "int" }
     }
-  }
+  },
+  "profileSectionIntroduction": "ВВЕДЕНИЕ",
+  "profileSectionAbout": "О СЕБЕ",
+  "profileLabelEmail": "Эл. почта",
+  "profileLabelPhone": "Телефон",
+  "profileLabelPrivacy": "Конфиденциальность",
+  "profileLabelAddress": "Адрес",
+  "profilePrivateAccount": "Закрытый аккаунт",
+  "profilePublicAccount": "Открытый аккаунт",
+  "profileUsernameCopied": "Имя пользователя скопировано",
+  "profileEditButton": "Редактировать профиль",
+  "profileSignOut": "Выйти",
+  "profileDeleteAccountButton": "Удалить аккаунт",
+  "profileDeleteTitle": "Удалить аккаунт",
+  "profileDeleteMessage": "Вы уверены, что хотите навсегда удалить свой аккаунт? Это действие необратимо, все данные будут утеряны.",
+  "profileDeleteError": "Ошибка удаления аккаунта: {error}",
+  "@profileDeleteError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "profileUpdateSuccess": "Профиль успешно обновлён",
+  "profileUpdateError": "Ошибка обновления профиля: {error}",
+  "@profileUpdateError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "profileEditTitle": "Редактировать профиль",
+  "profileEditSaveButton": "Сохранить изменения",
+  "profileEditSectionName": "ИМЯ",
+  "profileEditSectionContact": "КОНТАКТЫ",
+  "profileEditSectionAddress": "АДРЕС",
+  "profileEditSectionBio": "О СЕБЕ",
+  "profileEditFirstName": "Имя",
+  "profileEditLastName": "Фамилия",
+  "profileEditPhone": "Номер телефона",
+  "profileEditStreet": "Улица",
+  "profileEditCity": "Город",
+  "profileEditRegion": "Регион / Штат",
+  "profileEditPostalCode": "Почтовый индекс",
+  "profileEditCountry": "Страна",
+  "profileEditIntroduction": "Вступление",
+  "profileEditIntroductionHint": "Краткое описание того, кто вы",
+  "profileEditAbout": "О себе",
+  "profileEditAboutHint": "Подробнее о себе (макс. 500 символов)",
+  "profileEditFirstNameRequired": "Имя обязательно"
 }

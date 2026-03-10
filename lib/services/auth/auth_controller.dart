@@ -33,6 +33,13 @@ class AuthController extends GetxController {
 
   bool get isVeteran => userRoles.contains('veteran');
 
+  /// Email from the JWT claims (read-only, managed by Keycloak).
+  String? get email => token.value?.email;
+
+  /// Phone number from the JWT claims — used as fallback when the backend
+  /// profile does not yet have a phone number stored.
+  String? get phoneNumber => token.value?.phoneNumber;
+
   /// Ready-to-use Authorization header value for backend HTTP requests.
   String? get authorizationHeader {
     final t = token.value;

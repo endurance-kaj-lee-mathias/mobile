@@ -138,5 +138,47 @@
     "placeholders": {
       "minutes": { "type": "int" }
     }
-  }
+  },
+  "profileSectionIntroduction": "ВСТУП",
+  "profileSectionAbout": "ПРО МЕНЕ",
+  "profileLabelEmail": "Ел. пошта",
+  "profileLabelPhone": "Телефон",
+  "profileLabelPrivacy": "Конфіденційність",
+  "profileLabelAddress": "Адреса",
+  "profilePrivateAccount": "Закритий акаунт",
+  "profilePublicAccount": "Відкритий акаунт",
+  "profileUsernameCopied": "Ім'я користувача скопійовано",
+  "profileEditButton": "Редагувати профіль",
+  "profileSignOut": "Вийти",
+  "profileDeleteAccountButton": "Видалити акаунт",
+  "profileDeleteTitle": "Видалити акаунт",
+  "profileDeleteMessage": "Ви впевнені, що хочете назавжди видалити свій акаунт? Цю дію не можна скасувати, усі ваші дані буде втрачено.",
+  "profileDeleteError": "Помилка видалення акаунту: {error}",
+  "@profileDeleteError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "profileUpdateSuccess": "Профіль успішно оновлено",
+  "profileUpdateError": "Помилка оновлення профілю: {error}",
+  "@profileUpdateError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "profileEditTitle": "Редагувати профіль",
+  "profileEditSaveButton": "Зберегти зміни",
+  "profileEditSectionName": "ІМ'Я",
+  "profileEditSectionContact": "КОНТАКТИ",
+  "profileEditSectionAddress": "АДРЕСА",
+  "profileEditSectionBio": "ПРО МЕНЕ",
+  "profileEditFirstName": "Ім'я",
+  "profileEditLastName": "Прізвище",
+  "profileEditPhone": "Номер телефону",
+  "profileEditStreet": "Вулиця",
+  "profileEditCity": "Місто",
+  "profileEditRegion": "Регіон / Штат",
+  "profileEditPostalCode": "Поштовий індекс",
+  "profileEditCountry": "Країна",
+  "profileEditIntroduction": "Вступ",
+  "profileEditIntroductionHint": "Короткий опис того, хто ви є",
+  "profileEditAbout": "Про мене",
+  "profileEditAboutHint": "Детальніше про себе (макс. 500 символів)",
+  "profileEditFirstNameRequired": "Ім'я обов'язкове"
 }

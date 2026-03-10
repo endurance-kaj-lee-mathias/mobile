@@ -14,25 +14,29 @@ class TokenModel {
     this.accessTokenExpirationDateTime,
   });
 
+  Map<String, dynamic> get _payload {
+    try {
+      final parts = accessToken.split('.');
+      if (parts.length != 3) return {};
+      var p = parts[1];
+      switch (p.length % 4) {
+        case 2:
+          p += '==';
+        case 3:
+          p += '=';
+      }
+      return jsonDecode(utf8.decode(base64Url.decode(p)))
+          as Map<String, dynamic>;
+    } catch (_) {
+      return {};
+    }
+  }
+
   /// Decodes the JWT access token and returns the user's realm-level roles
   /// from Keycloak's `realm_access.roles` claim.
   List<String> get realmRoles {
     try {
-      final parts = accessToken.split('.');
-      if (parts.length != 3) return [];
-
-      var payload = parts[1];
-      switch (payload.length % 4) {
-        case 2:
-          payload += '==';
-        case 3:
-          payload += '=';
-      }
-
-      final data =
-          jsonDecode(utf8.decode(base64Url.decode(payload)))
-              as Map<String, dynamic>;
-      return ((data['realm_access'] as Map<String, dynamic>?)?['roles']
+      return ((_payload['realm_access'] as Map<String, dynamic>?)?['roles']
                   as List<dynamic>?)
               ?.cast<String>() ??
           [];
@@ -40,4 +44,11 @@ class TokenModel {
       return [];
     }
   }
+
+  /// Email from the JWT `email` claim.
+  String? get email => _payload['email']?.toString();
+
+  /// Phone number from the JWT — Keycloak uses the `phone_number` claim.
+  String? get phoneNumber =>
+      (_payload['phone_number'] ?? _payload['phoneNumber'])?.toString();
 }

@@ -41,4 +41,6 @@ abstract final class HeroIcons {
   static const String chatOutline =
       'assets/icons/outline/chat-bubble-left-right.svg';
   static const String homeOutline = 'assets/icons/outline/home.svg';
+  static const String pencil = 'assets/icons/outline/pencil.svg';
+  static const String trash = 'assets/icons/outline/trash.svg';
 }

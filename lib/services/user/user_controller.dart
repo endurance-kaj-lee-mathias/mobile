@@ -40,4 +40,88 @@ class UserController extends GetxController {
 
   @override
   Future<void> refresh() => _loadProfile();
+
+  Future<void> updateFirstName(String firstName) async {
+    try {
+      await _service.updateFirstName(firstName);
+    } catch (e) {
+      debugPrint('Failed to update first name: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> updateLastName(String lastName) async {
+    try {
+      await _service.updateLastName(lastName);
+    } catch (e) {
+      debugPrint('Failed to update last name: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> updatePhoneNumber(String phoneNumber) async {
+    try {
+      await _service.updatePhoneNumber(phoneNumber);
+    } catch (e) {
+      debugPrint('Failed to update phone number: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> updateIntroduction(String introduction) async {
+    try {
+      await _service.updateIntroduction(introduction);
+    } catch (e) {
+      debugPrint('Failed to update introduction: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> updateAbout(String about) async {
+    try {
+      await _service.updateAbout(about);
+    } catch (e) {
+      debugPrint('Failed to update about: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> updatePrivacy(bool isPrivate) async {
+    try {
+      await _service.updatePrivacy(isPrivate);
+    } catch (e) {
+      debugPrint('Failed to update privacy: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
+      await _service.deleteAccount();
+    } catch (e) {
+      debugPrint('Failed to delete account: $e');
+      rethrow;
+    }
+  }
+
+  Future<AddressModel> upsertAddress({
+    required String street,
+    required String locality,
+    required String postalCode,
+    required String country,
+    String? region,
+  }) async {
+    try {
+      return await _service.upsertAddress(
+        street: street,
+        locality: locality,
+        postalCode: postalCode,
+        country: country,
+        region: region,
+      );
+    } catch (e) {
+      debugPrint('Failed to upsert address: $e');
+      rethrow;
+    }
+  }
 }
