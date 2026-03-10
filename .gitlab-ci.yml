@@ -6,35 +6,27 @@ stages:
 
 variables:
   SECRET_DETECTION_ENABLED: 'true'
-  FLUTTER_HOME: /builds/flutter
-  PATH: $FLUTTER_HOME/bin:$PATH
-  CACHE_COMPRESSION_LEVEL: fastest
   FF_USE_DOCKER_NETWORK: 'true'
 
-# Shared setup for Flutter projects
+# Shared setup for Flutter projects (Android)
 .flutter_setup: &flutter_setup
-  image: 
-    name: ubuntu:latest
-    entrypoint: ["/bin/bash", "-c"]
+  image:
+    name: instrumentisto/flutter:latest
+    entrypoint: [""]
   cache:
     paths:
       - .pub-cache/
       - build/
   before_script:
-    - apt-get update && apt-get install -y git curl unzip openjdk-11-jdk-headless
     - mkdir -p .pub-cache
-    # Install Flutter
-    - curl -fsSL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.0-stable.tar.xz | tar xJ -C /tmp
-    - export PATH="/tmp/flutter/bin:$PATH"
     # Setup environment and config files from CI/CD variables
     - cp $ENV_FILE .env.json
     - cp $FIREBASE_ANDROID_CONFIG android/app/google-services.json
     - flutter clean
     - flutter pub get
 
-# iOS-specific setup
+# iOS-specific setup (runs on macOS runner, no Docker image needed)
 .flutter_setup_ios: &flutter_setup_ios
-  image: macos-12
   cache:
     paths:
       - .pub-cache/
@@ -74,8 +66,9 @@ verify_build_android:
 
 verify_build_ios:
   stage: build_verify
-  image: macos-12
   <<: *flutter_setup_ios
+  tags:
+    - saas-macos-medium-m1
   script:
     - flutter build ios --release --no-codesign
   only:
@@ -103,8 +96,9 @@ build_android_release:
 
 build_ios_release:
   stage: build_release
-  image: macos-12
   <<: *flutter_setup_ios
+  tags:
+    - saas-macos-medium-m1
   script:
     - flutter build ios --release --no-codesign
   only:
