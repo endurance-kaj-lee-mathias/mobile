@@ -1,4 +1,6 @@
 import 'package:endurance_mobile_app/app/themes.dart';
+import 'package:endurance_mobile_app/components/bordered_card.dart';
+import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -14,21 +16,9 @@ class UpcomingAppointmentCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          l10n.upcomingSectionTitle,
-          style: textTheme.labelMedium?.copyWith(
-            color: colorScheme.onSurface.withValues(alpha: 0.5),
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        SectionHeader(label: l10n.upcomingSectionTitle),
         const SizedBox(height: 12),
-        Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-            side: BorderSide(color: colorScheme.outlineVariant, width: 1.5),
-          ),
+        BorderedCard(
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Row(

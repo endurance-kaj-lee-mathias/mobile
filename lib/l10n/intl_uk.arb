@@ -48,7 +48,7 @@
   "checkInTimeAgoHours": "{count} год тому",
   "checkInAvgToday": "сер. {score} сьогодні",
   "notesLabel": "Нотатки (необов'язково)",
-  "notesHint": "Як пройшов ваш день? (макс. 500 символів)",
+  "notesHint": "Як ви себе почуваєте? (макс. 500 символів)",
   "checkInSuccess": "Перевірку надіслано!",
   "checkInError": "Щось пішло не так. Спробуйте ще раз.",
 

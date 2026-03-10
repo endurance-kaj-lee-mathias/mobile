@@ -1,5 +1,6 @@
 import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
+import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
@@ -16,21 +17,12 @@ class SupportNetworkSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
     final controller = Get.find<NetworkController>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          l10n.supportNetworkSectionTitle,
-          style: textTheme.labelMedium?.copyWith(
-            color: colorScheme.onSurface.withValues(alpha: 0.5),
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        SectionHeader(label: l10n.supportNetworkSectionTitle),
         const SizedBox(height: 12),
         Obx(() {
           final members = controller.members;

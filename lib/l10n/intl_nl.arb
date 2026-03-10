@@ -48,7 +48,7 @@
   "checkInTimeAgoHours": "{count}u geleden",
   "checkInAvgToday": "gem. {score} vandaag",
   "notesLabel": "Notities (optioneel)",
-  "notesHint": "Hoe was uw dag? (max. 500 tekens)",
+  "notesHint": "Hoe voel je je? (max. 500 tekens)",
   "checkInSuccess": "Check-in ingediend!",
   "checkInError": "Er is iets misgegaan. Probeer het opnieuw.",
 

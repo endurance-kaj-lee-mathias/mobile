@@ -48,7 +48,7 @@
   "checkInTimeAgoHours": "{count} ч. назад",
   "checkInAvgToday": "ср. {score} сегодня",
   "notesLabel": "Заметки (необязательно)",
-  "notesHint": "Как прошёл ваш день? (макс. 500 символов)",
+  "notesHint": "Как вы себя чувствуете? (макс. 500 символов)",
   "checkInSuccess": "Отметка отправлена!",
   "checkInError": "Что-то пошло не так. Повторите попытку.",
 

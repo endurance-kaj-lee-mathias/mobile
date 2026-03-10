@@ -207,7 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Будь ласка, введіть ім\'я користувача",
     ),
     "notesHint": MessageLookupByLibrary.simpleMessage(
-      "Як пройшов ваш день? (макс. 500 символів)",
+      "Як ви себе почуваєте? (макс. 500 символів)",
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage(
       "Нотатки (необов\'язково)",

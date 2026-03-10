@@ -202,7 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please enter a username",
     ),
     "notesHint": MessageLookupByLibrary.simpleMessage(
-      "How was your day? (max 500 characters)",
+      "How are you feeling? (max 500 characters)",
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage("Notes (optional)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),

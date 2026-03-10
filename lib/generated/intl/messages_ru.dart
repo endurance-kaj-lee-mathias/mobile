@@ -213,7 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Пожалуйста, введите имя пользователя",
     ),
     "notesHint": MessageLookupByLibrary.simpleMessage(
-      "Как прошёл ваш день? (макс. 500 символов)",
+      "Как вы себя чувствуете? (макс. 500 символов)",
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage(
       "Заметки (необязательно)",

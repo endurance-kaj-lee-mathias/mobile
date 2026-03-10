@@ -772,10 +772,10 @@ class S {
     );
   }
 
-  /// `How was your day? (max 500 characters)`
+  /// `How are you feeling? (max 500 characters)`
   String get notesHint {
     return Intl.message(
-      'How was your day? (max 500 characters)',
+      'How are you feeling? (max 500 characters)',
       name: 'notesHint',
       desc: '',
       args: [],

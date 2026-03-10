@@ -213,7 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Voer een gebruikersnaam in",
     ),
     "notesHint": MessageLookupByLibrary.simpleMessage(
-      "Hoe was uw dag? (max. 500 tekens)",
+      "Hoe voel je je? (max. 500 tekens)",
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage("Notities (optioneel)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),

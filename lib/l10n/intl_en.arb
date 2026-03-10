@@ -127,7 +127,7 @@
     }
   },
   "notesLabel": "Notes (optional)",
-  "notesHint": "How was your day? (max 500 characters)",
+  "notesHint": "How are you feeling? (max 500 characters)",
   "checkInSuccess": "Check-in submitted!",
   "checkInError": "Something went wrong. Please try again.",
 
