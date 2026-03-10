@@ -56,7 +56,12 @@ class S {
 
   /// `Endurance`
   String get appTitle {
-    return Intl.message('Endurance', name: 'appTitle', desc: '', args: []);
+    return Intl.message(
+      'Endurance',
+      name: 'appTitle',
+      desc: 'The application name.',
+      args: [],
+    );
   }
 
   /// `Services Beyond Service`
@@ -64,19 +69,24 @@ class S {
     return Intl.message(
       'Services Beyond Service',
       name: 'tagline',
-      desc: '',
+      desc: 'Tagline shown on the splash and welcome screens.',
       args: [],
     );
   }
 
-  /// `Welcome back. You are not alone.`
-  String get homeWelcome {
-    return Intl.message(
-      'Welcome back. You are not alone.',
-      name: 'homeWelcome',
-      desc: '',
-      args: [],
-    );
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Submit`
+  String get submitLabel {
+    return Intl.message('Submit', name: 'submitLabel', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancelLabel {
+    return Intl.message('Cancel', name: 'cancelLabel', desc: '', args: []);
   }
 
   /// `Access Restricted`
@@ -107,11 +117,6 @@ class S {
       desc: '',
       args: [],
     );
-  }
-
-  /// `Logout`
-  String get logout {
-    return Intl.message('Logout', name: 'logout', desc: '', args: []);
   }
 
   /// `A safe space built for those who served. Endurance connects you with the people who matter most, on your own terms, at your own pace.`
@@ -256,6 +261,404 @@ class S {
       name: 'networkSoon',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Welcome back,`
+  String get homeWelcomePrefix {
+    return Intl.message(
+      'Welcome back,',
+      name: 'homeWelcomePrefix',
+      desc:
+          'Greeting prefix on the home screen, followed by the user\'s first name.',
+      args: [],
+    );
+  }
+
+  /// `Daily Check-In`
+  String get dailyCheckInTitle {
+    return Intl.message(
+      'Daily Check-In',
+      name: 'dailyCheckInTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How are you feeling today?`
+  String get dailyCheckInPending {
+    return Intl.message(
+      'How are you feeling today?',
+      name: 'dailyCheckInPending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-in complete`
+  String get dailyCheckInDone {
+    return Intl.message(
+      'Check-in complete',
+      name: 'dailyCheckInDone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mood score: {score}/10`
+  String dailyCheckInDoneSubtitle(int score) {
+    return Intl.message(
+      'Mood score: $score/10',
+      name: 'dailyCheckInDoneSubtitle',
+      desc:
+          'Subtitle shown when check-in is complete, displaying the mood score.',
+      args: [score],
+    );
+  }
+
+  /// `Complete check-in`
+  String get dailyCheckInButton {
+    return Intl.message(
+      'Complete check-in',
+      name: 'dailyCheckInButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add check-in`
+  String get checkInAddButton {
+    return Intl.message(
+      'Add check-in',
+      name: 'checkInAddButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{score}/10`
+  String checkInScoreLabel(int score) {
+    return Intl.message(
+      '$score/10',
+      name: 'checkInScoreLabel',
+      desc:
+          'Inline mood score display (e.g. \'7/10\') shown in the check-in card.',
+      args: [score],
+    );
+  }
+
+  /// `{count}m ago`
+  String checkInTimeAgoMinutes(int count) {
+    return Intl.message(
+      '${count}m ago',
+      name: 'checkInTimeAgoMinutes',
+      desc: 'How long ago the last check-in was, in minutes.',
+      args: [count],
+    );
+  }
+
+  /// `{count}h ago`
+  String checkInTimeAgoHours(int count) {
+    return Intl.message(
+      '${count}h ago',
+      name: 'checkInTimeAgoHours',
+      desc: 'How long ago the last check-in was, in hours.',
+      args: [count],
+    );
+  }
+
+  /// `avg {score} today`
+  String checkInAvgToday(String score) {
+    return Intl.message(
+      'avg $score today',
+      name: 'checkInAvgToday',
+      desc: 'Average mood score for today shown when multiple check-ins exist.',
+      args: [score],
+    );
+  }
+
+  /// `Notes (optional)`
+  String get notesLabel {
+    return Intl.message(
+      'Notes (optional)',
+      name: 'notesLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How was your day? (max 500 characters)`
+  String get notesHint {
+    return Intl.message(
+      'How was your day? (max 500 characters)',
+      name: 'notesHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-in submitted!`
+  String get checkInSuccess {
+    return Intl.message(
+      'Check-in submitted!',
+      name: 'checkInSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong. Please try again.`
+  String get checkInError {
+    return Intl.message(
+      'Something went wrong. Please try again.',
+      name: 'checkInError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.`
+  String get healthPermissionBody {
+    return Intl.message(
+      'Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.',
+      name: 'healthPermissionBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allow access`
+  String get healthPermissionGrant {
+    return Intl.message(
+      'Allow access',
+      name: 'healthPermissionGrant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health data will be included`
+  String get healthDataIncluded {
+    return Intl.message(
+      'Health data will be included',
+      name: 'healthDataIncluded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `QUICK ACTIONS`
+  String get quickActionsSectionTitle {
+    return Intl.message(
+      'QUICK ACTIONS',
+      name: 'quickActionsSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crisis\nLine`
+  String get quickActionsCrisisLine {
+    return Intl.message(
+      'Crisis\nLine',
+      name: 'quickActionsCrisisLine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message\nBuddy`
+  String get quickActionsMessageBuddy {
+    return Intl.message(
+      'Message\nBuddy',
+      name: 'quickActionsMessageBuddy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find\nTherapist`
+  String get quickActionsFindTherapist {
+    return Intl.message(
+      'Find\nTherapist',
+      name: 'quickActionsFindTherapist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPCOMING`
+  String get upcomingSectionTitle {
+    return Intl.message(
+      'UPCOMING',
+      name: 'upcomingSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Therapy Session`
+  String get upcomingAppointmentTitle {
+    return Intl.message(
+      'Therapy Session',
+      name: 'upcomingAppointmentTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `with Dr. Sarah Mitchell`
+  String get upcomingAppointmentWith {
+    return Intl.message(
+      'with Dr. Sarah Mitchell',
+      name: 'upcomingAppointmentWith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tomorrow · 14:00`
+  String get upcomingAppointmentTime {
+    return Intl.message(
+      'Tomorrow · 14:00',
+      name: 'upcomingAppointmentTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MY SUPPORT NETWORK`
+  String get supportNetworkSectionTitle {
+    return Intl.message(
+      'MY SUPPORT NETWORK',
+      name: 'supportNetworkSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `more`
+  String get supportNetworkMore {
+    return Intl.message('more', name: 'supportNetworkMore', desc: '', args: []);
+  }
+
+  /// `THIS WEEK`
+  String get moodTrendSectionTitle {
+    return Intl.message(
+      'THIS WEEK',
+      name: 'moodTrendSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mood Overview`
+  String get moodOverviewTitle {
+    return Intl.message(
+      'Mood Overview',
+      name: 'moodOverviewTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RESOURCES`
+  String get resourcesSectionTitle {
+    return Intl.message(
+      'RESOURCES',
+      name: 'resourcesSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mental Health`
+  String get resourceCategoryMentalHealth {
+    return Intl.message(
+      'Mental Health',
+      name: 'resourceCategoryMentalHealth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Community`
+  String get resourceCategoryCommunity {
+    return Intl.message(
+      'Community',
+      name: 'resourceCategoryCommunity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wellbeing`
+  String get resourceCategoryWellbeing {
+    return Intl.message(
+      'Wellbeing',
+      name: 'resourceCategoryWellbeing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Physical`
+  String get resourceCategoryPhysical {
+    return Intl.message(
+      'Physical',
+      name: 'resourceCategoryPhysical',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Managing Anxiety\nin Everyday Life`
+  String get resourceTitle1 {
+    return Intl.message(
+      'Managing Anxiety\nin Everyday Life',
+      name: 'resourceTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finding Your\nVeterans Group`
+  String get resourceTitle2 {
+    return Intl.message(
+      'Finding Your\nVeterans Group',
+      name: 'resourceTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sleep Techniques\nfor Veterans`
+  String get resourceTitle3 {
+    return Intl.message(
+      'Sleep Techniques\nfor Veterans',
+      name: 'resourceTitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exercise as a\nHealing Tool`
+  String get resourceTitle4 {
+    return Intl.message(
+      'Exercise as a\nHealing Tool',
+      name: 'resourceTitle4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{minutes} min read`
+  String resourceReadTime(int minutes) {
+    return Intl.message(
+      '$minutes min read',
+      name: 'resourceReadTime',
+      desc: 'Read time label on a resource card.',
+      args: [minutes],
     );
   }
 }

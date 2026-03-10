@@ -1,11 +1,15 @@
 {
   "appTitle": "Endurance",
   "tagline": "Услуги Сверх Службы",
-  "homeWelcome": "С возвращением. Вы не одиноки.",
+
+  "logout": "Выйти",
+  "submitLabel": "Отправить",
+  "cancelLabel": "Отмена",
+
   "accessRestricted": "Доступ Ограничен",
   "accessRestrictedBody": "Извините, доступ к Endurance зарезервирован для проверенных ветеранов. Ваша учётная запись в настоящее время не имеет необходимого доступа.",
   "useWebVersion": "Используйте нашу веб-версию",
-  "logout": "Выйти",
+
   "welcomeDescription": "Безопасное пространство для тех, кто служил. Endurance соединяет вас с людьми, которые важны для вас больше всего, на ваших условиях, в вашем темпе.",
   "featurePrivacyTitle": "Ваша конфиденциальность, всегда",
   "featurePrivacyDesc": "Без отслеживания и слежки. Вы полностью контролируете, кто что видит.",
@@ -16,6 +20,7 @@
   "featureSharingTitle": "Совместный доступ на основе разрешений",
   "featureSharingDesc": "Вы решаете, что именно может видеть ваша сеть поддержки. Отозвать доступ можно в любое время.",
   "getStarted": "Начать",
+
   "navHome": "Главная",
   "navChats": "Чаты",
   "navNetwork": "Моя Сеть",
@@ -23,5 +28,63 @@
   "chatsSoon": "Чаты — скоро",
   "profileTitle": "Профиль",
   "networkTitle": "Моя Сеть",
-  "networkSoon": "Сеть — скоро"
+  "networkSoon": "Сеть — скоро",
+
+  "homeWelcomePrefix": "С возвращением,",
+
+  "dailyCheckInTitle": "Ежедневная отметка",
+  "dailyCheckInPending": "Как вы себя чувствуете сегодня?",
+  "dailyCheckInDone": "Отметка выполнена",
+  "dailyCheckInDoneSubtitle": "Настроение: {score}/10",
+  "@dailyCheckInDoneSubtitle": {
+    "placeholders": {
+      "score": { "type": "int" }
+    }
+  },
+  "dailyCheckInButton": "Заполнить отметку",
+  "checkInAddButton": "Добавить отметку",
+  "checkInScoreLabel": "{score}/10",
+  "checkInTimeAgoMinutes": "{count} мин. назад",
+  "checkInTimeAgoHours": "{count} ч. назад",
+  "checkInAvgToday": "ср. {score} сегодня",
+  "notesLabel": "Заметки (необязательно)",
+  "notesHint": "Как прошёл ваш день? (макс. 500 символов)",
+  "checkInSuccess": "Отметка отправлена!",
+  "checkInError": "Что-то пошло не так. Повторите попытку.",
+
+  "healthPermissionBody": "Разрешите Endurance читать данные о здоровье (пульс, шаги, сон) для обогащения отметки.",
+  "healthPermissionGrant": "Разрешить доступ",
+  "healthDataIncluded": "Данные о здоровье будут включены",
+
+  "quickActionsSectionTitle": "БЫСТРЫЕ ДЕЙСТВИЯ",
+  "quickActionsCrisisLine": "Линия\nкризиса",
+  "quickActionsMessageBuddy": "Написать\nдругу",
+  "quickActionsFindTherapist": "Найти\nтерапевта",
+
+  "upcomingSectionTitle": "ПРЕДСТОЯЩЕЕ",
+  "upcomingAppointmentTitle": "Сеанс терапии",
+  "upcomingAppointmentWith": "с Др. Сарой Митчелл",
+  "upcomingAppointmentTime": "Завтра · 14:00",
+
+  "supportNetworkSectionTitle": "МОЯ СЕТЬ ПОДДЕРЖКИ",
+  "supportNetworkMore": "ещё",
+
+  "moodTrendSectionTitle": "ЭТА НЕДЕЛЯ",
+  "moodOverviewTitle": "Обзор настроения",
+
+  "resourcesSectionTitle": "РЕСУРСЫ",
+  "resourceCategoryMentalHealth": "Психическое здоровье",
+  "resourceCategoryCommunity": "Сообщество",
+  "resourceCategoryWellbeing": "Благополучие",
+  "resourceCategoryPhysical": "Физическое",
+  "resourceTitle1": "Управление тревогой\nв повседневной жизни",
+  "resourceTitle2": "Найти\nсвою группу ветеранов",
+  "resourceTitle3": "Техники сна\nдля ветеранов",
+  "resourceTitle4": "Упражнения как\nинструмент исцеления",
+  "resourceReadTime": "{minutes} мин чтения",
+  "@resourceReadTime": {
+    "placeholders": {
+      "minutes": { "type": "int" }
+    }
+  }
 }

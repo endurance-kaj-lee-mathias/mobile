@@ -3,7 +3,7 @@ import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/app/route_guard.dart';
 import 'package:endurance_mobile_app/components/main_shell.dart';
 import 'package:endurance_mobile_app/pages/chats.dart';
-import 'package:endurance_mobile_app/pages/home.dart';
+import 'package:endurance_mobile_app/pages/home/home_page.dart';
 import 'package:endurance_mobile_app/pages/profile.dart';
 import 'package:endurance_mobile_app/pages/splash.dart';
 import 'package:endurance_mobile_app/pages/unauthorized.dart';

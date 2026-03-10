@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -43,10 +46,74 @@ class MainShell extends StatelessWidget {
             .user
             .value;
 
+        void onTab(int index) => context.goNamed(_tabs[index]);
+
+        if (Platform.isIOS) {
+          return CupertinoTabBar(
+            currentIndex: selectedIndex,
+            onTap: onTab,
+            activeColor: Theme.of(context).colorScheme.primary,
+            items: [
+              BottomNavigationBarItem(
+                icon: const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: HeroIcon(HeroIcons.homeOutline),
+                ),
+                activeIcon: const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: HeroIcon(HeroIcons.homeSolid),
+                ),
+                label: s.navHome,
+              ),
+              BottomNavigationBarItem(
+                icon: const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: HeroIcon(HeroIcons.chatOutline),
+                ),
+                activeIcon: const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: HeroIcon(HeroIcons.chatSolid),
+                ),
+                label: s.navChats,
+              ),
+              BottomNavigationBarItem(
+                icon: const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: HeroIcon(HeroIcons.userGroupOutline),
+                ),
+                activeIcon: const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: HeroIcon(HeroIcons.userGroupSolid),
+                ),
+                label: s.navNetwork,
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: _ProfileNavIcon(
+                    pictureUrl: user?.image,
+                    name: user?.firstName,
+                    isActive: false,
+                  ),
+                ),
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: _ProfileNavIcon(
+                    pictureUrl: user?.image,
+                    name: user?.firstName,
+                    isActive: true,
+                  ),
+                ),
+                label: user?.firstName ?? s.navProfile,
+              ),
+            ],
+          );
+        }
+
         return NavigationBar(
           selectedIndex: selectedIndex,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-          onDestinationSelected: (index) => context.goNamed(_tabs[index]),
+          onDestinationSelected: onTab,
           destinations: [
             NavigationDestination(
               icon: const HeroIcon(HeroIcons.homeOutline),
@@ -96,20 +163,29 @@ class _ProfileNavIcon extends StatelessWidget {
         ? Theme.of(context).colorScheme.primary
         : Theme.of(context).colorScheme.onSurfaceVariant;
 
+    final initial = Text(
+      name != null && name!.isNotEmpty ? name![0].toUpperCase() : '?',
+      style: TextStyle(
+        fontSize: 12,
+        color: color,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+
     return CircleAvatar(
       radius: 12,
       backgroundColor: color.withValues(alpha: 0.15),
-      backgroundImage: pictureUrl != null ? NetworkImage(pictureUrl!) : null,
-      child: pictureUrl == null
-          ? Text(
-              name != null && name!.isNotEmpty ? name![0].toUpperCase() : '?',
-              style: TextStyle(
-                fontSize: 12,
-                color: color,
-                fontWeight: FontWeight.w600,
+      child: pictureUrl != null
+          ? ClipOval(
+        child: Image.network(
+          pictureUrl!,
+          width: 24,
+          height: 24,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => initial,
               ),
             )
-          : null,
+          : initial,
     );
   }
 }

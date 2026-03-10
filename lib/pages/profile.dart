@@ -1,4 +1,5 @@
 import 'package:endurance_mobile_app/components/hero_icon.dart';
+import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
@@ -32,20 +33,7 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CircleAvatar(
-                radius: 48,
-                backgroundImage: user?.image != null
-                    ? NetworkImage(user!.image!)
-                    : null,
-                child: user?.image == null
-                    ? Text(
-                        user != null && user.firstName.isNotEmpty
-                            ? user.firstName[0].toUpperCase()
-                            : '?',
-                        style: const TextStyle(fontSize: 32),
-                      )
-                    : null,
-              ),
+              UserAvatar(user: user, radius: 48),
               const SizedBox(height: 16),
               if (user != null) ...[
                 Text(

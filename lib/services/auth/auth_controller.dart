@@ -112,6 +112,48 @@ class AuthController extends GetxController {
     }
   }
 
+  /// Silently clears auth state without opening the browser.
+  /// Used when the refresh token has expired and the session cannot be
+  /// recovered — the user is redirected to login by the router automatically.
+  Future<void> clearSession() async {
+    _clearState();
+    await _storage.clearTokens();
+  }
+
+  /// Uses the stored refresh token to obtain a new access token.
+  /// Returns true on success, false if the refresh token is missing or expired.
+  Future<bool> refreshTokens() async {
+    try {
+      final storedRefresh =
+          token.value?.refreshToken ?? await _storage.getRefreshToken();
+      if (storedRefresh == null) return false;
+
+      final result = await _appAuth.token(
+        TokenRequest(
+          _clientId,
+          _redirectUri,
+          issuer: _issuer,
+          refreshToken: storedRefresh,
+          scopes: ['openid', 'profile', 'email'],
+        ),
+      );
+
+      if (result.accessToken != null) {
+        await _applyTokenResult(
+          accessToken: result.accessToken!,
+          refreshToken: result.refreshToken ?? storedRefresh,
+          idToken: result.idToken,
+          expiry: result.accessTokenExpirationDateTime,
+        );
+        return true;
+      }
+      return false;
+    } catch (e) {
+      debugPrint('AuthController.refreshTokens error: $e');
+      return false;
+    }
+  }
+
   // ── Private helpers ────────────────────────────────────────────────────────
 
   /// Called once on startup. Uses the stored refresh token to silently obtain

@@ -20,6 +20,18 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'nl';
 
+  static String m0(score) => "gem. ${score} vandaag";
+
+  static String m1(score) => "${score}/10";
+
+  static String m2(count) => "${count}u geleden";
+
+  static String m3(count) => "${count}m geleden";
+
+  static String m4(score) => "Stemming: ${score}/10";
+
+  static String m5(minutes) => "${minutes} min lezen";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Toegang Beperkt"),
@@ -27,8 +39,35 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "cancelLabel": MessageLookupByLibrary.simpleMessage("Annuleren"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage(
       "Chats — binnenkort beschikbaar",
+    ),
+    "checkInAddButton": MessageLookupByLibrary.simpleMessage(
+      "Check-in toevoegen",
+    ),
+    "checkInAvgToday": m0,
+    "checkInError": MessageLookupByLibrary.simpleMessage(
+      "Er is iets misgegaan. Probeer het opnieuw.",
+    ),
+    "checkInScoreLabel": m1,
+    "checkInSuccess": MessageLookupByLibrary.simpleMessage(
+      "Check-in ingediend!",
+    ),
+    "checkInTimeAgoHours": m2,
+    "checkInTimeAgoMinutes": m3,
+    "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
+      "Check-in voltooien",
+    ),
+    "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
+      "Check-in voltooid",
+    ),
+    "dailyCheckInDoneSubtitle": m4,
+    "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
+      "Hoe voel je je vandaag?",
+    ),
+    "dailyCheckInTitle": MessageLookupByLibrary.simpleMessage(
+      "Dagelijkse check-in",
     ),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Neem contact op met vrienden, familie, therapeuten en medeveteranen op één veilige plek.",
@@ -55,10 +94,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "Delen op basis van toestemming",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Aan de slag"),
-    "homeWelcome": MessageLookupByLibrary.simpleMessage(
-      "Welkom terug. Je staat er niet alleen voor.",
+    "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
+      "Gezondheidsgegevens worden opgenomen",
     ),
+    "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
+      "Sta Endurance toe uw gezondheidsgegevens (hartslag, stappen, slaap) te lezen om uw check-in te verrijken.",
+    ),
+    "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
+      "Toegang verlenen",
+    ),
+    "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("Welkom terug,"),
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
+    "moodOverviewTitle": MessageLookupByLibrary.simpleMessage(
+      "Stemmingsoverzicht",
+    ),
+    "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage("DEZE WEEK"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
@@ -67,8 +117,65 @@ class MessageLookup extends MessageLookupByLibrary {
       "Netwerk — binnenkort beschikbaar",
     ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
+    "notesHint": MessageLookupByLibrary.simpleMessage(
+      "Hoe was uw dag? (max. 500 tekens)",
+    ),
+    "notesLabel": MessageLookupByLibrary.simpleMessage("Notities (optioneel)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),
+    "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
+      "Crisis-\nlijn",
+    ),
+    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
+      "Vind\nTherapeut",
+    ),
+    "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
+      "Bericht\nVriend",
+    ),
+    "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "SNELLE ACTIES",
+    ),
+    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
+      "Gemeenschap",
+    ),
+    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
+      "Geestelijke Gezondheid",
+    ),
+    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage(
+      "Lichamelijk",
+    ),
+    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
+      "Welzijn",
+    ),
+    "resourceReadTime": m5,
+    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
+      "Omgaan met Angst\nin het Dagelijks Leven",
+    ),
+    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
+      "Jouw\nVeteranengroep Vinden",
+    ),
+    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
+      "Slaaptechnieken\nvoor Veteranen",
+    ),
+    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
+      "Beweging als\nHerstelinstrument",
+    ),
+    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("BRONNEN"),
+    "submitLabel": MessageLookupByLibrary.simpleMessage("Indienen"),
+    "supportNetworkMore": MessageLookupByLibrary.simpleMessage("meer"),
+    "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "MIJN STEUNNETWERK",
+    ),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
+    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
+      "Morgen · 14:00",
+    ),
+    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
+      "Therapiesessie",
+    ),
+    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
+      "met Dr. Sarah Mitchell",
+    ),
+    "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("AANKOMEND"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",
     ),

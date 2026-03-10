@@ -20,6 +20,18 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(score) => "avg ${score} today";
+
+  static String m1(score) => "${score}/10";
+
+  static String m2(count) => "${count}h ago";
+
+  static String m3(count) => "${count}m ago";
+
+  static String m4(score) => "Mood score: ${score}/10";
+
+  static String m5(minutes) => "${minutes} min read";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage(
@@ -29,7 +41,30 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
+    "cancelLabel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage("Chats — coming soon"),
+    "checkInAddButton": MessageLookupByLibrary.simpleMessage("Add check-in"),
+    "checkInAvgToday": m0,
+    "checkInError": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong. Please try again.",
+    ),
+    "checkInScoreLabel": m1,
+    "checkInSuccess": MessageLookupByLibrary.simpleMessage(
+      "Check-in submitted!",
+    ),
+    "checkInTimeAgoHours": m2,
+    "checkInTimeAgoMinutes": m3,
+    "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
+      "Complete check-in",
+    ),
+    "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
+      "Check-in complete",
+    ),
+    "dailyCheckInDoneSubtitle": m4,
+    "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
+      "How are you feeling today?",
+    ),
+    "dailyCheckInTitle": MessageLookupByLibrary.simpleMessage("Daily Check-In"),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Reach out to friends, family, therapists and fellow veterans in one secure place.",
     ),
@@ -55,10 +90,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "Permission-based sharing",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
-    "homeWelcome": MessageLookupByLibrary.simpleMessage(
-      "Welcome back. You are not alone.",
+    "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
+      "Health data will be included",
     ),
+    "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
+      "Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.",
+    ),
+    "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
+      "Allow access",
+    ),
+    "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("Welcome back,"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "moodOverviewTitle": MessageLookupByLibrary.simpleMessage("Mood Overview"),
+    "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage("THIS WEEK"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Home"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("My Network"),
@@ -67,8 +111,65 @@ class MessageLookup extends MessageLookupByLibrary {
       "Network — coming soon",
     ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("My Network"),
+    "notesHint": MessageLookupByLibrary.simpleMessage(
+      "How was your day? (max 500 characters)",
+    ),
+    "notesLabel": MessageLookupByLibrary.simpleMessage("Notes (optional)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
+    "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
+      "Crisis\nLine",
+    ),
+    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
+      "Find\nTherapist",
+    ),
+    "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
+      "Message\nBuddy",
+    ),
+    "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "QUICK ACTIONS",
+    ),
+    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
+      "Community",
+    ),
+    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
+      "Mental Health",
+    ),
+    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage(
+      "Physical",
+    ),
+    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
+      "Wellbeing",
+    ),
+    "resourceReadTime": m5,
+    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
+      "Managing Anxiety\nin Everyday Life",
+    ),
+    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
+      "Finding Your\nVeterans Group",
+    ),
+    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
+      "Sleep Techniques\nfor Veterans",
+    ),
+    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
+      "Exercise as a\nHealing Tool",
+    ),
+    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("RESOURCES"),
+    "submitLabel": MessageLookupByLibrary.simpleMessage("Submit"),
+    "supportNetworkMore": MessageLookupByLibrary.simpleMessage("more"),
+    "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "MY SUPPORT NETWORK",
+    ),
     "tagline": MessageLookupByLibrary.simpleMessage("Services Beyond Service"),
+    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
+      "Tomorrow · 14:00",
+    ),
+    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
+      "Therapy Session",
+    ),
+    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
+      "with Dr. Sarah Mitchell",
+    ),
+    "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("UPCOMING"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Use our web version instead",
     ),
