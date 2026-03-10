@@ -34,7 +34,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m6(username) => "Verzoek verzonden naar @${username}";
 
-  static String m7(minutes) => "${minutes} min lezen";
+  static String m7(error) => "Fout bij verwijderen: ${error}";
+
+  static String m8(error) => "Fout bij bijwerken: ${error}";
+
+  static String m9(minutes) => "${minutes} min lezen";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -216,7 +220,75 @@ class MessageLookup extends MessageLookupByLibrary {
       "Hoe voel je je? (max. 500 tekens)",
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage("Notities (optioneel)"),
+    "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
+      "Account verwijderen",
+    ),
+    "profileDeleteError": m7,
+    "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
+      "Weet u zeker dat u uw account permanent wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt en al uw gegevens gaan verloren.",
+    ),
+    "profileDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Account verwijderen",
+    ),
+    "profileEditAbout": MessageLookupByLibrary.simpleMessage("Over mij"),
+    "profileEditAboutHint": MessageLookupByLibrary.simpleMessage(
+      "Meer details over jezelf (max. 500 tekens)",
+    ),
+    "profileEditButton": MessageLookupByLibrary.simpleMessage(
+      "Profiel bewerken",
+    ),
+    "profileEditCity": MessageLookupByLibrary.simpleMessage("Stad"),
+    "profileEditCountry": MessageLookupByLibrary.simpleMessage("Land"),
+    "profileEditFirstName": MessageLookupByLibrary.simpleMessage("Voornaam"),
+    "profileEditFirstNameRequired": MessageLookupByLibrary.simpleMessage(
+      "Voornaam is verplicht",
+    ),
+    "profileEditIntroduction": MessageLookupByLibrary.simpleMessage(
+      "Introductie",
+    ),
+    "profileEditIntroductionHint": MessageLookupByLibrary.simpleMessage(
+      "Een korte introductie over wie je bent",
+    ),
+    "profileEditLastName": MessageLookupByLibrary.simpleMessage("Achternaam"),
+    "profileEditPhone": MessageLookupByLibrary.simpleMessage("Telefoonnummer"),
+    "profileEditPostalCode": MessageLookupByLibrary.simpleMessage("Postcode"),
+    "profileEditRegion": MessageLookupByLibrary.simpleMessage("Regio / Staat"),
+    "profileEditSaveButton": MessageLookupByLibrary.simpleMessage(
+      "Wijzigingen opslaan",
+    ),
+    "profileEditSectionAddress": MessageLookupByLibrary.simpleMessage("ADRES"),
+    "profileEditSectionBio": MessageLookupByLibrary.simpleMessage("BIO"),
+    "profileEditSectionContact": MessageLookupByLibrary.simpleMessage(
+      "CONTACT",
+    ),
+    "profileEditSectionName": MessageLookupByLibrary.simpleMessage("NAAM"),
+    "profileEditStreet": MessageLookupByLibrary.simpleMessage("Straat"),
+    "profileEditTitle": MessageLookupByLibrary.simpleMessage(
+      "Profiel bewerken",
+    ),
+    "profileLabelAddress": MessageLookupByLibrary.simpleMessage("Adres"),
+    "profileLabelEmail": MessageLookupByLibrary.simpleMessage("E-mail"),
+    "profileLabelPhone": MessageLookupByLibrary.simpleMessage("Telefoon"),
+    "profileLabelPrivacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+    "profilePrivateAccount": MessageLookupByLibrary.simpleMessage(
+      "Privéaccount",
+    ),
+    "profilePublicAccount": MessageLookupByLibrary.simpleMessage(
+      "Openbaar account",
+    ),
+    "profileSectionAbout": MessageLookupByLibrary.simpleMessage("OVER MIJ"),
+    "profileSectionIntroduction": MessageLookupByLibrary.simpleMessage(
+      "INTRODUCTIE",
+    ),
+    "profileSignOut": MessageLookupByLibrary.simpleMessage("Uitloggen"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),
+    "profileUpdateError": m8,
+    "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
+      "Profiel succesvol bijgewerkt",
+    ),
+    "profileUsernameCopied": MessageLookupByLibrary.simpleMessage(
+      "Gebruikersnaam gekopieerd naar klembord",
+    ),
     "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
       "Crisis-\nlijn",
     ),
@@ -241,7 +313,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Welzijn",
     ),
-    "resourceReadTime": m7,
+    "resourceReadTime": m9,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Omgaan met Angst\nin het Dagelijks Leven",
     ),

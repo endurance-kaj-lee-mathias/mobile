@@ -35,7 +35,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m6(username) => "Request sent to @${username}";
 
-  static String m7(minutes) => "${minutes} min read";
+  static String m7(error) => "Error deleting account: ${error}";
+
+  static String m8(error) => "Error updating profile: ${error}";
+
+  static String m9(minutes) => "${minutes} min read";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -205,7 +209,75 @@ class MessageLookup extends MessageLookupByLibrary {
       "How are you feeling? (max 500 characters)",
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage("Notes (optional)"),
+    "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
+      "Delete Account",
+    ),
+    "profileDeleteError": m7,
+    "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be lost.",
+    ),
+    "profileDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Delete Account",
+    ),
+    "profileEditAbout": MessageLookupByLibrary.simpleMessage("About"),
+    "profileEditAboutHint": MessageLookupByLibrary.simpleMessage(
+      "More details about you (max 500 characters)",
+    ),
+    "profileEditButton": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+    "profileEditCity": MessageLookupByLibrary.simpleMessage("City"),
+    "profileEditCountry": MessageLookupByLibrary.simpleMessage("Country"),
+    "profileEditFirstName": MessageLookupByLibrary.simpleMessage("First Name"),
+    "profileEditFirstNameRequired": MessageLookupByLibrary.simpleMessage(
+      "First name is required",
+    ),
+    "profileEditIntroduction": MessageLookupByLibrary.simpleMessage(
+      "Introduction",
+    ),
+    "profileEditIntroductionHint": MessageLookupByLibrary.simpleMessage(
+      "A short intro to tell people who you are",
+    ),
+    "profileEditLastName": MessageLookupByLibrary.simpleMessage("Last Name"),
+    "profileEditPhone": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "profileEditPostalCode": MessageLookupByLibrary.simpleMessage(
+      "Postal Code",
+    ),
+    "profileEditRegion": MessageLookupByLibrary.simpleMessage("Region / State"),
+    "profileEditSaveButton": MessageLookupByLibrary.simpleMessage(
+      "Save Changes",
+    ),
+    "profileEditSectionAddress": MessageLookupByLibrary.simpleMessage(
+      "ADDRESS",
+    ),
+    "profileEditSectionBio": MessageLookupByLibrary.simpleMessage("BIO"),
+    "profileEditSectionContact": MessageLookupByLibrary.simpleMessage(
+      "CONTACT",
+    ),
+    "profileEditSectionName": MessageLookupByLibrary.simpleMessage("NAME"),
+    "profileEditStreet": MessageLookupByLibrary.simpleMessage("Street"),
+    "profileEditTitle": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+    "profileLabelAddress": MessageLookupByLibrary.simpleMessage("Address"),
+    "profileLabelEmail": MessageLookupByLibrary.simpleMessage("Email"),
+    "profileLabelPhone": MessageLookupByLibrary.simpleMessage("Phone"),
+    "profileLabelPrivacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+    "profilePrivateAccount": MessageLookupByLibrary.simpleMessage(
+      "Private Account",
+    ),
+    "profilePublicAccount": MessageLookupByLibrary.simpleMessage(
+      "Public Account",
+    ),
+    "profileSectionAbout": MessageLookupByLibrary.simpleMessage("ABOUT"),
+    "profileSectionIntroduction": MessageLookupByLibrary.simpleMessage(
+      "INTRODUCTION",
+    ),
+    "profileSignOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
+    "profileUpdateError": m8,
+    "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
+      "Profile updated successfully",
+    ),
+    "profileUsernameCopied": MessageLookupByLibrary.simpleMessage(
+      "Username copied to clipboard",
+    ),
     "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
       "Crisis\nLine",
     ),
@@ -230,7 +302,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Wellbeing",
     ),
-    "resourceReadTime": m7,
+    "resourceReadTime": m9,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Managing Anxiety\nin Everyday Life",
     ),

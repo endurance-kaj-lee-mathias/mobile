@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/pages/home/mood_picker.dart';
@@ -99,8 +100,8 @@ class _CheckInBottomSheetState extends State<CheckInBottomSheet> {
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.watch_rounded,
+                    HeroIcon(
+                      HeroIcons.signal,
                       size: 16,
                       color: AppColors.success,
                     ),
@@ -124,7 +125,7 @@ class _CheckInBottomSheetState extends State<CheckInBottomSheet> {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.watch_rounded, size: 20),
+                  const HeroIcon(HeroIcons.signal, size: 20),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(

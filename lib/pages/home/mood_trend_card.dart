@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/bordered_card.dart';
 import 'package:endurance_mobile_app/components/emoji_image.dart';
@@ -32,8 +33,8 @@ class MoodTrendCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Icon(
-                      Icons.show_chart_rounded,
+                    const HeroIcon(
+                      HeroIcons.chartLine,
                       size: 20,
                       color: AppColors.mossGreen,
                     ),

@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/bordered_card.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
@@ -30,8 +31,8 @@ class UpcomingAppointmentCard extends StatelessWidget {
                     color: AppColors.dustyBlue.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(14),
                   ),
-                  child: const Icon(
-                    Icons.calendar_month_rounded,
+                  child: const HeroIcon(
+                    HeroIcons.calendarDays,
                     color: AppColors.dustyBlue,
                     size: 26,
                   ),
@@ -55,8 +56,8 @@ class UpcomingAppointmentCard extends StatelessWidget {
                       const SizedBox(height: 4),
                       Row(
                         children: [
-                          Icon(
-                            Icons.access_time_rounded,
+                          HeroIcon(
+                            HeroIcons.clock,
                             size: 13,
                             color: colorScheme.onSurface.withValues(
                               alpha: 0.45,
@@ -78,8 +79,8 @@ class UpcomingAppointmentCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(
-                  Icons.chevron_right_rounded,
+                HeroIcon(
+                  HeroIcons.chevronRight,
                   color: colorScheme.onSurface.withValues(alpha: 0.3),
                 ),
               ],

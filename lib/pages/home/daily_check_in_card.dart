@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/bordered_card.dart';
 import 'package:endurance_mobile_app/components/emoji_image.dart';
@@ -45,15 +46,10 @@ class DailyCheckInCard extends StatelessWidget {
                         color: colorScheme.outline,
                       ),
                     )
+                  else if (done)
+                    const HeroIcon(HeroIcons.checkCircle, size: 22, color: AppColors.success)
                   else
-                    Icon(
-                      done
-                          ? Icons.check_circle_rounded
-                          : Icons.radio_button_unchecked_rounded,
-                      color: done ? AppColors.success : colorScheme.outline,
-                      size: 22,
-                    ),
-                  const SizedBox(width: 8),
+                    HeroIcon(HeroIcons.ellipsisCircle, size: 22, color: colorScheme.outline),                  const SizedBox(width: 8),
                   Text(
                     l10n.dailyCheckInTitle,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(

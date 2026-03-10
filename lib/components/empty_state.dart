@@ -1,7 +1,9 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:flutter/material.dart';
 
 class EmptyState extends StatelessWidget {
-  final IconData icon;
+  final String? heroIconPath;
+  final IconData? icon;
   final String title;
   final String body;
   final String? actionLabel;
@@ -9,26 +11,26 @@ class EmptyState extends StatelessWidget {
 
   const EmptyState({
     super.key,
-    required this.icon,
+    this.heroIconPath,
+    this.icon,
     required this.title,
     required this.body,
     this.actionLabel,
     this.onAction,
-  });
+  }) : assert(heroIconPath != null || icon != null, 'Provide heroIconPath or icon');
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3);
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              icon,
-              size: 64,
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3),
-            ),
+            heroIconPath != null
+                ? HeroIcon(heroIconPath!, size: 64, color: color)
+                : Icon(icon!, size: 64, color: color),
             const SizedBox(height: 16),
             Text(
               title,

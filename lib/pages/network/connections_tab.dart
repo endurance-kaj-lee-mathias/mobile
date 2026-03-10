@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/empty_state.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
@@ -30,7 +31,7 @@ class ConnectionsTab extends StatelessWidget {
         final members = controller.members;
         if (members.isEmpty) {
           return EmptyState(
-            icon: Icons.group_outlined,
+            heroIconPath: HeroIcons.userGroupOutline,
             title: S.of(context).networkEmptyConnections,
             body: S.of(context).networkEmptyConnectionsBody,
             actionLabel: S.of(context).networkAddSomeone,
@@ -103,7 +104,7 @@ class MemberTile extends StatelessWidget {
         style: Theme.of(context).textTheme.bodyMedium,
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.person_remove_outlined),
+        icon: const HeroIcon(HeroIcons.userMinus),
         color: AppColors.error,
         tooltip: l10n.networkRemove,
         onPressed: () => _confirmRemove(context),

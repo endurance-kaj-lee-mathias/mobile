@@ -166,5 +166,47 @@
     "placeholders": {
       "minutes": { "type": "int" }
     }
-  }
+  },
+  "profileSectionIntroduction": "INTRODUCTION",
+  "profileSectionAbout": "ABOUT",
+  "profileLabelEmail": "Email",
+  "profileLabelPhone": "Phone",
+  "profileLabelPrivacy": "Privacy",
+  "profileLabelAddress": "Address",
+  "profilePrivateAccount": "Private Account",
+  "profilePublicAccount": "Public Account",
+  "profileUsernameCopied": "Username copied to clipboard",
+  "profileEditButton": "Edit Profile",
+  "profileSignOut": "Sign Out",
+  "profileDeleteAccountButton": "Delete Account",
+  "profileDeleteTitle": "Delete Account",
+  "profileDeleteMessage": "Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be lost.",
+  "profileDeleteError": "Error deleting account: {error}",
+  "@profileDeleteError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "profileUpdateSuccess": "Profile updated successfully",
+  "profileUpdateError": "Error updating profile: {error}",
+  "@profileUpdateError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "profileEditTitle": "Edit Profile",
+  "profileEditSaveButton": "Save Changes",
+  "profileEditSectionName": "NAME",
+  "profileEditSectionContact": "CONTACT",
+  "profileEditSectionAddress": "ADDRESS",
+  "profileEditSectionBio": "BIO",
+  "profileEditFirstName": "First Name",
+  "profileEditLastName": "Last Name",
+  "profileEditPhone": "Phone Number",
+  "profileEditStreet": "Street",
+  "profileEditCity": "City",
+  "profileEditRegion": "Region / State",
+  "profileEditPostalCode": "Postal Code",
+  "profileEditCountry": "Country",
+  "profileEditIntroduction": "Introduction",
+  "profileEditIntroductionHint": "A short intro to tell people who you are",
+  "profileEditAbout": "About",
+  "profileEditAboutHint": "More details about you (max 500 characters)",
+  "profileEditFirstNameRequired": "First name is required"
 }

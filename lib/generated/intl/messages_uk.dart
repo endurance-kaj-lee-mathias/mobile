@@ -34,7 +34,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m6(username) => "Запит надіслано @${username}";
 
-  static String m7(minutes) => "${minutes} хв читання";
+  static String m7(error) => "Помилка видалення акаунту: ${error}";
+
+  static String m8(error) => "Помилка оновлення профілю: ${error}";
+
+  static String m9(minutes) => "${minutes} хв читання";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -212,7 +216,75 @@ class MessageLookup extends MessageLookupByLibrary {
     "notesLabel": MessageLookupByLibrary.simpleMessage(
       "Нотатки (необов\'язково)",
     ),
+    "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
+      "Видалити акаунт",
+    ),
+    "profileDeleteError": m7,
+    "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
+      "Ви впевнені, що хочете назавжди видалити свій акаунт? Цю дію не можна скасувати, усі ваші дані буде втрачено.",
+    ),
+    "profileDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Видалити акаунт",
+    ),
+    "profileEditAbout": MessageLookupByLibrary.simpleMessage("Про мене"),
+    "profileEditAboutHint": MessageLookupByLibrary.simpleMessage(
+      "Детальніше про себе (макс. 500 символів)",
+    ),
+    "profileEditButton": MessageLookupByLibrary.simpleMessage(
+      "Редагувати профіль",
+    ),
+    "profileEditCity": MessageLookupByLibrary.simpleMessage("Місто"),
+    "profileEditCountry": MessageLookupByLibrary.simpleMessage("Країна"),
+    "profileEditFirstName": MessageLookupByLibrary.simpleMessage("Ім\'я"),
+    "profileEditFirstNameRequired": MessageLookupByLibrary.simpleMessage(
+      "Ім\'я обов\'язкове",
+    ),
+    "profileEditIntroduction": MessageLookupByLibrary.simpleMessage("Вступ"),
+    "profileEditIntroductionHint": MessageLookupByLibrary.simpleMessage(
+      "Короткий опис того, хто ви є",
+    ),
+    "profileEditLastName": MessageLookupByLibrary.simpleMessage("Прізвище"),
+    "profileEditPhone": MessageLookupByLibrary.simpleMessage("Номер телефону"),
+    "profileEditPostalCode": MessageLookupByLibrary.simpleMessage(
+      "Поштовий індекс",
+    ),
+    "profileEditRegion": MessageLookupByLibrary.simpleMessage("Регіон / Штат"),
+    "profileEditSaveButton": MessageLookupByLibrary.simpleMessage(
+      "Зберегти зміни",
+    ),
+    "profileEditSectionAddress": MessageLookupByLibrary.simpleMessage("АДРЕСА"),
+    "profileEditSectionBio": MessageLookupByLibrary.simpleMessage("ПРО МЕНЕ"),
+    "profileEditSectionContact": MessageLookupByLibrary.simpleMessage(
+      "КОНТАКТИ",
+    ),
+    "profileEditSectionName": MessageLookupByLibrary.simpleMessage("ІМ\'Я"),
+    "profileEditStreet": MessageLookupByLibrary.simpleMessage("Вулиця"),
+    "profileEditTitle": MessageLookupByLibrary.simpleMessage(
+      "Редагувати профіль",
+    ),
+    "profileLabelAddress": MessageLookupByLibrary.simpleMessage("Адреса"),
+    "profileLabelEmail": MessageLookupByLibrary.simpleMessage("Ел. пошта"),
+    "profileLabelPhone": MessageLookupByLibrary.simpleMessage("Телефон"),
+    "profileLabelPrivacy": MessageLookupByLibrary.simpleMessage(
+      "Конфіденційність",
+    ),
+    "profilePrivateAccount": MessageLookupByLibrary.simpleMessage(
+      "Закритий акаунт",
+    ),
+    "profilePublicAccount": MessageLookupByLibrary.simpleMessage(
+      "Відкритий акаунт",
+    ),
+    "profileSectionAbout": MessageLookupByLibrary.simpleMessage("ПРО МЕНЕ"),
+    "profileSectionIntroduction": MessageLookupByLibrary.simpleMessage("ВСТУП"),
+    "profileSignOut": MessageLookupByLibrary.simpleMessage("Вийти"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Профіль"),
+    "profileUpdateError": m8,
+    "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
+      "Профіль успішно оновлено",
+    ),
+    "profileUsernameCopied": MessageLookupByLibrary.simpleMessage(
+      "Ім\'я користувача скопійовано",
+    ),
     "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
       "Лінія\nкризи",
     ),
@@ -235,7 +307,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Добробут",
     ),
-    "resourceReadTime": m7,
+    "resourceReadTime": m9,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Управління тривогою\nу повсякденному житті",
     ),

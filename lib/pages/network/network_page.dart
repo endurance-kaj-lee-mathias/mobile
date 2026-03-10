@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/pages/network/add_friend_sheet.dart';
 import 'package:endurance_mobile_app/pages/network/connections_tab.dart';
@@ -41,8 +42,7 @@ class _NetworkPageState extends State<NetworkPage> {
           centerTitle: true,
           actions: [
             IconButton(
-              icon: const Icon(Icons.person_add_outlined),
-              tooltip: l10n.networkAddToNetwork,
+              icon: const HeroIcon(HeroIcons.userPlus),              tooltip: l10n.networkAddToNetwork,
               onPressed: () => _showAddFriendSheet(context),
             ),
           ],
