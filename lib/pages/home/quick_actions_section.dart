@@ -20,8 +20,8 @@ class QuickActionsSection extends StatelessWidget {
           child: Row(
             children: [
               _ActionTile(
-                icon: Icons.phone_in_talk_rounded,
-                heroIcon: null,
+                icon: null,
+                heroIcon: HeroIcons.phone,
                 label: l10n.quickActionsCrisisLine,
                 color: AppColors.warning,
               ),

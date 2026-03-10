@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
@@ -61,7 +62,7 @@ class _AddFriendSheetState extends State<AddFriendSheet> {
               decoration: InputDecoration(
                 labelText: l10n.networkUsernameLabel,
                 hintText: l10n.networkUsernameHint,
-                prefixIcon: const Icon(Icons.alternate_email),
+                prefixIcon: const HeroIcon(HeroIcons.atSymbol),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -81,7 +82,7 @@ class _AddFriendSheetState extends State<AddFriendSheet> {
               decoration: InputDecoration(
                 labelText: l10n.networkNoteOptional,
                 hintText: l10n.networkNoteHint,
-                prefixIcon: const Icon(Icons.message_outlined),
+                prefixIcon: const HeroIcon(HeroIcons.chatBubbleLeft),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),

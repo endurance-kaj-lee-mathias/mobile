@@ -131,8 +131,8 @@ class ProfilePage extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 4),
-                            Icon(
-                              Icons.copy_rounded,
+                            HeroIcon(
+                              HeroIcons.clipboardDocument,
                               size: 13,
                               color: colorScheme.onSurface.withValues(alpha: 0.3),
                             ),
@@ -191,14 +191,14 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       if (auth.email?.isNotEmpty == true)
                         _InfoRow(
-                          icon: const Icon(Icons.email_outlined, size: 20),
+                          icon: const HeroIcon(HeroIcons.envelope, size: 20),
                           iconColor: AppColors.dustyBlue,
                           label: l10n.profileLabelEmail,
                           value: auth.email!,
                         ),
                       if (displayPhone?.isNotEmpty == true)
                         _InfoRow(
-                          icon: const Icon(Icons.phone_outlined, size: 20),
+                          icon: const HeroIcon(HeroIcons.phone, size: 20),
                           iconColor: AppColors.dustyBlue,
                           label: l10n.profileLabelPhone,
                           value: displayPhone!,
@@ -221,7 +221,7 @@ class ProfilePage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: _InfoRow(
-                      icon: const Icon(Icons.location_on_outlined, size: 20),
+                      icon: const HeroIcon(HeroIcons.mapPin, size: 20),
                       iconColor: AppColors.warning,
                       label: l10n.profileLabelAddress,
                       value: _formatAddress(user.address!),

@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
@@ -111,8 +112,8 @@ class _ViewAllAvatar extends StatelessWidget {
                       fontSize: 14,
                     ),
                   )
-                : const Icon(
-                    Icons.people_outline_rounded,
+                : const HeroIcon(
+                    HeroIcons.userGroupOutline,
                     color: AppColors.mossGreen,
                     size: 26,
                   ),

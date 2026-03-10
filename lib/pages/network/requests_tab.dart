@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/bordered_card.dart';
 import 'package:endurance_mobile_app/components/empty_state.dart';
@@ -30,7 +31,7 @@ class RequestsTab extends StatelessWidget {
 
         if (incoming.isEmpty && outgoing.isEmpty) {
           return EmptyState(
-            icon: Icons.mail_outline_rounded,
+            heroIconPath: HeroIcons.envelope,
             title: l10n.networkEmptyRequests,
             body: l10n.networkEmptyRequestsBody,
           );
@@ -190,8 +191,8 @@ class OutgoingRequestCard extends StatelessWidget {
             note: invite.note,
             actions: Row(
               children: [
-                Icon(
-                  Icons.access_time_rounded,
+                HeroIcon(
+                  HeroIcons.clock,
                   size: 12,
                   color: Theme.of(
                     context,
