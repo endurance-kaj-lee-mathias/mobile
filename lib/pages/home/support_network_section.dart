@@ -4,6 +4,7 @@ import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
+import 'package:endurance_mobile_app/services/chat/chat_controller.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,16 @@ class _MemberAvatar extends StatelessWidget {
 
   const _MemberAvatar({required this.member});
 
+  Future<void> _openChat(BuildContext context) async {
+    final chatController = Get.find<ChatController>();
+    final conv = await chatController.startConversationWith(member);
+    if (conv == null || !context.mounted) return;
+    context.pushNamed(
+      AppRoutes.chatDetail,
+      pathParameters: {'conversationId': conv.id},
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -60,27 +71,30 @@ class _MemberAvatar extends StatelessWidget {
         ? member.displayName
         : member.username;
 
-    return Padding(
-      padding: const EdgeInsets.only(right: 16),
-      child: Column(
-        children: [
-          UserAvatar(
-            imageUrl: member.image,
-            firstName: member.firstName,
-            radius: 28,
-          ),
-          const SizedBox(height: 6),
-          SizedBox(
-            width: 56,
-            child: Text(
-              name,
-              style: textTheme.bodyMedium?.copyWith(fontSize: 11),
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+    return GestureDetector(
+      onTap: () => _openChat(context),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 16),
+        child: Column(
+          children: [
+            UserAvatar(
+              imageUrl: member.image,
+              firstName: member.firstName,
+              radius: 28,
             ),
-          ),
-        ],
+            const SizedBox(height: 6),
+            SizedBox(
+              width: 56,
+              child: Text(
+                name,
+                style: textTheme.bodyMedium?.copyWith(fontSize: 11),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

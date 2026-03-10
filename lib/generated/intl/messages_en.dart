@@ -20,26 +20,28 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(score) => "avg ${score} today";
+  static String m0(message) => "You: ${message}";
 
-  static String m1(score) => "${score}/10";
+  static String m1(score) => "avg ${score} today";
 
-  static String m2(count) => "${count}h ago";
+  static String m2(score) => "${score}/10";
 
-  static String m3(count) => "${count}m ago";
+  static String m3(count) => "${count}h ago";
 
-  static String m4(score) => "Mood score: ${score}/10";
+  static String m4(count) => "${count}m ago";
 
-  static String m5(name) =>
+  static String m5(score) => "Mood score: ${score}/10";
+
+  static String m6(name) =>
       "${name} will be removed from your support network.";
 
-  static String m6(username) => "Request sent to @${username}";
+  static String m7(username) => "Request sent to @${username}";
 
-  static String m7(error) => "Error deleting account: ${error}";
+  static String m8(error) => "Error deleting account: ${error}";
 
-  static String m8(error) => "Error updating profile: ${error}";
+  static String m9(error) => "Error updating profile: ${error}";
 
-  static String m9(minutes) => "${minutes} min read";
+  static String m10(minutes) => "${minutes} min read";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -51,25 +53,45 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "chatInputHint": MessageLookupByLibrary.simpleMessage("Message…"),
+    "chatLoadingError": MessageLookupByLibrary.simpleMessage(
+      "Could not open this chat. Please try again.",
+    ),
+    "chatOpenError": MessageLookupByLibrary.simpleMessage(
+      "Could not start conversation. Please try again.",
+    ),
+    "chatSend": MessageLookupByLibrary.simpleMessage("Send"),
+    "chatsEmptyBody": MessageLookupByLibrary.simpleMessage(
+      "Tap on someone in your support network to start a conversation.",
+    ),
+    "chatsEmptyTitle": MessageLookupByLibrary.simpleMessage(
+      "No conversations yet",
+    ),
+    "chatsMessagePreviewYou": m0,
+    "chatsNoMessages": MessageLookupByLibrary.simpleMessage("No messages yet"),
+    "chatsSayHi": MessageLookupByLibrary.simpleMessage("Say hi! 👋"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage("Chats — coming soon"),
+    "chatsToday": MessageLookupByLibrary.simpleMessage("Today"),
+    "chatsYesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
+    "chatsYou": MessageLookupByLibrary.simpleMessage("You"),
     "checkInAddButton": MessageLookupByLibrary.simpleMessage("Add check-in"),
-    "checkInAvgToday": m0,
+    "checkInAvgToday": m1,
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Something went wrong. Please try again.",
     ),
-    "checkInScoreLabel": m1,
+    "checkInScoreLabel": m2,
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Check-in submitted!",
     ),
-    "checkInTimeAgoHours": m2,
-    "checkInTimeAgoMinutes": m3,
+    "checkInTimeAgoHours": m3,
+    "checkInTimeAgoMinutes": m4,
     "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
       "Complete check-in",
     ),
     "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
       "Check-in complete",
     ),
-    "dailyCheckInDoneSubtitle": m4,
+    "dailyCheckInDoneSubtitle": m5,
     "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
       "How are you feeling today?",
     ),
@@ -177,7 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage("Pending"),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Remove"),
-    "networkRemoveBody": m5,
+    "networkRemoveBody": m6,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Remove"),
     "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
       "Remove from network?",
@@ -185,7 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
       "Removed from network",
     ),
-    "networkRequestSentSuccess": m6,
+    "networkRequestSentSuccess": m7,
     "networkRequests": MessageLookupByLibrary.simpleMessage("Requests"),
     "networkRoleSupport": MessageLookupByLibrary.simpleMessage(
       "Support Network",
@@ -212,7 +234,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
       "Delete Account",
     ),
-    "profileDeleteError": m7,
+    "profileDeleteError": m8,
     "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be lost.",
     ),
@@ -271,7 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profileSignOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
-    "profileUpdateError": m8,
+    "profileUpdateError": m9,
     "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "Profile updated successfully",
     ),
@@ -302,7 +324,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Wellbeing",
     ),
-    "resourceReadTime": m9,
+    "resourceReadTime": m10,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Managing Anxiety\nin Everyday Life",
     ),

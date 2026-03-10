@@ -3,6 +3,8 @@ import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/api_client.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
+import 'package:endurance_mobile_app/services/chat/chat_controller.dart';
+import 'package:endurance_mobile_app/services/chat/websocket_service.dart';
 import 'package:endurance_mobile_app/services/mood/daily_checkin_controller.dart';
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:endurance_mobile_app/services/notification/notification_controller.dart';
@@ -24,6 +26,8 @@ void main() async {
   Get.put(DailyCheckInController());
   Get.put(QuoteController());
   Get.put(NetworkController());
+  Get.put(WebSocketService());
+  Get.put(ChatController());
   runApp(const MyApp());
 }
 

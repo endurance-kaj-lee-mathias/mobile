@@ -62,7 +62,10 @@ class _AddFriendSheetState extends State<AddFriendSheet> {
               decoration: InputDecoration(
                 labelText: l10n.networkUsernameLabel,
                 hintText: l10n.networkUsernameHint,
-                prefixIcon: const HeroIcon(HeroIcons.atSymbol),
+                prefixIcon: const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: HeroIcon(HeroIcons.atSymbol, size: 20),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -82,7 +85,10 @@ class _AddFriendSheetState extends State<AddFriendSheet> {
               decoration: InputDecoration(
                 labelText: l10n.networkNoteOptional,
                 hintText: l10n.networkNoteHint,
-                prefixIcon: const HeroIcon(HeroIcons.chatBubbleLeft),
+                prefixIcon: const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: HeroIcon(HeroIcons.chatBubbleLeft, size: 20),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),

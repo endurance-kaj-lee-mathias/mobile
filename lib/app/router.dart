@@ -2,7 +2,8 @@ import 'package:endurance_mobile_app/pages/network/network_page.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/app/route_guard.dart';
 import 'package:endurance_mobile_app/components/main_shell.dart';
-import 'package:endurance_mobile_app/pages/chats.dart';
+import 'package:endurance_mobile_app/pages/chats/chat_detail_page.dart';
+import 'package:endurance_mobile_app/pages/chats/chats_page.dart';
 import 'package:endurance_mobile_app/pages/home/home_page.dart';
 import 'package:endurance_mobile_app/pages/profile.dart';
 import 'package:endurance_mobile_app/pages/splash.dart';
@@ -15,6 +16,7 @@ import 'package:go_router/go_router.dart';
 abstract class AppRoutes {
   static const home = 'home';
   static const chats = 'chats';
+  static const chatDetail = 'chatDetail';
   static const network = 'network';
   static const profile = 'profile';
 }
@@ -88,6 +90,14 @@ final GoRouter router = GoRouter(
           builder: (_, _) => const ProfilePage(),
         ),
       ],
+    ),
+    GoRoute(
+      path: '/chats/:conversationId',
+      name: AppRoutes.chatDetail,
+      redirect: RouteGuard.veteranOnly,
+      builder: (_, state) => ChatDetailPage(
+        conversationId: state.pathParameters['conversationId']!,
+      ),
     ),
     GoRoute(
       path: '/unauthorized',

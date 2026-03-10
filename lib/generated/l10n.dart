@@ -244,6 +244,101 @@ class S {
     );
   }
 
+  /// `No conversations yet`
+  String get chatsEmptyTitle {
+    return Intl.message(
+      'No conversations yet',
+      name: 'chatsEmptyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap on someone in your support network to start a conversation.`
+  String get chatsEmptyBody {
+    return Intl.message(
+      'Tap on someone in your support network to start a conversation.',
+      name: 'chatsEmptyBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You: {message}`
+  String chatsMessagePreviewYou(String message) {
+    return Intl.message(
+      'You: $message',
+      name: 'chatsMessagePreviewYou',
+      desc: '',
+      args: [message],
+    );
+  }
+
+  /// `No messages yet`
+  String get chatsNoMessages {
+    return Intl.message(
+      'No messages yet',
+      name: 'chatsNoMessages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You`
+  String get chatsYou {
+    return Intl.message('You', name: 'chatsYou', desc: '', args: []);
+  }
+
+  /// `Say hi! 👋`
+  String get chatsSayHi {
+    return Intl.message('Say hi! 👋', name: 'chatsSayHi', desc: '', args: []);
+  }
+
+  /// `Today`
+  String get chatsToday {
+    return Intl.message('Today', name: 'chatsToday', desc: '', args: []);
+  }
+
+  /// `Yesterday`
+  String get chatsYesterday {
+    return Intl.message(
+      'Yesterday',
+      name: 'chatsYesterday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message…`
+  String get chatInputHint {
+    return Intl.message('Message…', name: 'chatInputHint', desc: '', args: []);
+  }
+
+  /// `Send`
+  String get chatSend {
+    return Intl.message('Send', name: 'chatSend', desc: '', args: []);
+  }
+
+  /// `Could not open this chat. Please try again.`
+  String get chatLoadingError {
+    return Intl.message(
+      'Could not open this chat. Please try again.',
+      name: 'chatLoadingError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not start conversation. Please try again.`
+  String get chatOpenError {
+    return Intl.message(
+      'Could not start conversation. Please try again.',
+      name: 'chatOpenError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Profile`
   String get profileTitle {
     return Intl.message('Profile', name: 'profileTitle', desc: '', args: []);
