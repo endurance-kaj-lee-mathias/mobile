@@ -9,6 +9,12 @@ class MoodEntryModel {
     this.notes,
   });
 
+  factory MoodEntryModel.fromJson(Map<String, dynamic> json) => MoodEntryModel(
+    date: json['date'] as String,
+    moodScore: json['moodScore'] as int,
+    notes: json['notes'] as String?,
+  );
+
   Map<String, dynamic> toJson() => {
     'date': date,
     'moodScore': moodScore,

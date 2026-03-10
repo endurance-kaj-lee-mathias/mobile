@@ -60,6 +60,19 @@ class NotificationController extends GetxController {
   Future<void> _syncToken() async {
     try {
       await _fcm.requestPermission();
+      if (Platform.isIOS) {
+        // APNS token must be available before getToken() works on iOS.
+        // Poll briefly to wait for iOS to register with APNs.
+        String? apns;
+        for (var i = 0; i < 10 && apns == null; i++) {
+          apns = await _fcm.getAPNSToken();
+          if (apns == null) await Future.delayed(const Duration(seconds: 1));
+        }
+        if (apns == null) {
+          debugPrint('APNS token unavailable; skipping FCM token sync');
+          return;
+        }
+      }
       final token = await _fcm.getToken();
       if (token != null) await _sendToken(token);
     } catch (e) {

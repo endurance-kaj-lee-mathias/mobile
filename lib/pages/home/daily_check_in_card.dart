@@ -18,6 +18,7 @@ class DailyCheckInCard extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Obx(() {
+      final loading = controller.isLoadingStatus.value;
       final done = controller.hasDoneToday.value;
       final score = controller.todayScore.value;
 
@@ -31,20 +32,38 @@ class DailyCheckInCard extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.fromLTRB(
+            20,
+            20,
+            20,
+            // When the button is hidden (done or loading) use the same 20dp
+            // as the top so the card feels balanced.  When the button is
+            // visible the button's own bottom padding provides enough room.
+            (!done || loading) ? 20 : 16,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header row with status icon and title
               Row(
                 children: [
-                  Icon(
-                    done
-                        ? Icons.check_circle_rounded
-                        : Icons.radio_button_unchecked_rounded,
-                    color: done ? AppColors.success : colorScheme.outline,
-                    size: 22,
-                  ),
+                  if (loading)
+                    SizedBox(
+                      width: 22,
+                      height: 22,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: colorScheme.outline,
+                      ),
+                    )
+                  else
+                    Icon(
+                      done
+                          ? Icons.check_circle_rounded
+                          : Icons.radio_button_unchecked_rounded,
+                      color: done ? AppColors.success : colorScheme.outline,
+                      size: 22,
+                    ),
                   const SizedBox(width: 8),
                   Text(
                     l10n.dailyCheckInTitle,
@@ -80,21 +99,17 @@ class DailyCheckInCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
 
-              const SizedBox(height: 16),
-
-              // Action button
-              SizedBox(
-                width: double.infinity,
-                child: done
-                    ? OutlinedButton(
-                        onPressed: () => _showCheckInSheet(context),
-                        child: Text(l10n.dailyCheckInUpdateButton),
-                      )
-                    : ElevatedButton(
-                        onPressed: () => _showCheckInSheet(context),
-                        child: Text(l10n.dailyCheckInButton),
-                      ),
-              ),
+              // Action button — only shown when the check-in hasn't been done yet.
+              if (!done && !loading) ...[
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => _showCheckInSheet(context),
+                    child: Text(l10n.dailyCheckInButton),
+                  ),
+                ),
+              ],
             ],
           ),
         ),

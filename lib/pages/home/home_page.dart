@@ -9,13 +9,25 @@ import 'package:endurance_mobile_app/pages/home/quote_banner.dart';
 import 'package:endurance_mobile_app/pages/home/resources_section.dart';
 import 'package:endurance_mobile_app/pages/home/support_network_section.dart';
 import 'package:endurance_mobile_app/pages/home/upcoming_appointment_card.dart';
+import 'package:endurance_mobile_app/services/mood/daily_checkin_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Get.find<DailyCheckInController>().load();
+  }
 
   @override
   Widget build(BuildContext context) {
