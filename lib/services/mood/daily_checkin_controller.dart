@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:endurance_mobile_app/services/health/health_service.dart';
 import 'package:endurance_mobile_app/services/mood/mood_entry_model.dart';
 import 'package:endurance_mobile_app/services/mood/mood_service.dart';
@@ -20,6 +22,11 @@ class DailyCheckInController extends GetxController {
   final MoodService _moodService;
   final StressService _stressService;
   final HealthService _healthService;
+
+  Timer? _clockTimer;
+
+  /// Increments every minute so that Obx widgets re-render relative timestamps.
+  final RxInt clockTick = 0.obs;
 
   /// True while entries are being fetched from the backend.
   final RxBool isLoading = false.obs;
@@ -71,6 +78,15 @@ class DailyCheckInController extends GetxController {
   void onInit() {
     super.onInit();
     _checkHealthPermission();
+    _clockTimer = Timer.periodic(const Duration(minutes: 1), (_) {
+      clockTick.value++;
+    });
+  }
+
+  @override
+  void onClose() {
+    _clockTimer?.cancel();
+    super.onClose();
   }
 
   /// Fetches all mood entries from the backend.

@@ -50,13 +50,67 @@ class _EmptyBodyInterceptor extends Interceptor {
 }
 
 class _AuthInterceptor extends Interceptor {
+  // Prevents multiple concurrent refreshes when several requests 401 at once.
+  Future<bool>? _pendingRefresh;
+
+  static const _retriedKey = '_auth_retried';
+
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     final auth = getx.Get.find<AuthController>();
-    final token = auth.authorizationHeader;
-    if (token != null) {
-      options.headers['Authorization'] = token;
+    final header = auth.authorizationHeader;
+    if (header != null) {
+      options.headers['Authorization'] = header;
     }
     handler.next(options);
+  }
+
+  @override
+  Future<void> onError(
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
+    final is401 = err.response?.statusCode == 401;
+    final alreadyRetried = err.requestOptions.extra[_retriedKey] == true;
+
+    if (!is401 || alreadyRetried) {
+      handler.next(err);
+      return;
+    }
+
+    // Collapse concurrent refreshes into one network call.
+    _pendingRefresh ??= _doRefresh().whenComplete(() {
+      _pendingRefresh = null;
+    });
+    final refreshed = await _pendingRefresh!;
+
+    if (!refreshed) {
+      handler.next(err);
+      return;
+    }
+
+    // Retry the original request with the new token.
+    try {
+      final auth = getx.Get.find<AuthController>();
+      final retryOptions = err.requestOptions
+        ..extra[_retriedKey] = true
+        ..headers['Authorization'] = auth.authorizationHeader;
+      final dio = getx.Get.find<Dio>();
+      final response = await dio.fetch<dynamic>(retryOptions);
+      handler.resolve(response);
+    } catch (retryError) {
+      handler.next(err);
+    }
+  }
+
+  Future<bool> _doRefresh() async {
+    final auth = getx.Get.find<AuthController>();
+    final ok = await auth.refreshTokens();
+    if (!ok) {
+      // Refresh token is also expired — clear the session so the router
+      // sends the user back to the login screen.
+      await auth.clearSession();
+    }
+    return ok;
   }
 }

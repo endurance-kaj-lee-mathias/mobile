@@ -20,6 +20,8 @@ class DailyCheckInCard extends StatelessWidget {
 
     return Obx(() {
       final loading = controller.isLoading.value;
+      // Read clockTick so this Obx rebuilds every minute (keeps time-ago fresh).
+      controller.clockTick.value;
       final done = controller.hasDoneToday;
       final last = controller.lastTodayEntry;
       final avg = controller.avgTodayScore;
