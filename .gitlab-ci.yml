@@ -9,10 +9,13 @@ variables:
   FLUTTER_HOME: /builds/flutter
   PATH: $FLUTTER_HOME/bin:$PATH
   CACHE_COMPRESSION_LEVEL: fastest
+  FF_USE_DOCKER_NETWORK: 'true'
 
 # Shared setup for Flutter projects
 .flutter_setup: &flutter_setup
-  image: ubuntu:latest
+  image: 
+    name: ubuntu:latest
+    entrypoint: ["/bin/bash", "-c"]
   cache:
     paths:
       - .pub-cache/
