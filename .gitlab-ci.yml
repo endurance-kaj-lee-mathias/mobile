@@ -1,16 +1,127 @@
-# You can override the included template(s) by including variable overrides
-# SAST customization: https://docs.gitlab.com/user/application_security/sast/#available-cicd-variables
-# Secret Detection customization: https://docs.gitlab.com/user/application_security/secret_detection/pipeline/configure/
-# Dependency Scanning customization: https://docs.gitlab.com/user/application_security/dependency_scanning/#customizing-analyzer-behavior
-# Container Scanning customization: https://docs.gitlab.com/user/application_security/container_scanning/#customizing-analyzer-behavior
-# Note that environment variables can be set in several places
-# See https://docs.gitlab.com/ci/variables/#cicd-variable-precedence
 stages:
-- test
-- secret-detection
+  - test
+  - build_verify
+  - build_release
+  - secret-detection
+
 variables:
   SECRET_DETECTION_ENABLED: 'true'
+  FF_USE_DOCKER_NETWORK: 'true'
+
+# Shared setup for Flutter projects (Android)
+.flutter_setup: &flutter_setup
+  image:
+    name: instrumentisto/flutter:latest
+    entrypoint: [""]
+  cache:
+    paths:
+      - .pub-cache/
+      - build/
+  before_script:
+    - mkdir -p .pub-cache
+    # Setup environment and config files from CI/CD variables
+    - cp $ENV_FILE .env.json
+    - cp $FIREBASE_ANDROID_CONFIG android/app/google-services.json
+    - flutter clean
+    - flutter pub get
+
+# iOS-specific setup (runs on macOS runner, installs correct Flutter version)
+.flutter_setup_ios: &flutter_setup_ios
+  variables:
+    FLUTTER_VERSION: "3.41.4"
+  cache:
+    paths:
+      - .pub-cache/
+      - flutter-macos/
+  before_script:
+    - mkdir -p .pub-cache
+    # Install correct Flutter version if not already cached
+    - |
+      if [ ! -d "flutter-macos/bin" ]; then
+        curl -fsSL "https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_${FLUTTER_VERSION}-stable.zip" -o /tmp/flutter.zip
+        unzip -q /tmp/flutter.zip -d flutter-macos-tmp
+        mv flutter-macos-tmp/flutter flutter-macos
+        rm -rf /tmp/flutter.zip flutter-macos-tmp
+      fi
+    - export PATH="$CI_PROJECT_DIR/flutter-macos/bin:$PATH"
+    # Setup environment and config files from CI/CD variables
+    - cp $ENV_FILE .env.json
+    - cp $FIREBASE_IOS_CONFIG ios/Runner/GoogleService-Info.plist
+    - flutter clean
+    - flutter pub get
+
+# Test stage: lint and tests on all branches with MRs
+test_lint:
+  stage: test
+  <<: *flutter_setup
+  script:
+    - flutter analyze
+    - flutter test
+  only:
+    - merge_requests
+    - main
+    - develop
+
+# Build verification for MRs (no artifacts kept)
+verify_build_android:
+  stage: build_verify
+  <<: *flutter_setup
+  script:
+    - flutter build apk --release
+  only:
+    - merge_requests
+  artifacts:
+    reports:
+      dotenv: build.env
+    expire_in: 1 hour
+
+verify_build_ios:
+  stage: build_verify
+  <<: *flutter_setup_ios
+  tags:
+    - saas-macos-medium-m1
+  script:
+    - flutter build ios --release --no-codesign
+  only:
+    - merge_requests
+  artifacts:
+    reports:
+      dotenv: build.env
+    expire_in: 1 hour
+
+# Release builds for main branch (artifacts kept)
+build_android_release:
+  stage: build_release
+  <<: *flutter_setup
+  script:
+    - flutter build apk --release
+    - flutter build appbundle --release
+  only:
+    - main
+  artifacts:
+    paths:
+      - build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/bundle/release/app-release.aab
+    expire_in: 30 days
+  when: on_success
+
+build_ios_release:
+  stage: build_release
+  <<: *flutter_setup_ios
+  tags:
+    - saas-macos-medium-m1
+  script:
+    - flutter build ios --release --no-codesign
+  only:
+    - main
+  artifacts:
+    paths:
+      - build/ios/iphoneos/Runner.app
+    expire_in: 30 days
+  when: on_success
+
 secret_detection:
   stage: secret-detection
+
 include:
-- template: Security/Secret-Detection.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
