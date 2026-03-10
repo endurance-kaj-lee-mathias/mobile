@@ -1,24 +1,24 @@
+import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
+import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
+import 'package:endurance_mobile_app/services/network/member_model.dart';
+import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SupportNetworkSection extends StatelessWidget {
   const SupportNetworkSection({super.key});
 
-  static const _contacts = [
-    _Contact('James R.', 'JR', Color(0xFF6B8F71)),
-    _Contact('Lisa K.', 'LK', AppColors.dustyBlue),
-    _Contact('Tom H.', 'TH', Color(0xFF8F7B6B)),
-    _Contact('Anna M.', 'AM', Color(0xFF7B6B8F)),
-  ];
-
-  static const _overflow = 3;
+  static const _maxVisible = 10;
 
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
+    final controller = Get.find<NetworkController>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,49 +32,60 @@ class SupportNetworkSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ..._contacts.map((c) => _ContactAvatar(contact: c)),
-              _OverflowAvatar(count: _overflow),
-            ],
-          ),
-        ),
+        Obx(() {
+          final members = controller.members;
+          final visible = members.take(_maxVisible).toList();
+          final overflow = members.length - _maxVisible;
+
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                ...visible.map((m) => _MemberAvatar(member: m)),
+                _ViewAllAvatar(
+                  overflow: overflow > 0 ? overflow : null,
+                  onTap: () => context.goNamed(AppRoutes.network),
+                ),
+              ],
+            ),
+          );
+        }),
       ],
     );
   }
 }
 
-class _ContactAvatar extends StatelessWidget {
-  final _Contact contact;
+class _MemberAvatar extends StatelessWidget {
+  final MemberModel member;
 
-  const _ContactAvatar({required this.contact});
+  const _MemberAvatar({required this.member});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final name = member.displayName.isNotEmpty
+        ? member.displayName
+        : member.username;
 
     return Padding(
       padding: const EdgeInsets.only(right: 16),
       child: Column(
         children: [
-          CircleAvatar(
+          UserAvatar(
+            imageUrl: member.image,
+            firstName: member.firstName,
             radius: 28,
-            backgroundColor: contact.color.withValues(alpha: 0.18),
-            child: Text(
-              contact.initials,
-              style: TextStyle(
-                color: contact.color,
-                fontWeight: FontWeight.w700,
-                fontSize: 15,
-              ),
-            ),
           ),
           const SizedBox(height: 6),
-          Text(
-            contact.name,
-            style: textTheme.bodyMedium?.copyWith(fontSize: 11),
+          SizedBox(
+            width: 56,
+            child: Text(
+              name,
+              style: textTheme.bodyMedium?.copyWith(fontSize: 11),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),
@@ -82,44 +93,51 @@ class _ContactAvatar extends StatelessWidget {
   }
 }
 
-class _OverflowAvatar extends StatelessWidget {
-  final int count;
+class _ViewAllAvatar extends StatelessWidget {
+  final int? overflow;
+  final VoidCallback onTap;
 
-  const _OverflowAvatar({required this.count});
+  const _ViewAllAvatar({required this.overflow, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    return Column(
-      children: [
-        CircleAvatar(
-          radius: 28,
-          backgroundColor: colorScheme.outlineVariant,
-          child: Text(
-            '+$count',
-            style: TextStyle(
-              color: colorScheme.onSurface.withValues(alpha: 0.6),
-              fontWeight: FontWeight.w700,
-              fontSize: 14,
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 28,
+            backgroundColor: AppColors.paleSage.withValues(alpha: 0.4),
+            child: overflow != null
+                ? Text(
+                    '+$overflow',
+                    style: const TextStyle(
+                      color: AppColors.mossGreen,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                    ),
+                  )
+                : const Icon(
+                    Icons.people_outline_rounded,
+                    color: AppColors.mossGreen,
+                    size: 26,
+                  ),
+          ),
+          const SizedBox(height: 6),
+          SizedBox(
+            width: 56,
+            child: Text(
+              S.of(context).supportNetworkMore,
+              style: textTheme.bodyMedium?.copyWith(fontSize: 11),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          S.of(context).supportNetworkMore,
-          style: textTheme.bodyMedium?.copyWith(fontSize: 11),
-        ),
-      ],
+        ],
+      ),
     );
   }
-}
-
-class _Contact {
-  final String name;
-  final String initials;
-  final Color color;
-
-  const _Contact(this.name, this.initials, this.color);
 }

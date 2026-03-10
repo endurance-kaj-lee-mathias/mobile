@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
+import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:endurance_mobile_app/services/notification/fcm_token_model.dart';
 import 'package:endurance_mobile_app/services/notification/notification_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -51,7 +52,13 @@ class NotificationController extends GetxController {
     // Foreground messages (app is open)
     FirebaseMessaging.onMessage.listen((message) {
       debugPrint('Foreground message: ${message.notification?.title}');
-      // Show an in-app banner here if desired
+
+      // When the backend sends a push for a new/updated network invite,
+      // refresh the network controller so the badge and list update instantly.
+      // The backend should set data['type'] = 'network_invite' on those pushes.
+      if (message.data['type'] == 'network_invite') {
+        Get.find<NetworkController>().handlePushNotification();
+      }
     });
 
     _fcm.onTokenRefresh.listen(_sendToken);

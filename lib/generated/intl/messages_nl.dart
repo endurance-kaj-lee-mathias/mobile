@@ -30,7 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(score) => "Stemming: ${score}/10";
 
-  static String m5(minutes) => "${minutes} min lezen";
+  static String m7(minutes) => "${minutes} min lezen";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -146,7 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Welzijn",
     ),
-    "resourceReadTime": m5,
+    "resourceReadTime": m7,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Omgaan met Angst\nin het Dagelijks Leven",
     ),

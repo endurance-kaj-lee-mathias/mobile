@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
+import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +42,9 @@ class MainShell extends StatelessWidget {
       body: child,
       bottomNavigationBar: Obx(() {
         final selectedIndex = _selectedIndex(context);
-        final user = Get
-            .find<UserController>()
-            .user
-            .value;
+        final user = Get.find<UserController>().user.value;
+        final incomingCount =
+            Get.find<NetworkController>().incoming.length;
 
         void onTab(int index) => context.goNamed(_tabs[index]);
 
@@ -77,13 +77,21 @@ class MainShell extends StatelessWidget {
                 label: s.navChats,
               ),
               BottomNavigationBarItem(
-                icon: const Padding(
-                  padding: EdgeInsets.only(top: 8),
-                  child: HeroIcon(HeroIcons.userGroupOutline),
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Badge(
+                    isLabelVisible: incomingCount > 0,
+                    label: Text('$incomingCount'),
+                    child: const HeroIcon(HeroIcons.userGroupOutline),
+                  ),
                 ),
-                activeIcon: const Padding(
-                  padding: EdgeInsets.only(top: 8),
-                  child: HeroIcon(HeroIcons.userGroupSolid),
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Badge(
+                    isLabelVisible: incomingCount > 0,
+                    label: Text('$incomingCount'),
+                    child: const HeroIcon(HeroIcons.userGroupSolid),
+                  ),
                 ),
                 label: s.navNetwork,
               ),
@@ -126,8 +134,16 @@ class MainShell extends StatelessWidget {
               label: s.navChats,
             ),
             NavigationDestination(
-              icon: const HeroIcon(HeroIcons.userGroupOutline),
-              selectedIcon: const HeroIcon(HeroIcons.userGroupSolid),
+              icon: Badge(
+                isLabelVisible: incomingCount > 0,
+                label: Text('$incomingCount'),
+                child: const HeroIcon(HeroIcons.userGroupOutline),
+              ),
+              selectedIcon: Badge(
+                isLabelVisible: incomingCount > 0,
+                label: Text('$incomingCount'),
+                child: const HeroIcon(HeroIcons.userGroupSolid),
+              ),
               label: s.navNetwork,
             ),
             NavigationDestination(
