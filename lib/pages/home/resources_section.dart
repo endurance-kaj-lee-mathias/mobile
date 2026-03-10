@@ -1,4 +1,6 @@
 import 'package:endurance_mobile_app/app/themes.dart';
+import 'package:endurance_mobile_app/components/bordered_card.dart';
+import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +10,6 @@ class ResourcesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
 
     final resources = [
       _Resource(
@@ -41,14 +41,7 @@ class ResourcesSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          l10n.resourcesSectionTitle,
-          style: textTheme.labelMedium?.copyWith(
-            color: colorScheme.onSurface.withValues(alpha: 0.5),
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        SectionHeader(label: l10n.resourcesSectionTitle),
         const SizedBox(height: 12),
         SizedBox(
           height: 148,
@@ -76,12 +69,7 @@ class _ResourceCard extends StatelessWidget {
 
     return SizedBox(
       width: 160,
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: colorScheme.outlineVariant, width: 1.5),
-        ),
+      child: BorderedCard(
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
           onTap: () {},

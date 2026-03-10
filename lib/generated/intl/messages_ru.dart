@@ -30,7 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(score) => "Настроение: ${score}/10";
 
-  static String m5(minutes) => "${minutes} мин чтения";
+  static String m5(name) => "${name} будет удалён из вашей сети поддержки.";
+
+  static String m6(username) => "Запрос отправлен @${username}";
+
+  static String m7(minutes) => "${minutes} мин чтения";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -115,10 +119,101 @@ class MessageLookup extends MessageLookupByLibrary {
     "navHome": MessageLookupByLibrary.simpleMessage("Главная"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Моя Сеть"),
     "navProfile": MessageLookupByLibrary.simpleMessage("Профиль"),
+    "networkAccept": MessageLookupByLibrary.simpleMessage("Принять"),
+    "networkAcceptedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Связь принята",
+    ),
+    "networkAddSomeone": MessageLookupByLibrary.simpleMessage(
+      "Добавить кого-то",
+    ),
+    "networkAddToNetwork": MessageLookupByLibrary.simpleMessage(
+      "Добавить в сеть",
+    ),
+    "networkConnections": MessageLookupByLibrary.simpleMessage("Связи"),
+    "networkDeclinedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Запрос отклонён",
+    ),
+    "networkDeny": MessageLookupByLibrary.simpleMessage("Отклонить"),
+    "networkEmptyConnections": MessageLookupByLibrary.simpleMessage(
+      "Нет связей",
+    ),
+    "networkEmptyConnectionsBody": MessageLookupByLibrary.simpleMessage(
+      "Отправьте запросы на связь, чтобы расширить сеть поддержки.",
+    ),
+    "networkEmptyIncoming": MessageLookupByLibrary.simpleMessage(
+      "Нет входящих запросов",
+    ),
+    "networkEmptyRequests": MessageLookupByLibrary.simpleMessage(
+      "Нет запросов",
+    ),
+    "networkEmptyRequestsBody": MessageLookupByLibrary.simpleMessage(
+      "У вас нет входящих или исходящих запросов на связь.",
+    ),
+    "networkEmptySent": MessageLookupByLibrary.simpleMessage(
+      "Нет ожидающих запросов",
+    ),
+    "networkErrorAlreadyConnected": MessageLookupByLibrary.simpleMessage(
+      "Уже подключены или запрос уже на рассмотрении",
+    ),
+    "networkErrorCannotRemove": MessageLookupByLibrary.simpleMessage(
+      "Не удаётся удалить эту связь. Это может быть известное ограничение сервера — попросите их удалить вас.",
+    ),
+    "networkErrorCannotSend": MessageLookupByLibrary.simpleMessage(
+      "Не могу отправить запрос этому пользователю",
+    ),
+    "networkErrorGeneric": MessageLookupByLibrary.simpleMessage(
+      "Что-то пошло не так. Попробуйте ещё раз.",
+    ),
+    "networkErrorUserNotFound": MessageLookupByLibrary.simpleMessage(
+      "Пользователь не найден",
+    ),
+    "networkGroupOther": MessageLookupByLibrary.simpleMessage("ДРУГИЕ"),
+    "networkGroupSupport": MessageLookupByLibrary.simpleMessage(
+      "СЕТЬ ПОДДЕРЖКИ",
+    ),
+    "networkGroupTherapists": MessageLookupByLibrary.simpleMessage("ТЕРАПЕВТЫ"),
+    "networkGroupVeterans": MessageLookupByLibrary.simpleMessage("ВЕТЕРАНЫ"),
+    "networkIncoming": MessageLookupByLibrary.simpleMessage("ВХОДЯЩИЕ"),
+    "networkNoteHint": MessageLookupByLibrary.simpleMessage(
+      "Добавьте личное сообщение...",
+    ),
+    "networkNoteOptional": MessageLookupByLibrary.simpleMessage(
+      "Заметка (необязательно)",
+    ),
+    "networkPendingLabel": MessageLookupByLibrary.simpleMessage("В ожидании"),
+    "networkRemove": MessageLookupByLibrary.simpleMessage("Удалить"),
+    "networkRemoveBody": m5,
+    "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Удалить"),
+    "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
+      "Удалить из сети?",
+    ),
+    "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Удалено из сети",
+    ),
+    "networkRequestSentSuccess": m6,
+    "networkRequests": MessageLookupByLibrary.simpleMessage("Запросы"),
+    "networkRoleSupport": MessageLookupByLibrary.simpleMessage(
+      "Сеть поддержки",
+    ),
+    "networkRoleTherapist": MessageLookupByLibrary.simpleMessage("Терапевт"),
+    "networkRoleVeteran": MessageLookupByLibrary.simpleMessage("Ветеран"),
+    "networkSendRequest": MessageLookupByLibrary.simpleMessage(
+      "Отправить запрос",
+    ),
+    "networkSent": MessageLookupByLibrary.simpleMessage("ОТПРАВЛЕННЫЕ"),
     "networkSoon": MessageLookupByLibrary.simpleMessage("Сеть — скоро"),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Моя Сеть"),
+    "networkUsernameHint": MessageLookupByLibrary.simpleMessage(
+      "например, ivan_ivanov",
+    ),
+    "networkUsernameLabel": MessageLookupByLibrary.simpleMessage(
+      "Имя пользователя",
+    ),
+    "networkUsernameRequired": MessageLookupByLibrary.simpleMessage(
+      "Пожалуйста, введите имя пользователя",
+    ),
     "notesHint": MessageLookupByLibrary.simpleMessage(
-      "Как прошёл ваш день? (макс. 500 символов)",
+      "Как вы себя чувствуете? (макс. 500 символов)",
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage(
       "Заметки (необязательно)",
@@ -148,7 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Благополучие",
     ),
-    "resourceReadTime": m5,
+    "resourceReadTime": m7,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Управление тревогой\nв повседневной жизни",
     ),

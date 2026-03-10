@@ -1,5 +1,6 @@
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/hero_icon.dart';
+import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -9,20 +10,11 @@ class QuickActionsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          l10n.quickActionsSectionTitle,
-          style: textTheme.labelMedium?.copyWith(
-            color: colorScheme.onSurface.withValues(alpha: 0.5),
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        SectionHeader(label: l10n.quickActionsSectionTitle),
         const SizedBox(height: 12),
         IntrinsicHeight(
           child: Row(

@@ -33,7 +33,7 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              UserAvatar(user: user, radius: 48),
+              UserAvatar.fromUser(user, radius: 48),
               const SizedBox(height: 16),
               if (user != null) ...[
                 Text(

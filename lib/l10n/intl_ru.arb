@@ -48,7 +48,7 @@
   "checkInTimeAgoHours": "{count} ч. назад",
   "checkInAvgToday": "ср. {score} сегодня",
   "notesLabel": "Заметки (необязательно)",
-  "notesHint": "Как прошёл ваш день? (макс. 500 символов)",
+  "notesHint": "Как вы себя чувствуете? (макс. 500 символов)",
   "checkInSuccess": "Отметка отправлена!",
   "checkInError": "Что-то пошло не так. Повторите попытку.",
 
@@ -68,6 +68,58 @@
 
   "supportNetworkSectionTitle": "МОЯ СЕТЬ ПОДДЕРЖКИ",
   "supportNetworkMore": "ещё",
+
+  "networkConnections": "Связи",
+  "networkRequests": "Запросы",
+  "networkGroupSupport": "СЕТЬ ПОДДЕРЖКИ",
+  "networkGroupTherapists": "ТЕРАПЕВТЫ",
+  "networkGroupVeterans": "ВЕТЕРАНЫ",
+  "networkGroupOther": "ДРУГИЕ",
+  "networkRoleSupport": "Сеть поддержки",
+  "networkRoleTherapist": "Терапевт",
+  "networkRoleVeteran": "Ветеран",
+  "networkAddToNetwork": "Добавить в сеть",
+  "networkAddSomeone": "Добавить кого-то",
+  "networkEmptyConnections": "Нет связей",
+  "networkEmptyConnectionsBody": "Отправьте запросы на связь, чтобы расширить сеть поддержки.",
+  "networkEmptyRequests": "Нет запросов",
+  "networkEmptyRequestsBody": "У вас нет входящих или исходящих запросов на связь.",
+  "networkEmptyIncoming": "Нет входящих запросов",
+  "networkEmptySent": "Нет ожидающих запросов",
+  "networkIncoming": "ВХОДЯЩИЕ",
+  "networkSent": "ОТПРАВЛЕННЫЕ",
+  "networkRemove": "Удалить",
+  "networkRemoveTitle": "Удалить из сети?",
+  "networkRemoveBody": "{name} будет удалён из вашей сети поддержки.",
+  "@networkRemoveBody": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "networkRemoveConfirm": "Удалить",
+  "networkAccept": "Принять",
+  "networkDeny": "Отклонить",
+  "networkUsernameLabel": "Имя пользователя",
+  "networkUsernameHint": "например, ivan_ivanov",
+  "networkUsernameRequired": "Пожалуйста, введите имя пользователя",
+  "networkNoteOptional": "Заметка (необязательно)",
+  "networkNoteHint": "Добавьте личное сообщение...",
+  "networkSendRequest": "Отправить запрос",
+  "networkPendingLabel": "В ожидании",
+  "networkRequestSentSuccess": "Запрос отправлен @{username}",
+  "@networkRequestSentSuccess": {
+    "placeholders": {
+      "username": { "type": "String" }
+    }
+  },
+  "networkRemovedSuccess": "Удалено из сети",
+  "networkAcceptedSuccess": "Связь принята",
+  "networkDeclinedSuccess": "Запрос отклонён",
+  "networkErrorGeneric": "Что-то пошло не так. Попробуйте ещё раз.",
+  "networkErrorUserNotFound": "Пользователь не найден",
+  "networkErrorAlreadyConnected": "Уже подключены или запрос уже на рассмотрении",
+  "networkErrorCannotSend": "Не могу отправить запрос этому пользователю",
+  "networkErrorCannotRemove": "Не удаётся удалить эту связь. Это может быть известное ограничение сервера — попросите их удалить вас.",
 
   "moodTrendSectionTitle": "ЭТА НЕДЕЛЯ",
   "moodOverviewTitle": "Обзор настроения",

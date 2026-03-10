@@ -1,4 +1,5 @@
 import 'package:endurance_mobile_app/app/themes.dart';
+import 'package:endurance_mobile_app/components/bordered_card.dart';
 import 'package:endurance_mobile_app/components/emoji_image.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/pages/home/check_in_bottom_sheet.dart';
@@ -26,15 +27,8 @@ class DailyCheckInCard extends StatelessWidget {
       final avg = controller.avgTodayScore;
       final count = controller.todayEntries.length;
 
-      return Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: BorderSide(
-            color: done ? AppColors.success : colorScheme.outlineVariant,
-            width: 1.5,
-          ),
-        ),
+      return BorderedCard(
+        borderColor: done ? AppColors.success : colorScheme.outlineVariant,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
           child: Column(

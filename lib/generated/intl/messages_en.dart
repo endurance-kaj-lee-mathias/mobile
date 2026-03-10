@@ -30,7 +30,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(score) => "Mood score: ${score}/10";
 
-  static String m5(minutes) => "${minutes} min read";
+  static String m5(name) =>
+      "${name} will be removed from your support network.";
+
+  static String m6(username) => "Request sent to @${username}";
+
+  static String m7(minutes) => "${minutes} min read";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -107,12 +112,97 @@ class MessageLookup extends MessageLookupByLibrary {
     "navHome": MessageLookupByLibrary.simpleMessage("Home"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("My Network"),
     "navProfile": MessageLookupByLibrary.simpleMessage("You"),
+    "networkAccept": MessageLookupByLibrary.simpleMessage("Accept"),
+    "networkAcceptedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Connection accepted",
+    ),
+    "networkAddSomeone": MessageLookupByLibrary.simpleMessage("Add Someone"),
+    "networkAddToNetwork": MessageLookupByLibrary.simpleMessage(
+      "Add to Network",
+    ),
+    "networkConnections": MessageLookupByLibrary.simpleMessage("Connections"),
+    "networkDeclinedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Request declined",
+    ),
+    "networkDeny": MessageLookupByLibrary.simpleMessage("Deny"),
+    "networkEmptyConnections": MessageLookupByLibrary.simpleMessage(
+      "No connections yet",
+    ),
+    "networkEmptyConnectionsBody": MessageLookupByLibrary.simpleMessage(
+      "Send connection requests to grow your support network.",
+    ),
+    "networkEmptyIncoming": MessageLookupByLibrary.simpleMessage(
+      "No incoming requests",
+    ),
+    "networkEmptyRequests": MessageLookupByLibrary.simpleMessage("No requests"),
+    "networkEmptyRequestsBody": MessageLookupByLibrary.simpleMessage(
+      "You have no incoming or outgoing connection requests.",
+    ),
+    "networkEmptySent": MessageLookupByLibrary.simpleMessage(
+      "No pending requests",
+    ),
+    "networkErrorAlreadyConnected": MessageLookupByLibrary.simpleMessage(
+      "Already connected or a request is already pending",
+    ),
+    "networkErrorCannotRemove": MessageLookupByLibrary.simpleMessage(
+      "Cannot remove this connection. This may be a known server limitation — ask them to remove you instead.",
+    ),
+    "networkErrorCannotSend": MessageLookupByLibrary.simpleMessage(
+      "Cannot send a request to this user",
+    ),
+    "networkErrorGeneric": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong. Please try again.",
+    ),
+    "networkErrorUserNotFound": MessageLookupByLibrary.simpleMessage(
+      "User not found",
+    ),
+    "networkGroupOther": MessageLookupByLibrary.simpleMessage("OTHER"),
+    "networkGroupSupport": MessageLookupByLibrary.simpleMessage(
+      "SUPPORT NETWORK",
+    ),
+    "networkGroupTherapists": MessageLookupByLibrary.simpleMessage(
+      "THERAPISTS",
+    ),
+    "networkGroupVeterans": MessageLookupByLibrary.simpleMessage("VETERANS"),
+    "networkIncoming": MessageLookupByLibrary.simpleMessage("INCOMING"),
+    "networkNoteHint": MessageLookupByLibrary.simpleMessage(
+      "Add a personal message...",
+    ),
+    "networkNoteOptional": MessageLookupByLibrary.simpleMessage(
+      "Note (optional)",
+    ),
+    "networkPendingLabel": MessageLookupByLibrary.simpleMessage("Pending"),
+    "networkRemove": MessageLookupByLibrary.simpleMessage("Remove"),
+    "networkRemoveBody": m5,
+    "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Remove"),
+    "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
+      "Remove from network?",
+    ),
+    "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Removed from network",
+    ),
+    "networkRequestSentSuccess": m6,
+    "networkRequests": MessageLookupByLibrary.simpleMessage("Requests"),
+    "networkRoleSupport": MessageLookupByLibrary.simpleMessage(
+      "Support Network",
+    ),
+    "networkRoleTherapist": MessageLookupByLibrary.simpleMessage("Therapist"),
+    "networkRoleVeteran": MessageLookupByLibrary.simpleMessage("Veteran"),
+    "networkSendRequest": MessageLookupByLibrary.simpleMessage("Send Request"),
+    "networkSent": MessageLookupByLibrary.simpleMessage("SENT"),
     "networkSoon": MessageLookupByLibrary.simpleMessage(
       "Network — coming soon",
     ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("My Network"),
+    "networkUsernameHint": MessageLookupByLibrary.simpleMessage(
+      "e.g. john_doe",
+    ),
+    "networkUsernameLabel": MessageLookupByLibrary.simpleMessage("Username"),
+    "networkUsernameRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter a username",
+    ),
     "notesHint": MessageLookupByLibrary.simpleMessage(
-      "How was your day? (max 500 characters)",
+      "How are you feeling? (max 500 characters)",
     ),
     "notesLabel": MessageLookupByLibrary.simpleMessage("Notes (optional)"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
@@ -140,7 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Wellbeing",
     ),
-    "resourceReadTime": m5,
+    "resourceReadTime": m7,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Managing Anxiety\nin Everyday Life",
     ),

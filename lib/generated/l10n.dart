@@ -264,6 +264,391 @@ class S {
     );
   }
 
+  /// `Connections`
+  String get networkConnections {
+    return Intl.message(
+      'Connections',
+      name: 'networkConnections',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Requests`
+  String get networkRequests {
+    return Intl.message(
+      'Requests',
+      name: 'networkRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SUPPORT NETWORK`
+  String get networkGroupSupport {
+    return Intl.message(
+      'SUPPORT NETWORK',
+      name: 'networkGroupSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `THERAPISTS`
+  String get networkGroupTherapists {
+    return Intl.message(
+      'THERAPISTS',
+      name: 'networkGroupTherapists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VETERANS`
+  String get networkGroupVeterans {
+    return Intl.message(
+      'VETERANS',
+      name: 'networkGroupVeterans',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTHER`
+  String get networkGroupOther {
+    return Intl.message('OTHER', name: 'networkGroupOther', desc: '', args: []);
+  }
+
+  /// `Support Network`
+  String get networkRoleSupport {
+    return Intl.message(
+      'Support Network',
+      name: 'networkRoleSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Therapist`
+  String get networkRoleTherapist {
+    return Intl.message(
+      'Therapist',
+      name: 'networkRoleTherapist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Veteran`
+  String get networkRoleVeteran {
+    return Intl.message(
+      'Veteran',
+      name: 'networkRoleVeteran',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to Network`
+  String get networkAddToNetwork {
+    return Intl.message(
+      'Add to Network',
+      name: 'networkAddToNetwork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Someone`
+  String get networkAddSomeone {
+    return Intl.message(
+      'Add Someone',
+      name: 'networkAddSomeone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No connections yet`
+  String get networkEmptyConnections {
+    return Intl.message(
+      'No connections yet',
+      name: 'networkEmptyConnections',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send connection requests to grow your support network.`
+  String get networkEmptyConnectionsBody {
+    return Intl.message(
+      'Send connection requests to grow your support network.',
+      name: 'networkEmptyConnectionsBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No requests`
+  String get networkEmptyRequests {
+    return Intl.message(
+      'No requests',
+      name: 'networkEmptyRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have no incoming or outgoing connection requests.`
+  String get networkEmptyRequestsBody {
+    return Intl.message(
+      'You have no incoming or outgoing connection requests.',
+      name: 'networkEmptyRequestsBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No incoming requests`
+  String get networkEmptyIncoming {
+    return Intl.message(
+      'No incoming requests',
+      name: 'networkEmptyIncoming',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No pending requests`
+  String get networkEmptySent {
+    return Intl.message(
+      'No pending requests',
+      name: 'networkEmptySent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `INCOMING`
+  String get networkIncoming {
+    return Intl.message(
+      'INCOMING',
+      name: 'networkIncoming',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SENT`
+  String get networkSent {
+    return Intl.message('SENT', name: 'networkSent', desc: '', args: []);
+  }
+
+  /// `Remove`
+  String get networkRemove {
+    return Intl.message('Remove', name: 'networkRemove', desc: '', args: []);
+  }
+
+  /// `Remove from network?`
+  String get networkRemoveTitle {
+    return Intl.message(
+      'Remove from network?',
+      name: 'networkRemoveTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{name} will be removed from your support network.`
+  String networkRemoveBody(String name) {
+    return Intl.message(
+      '$name will be removed from your support network.',
+      name: 'networkRemoveBody',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `Remove`
+  String get networkRemoveConfirm {
+    return Intl.message(
+      'Remove',
+      name: 'networkRemoveConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get networkAccept {
+    return Intl.message('Accept', name: 'networkAccept', desc: '', args: []);
+  }
+
+  /// `Deny`
+  String get networkDeny {
+    return Intl.message('Deny', name: 'networkDeny', desc: '', args: []);
+  }
+
+  /// `Username`
+  String get networkUsernameLabel {
+    return Intl.message(
+      'Username',
+      name: 'networkUsernameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. john_doe`
+  String get networkUsernameHint {
+    return Intl.message(
+      'e.g. john_doe',
+      name: 'networkUsernameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a username`
+  String get networkUsernameRequired {
+    return Intl.message(
+      'Please enter a username',
+      name: 'networkUsernameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note (optional)`
+  String get networkNoteOptional {
+    return Intl.message(
+      'Note (optional)',
+      name: 'networkNoteOptional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a personal message...`
+  String get networkNoteHint {
+    return Intl.message(
+      'Add a personal message...',
+      name: 'networkNoteHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Request`
+  String get networkSendRequest {
+    return Intl.message(
+      'Send Request',
+      name: 'networkSendRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get networkPendingLabel {
+    return Intl.message(
+      'Pending',
+      name: 'networkPendingLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request sent to @{username}`
+  String networkRequestSentSuccess(String username) {
+    return Intl.message(
+      'Request sent to @$username',
+      name: 'networkRequestSentSuccess',
+      desc: '',
+      args: [username],
+    );
+  }
+
+  /// `Removed from network`
+  String get networkRemovedSuccess {
+    return Intl.message(
+      'Removed from network',
+      name: 'networkRemovedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection accepted`
+  String get networkAcceptedSuccess {
+    return Intl.message(
+      'Connection accepted',
+      name: 'networkAcceptedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request declined`
+  String get networkDeclinedSuccess {
+    return Intl.message(
+      'Request declined',
+      name: 'networkDeclinedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong. Please try again.`
+  String get networkErrorGeneric {
+    return Intl.message(
+      'Something went wrong. Please try again.',
+      name: 'networkErrorGeneric',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User not found`
+  String get networkErrorUserNotFound {
+    return Intl.message(
+      'User not found',
+      name: 'networkErrorUserNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already connected or a request is already pending`
+  String get networkErrorAlreadyConnected {
+    return Intl.message(
+      'Already connected or a request is already pending',
+      name: 'networkErrorAlreadyConnected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cannot send a request to this user`
+  String get networkErrorCannotSend {
+    return Intl.message(
+      'Cannot send a request to this user',
+      name: 'networkErrorCannotSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cannot remove this connection. This may be a known server limitation — ask them to remove you instead.`
+  String get networkErrorCannotRemove {
+    return Intl.message(
+      'Cannot remove this connection. This may be a known server limitation — ask them to remove you instead.',
+      name: 'networkErrorCannotRemove',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Welcome back,`
   String get homeWelcomePrefix {
     return Intl.message(
@@ -387,10 +772,10 @@ class S {
     );
   }
 
-  /// `How was your day? (max 500 characters)`
+  /// `How are you feeling? (max 500 characters)`
   String get notesHint {
     return Intl.message(
-      'How was your day? (max 500 characters)',
+      'How are you feeling? (max 500 characters)',
       name: 'notesHint',
       desc: '',
       args: [],

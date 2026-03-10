@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () => context.goNamed(AppRoutes.profile),
-                  child: UserAvatar(user: user, radius: 28),
+                  child: UserAvatar.fromUser(user, radius: 28),
                 ),
               ],
             );

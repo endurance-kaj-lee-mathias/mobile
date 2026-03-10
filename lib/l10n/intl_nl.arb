@@ -48,7 +48,7 @@
   "checkInTimeAgoHours": "{count}u geleden",
   "checkInAvgToday": "gem. {score} vandaag",
   "notesLabel": "Notities (optioneel)",
-  "notesHint": "Hoe was uw dag? (max. 500 tekens)",
+  "notesHint": "Hoe voel je je? (max. 500 tekens)",
   "checkInSuccess": "Check-in ingediend!",
   "checkInError": "Er is iets misgegaan. Probeer het opnieuw.",
 
@@ -68,6 +68,58 @@
 
   "supportNetworkSectionTitle": "MIJN STEUNNETWERK",
   "supportNetworkMore": "meer",
+
+  "networkConnections": "Verbindingen",
+  "networkRequests": "Verzoeken",
+  "networkGroupSupport": "STEUNNETWERK",
+  "networkGroupTherapists": "THERAPEUTEN",
+  "networkGroupVeterans": "VETERANEN",
+  "networkGroupOther": "OVERIG",
+  "networkRoleSupport": "Steunnetwerk",
+  "networkRoleTherapist": "Therapeut",
+  "networkRoleVeteran": "Veteraan",
+  "networkAddToNetwork": "Toevoegen aan netwerk",
+  "networkAddSomeone": "Iemand toevoegen",
+  "networkEmptyConnections": "Nog geen verbindingen",
+  "networkEmptyConnectionsBody": "Stuur verbindingsverzoeken om uw steunnetwerk te laten groeien.",
+  "networkEmptyRequests": "Geen verzoeken",
+  "networkEmptyRequestsBody": "U heeft geen inkomende of uitgaande verbindingsverzoeken.",
+  "networkEmptyIncoming": "Geen inkomende verzoeken",
+  "networkEmptySent": "Geen openstaande verzoeken",
+  "networkIncoming": "INKOMEND",
+  "networkSent": "VERZONDEN",
+  "networkRemove": "Verwijderen",
+  "networkRemoveTitle": "Verwijderen uit netwerk?",
+  "networkRemoveBody": "{name} wordt verwijderd uit uw steunnetwerk.",
+  "@networkRemoveBody": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "networkRemoveConfirm": "Verwijderen",
+  "networkAccept": "Accepteren",
+  "networkDeny": "Weigeren",
+  "networkUsernameLabel": "Gebruikersnaam",
+  "networkUsernameHint": "bijv. jan_janssen",
+  "networkUsernameRequired": "Voer een gebruikersnaam in",
+  "networkNoteOptional": "Notitie (optioneel)",
+  "networkNoteHint": "Voeg een persoonlijk bericht toe...",
+  "networkSendRequest": "Verzoek verzenden",
+  "networkPendingLabel": "In behandeling",
+  "networkRequestSentSuccess": "Verzoek verzonden naar @{username}",
+  "@networkRequestSentSuccess": {
+    "placeholders": {
+      "username": { "type": "String" }
+    }
+  },
+  "networkRemovedSuccess": "Verwijderd uit netwerk",
+  "networkAcceptedSuccess": "Verbinding geaccepteerd",
+  "networkDeclinedSuccess": "Verzoek geweigerd",
+  "networkErrorGeneric": "Er is iets misgegaan. Probeer het opnieuw.",
+  "networkErrorUserNotFound": "Gebruiker niet gevonden",
+  "networkErrorAlreadyConnected": "Al verbonden of er is al een verzoek in behandeling",
+  "networkErrorCannotSend": "Kan geen verzoek sturen naar deze gebruiker",
+  "networkErrorCannotRemove": "Kan deze verbinding niet verwijderen. Dit kan een bekende serverbeperking zijn — vraag hen om u te verwijderen.",
 
   "moodTrendSectionTitle": "DEZE WEEK",
   "moodOverviewTitle": "Stemmingsoverzicht",

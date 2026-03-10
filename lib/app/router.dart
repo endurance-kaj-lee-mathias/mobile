@@ -1,4 +1,4 @@
-import 'package:endurance_mobile_app/pages/network.dart';
+import 'package:endurance_mobile_app/pages/network/network_page.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/app/route_guard.dart';
 import 'package:endurance_mobile_app/components/main_shell.dart';

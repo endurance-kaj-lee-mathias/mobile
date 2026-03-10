@@ -31,6 +31,57 @@
   "profileTitle": "Profile",
   "networkTitle": "My Network",
   "networkSoon": "Network — coming soon",
+  "networkConnections": "Connections",
+  "networkRequests": "Requests",
+  "networkGroupSupport": "SUPPORT NETWORK",
+  "networkGroupTherapists": "THERAPISTS",
+  "networkGroupVeterans": "VETERANS",
+  "networkGroupOther": "OTHER",
+  "networkRoleSupport": "Support Network",
+  "networkRoleTherapist": "Therapist",
+  "networkRoleVeteran": "Veteran",
+  "networkAddToNetwork": "Add to Network",
+  "networkAddSomeone": "Add Someone",
+  "networkEmptyConnections": "No connections yet",
+  "networkEmptyConnectionsBody": "Send connection requests to grow your support network.",
+  "networkEmptyRequests": "No requests",
+  "networkEmptyRequestsBody": "You have no incoming or outgoing connection requests.",
+  "networkEmptyIncoming": "No incoming requests",
+  "networkEmptySent": "No pending requests",
+  "networkIncoming": "INCOMING",
+  "networkSent": "SENT",
+  "networkRemove": "Remove",
+  "networkRemoveTitle": "Remove from network?",
+  "networkRemoveBody": "{name} will be removed from your support network.",
+  "@networkRemoveBody": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "networkRemoveConfirm": "Remove",
+  "networkAccept": "Accept",
+  "networkDeny": "Deny",
+  "networkUsernameLabel": "Username",
+  "networkUsernameHint": "e.g. john_doe",
+  "networkUsernameRequired": "Please enter a username",
+  "networkNoteOptional": "Note (optional)",
+  "networkNoteHint": "Add a personal message...",
+  "networkSendRequest": "Send Request",
+  "networkPendingLabel": "Pending",
+  "networkRequestSentSuccess": "Request sent to @{username}",
+  "@networkRequestSentSuccess": {
+    "placeholders": {
+      "username": { "type": "String" }
+    }
+  },
+  "networkRemovedSuccess": "Removed from network",
+  "networkAcceptedSuccess": "Connection accepted",
+  "networkDeclinedSuccess": "Request declined",
+  "networkErrorGeneric": "Something went wrong. Please try again.",
+  "networkErrorUserNotFound": "User not found",
+  "networkErrorAlreadyConnected": "Already connected or a request is already pending",
+  "networkErrorCannotSend": "Cannot send a request to this user",
+  "networkErrorCannotRemove": "Cannot remove this connection. This may be a known server limitation — ask them to remove you instead.",
 
   "homeWelcomePrefix": "Welcome back,",
   "@homeWelcomePrefix": { "description": "Greeting prefix on the home screen, followed by the user's first name." },
@@ -76,7 +127,7 @@
     }
   },
   "notesLabel": "Notes (optional)",
-  "notesHint": "How was your day? (max 500 characters)",
+  "notesHint": "How are you feeling? (max 500 characters)",
   "checkInSuccess": "Check-in submitted!",
   "checkInError": "Something went wrong. Please try again.",
 
