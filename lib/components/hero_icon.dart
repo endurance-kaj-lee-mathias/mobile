@@ -24,12 +24,9 @@ class HeroIcon extends StatelessWidget {
 }
 
 abstract final class HeroIcons {
-  // ── Solid ──────────────────────────────────────────────────────────────────
   static const String homeSolid      = 'assets/icons/solid/home.svg';
   static const String chatSolid      = 'assets/icons/solid/chat-bubble-left-right.svg';
   static const String userGroupSolid = 'assets/icons/solid/user-group.svg';
-
-  // ── Outline ────────────────────────────────────────────────────────────────
 
   // Navigation / auth
   static const String homeOutline    = 'assets/icons/outline/home.svg';

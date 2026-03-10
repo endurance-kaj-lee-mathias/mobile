@@ -174,7 +174,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── NAME ──────────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: SectionHeader(label: l10n.profileEditSectionName),
@@ -199,7 +198,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               ),
               const SizedBox(height: 28),
 
-              // ── CONTACT ───────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: SectionHeader(label: l10n.profileEditSectionContact),
@@ -217,7 +215,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               ),
               const SizedBox(height: 28),
 
-              // ── ADDRESS ───────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: SectionHeader(label: l10n.profileEditSectionAddress),
@@ -271,7 +268,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               ),
               const SizedBox(height: 28),
 
-              // ── BIO ───────────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: SectionHeader(label: l10n.profileEditSectionBio),
@@ -300,7 +296,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               ),
               const SizedBox(height: 32),
 
-              // ── SAVE ──────────────────────────────
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: SizedBox(

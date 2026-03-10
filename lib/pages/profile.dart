@@ -97,7 +97,6 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Avatar + Name header
               Center(
                 child: Column(
                   children: [
@@ -145,7 +144,6 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
 
-              // Bio card
               if ((user.introduction?.isNotEmpty == true) || (user.about?.isNotEmpty == true)) ...[
                 BorderedCard(
                   child: Padding(
@@ -183,7 +181,6 @@ class ProfilePage extends StatelessWidget {
                 const SizedBox(height: 12),
               ],
 
-              // Account info card
               BorderedCard(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
@@ -214,7 +211,6 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
 
-              // Address card
               if (user.address != null) ...[
                 const SizedBox(height: 12),
                 BorderedCard(
@@ -232,7 +228,6 @@ class ProfilePage extends StatelessWidget {
 
               const SizedBox(height: 32),
 
-              // Edit Profile button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
@@ -246,7 +241,6 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
 
-              // Sign Out button
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton.icon(
@@ -257,7 +251,6 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // Delete Account button
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton.icon(
