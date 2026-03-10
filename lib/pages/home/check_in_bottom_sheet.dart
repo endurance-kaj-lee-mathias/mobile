@@ -21,7 +21,6 @@ class _CheckInBottomSheetState extends State<CheckInBottomSheet> {
   @override
   void initState() {
     super.initState();
-    // Each check-in is an independent data point — always start fresh at 5.
     _moodScore = 5;
   }
 
@@ -47,7 +46,6 @@ class _CheckInBottomSheetState extends State<CheckInBottomSheet> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Drag handle
           Center(
             child: Container(
               width: 40,

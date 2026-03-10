@@ -41,7 +41,6 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 32),
         children: [
-          // ── Welcome header ───────────────────────────────────────────────
           Obx(() {
             final user = userController.user.value;
             final name = (user?.firstName.isNotEmpty ?? false)
@@ -83,31 +82,24 @@ class _HomePageState extends State<HomePage> {
           }),
           const SizedBox(height: 20),
 
-          // ── Quote of the day ─────────────────────────────────────────────
           const QuoteBanner(),
           const SizedBox(height: 24),
 
-          // ── Daily check-in ───────────────────────────────────────────────
           const DailyCheckInCard(),
           const SizedBox(height: 24),
 
-          // ── Quick actions ────────────────────────────────────────────────
           const QuickActionsSection(),
           const SizedBox(height: 24),
 
-          // ── Upcoming appointment ─────────────────────────────────────────
           const UpcomingAppointmentCard(),
           const SizedBox(height: 24),
 
-          // ── Support network ──────────────────────────────────────────────
           const SupportNetworkSection(),
           const SizedBox(height: 24),
 
-          // ── Mood trend ───────────────────────────────────────────────────
           const MoodTrendCard(),
           const SizedBox(height: 24),
 
-          // ── Resources ────────────────────────────────────────────────────
           const ResourcesSection(),
         ],
       ),

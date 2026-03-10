@@ -57,12 +57,10 @@ class MoodPicker extends StatelessWidget {
       context,
     ).colorScheme.surface.withValues(alpha: 0.7);
 
-    // Flutter's Slider adds 24 dp of internal padding on each side.
     const sliderPadding = 24.0;
 
     return Column(
       children: [
-        // ── Emoji display card ──
         AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           width: double.infinity,
@@ -93,7 +91,6 @@ class MoodPicker extends StatelessWidget {
         ),
         const SizedBox(height: 12),
 
-        // ── Gradient slider track ──
         LayoutBuilder(
           builder: (ctx, constraints) {
             final trackWidth = constraints.maxWidth - sliderPadding * 2;
@@ -107,9 +104,6 @@ class MoodPicker extends StatelessWidget {
             return Stack(
               alignment: Alignment.center,
               children: [
-                // Gradient bar — extends 16 px past each track end so edge
-                // dots sit inside the rounded corners and the thumb looks
-                // centred at 0/10.
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: sliderPadding - 16),
                   child: Container(
@@ -121,8 +115,6 @@ class MoodPicker extends StatelessWidget {
                   ),
                 ),
 
-                // Dim overlay — covers the inactive (right) portion
-                // including the 16 px extension beyond the track end.
                 if (fraction < 1.0)
                   Positioned(
                     right: sliderPadding - 16,
@@ -138,7 +130,6 @@ class MoodPicker extends StatelessWidget {
                     ),
                   ),
 
-                // Tick dots drawn at each of the 11 stop positions.
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: sliderPadding,
@@ -149,7 +140,6 @@ class MoodPicker extends StatelessWidget {
                   ),
                 ),
 
-                // Transparent-track Slider sits on top.
                 SliderTheme(
                   data: SliderThemeData(
                     trackHeight: 14,
@@ -172,7 +162,6 @@ class MoodPicker extends StatelessWidget {
           },
         ),
 
-        // ── End labels ──
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14),
           child: Row(
@@ -188,8 +177,6 @@ class MoodPicker extends StatelessWidget {
     );
   }
 }
-
-// ── Private helpers ───────────────────────────────────────────────────────────
 
 class _ColoredThumbShape extends SliderComponentShape {
   const _ColoredThumbShape({required this.color});
@@ -218,7 +205,6 @@ class _ColoredThumbShape extends SliderComponentShape {
   }) {
     final canvas = context.canvas;
 
-    // Soft colour glow
     canvas.drawCircle(
       center,
       _radius + 3,
@@ -227,10 +213,8 @@ class _ColoredThumbShape extends SliderComponentShape {
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
     );
 
-    // White ring
     canvas.drawCircle(center, _radius, Paint()..color = Colors.white);
 
-    // Coloured fill (leaves a 3 px white border)
     canvas.drawCircle(center, _radius - 3, Paint()..color = color);
   }
 }
@@ -238,10 +222,8 @@ class _ColoredThumbShape extends SliderComponentShape {
 class _TickDotsPainter extends CustomPainter {
   const _TickDotsPainter({required this.count, required this.activeUpTo});
 
-  /// Number of tick positions (11 for 0..10).
   final int count;
 
-  /// Fraction 0.0–1.0 indicating where the active portion ends.
   final double activeUpTo;
 
   @override

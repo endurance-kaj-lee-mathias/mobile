@@ -20,7 +20,6 @@ class DailyCheckInCard extends StatelessWidget {
 
     return Obx(() {
       final loading = controller.isLoading.value;
-      // Read clockTick so this Obx rebuilds every minute (keeps time-ago fresh).
       controller.clockTick.value;
       final done = controller.hasDoneToday;
       final last = controller.lastTodayEntry;
@@ -41,7 +40,6 @@ class DailyCheckInCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header row: status icon + title
               Row(
                 children: [
                   if (loading)
@@ -72,9 +70,7 @@ class DailyCheckInCard extends StatelessWidget {
               ),
               const SizedBox(height: 8),
 
-              // Status / last-entry display
               if (!loading && done && last != null) ...[
-                // Last entry: emoji · score/10 · time ago
                 Row(
                   children: [
                     EmojiImage(MoodPicker.emojiForScore(last.moodScore), size: 24),
@@ -102,7 +98,6 @@ class DailyCheckInCard extends StatelessWidget {
                     ],
                   ],
                 ),
-                // Average row — only shown when there are 2+ entries today
                 if (count > 1 && avg != null) ...[
                   const SizedBox(height: 4),
                   Text(
@@ -120,7 +115,6 @@ class DailyCheckInCard extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // Action button — always visible; label changes after first check-in
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

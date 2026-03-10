@@ -77,7 +77,6 @@ class MoodTrendCard extends StatelessWidget {
                   final todayDate = DateTime(today.year, today.month, today.day);
                   final fmt = DateFormat('yyyy-MM-dd');
 
-                  // Group all entries by date → list of scores per day.
                   final byDate = <String, List<int>>{};
                   for (final e in entries) {
                     byDate.putIfAbsent(e.date, () => []).add(e.moodScore);
@@ -86,7 +85,6 @@ class MoodTrendCard extends StatelessWidget {
                   final locale = Localizations.localeOf(context).toString();
                   final dayFmt = DateFormat('EEEEE', locale);
 
-                  // 7 slots: index 0 = 6 days ago, index 6 = today.
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,

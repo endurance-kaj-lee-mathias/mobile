@@ -12,7 +12,6 @@ class EmojiImage extends StatelessWidget {
   final String emoji;
   final double size;
 
-  // Maps each app emoji to its human-readable asset filename.
   static const Map<String, String> _namedAssets = {
     '😢': 'crying-face',
     '😟': 'worried-face',
@@ -30,7 +29,6 @@ class EmojiImage extends StatelessWidget {
   String get _assetPath {
     final named = _namedAssets[emoji];
     if (named != null) return 'assets/emoji/$named.svg';
-    // Fallback: use the Unicode codepoint hex (standard Twemoji filename).
     final codepoint = emoji.runes.first.toRadixString(16).toLowerCase();
     return 'assets/emoji/$codepoint.svg';
   }
