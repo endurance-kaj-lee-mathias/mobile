@@ -42,7 +42,7 @@ variables:
 # Test stage: lint and tests on all branches with MRs
 test_lint:
   stage: test
-  image: cirrusci/flutter:latest
+  image: ghcr.io/cirruslabs/flutter:latest
   <<: *flutter_setup
   script:
     - flutter analyze
@@ -55,7 +55,7 @@ test_lint:
 # Build verification for MRs (no artifacts kept)
 verify_build_android:
   stage: build_verify
-  image: cirrusci/flutter:latest
+  image: ghcr.io/cirruslabs/flutter:latest
   <<: *flutter_setup
   script:
     - flutter build apk --release --no-codesign
@@ -82,7 +82,7 @@ verify_build_ios:
 # Release builds for main branch (artifacts kept)
 build_android_release:
   stage: build_release
-  image: cirrusci/flutter:latest
+  image: ghcr.io/cirruslabs/flutter:latest
   <<: *flutter_setup
   script:
     - flutter build apk --release --no-codesign
