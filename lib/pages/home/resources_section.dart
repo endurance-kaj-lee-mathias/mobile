@@ -5,38 +5,38 @@ import 'package:flutter/material.dart';
 class ResourcesSection extends StatelessWidget {
   const ResourcesSection({super.key});
 
-  static const _resources = [
-    _Resource(
-      category: 'Mental Health',
-      categoryColor: AppColors.mossGreen,
-      title: 'Managing Anxiety\nin Everyday Life',
-      readTime: '3 min read',
-    ),
-    _Resource(
-      category: 'Community',
-      categoryColor: AppColors.dustyBlue,
-      title: 'Finding Your\nVeterans Group',
-      readTime: '5 min read',
-    ),
-    _Resource(
-      category: 'Wellbeing',
-      categoryColor: Color(0xFF8F7B6B),
-      title: 'Sleep Techniques\nfor Veterans',
-      readTime: '4 min read',
-    ),
-    _Resource(
-      category: 'Physical',
-      categoryColor: Color(0xFF6B8F71),
-      title: 'Exercise as a\nHealing Tool',
-      readTime: '6 min read',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
+
+    final resources = [
+      _Resource(
+        category: l10n.resourceCategoryMentalHealth,
+        categoryColor: AppColors.mossGreen,
+        title: l10n.resourceTitle1,
+        readTime: l10n.resourceReadTime(3),
+      ),
+      _Resource(
+        category: l10n.resourceCategoryCommunity,
+        categoryColor: AppColors.dustyBlue,
+        title: l10n.resourceTitle2,
+        readTime: l10n.resourceReadTime(5),
+      ),
+      _Resource(
+        category: l10n.resourceCategoryWellbeing,
+        categoryColor: const Color(0xFF8F7B6B),
+        title: l10n.resourceTitle3,
+        readTime: l10n.resourceReadTime(4),
+      ),
+      _Resource(
+        category: l10n.resourceCategoryPhysical,
+        categoryColor: const Color(0xFF6B8F71),
+        title: l10n.resourceTitle4,
+        readTime: l10n.resourceReadTime(6),
+      ),
+    ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,9 +54,9 @@ class ResourcesSection extends StatelessWidget {
           height: 148,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemCount: _resources.length,
+            itemCount: resources.length,
             separatorBuilder: (_, _) => const SizedBox(width: 10),
-            itemBuilder: (context, i) => _ResourceCard(resource: _resources[i]),
+            itemBuilder: (context, i) => _ResourceCard(resource: resources[i]),
           ),
         ),
       ],
@@ -142,7 +142,7 @@ class _Resource {
   final String title;
   final String readTime;
 
-  const _Resource({
+  _Resource({
     required this.category,
     required this.categoryColor,
     required this.title,

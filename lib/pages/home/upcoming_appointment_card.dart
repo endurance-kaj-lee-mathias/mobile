@@ -52,14 +52,14 @@ class UpcomingAppointmentCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Therapy Session',
+                        l10n.upcomingAppointmentTitle,
                         style: textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        'with Dr. Sarah Mitchell',
+                        l10n.upcomingAppointmentWith,
                         style: textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 4),
@@ -74,7 +74,7 @@ class UpcomingAppointmentCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'Tomorrow · 14:00',
+                            l10n.upcomingAppointmentTime,
                             style: textTheme.bodyMedium?.copyWith(
                               fontSize: 12,
                               color: colorScheme.onSurface.withValues(

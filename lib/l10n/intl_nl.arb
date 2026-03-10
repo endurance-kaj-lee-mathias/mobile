@@ -1,11 +1,15 @@
 {
   "appTitle": "Endurance",
   "tagline": "Diensten Boven Dienst",
-  "homeWelcomePrefix": "Welkom terug,",
+
+  "logout": "Uitloggen",
+  "submitLabel": "Indienen",
+  "cancelLabel": "Annuleren",
+
   "accessRestricted": "Toegang Beperkt",
   "accessRestrictedBody": "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
   "useWebVersion": "Gebruik onze webversie",
-  "logout": "Uitloggen",
+
   "welcomeDescription": "Een veilige plek gebouwd voor degenen die gediend hebben. Endurance verbindt u met de mensen die er het meest toe doen, op uw eigen voorwaarden, in uw eigen tempo.",
   "featurePrivacyTitle": "Uw privacy, altijd",
   "featurePrivacyDesc": "Geen tracking, geen surveillance. U heeft volledige controle over wie wat ziet.",
@@ -16,6 +20,7 @@
   "featureSharingTitle": "Delen op basis van toestemming",
   "featureSharingDesc": "U bepaalt precies wat uw ondersteuningsnetwerk kan zien. Toegang intrekken op elk moment.",
   "getStarted": "Aan de slag",
+
   "navHome": "Thuis",
   "navChats": "Chats",
   "navNetwork": "Mijn Netwerk",
@@ -24,36 +29,62 @@
   "profileTitle": "Profiel",
   "networkTitle": "Mijn Netwerk",
   "networkSoon": "Netwerk — binnenkort beschikbaar",
+
+  "homeWelcomePrefix": "Welkom terug,",
+
   "dailyCheckInTitle": "Dagelijkse check-in",
   "dailyCheckInPending": "Hoe voel je je vandaag?",
   "dailyCheckInDone": "Check-in voltooid",
   "dailyCheckInDoneSubtitle": "Stemming: {score}/10",
   "@dailyCheckInDoneSubtitle": {
     "placeholders": {
-      "score": {
-        "type": "int"
-      }
+      "score": { "type": "int" }
     }
   },
   "dailyCheckInButton": "Check-in voltooien",
-  "dailyCheckInUpdateButton": "Bijwerken",
+  "checkInAddButton": "Check-in toevoegen",
+  "checkInScoreLabel": "{score}/10",
+  "checkInTimeAgoMinutes": "{count}m geleden",
+  "checkInTimeAgoHours": "{count}u geleden",
+  "checkInAvgToday": "gem. {score} vandaag",
   "notesLabel": "Notities (optioneel)",
   "notesHint": "Hoe was uw dag? (max. 500 tekens)",
-  "submitLabel": "Indienen",
-  "cancelLabel": "Annuleren",
+  "checkInSuccess": "Check-in ingediend!",
+  "checkInError": "Er is iets misgegaan. Probeer het opnieuw.",
+
   "healthPermissionBody": "Sta Endurance toe uw gezondheidsgegevens (hartslag, stappen, slaap) te lezen om uw check-in te verrijken.",
   "healthPermissionGrant": "Toegang verlenen",
   "healthDataIncluded": "Gezondheidsgegevens worden opgenomen",
-  "checkInSuccess": "Check-in ingediend!",
-  "checkInError": "Er is iets misgegaan. Probeer het opnieuw.",
+
   "quickActionsSectionTitle": "SNELLE ACTIES",
   "quickActionsCrisisLine": "Crisis-\nlijn",
   "quickActionsMessageBuddy": "Bericht\nVriend",
   "quickActionsFindTherapist": "Vind\nTherapeut",
+
   "upcomingSectionTitle": "AANKOMEND",
+  "upcomingAppointmentTitle": "Therapiesessie",
+  "upcomingAppointmentWith": "met Dr. Sarah Mitchell",
+  "upcomingAppointmentTime": "Morgen · 14:00",
+
   "supportNetworkSectionTitle": "MIJN STEUNNETWERK",
   "supportNetworkMore": "meer",
+
   "moodTrendSectionTitle": "DEZE WEEK",
   "moodOverviewTitle": "Stemmingsoverzicht",
-  "resourcesSectionTitle": "BRONNEN"
+
+  "resourcesSectionTitle": "BRONNEN",
+  "resourceCategoryMentalHealth": "Geestelijke Gezondheid",
+  "resourceCategoryCommunity": "Gemeenschap",
+  "resourceCategoryWellbeing": "Welzijn",
+  "resourceCategoryPhysical": "Lichamelijk",
+  "resourceTitle1": "Omgaan met Angst\nin het Dagelijks Leven",
+  "resourceTitle2": "Jouw\nVeteranengroep Vinden",
+  "resourceTitle3": "Slaaptechnieken\nvoor Veteranen",
+  "resourceTitle4": "Beweging als\nHerstelinstrument",
+  "resourceReadTime": "{minutes} min lezen",
+  "@resourceReadTime": {
+    "placeholders": {
+      "minutes": { "type": "int" }
+    }
+  }
 }

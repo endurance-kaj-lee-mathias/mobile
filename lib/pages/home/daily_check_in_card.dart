@@ -7,7 +7,8 @@ import 'package:endurance_mobile_app/services/mood/daily_checkin_controller.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-/// Card shown on the home screen indicating whether today's check-in is done.
+/// Card shown on the home screen for the daily mood check-in.
+/// Multiple check-ins per day are allowed; the card always shows the button.
 class DailyCheckInCard extends StatelessWidget {
   const DailyCheckInCard({super.key});
 
@@ -18,9 +19,11 @@ class DailyCheckInCard extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Obx(() {
-      final loading = controller.isLoadingStatus.value;
-      final done = controller.hasDoneToday.value;
-      final score = controller.todayScore.value;
+      final loading = controller.isLoading.value;
+      final done = controller.hasDoneToday;
+      final last = controller.lastTodayEntry;
+      final avg = controller.avgTodayScore;
+      final count = controller.todayEntries.length;
 
       return Card(
         elevation: 0,
@@ -32,19 +35,11 @@ class DailyCheckInCard extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(
-            20,
-            20,
-            20,
-            // When the button is hidden (done or loading) use the same 20dp
-            // as the top so the card feels balanced.  When the button is
-            // visible the button's own bottom padding provides enough room.
-            (!done || loading) ? 20 : 16,
-          ),
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header row with status icon and title
+              // Header row: status icon + title
               Row(
                 children: [
                   if (loading)
@@ -75,41 +70,64 @@ class DailyCheckInCard extends StatelessWidget {
               ),
               const SizedBox(height: 8),
 
-              // Status / score display
-              if (done && score != null) ...[
+              // Status / last-entry display
+              if (!loading && done && last != null) ...[
+                // Last entry: emoji · score/10 · time ago
                 Row(
                   children: [
-                    EmojiImage(
-                      MoodPicker.emojiForScore(score),
-                      size: 28,
-                    ),
-                    const SizedBox(width: 8),
+                    EmojiImage(MoodPicker.emojiForScore(last.moodScore), size: 24),
+                    const SizedBox(width: 6),
                     Text(
-                      l10n.dailyCheckInDoneSubtitle(score),
+                      l10n.checkInScoreLabel(last.moodScore),
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: MoodPicker.colorForScore(score.toDouble()),
+                        color: MoodPicker.colorForScore(last.moodScore.toDouble()),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
+                    if (last.createdAt != null) ...[
+                      Text(
+                        '  ·  ',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: colorScheme.onSurface.withValues(alpha: 0.4),
+                        ),
+                      ),
+                      Text(
+                        _formatTimeAgo(context, last.createdAt!),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: colorScheme.onSurface.withValues(alpha: 0.5),
+                        ),
+                      ),
+                    ],
                   ],
                 ),
-              ] else
+                // Average row — only shown when there are 2+ entries today
+                if (count > 1 && avg != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    l10n.checkInAvgToday(_formatAvg(avg)),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: colorScheme.onSurface.withValues(alpha: 0.55),
+                    ),
+                  ),
+                ],
+              ] else if (!loading)
                 Text(
-                  done ? l10n.dailyCheckInDone : l10n.dailyCheckInPending,
+                  l10n.dailyCheckInPending,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
 
-              // Action button — only shown when the check-in hasn't been done yet.
-              if (!done && !loading) ...[
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () => _showCheckInSheet(context),
-                    child: Text(l10n.dailyCheckInButton),
+              const SizedBox(height: 16),
+
+              // Action button — always visible; label changes after first check-in
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: loading ? null : () => _showCheckInSheet(context),
+                  child: Text(
+                    done ? l10n.checkInAddButton : l10n.dailyCheckInButton,
                   ),
                 ),
-              ],
+              ),
             ],
           ),
         ),
@@ -129,5 +147,17 @@ class DailyCheckInCard extends StatelessWidget {
       ),
       builder: (_) => CheckInBottomSheet(parentMessenger: messenger),
     );
+  }
+
+  static String _formatTimeAgo(BuildContext context, DateTime createdAt) {
+    final l10n = S.of(context);
+    final diff = DateTime.now().difference(createdAt);
+    if (diff.inHours >= 1) return l10n.checkInTimeAgoHours(diff.inHours);
+    return l10n.checkInTimeAgoMinutes(diff.inMinutes.clamp(1, 59));
+  }
+
+  static String _formatAvg(double avg) {
+    if (avg == avg.roundToDouble()) return avg.round().toString();
+    return avg.toStringAsFixed(1);
   }
 }

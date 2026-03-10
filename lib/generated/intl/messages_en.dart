@@ -20,7 +20,17 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(score) => "Mood score: ${score}/10";
+  static String m0(score) => "avg ${score} today";
+
+  static String m1(score) => "${score}/10";
+
+  static String m2(count) => "${count}h ago";
+
+  static String m3(count) => "${count}m ago";
+
+  static String m4(score) => "Mood score: ${score}/10";
+
+  static String m5(minutes) => "${minutes} min read";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -33,24 +43,28 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage("Chats — coming soon"),
+    "checkInAddButton": MessageLookupByLibrary.simpleMessage("Add check-in"),
+    "checkInAvgToday": m0,
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Something went wrong. Please try again.",
     ),
+    "checkInScoreLabel": m1,
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Check-in submitted!",
     ),
+    "checkInTimeAgoHours": m2,
+    "checkInTimeAgoMinutes": m3,
     "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
       "Complete check-in",
     ),
     "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
       "Check-in complete",
     ),
-    "dailyCheckInDoneSubtitle": m0,
+    "dailyCheckInDoneSubtitle": m4,
     "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
       "How are you feeling today?",
     ),
     "dailyCheckInTitle": MessageLookupByLibrary.simpleMessage("Daily Check-In"),
-    "dailyCheckInUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Reach out to friends, family, therapists and fellow veterans in one secure place.",
     ),
@@ -114,6 +128,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "QUICK ACTIONS",
     ),
+    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
+      "Community",
+    ),
+    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
+      "Mental Health",
+    ),
+    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage(
+      "Physical",
+    ),
+    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
+      "Wellbeing",
+    ),
+    "resourceReadTime": m5,
+    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
+      "Managing Anxiety\nin Everyday Life",
+    ),
+    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
+      "Finding Your\nVeterans Group",
+    ),
+    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
+      "Sleep Techniques\nfor Veterans",
+    ),
+    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
+      "Exercise as a\nHealing Tool",
+    ),
     "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("RESOURCES"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Submit"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("more"),
@@ -121,6 +160,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "MY SUPPORT NETWORK",
     ),
     "tagline": MessageLookupByLibrary.simpleMessage("Services Beyond Service"),
+    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
+      "Tomorrow · 14:00",
+    ),
+    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
+      "Therapy Session",
+    ),
+    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
+      "with Dr. Sarah Mitchell",
+    ),
     "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("UPCOMING"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Use our web version instead",

@@ -131,6 +131,17 @@ class AppTheme {
 
       dividerColor: AppColors.darkDivider,
 
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.mossGreen,
+          foregroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppStyles.buttonRadius),
+          ),
+          padding: AppStyles.buttonPadding,
+        ),
+      ),
+
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.mossGreen,

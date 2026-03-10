@@ -5,7 +5,6 @@ import 'package:endurance_mobile_app/services/stress/stress_sample_model.dart';
 import 'package:endurance_mobile_app/services/stress/stress_service.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -21,19 +20,9 @@ class DailyCheckInController extends GetxController {
   final MoodService _moodService;
   final StressService _stressService;
   final HealthService _healthService;
-  final _storage = const FlutterSecureStorage();
 
-  static const _lastSubmitKey = 'daily_checkin_last_date';
-  static const _lastScoreKey = 'daily_checkin_last_score';
-
-  /// Whether the user has submitted today's check-in.
-  final RxBool hasDoneToday = false.obs;
-
-  /// Mood score from today's submission (0–10), null if not done.
-  final Rxn<int> todayScore = Rxn<int>();
-
-  /// True while the initial today-status check is in progress.
-  final RxBool isLoadingStatus = false.obs;
+  /// True while entries are being fetched from the backend.
+  final RxBool isLoading = false.obs;
 
   /// Whether health permissions have been granted.
   final RxBool hasHealthPermission = false.obs;
@@ -44,11 +33,39 @@ class DailyCheckInController extends GetxController {
   /// Non-null if the last submission failed.
   final Rxn<String> submitError = Rxn<String>();
 
-  /// Mood entries for the past 7 days. Empty while loading.
+  /// All mood entries for the current user, most-recent first.
   final RxList<MoodEntryModel> weekEntries = <MoodEntryModel>[].obs;
 
-  /// True while the weekly history is being fetched.
-  final RxBool isLoadingHistory = false.obs;
+  // ---------------------------------------------------------------------------
+  // Derived state — reading these inside Obx() reacts to weekEntries changes.
+  // ---------------------------------------------------------------------------
+
+  /// All entries submitted today, sorted newest-first.
+  List<MoodEntryModel> get todayEntries {
+    final today = _todayString();
+    final entries = weekEntries.where((e) => e.date == today).toList();
+    entries.sort((a, b) {
+      if (a.createdAt == null && b.createdAt == null) return 0;
+      if (a.createdAt == null) return 1;
+      if (b.createdAt == null) return -1;
+      return b.createdAt!.compareTo(a.createdAt!);
+    });
+    return entries;
+  }
+
+  /// Whether at least one check-in has been submitted today.
+  bool get hasDoneToday => todayEntries.isNotEmpty;
+
+  /// The most-recently submitted entry for today, or null if none.
+  MoodEntryModel? get lastTodayEntry =>
+      todayEntries.isNotEmpty ? todayEntries.first : null;
+
+  /// Average mood score across all of today's entries, or null if none.
+  double? get avgTodayScore {
+    final entries = todayEntries;
+    if (entries.isEmpty) return null;
+    return entries.fold<int>(0, (acc, e) => acc + e.moodScore) / entries.length;
+  }
 
   @override
   void onInit() {
@@ -56,55 +73,19 @@ class DailyCheckInController extends GetxController {
     _checkHealthPermission();
   }
 
-  /// Fetches today's check-in status and the weekly history from the backend.
+  /// Fetches all mood entries from the backend.
   /// Call this when the home screen becomes visible.
-  Future<void> load() async {
-    await Future.wait([_checkTodayStatus(), _loadWeekEntries()]);
-  }
-
-  Future<void> _checkTodayStatus() async {
-    isLoadingStatus.value = true;
-    try {
-      // Prefer the authoritative backend state over local storage.
-      final entry = await _moodService.getTodayEntry();
-      if (entry != null) {
-        hasDoneToday.value = true;
-        todayScore.value = entry.moodScore;
-        // Keep local cache in sync for offline resilience.
-        await _storage.write(key: _lastSubmitKey, value: entry.date);
-        await _storage.write(
-          key: _lastScoreKey,
-          value: entry.moodScore.toString(),
-        );
-        return;
-      }
-      // No entry on the backend today – clear any stale local cache.
-      hasDoneToday.value = false;
-      todayScore.value = null;
-    } catch (e) {
-      debugPrint('DailyCheckInController._checkTodayStatus error: $e');
-      // Fall back to local storage when the network is unavailable.
-      final stored = await _storage.read(key: _lastSubmitKey);
-      final today = _todayString();
-      if (stored == today) {
-        hasDoneToday.value = true;
-        final scoreStr = await _storage.read(key: _lastScoreKey);
-        todayScore.value = scoreStr != null ? int.tryParse(scoreStr) : null;
-      }
-    } finally {
-      isLoadingStatus.value = false;
-    }
-  }
+  Future<void> load() => _loadWeekEntries();
 
   Future<void> _loadWeekEntries() async {
-    isLoadingHistory.value = true;
+    isLoading.value = true;
     try {
       final entries = await _moodService.getWeekEntries();
       weekEntries.assignAll(entries);
     } catch (e) {
       debugPrint('DailyCheckInController._loadWeekEntries error: $e');
     } finally {
-      isLoadingHistory.value = false;
+      isLoading.value = false;
     }
   }
 
@@ -119,27 +100,20 @@ class DailyCheckInController extends GetxController {
     return granted;
   }
 
-  /// Submits the daily check-in. Optionally also sends a health/stress sample.
+  /// Submits a new check-in entry. Multiple submissions per day are allowed.
   Future<bool> submit({required int moodScore, String? notes}) async {
     isSubmitting.value = true;
     submitError.value = null;
 
     try {
-      final today = _todayString();
       await _moodService.submitEntry(
-        MoodEntryModel(date: today, moodScore: moodScore, notes: notes),
+        MoodEntryModel(date: _todayString(), moodScore: moodScore, notes: notes),
       );
 
-      // Persist locally so we know it's been done today
-      await _storage.write(key: _lastSubmitKey, value: today);
-      await _storage.write(key: _lastScoreKey, value: moodScore.toString());
-      hasDoneToday.value = true;
-      todayScore.value = moodScore;
-
-      // Refresh the weekly history to include the new/updated entry.
+      // Refresh so derived getters (todayEntries, hasDoneToday, …) update.
       _loadWeekEntries().ignore();
 
-      // Attempt to attach health data (best-effort, never blocks submission)
+      // Attempt to attach health data (best-effort, never blocks submission).
       _submitHealthSample().ignore();
 
       return true;

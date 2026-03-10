@@ -21,10 +21,8 @@ class _CheckInBottomSheetState extends State<CheckInBottomSheet> {
   @override
   void initState() {
     super.initState();
-    final controller = Get.find<DailyCheckInController>();
-    if (controller.todayScore.value != null) {
-      _moodScore = controller.todayScore.value!.toDouble();
-    }
+    // Each check-in is an independent data point — always start fresh at 5.
+    _moodScore = 5;
   }
 
   @override

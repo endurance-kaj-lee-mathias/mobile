@@ -20,7 +20,17 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
-  static String m0(score) => "Настроение: ${score}/10";
+  static String m0(score) => "ср. ${score} сегодня";
+
+  static String m1(score) => "${score}/10";
+
+  static String m2(count) => "${count} ч. назад";
+
+  static String m3(count) => "${count} мин. назад";
+
+  static String m4(score) => "Настроение: ${score}/10";
+
+  static String m5(minutes) => "${minutes} мин чтения";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -33,27 +43,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage("Чаты — скоро"),
+    "checkInAddButton": MessageLookupByLibrary.simpleMessage(
+      "Добавить отметку",
+    ),
+    "checkInAvgToday": m0,
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Что-то пошло не так. Повторите попытку.",
     ),
+    "checkInScoreLabel": m1,
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Отметка отправлена!",
     ),
+    "checkInTimeAgoHours": m2,
+    "checkInTimeAgoMinutes": m3,
     "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
       "Заполнить отметку",
     ),
     "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
       "Отметка выполнена",
     ),
-    "dailyCheckInDoneSubtitle": m0,
+    "dailyCheckInDoneSubtitle": m4,
     "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
       "Как вы себя чувствуете сегодня?",
     ),
     "dailyCheckInTitle": MessageLookupByLibrary.simpleMessage(
       "Ежедневная отметка",
-    ),
-    "dailyCheckInUpdateButton": MessageLookupByLibrary.simpleMessage(
-      "Обновить",
     ),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
       "Свяжитесь с друзьями, семьёй, терапевтами и сослуживцами в одном безопасном месте.",
@@ -122,6 +136,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "БЫСТРЫЕ ДЕЙСТВИЯ",
     ),
+    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
+      "Сообщество",
+    ),
+    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
+      "Психическое здоровье",
+    ),
+    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage(
+      "Физическое",
+    ),
+    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
+      "Благополучие",
+    ),
+    "resourceReadTime": m5,
+    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
+      "Управление тревогой\nв повседневной жизни",
+    ),
+    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
+      "Найти\nсвою группу ветеранов",
+    ),
+    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
+      "Техники сна\nдля ветеранов",
+    ),
+    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
+      "Упражнения как\nинструмент исцеления",
+    ),
     "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("РЕСУРСЫ"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Отправить"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("ещё"),
@@ -129,6 +168,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "МОЯ СЕТЬ ПОДДЕРЖКИ",
     ),
     "tagline": MessageLookupByLibrary.simpleMessage("Услуги Сверх Службы"),
+    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
+      "Завтра · 14:00",
+    ),
+    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
+      "Сеанс терапии",
+    ),
+    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
+      "с Др. Сарой Митчелл",
+    ),
     "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("ПРЕДСТОЯЩЕЕ"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Используйте нашу веб-версию",

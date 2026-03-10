@@ -1,11 +1,17 @@
 {
   "appTitle": "Endurance",
+  "@appTitle": { "description": "The application name." },
   "tagline": "Services Beyond Service",
-  "homeWelcomePrefix": "Welcome back,",
+  "@tagline": { "description": "Tagline shown on the splash and welcome screens." },
+
+  "logout": "Logout",
+  "submitLabel": "Submit",
+  "cancelLabel": "Cancel",
+
   "accessRestricted": "Access Restricted",
   "accessRestrictedBody": "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
   "useWebVersion": "Use our web version instead",
-  "logout": "Logout",
+
   "welcomeDescription": "A safe space built for those who served. Endurance connects you with the people who matter most, on your own terms, at your own pace.",
   "featurePrivacyTitle": "Your privacy, always",
   "featurePrivacyDesc": "No tracking, no surveillance. You are in full control of who sees what.",
@@ -16,6 +22,7 @@
   "featureSharingTitle": "Permission-based sharing",
   "featureSharingDesc": "You decide exactly what your support network can see. Revoke access any time.",
   "getStarted": "Get Started",
+
   "navHome": "Home",
   "navChats": "Chats",
   "navNetwork": "My Network",
@@ -24,36 +31,89 @@
   "profileTitle": "Profile",
   "networkTitle": "My Network",
   "networkSoon": "Network — coming soon",
+
+  "homeWelcomePrefix": "Welcome back,",
+  "@homeWelcomePrefix": { "description": "Greeting prefix on the home screen, followed by the user's first name." },
+
   "dailyCheckInTitle": "Daily Check-In",
   "dailyCheckInPending": "How are you feeling today?",
   "dailyCheckInDone": "Check-in complete",
   "dailyCheckInDoneSubtitle": "Mood score: {score}/10",
   "@dailyCheckInDoneSubtitle": {
+    "description": "Subtitle shown when check-in is complete, displaying the mood score.",
     "placeholders": {
-      "score": {
-        "type": "int"
-      }
+      "score": { "type": "int" }
     }
   },
   "dailyCheckInButton": "Complete check-in",
-  "dailyCheckInUpdateButton": "Update",
+  "checkInAddButton": "Add check-in",
+  "checkInScoreLabel": "{score}/10",
+  "@checkInScoreLabel": {
+    "description": "Inline mood score display (e.g. '7/10') shown in the check-in card.",
+    "placeholders": {
+      "score": { "type": "int" }
+    }
+  },
+  "checkInTimeAgoMinutes": "{count}m ago",
+  "@checkInTimeAgoMinutes": {
+    "description": "How long ago the last check-in was, in minutes.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "checkInTimeAgoHours": "{count}h ago",
+  "@checkInTimeAgoHours": {
+    "description": "How long ago the last check-in was, in hours.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "checkInAvgToday": "avg {score} today",
+  "@checkInAvgToday": {
+    "description": "Average mood score for today shown when multiple check-ins exist.",
+    "placeholders": {
+      "score": { "type": "String" }
+    }
+  },
   "notesLabel": "Notes (optional)",
   "notesHint": "How was your day? (max 500 characters)",
-  "submitLabel": "Submit",
-  "cancelLabel": "Cancel",
+  "checkInSuccess": "Check-in submitted!",
+  "checkInError": "Something went wrong. Please try again.",
+
   "healthPermissionBody": "Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.",
   "healthPermissionGrant": "Allow access",
   "healthDataIncluded": "Health data will be included",
-  "checkInSuccess": "Check-in submitted!",
-  "checkInError": "Something went wrong. Please try again.",
+
   "quickActionsSectionTitle": "QUICK ACTIONS",
   "quickActionsCrisisLine": "Crisis\nLine",
   "quickActionsMessageBuddy": "Message\nBuddy",
   "quickActionsFindTherapist": "Find\nTherapist",
+
   "upcomingSectionTitle": "UPCOMING",
+  "upcomingAppointmentTitle": "Therapy Session",
+  "upcomingAppointmentWith": "with Dr. Sarah Mitchell",
+  "upcomingAppointmentTime": "Tomorrow · 14:00",
+
   "supportNetworkSectionTitle": "MY SUPPORT NETWORK",
   "supportNetworkMore": "more",
+
   "moodTrendSectionTitle": "THIS WEEK",
   "moodOverviewTitle": "Mood Overview",
-  "resourcesSectionTitle": "RESOURCES"
+
+  "resourcesSectionTitle": "RESOURCES",
+  "resourceCategoryMentalHealth": "Mental Health",
+  "resourceCategoryCommunity": "Community",
+  "resourceCategoryWellbeing": "Wellbeing",
+  "resourceCategoryPhysical": "Physical",
+  "resourceTitle1": "Managing Anxiety\nin Everyday Life",
+  "resourceTitle2": "Finding Your\nVeterans Group",
+  "resourceTitle3": "Sleep Techniques\nfor Veterans",
+  "resourceTitle4": "Exercise as a\nHealing Tool",
+  "resourceReadTime": "{minutes} min read",
+  "@resourceReadTime": {
+    "description": "Read time label on a resource card.",
+    "placeholders": {
+      "minutes": { "type": "int" }
+    }
+  }
 }

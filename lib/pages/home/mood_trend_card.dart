@@ -10,8 +10,6 @@ import 'package:intl/intl.dart';
 class MoodTrendCard extends StatelessWidget {
   const MoodTrendCard({super.key});
 
-  static const _weekDayLetters = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<DailyCheckInController>();
@@ -58,7 +56,7 @@ class MoodTrendCard extends StatelessWidget {
                     ),
                     const Spacer(),
                     Obx(() {
-                      if (controller.isLoadingHistory.value) {
+                      if (controller.isLoading.value) {
                         return SizedBox(
                           width: 14,
                           height: 14,
@@ -79,8 +77,14 @@ class MoodTrendCard extends StatelessWidget {
                   final todayDate = DateTime(today.year, today.month, today.day);
                   final fmt = DateFormat('yyyy-MM-dd');
 
-                  // Build a lookup from date string to entry.
-                  final byDate = {for (final e in entries) e.date: e};
+                  // Group all entries by date → list of scores per day.
+                  final byDate = <String, List<int>>{};
+                  for (final e in entries) {
+                    byDate.putIfAbsent(e.date, () => []).add(e.moodScore);
+                  }
+
+                  final locale = Localizations.localeOf(context).toString();
+                  final dayFmt = DateFormat('EEEEE', locale);
 
                   // 7 slots: index 0 = 6 days ago, index 6 = today.
                   return Row(
@@ -88,10 +92,14 @@ class MoodTrendCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: List.generate(7, (i) {
                       final day = todayDate.subtract(Duration(days: 6 - i));
-                      final entry = byDate[fmt.format(day)];
+                      final scores = byDate[fmt.format(day)];
+                      final avg = scores != null && scores.isNotEmpty
+                          ? scores.fold<int>(0, (a, b) => a + b) /
+                              scores.length
+                          : null;
                       return _DayBar(
-                        label: _weekDayLetters[day.weekday - 1],
-                        score: entry?.moodScore,
+                        label: dayFmt.format(day),
+                        avgScore: avg,
                         isToday: i == 6,
                       );
                     }),
@@ -108,12 +116,12 @@ class MoodTrendCard extends StatelessWidget {
 
 class _DayBar extends StatelessWidget {
   final String label;
-  final int? score;
+  final double? avgScore;
   final bool isToday;
 
   const _DayBar({
     required this.label,
-    required this.score,
+    required this.avgScore,
     required this.isToday,
   });
 
@@ -124,18 +132,19 @@ class _DayBar extends StatelessWidget {
     const maxHeight = 56.0;
     const minHeight = 8.0;
 
-    final barHeight = score != null
-        ? minHeight + (maxHeight - minHeight) * (score! / 10.0)
+    final barHeight = avgScore != null
+        ? minHeight + (maxHeight - minHeight) * (avgScore! / 10.0)
         : minHeight;
-    final barColor = score != null
-        ? MoodPicker.colorForScore(score!.toDouble())
+    final scoreInt = avgScore?.round();
+    final barColor = scoreInt != null
+        ? MoodPicker.colorForScore(avgScore!)
         : colorScheme.outlineVariant;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (score != null)
-          EmojiImage(MoodPicker.emojiForScore(score!), size: 14)
+        if (scoreInt != null)
+          EmojiImage(MoodPicker.emojiForScore(scoreInt), size: 14)
         else
           const SizedBox(height: 20),
         const SizedBox(height: 4),
@@ -161,17 +170,22 @@ class _DayBar extends StatelessWidget {
         ),
         const SizedBox(height: 2),
         Text(
-          score != null ? '$score' : '–',
+          avgScore != null ? _formatAvg(avgScore!) : '–',
           style: textTheme.bodyMedium?.copyWith(
             fontSize: 10,
             fontWeight: FontWeight.w600,
-            color: score != null
-                ? MoodPicker.colorForScore(score!.toDouble())
+            color: scoreInt != null
+                ? MoodPicker.colorForScore(avgScore!)
                     .withValues(alpha: isToday ? 1.0 : 0.8)
                 : colorScheme.onSurface.withValues(alpha: 0.25),
           ),
         ),
       ],
     );
+  }
+
+  static String _formatAvg(double avg) {
+    if (avg == avg.roundToDouble()) return avg.round().toString();
+    return avg.toStringAsFixed(1);
   }
 }

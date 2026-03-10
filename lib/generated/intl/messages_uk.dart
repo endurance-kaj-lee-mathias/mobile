@@ -20,7 +20,17 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'uk';
 
-  static String m0(score) => "Настрій: ${score}/10";
+  static String m0(score) => "сер. ${score} сьогодні";
+
+  static String m1(score) => "${score}/10";
+
+  static String m2(count) => "${count} год тому";
+
+  static String m3(count) => "${count} хв тому";
+
+  static String m4(score) => "Настрій: ${score}/10";
+
+  static String m5(minutes) => "${minutes} хв читання";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -31,28 +41,34 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Скасувати"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage("Чати — незабаром"),
+    "checkInAddButton": MessageLookupByLibrary.simpleMessage(
+      "Додати перевірку",
+    ),
+    "checkInAvgToday": m0,
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Щось пішло не так. Спробуйте ще раз.",
     ),
+    "checkInScoreLabel": m1,
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Перевірку надіслано!",
     ),
+    "checkInTimeAgoHours": m2,
+    "checkInTimeAgoMinutes": m3,
     "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
       "Виконати перевірку",
     ),
     "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
       "Перевірку завершено",
     ),
-    "dailyCheckInDoneSubtitle": m0,
+    "dailyCheckInDoneSubtitle": m4,
     "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
       "Як ви себе почуваєте сьогодні?",
     ),
     "dailyCheckInTitle": MessageLookupByLibrary.simpleMessage(
       "Щоденна перевірка",
     ),
-    "dailyCheckInUpdateButton": MessageLookupByLibrary.simpleMessage("Оновити"),
     "featureConnectedDesc": MessageLookupByLibrary.simpleMessage(
-      "Зв\'яжіться з друзями, родиною, терапевтами та товаришами-ветеранами в одному безпечному місці.",
+      "Зв\'яжіться з друзьями, родиною, терапевтами та товаришами-ветеранами в одному безпечному місці.",
     ),
     "featureConnectedTitle": MessageLookupByLibrary.simpleMessage(
       "Залишайтеся на зв\'язку",
@@ -116,6 +132,29 @@ class MessageLookup extends MessageLookupByLibrary {
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "ШВИДКІ ДІЇ",
     ),
+    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
+      "Спільнота",
+    ),
+    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
+      "Психічне здоров\'я",
+    ),
+    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage("Фізичне"),
+    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
+      "Добробут",
+    ),
+    "resourceReadTime": m5,
+    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
+      "Управління тривогою\nу повсякденному житті",
+    ),
+    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
+      "Знайдіть\nсвою групу ветеранів",
+    ),
+    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
+      "Техніки сну\nдля ветеранів",
+    ),
+    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
+      "Вправи як\nінструмент відновлення",
+    ),
     "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("РЕСУРСИ"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Надіслати"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("ще"),
@@ -123,6 +162,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "МОЯ МЕРЕЖА ПІДТРИМКИ",
     ),
     "tagline": MessageLookupByLibrary.simpleMessage("Послуги Понад Службою"),
+    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
+      "Завтра · 14:00",
+    ),
+    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
+      "Сеанс терапії",
+    ),
+    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
+      "з Др. Сарою Мітчелл",
+    ),
     "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("НАЙБЛИЖЧЕ"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Скористайтеся нашою веб-версією",
