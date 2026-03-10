@@ -30,6 +30,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(score) => "Stemming: ${score}/10";
 
+  static String m5(name) => "${name} wordt verwijderd uit uw steunnetwerk.";
+
+  static String m6(username) => "Verzoek verzonden naar @${username}";
+
   static String m7(minutes) => "${minutes} min lezen";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -113,10 +117,101 @@ class MessageLookup extends MessageLookupByLibrary {
     "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
     "navProfile": MessageLookupByLibrary.simpleMessage("Jij"),
+    "networkAccept": MessageLookupByLibrary.simpleMessage("Accepteren"),
+    "networkAcceptedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Verbinding geaccepteerd",
+    ),
+    "networkAddSomeone": MessageLookupByLibrary.simpleMessage(
+      "Iemand toevoegen",
+    ),
+    "networkAddToNetwork": MessageLookupByLibrary.simpleMessage(
+      "Toevoegen aan netwerk",
+    ),
+    "networkConnections": MessageLookupByLibrary.simpleMessage("Verbindingen"),
+    "networkDeclinedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Verzoek geweigerd",
+    ),
+    "networkDeny": MessageLookupByLibrary.simpleMessage("Weigeren"),
+    "networkEmptyConnections": MessageLookupByLibrary.simpleMessage(
+      "Nog geen verbindingen",
+    ),
+    "networkEmptyConnectionsBody": MessageLookupByLibrary.simpleMessage(
+      "Stuur verbindingsverzoeken om uw steunnetwerk te laten groeien.",
+    ),
+    "networkEmptyIncoming": MessageLookupByLibrary.simpleMessage(
+      "Geen inkomende verzoeken",
+    ),
+    "networkEmptyRequests": MessageLookupByLibrary.simpleMessage(
+      "Geen verzoeken",
+    ),
+    "networkEmptyRequestsBody": MessageLookupByLibrary.simpleMessage(
+      "U heeft geen inkomende of uitgaande verbindingsverzoeken.",
+    ),
+    "networkEmptySent": MessageLookupByLibrary.simpleMessage(
+      "Geen openstaande verzoeken",
+    ),
+    "networkErrorAlreadyConnected": MessageLookupByLibrary.simpleMessage(
+      "Al verbonden of er is al een verzoek in behandeling",
+    ),
+    "networkErrorCannotRemove": MessageLookupByLibrary.simpleMessage(
+      "Kan deze verbinding niet verwijderen. Dit kan een bekende serverbeperking zijn — vraag hen om u te verwijderen.",
+    ),
+    "networkErrorCannotSend": MessageLookupByLibrary.simpleMessage(
+      "Kan geen verzoek sturen naar deze gebruiker",
+    ),
+    "networkErrorGeneric": MessageLookupByLibrary.simpleMessage(
+      "Er is iets misgegaan. Probeer het opnieuw.",
+    ),
+    "networkErrorUserNotFound": MessageLookupByLibrary.simpleMessage(
+      "Gebruiker niet gevonden",
+    ),
+    "networkGroupOther": MessageLookupByLibrary.simpleMessage("OVERIG"),
+    "networkGroupSupport": MessageLookupByLibrary.simpleMessage("STEUNNETWERK"),
+    "networkGroupTherapists": MessageLookupByLibrary.simpleMessage(
+      "THERAPEUTEN",
+    ),
+    "networkGroupVeterans": MessageLookupByLibrary.simpleMessage("VETERANEN"),
+    "networkIncoming": MessageLookupByLibrary.simpleMessage("INKOMEND"),
+    "networkNoteHint": MessageLookupByLibrary.simpleMessage(
+      "Voeg een persoonlijk bericht toe...",
+    ),
+    "networkNoteOptional": MessageLookupByLibrary.simpleMessage(
+      "Notitie (optioneel)",
+    ),
+    "networkPendingLabel": MessageLookupByLibrary.simpleMessage(
+      "In behandeling",
+    ),
+    "networkRemove": MessageLookupByLibrary.simpleMessage("Verwijderen"),
+    "networkRemoveBody": m5,
+    "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Verwijderen"),
+    "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
+      "Verwijderen uit netwerk?",
+    ),
+    "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Verwijderd uit netwerk",
+    ),
+    "networkRequestSentSuccess": m6,
+    "networkRequests": MessageLookupByLibrary.simpleMessage("Verzoeken"),
+    "networkRoleSupport": MessageLookupByLibrary.simpleMessage("Steunnetwerk"),
+    "networkRoleTherapist": MessageLookupByLibrary.simpleMessage("Therapeut"),
+    "networkRoleVeteran": MessageLookupByLibrary.simpleMessage("Veteraan"),
+    "networkSendRequest": MessageLookupByLibrary.simpleMessage(
+      "Verzoek verzenden",
+    ),
+    "networkSent": MessageLookupByLibrary.simpleMessage("VERZONDEN"),
     "networkSoon": MessageLookupByLibrary.simpleMessage(
       "Netwerk — binnenkort beschikbaar",
     ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
+    "networkUsernameHint": MessageLookupByLibrary.simpleMessage(
+      "bijv. jan_janssen",
+    ),
+    "networkUsernameLabel": MessageLookupByLibrary.simpleMessage(
+      "Gebruikersnaam",
+    ),
+    "networkUsernameRequired": MessageLookupByLibrary.simpleMessage(
+      "Voer een gebruikersnaam in",
+    ),
     "notesHint": MessageLookupByLibrary.simpleMessage(
       "Hoe was uw dag? (max. 500 tekens)",
     ),

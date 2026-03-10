@@ -16,14 +16,9 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
 
   final NetworkService _service;
 
-  // ─── Polling intervals ────────────────────────────────────────────────────
-  // Fast: used while the Network tab is open.
   static const _fastInterval = Duration(seconds: 15);
-  // Slow: used while the app is in the foreground but the user is on another tab.
-  // Only invites are polled at this rate (to keep the badge accurate).
   static const _slowInterval = Duration(seconds: 60);
 
-  // ─── State ────────────────────────────────────────────────────────────────
   final RxList<MemberModel> members = <MemberModel>[].obs;
   final RxList<InviteModel> incoming = <InviteModel>[].obs;
   final RxList<InviteModel> outgoing = <InviteModel>[].obs;
@@ -34,7 +29,6 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
   final RxBool isSending = false.obs;
   final Rxn<NetworkInviteError> sendError = Rxn<NetworkInviteError>();
 
-  // ─── Grouped member views ─────────────────────────────────────────────────
   List<MemberModel> get supportMembers =>
       members.where((m) => m.role == MemberRole.support).toList();
   List<MemberModel> get therapistMembers =>
@@ -46,8 +40,6 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
 
   Timer? _pollTimer;
   bool _isOnNetworkTab = false;
-
-  // ─── Lifecycle ────────────────────────────────────────────────────────────
 
   @override
   void onInit() {
@@ -83,7 +75,7 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     switch (state) {
       case AppLifecycleState.resumed:
         if (isAuthenticated) {
-          load(); // always do a full refresh when coming back from background
+          load();
           _restartPolling();
         }
       case AppLifecycleState.paused:
@@ -95,24 +87,16 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     }
   }
 
-  // ─── Tab visibility ───────────────────────────────────────────────────────
-
-  /// Called by [NetworkPage] when it becomes visible.
-  /// Immediately refreshes both lists and switches to fast polling.
   void enterNetworkTab() {
     _isOnNetworkTab = true;
     load();
     _restartPolling();
   }
 
-  /// Called by [NetworkPage] when it is navigated away from.
-  /// Reverts to slow invites-only polling for the badge.
   void leaveNetworkTab() {
     _isOnNetworkTab = false;
     _restartPolling();
   }
-
-  // ─── Polling internals ────────────────────────────────────────────────────
 
   void _restartPolling() {
     _pollTimer?.cancel();
@@ -128,12 +112,6 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     _pollTimer = null;
   }
 
-  /// Single poll tick with context-aware logic:
-  ///
-  /// - Always fetches invites (needed for the badge and the requests list).
-  /// - Fetches connections **only** when on the Network tab **and** there are
-  ///   outgoing requests — the only way connections can change without the user
-  ///   doing it themselves is when someone accepts one of those requests.
   Future<void> _onPollTick() async {
     await loadInvites();
     if (_isOnNetworkTab && outgoing.isNotEmpty) {
@@ -141,19 +119,11 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     }
   }
 
-  // ─── Push notifications ───────────────────────────────────────────────────
-
-  /// Called by [NotificationController] when a push notification signals a
-  /// network event. Does a full refresh so the badge and lists update instantly.
   void handlePushNotification() => load();
-
-  // ─── Data loading ─────────────────────────────────────────────────────────
 
   Future<void> load() => Future.wait([loadMembers(), loadInvites()]);
 
   Future<void> loadMembers() async {
-    // Only show the loading spinner on the initial fetch (empty list).
-    // Background polls update data silently to avoid UI flicker.
     if (members.isEmpty) isLoadingMembers.value = true;
     try {
       members.value = await _service.getMembers();
@@ -165,7 +135,6 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
   }
 
   Future<void> loadInvites() async {
-    // Same: only show spinner when there is nothing to display yet.
     if (incoming.isEmpty && outgoing.isEmpty) isLoadingInvites.value = true;
     try {
       final result = await _service.listInvites();
@@ -178,13 +147,6 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     }
   }
 
-  // ─── Mutations ────────────────────────────────────────────────────────────
-
-  /// Removes [supportId] from the current user's network.
-  ///
-  /// Throws [NetworkRemoveNotAllowedError] when the backend returns an error
-  /// because the authenticated user is the *supporter* rather than the veteran
-  /// — a known backend limitation. All other failures rethrow as-is.
   Future<void> removeMember(String supportId) async {
     isActing.value = true;
     try {
@@ -204,8 +166,6 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     try {
       final invite = await _service.sendInvite(username, note: note);
       outgoing.add(invite);
-      // Adding a new outgoing request means connections may start changing —
-      // restart polling so the connections poller kicks in if on the tab.
       _restartPolling();
       return true;
     } on DioException catch (e) {
@@ -229,11 +189,14 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     try {
       await _service.acceptInvite(inviteId);
       incoming.removeWhere((i) => i.id == inviteId);
-      await loadMembers();
+      loadMembers();
       return true;
     } catch (e) {
       debugPrint('Failed to accept invite: $e');
-      return false;
+      // Backend occasionally returns 5xx after a successful commit.
+      // Reload to determine actual state: if the invite is gone, it worked.
+      await Future.wait([loadMembers(), loadInvites()]);
+      return incoming.every((i) => i.id != inviteId);
     } finally {
       isActing.value = false;
     }
@@ -254,9 +217,6 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
   }
 }
 
-/// Thrown by [NetworkController.removeMember] when the backend rejects the
-/// deletion because the relationship direction is not supported by the current
-/// API (the authenticated user is the supporter, not the veteran).
 class NetworkRemoveNotAllowedError implements Exception {
   const NetworkRemoveNotAllowedError();
 }

@@ -69,6 +69,58 @@
   "supportNetworkSectionTitle": "МОЯ МЕРЕЖА ПІДТРИМКИ",
   "supportNetworkMore": "ще",
 
+  "networkConnections": "Зв'язки",
+  "networkRequests": "Запити",
+  "networkGroupSupport": "МЕРЕЖА ПІДТРИМКИ",
+  "networkGroupTherapists": "ТЕРАПЕВТИ",
+  "networkGroupVeterans": "ВЕТЕРАНИ",
+  "networkGroupOther": "ІНШІ",
+  "networkRoleSupport": "Мережа підтримки",
+  "networkRoleTherapist": "Терапевт",
+  "networkRoleVeteran": "Ветеран",
+  "networkAddToNetwork": "Додати до мережі",
+  "networkAddSomeone": "Додати когось",
+  "networkEmptyConnections": "Немає зв'язків",
+  "networkEmptyConnectionsBody": "Надсилайте запити на зв'язок, щоб розширити мережу підтримки.",
+  "networkEmptyRequests": "Немає запитів",
+  "networkEmptyRequestsBody": "У вас немає вхідних або вихідних запитів на зв'язок.",
+  "networkEmptyIncoming": "Немає вхідних запитів",
+  "networkEmptySent": "Немає очікуючих запитів",
+  "networkIncoming": "ВХІДНІ",
+  "networkSent": "НАДІСЛАНІ",
+  "networkRemove": "Видалити",
+  "networkRemoveTitle": "Видалити з мережі?",
+  "networkRemoveBody": "{name} буде видалено з вашої мережі підтримки.",
+  "@networkRemoveBody": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "networkRemoveConfirm": "Видалити",
+  "networkAccept": "Прийняти",
+  "networkDeny": "Відхилити",
+  "networkUsernameLabel": "Ім'я користувача",
+  "networkUsernameHint": "напр. ivan_petrenko",
+  "networkUsernameRequired": "Будь ласка, введіть ім'я користувача",
+  "networkNoteOptional": "Нотатка (необов'язково)",
+  "networkNoteHint": "Додайте особисте повідомлення...",
+  "networkSendRequest": "Надіслати запит",
+  "networkPendingLabel": "Очікує",
+  "networkRequestSentSuccess": "Запит надіслано @{username}",
+  "@networkRequestSentSuccess": {
+    "placeholders": {
+      "username": { "type": "String" }
+    }
+  },
+  "networkRemovedSuccess": "Видалено з мережі",
+  "networkAcceptedSuccess": "Зв'язок прийнято",
+  "networkDeclinedSuccess": "Запит відхилено",
+  "networkErrorGeneric": "Щось пішло не так. Будь ласка, спробуйте ще раз.",
+  "networkErrorUserNotFound": "Користувача не знайдено",
+  "networkErrorAlreadyConnected": "Вже підключені або запит вже очікує розгляду",
+  "networkErrorCannotSend": "Не вдається надіслати запит цьому користувачу",
+  "networkErrorCannotRemove": "Не вдається видалити цей зв'язок. Це може бути відоме обмеження сервера — попросіть їх видалити вас.",
+
   "moodTrendSectionTitle": "ЦЕЙ ТИЖДЕНЬ",
   "moodOverviewTitle": "Огляд настрою",
 
