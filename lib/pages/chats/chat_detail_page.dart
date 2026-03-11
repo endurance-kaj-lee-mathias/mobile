@@ -36,7 +36,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     _chat = Get.find<ChatController>();
     _currentUserId = Get.find<UserController>().user.value?.id ?? '';
     _chat.activeConversationId = widget.conversationId;
-    // Snapshot unread info before loading marks them as read.
     final conv = _chat.conversations
         .firstWhereOrNull((c) => c.id == widget.conversationId);
     if (conv != null && conv.unreadCount > 0) {
@@ -56,7 +55,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       if (!mounted) return;
       setState(() => _loadingMessages = false);
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        // Mark as read only after the frame is fully rendered.
         _chat.markAsRead(widget.conversationId);
         _scrollAfterLoad();
       });
@@ -214,9 +212,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       // Scroll to bottom when new messages arrive.
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => _scrollToBottom(animate: true),
-      );
-
-      return ListView.builder(
+      );      return ListView.builder(
         controller: _scrollController,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         itemCount: messages.length,
@@ -226,7 +222,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
           final showDate = index == 0 ||
               !_isSameDay(messages[index - 1].createdAt, msg.createdAt);
 
-          // Show "unread since" divider at the first unread message.
           final showUnreadDivider = _firstUnreadAt != null &&
               !msg.createdAt.isBefore(_firstUnreadAt!) &&
               (index == 0 ||
@@ -261,65 +256,63 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
           ),
         ),
       ),
-        child: Row(
-          children: [
-            Expanded(
-              child: TextField(
-                controller: _inputController,
-                textCapitalization: TextCapitalization.sentences,
-                minLines: 1,
-                maxLines: 4,
-                decoration: InputDecoration(
-                  hintText: l10n.chatInputHint,
-                  hintStyle: TextStyle(
-                    color: colorScheme.onSurface.withValues(alpha: 0.4),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 10,
-                  ),
-                  filled: true,
-                  fillColor: colorScheme.surfaceContainerHighest
-                      .withValues(alpha: 0.5),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(24),
-                    borderSide: BorderSide.none,
-                  ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _inputController,
+              textCapitalization: TextCapitalization.sentences,
+              minLines: 1,
+              maxLines: 4,
+              decoration: InputDecoration(
+                hintText: l10n.chatInputHint,
+                hintStyle: TextStyle(
+                  color: colorScheme.onSurface.withValues(alpha: 0.4),
                 ),
-                onSubmitted: (_) => _sendMessage(),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
+                filled: true,
+                fillColor: colorScheme.surfaceContainerHighest
+                    .withValues(alpha: 0.5),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24),
+                  borderSide: BorderSide.none,
+                ),
               ),
+              onSubmitted: (_) => _sendMessage(),
             ),
-            const SizedBox(width: 8),
-            Obx(
-              () => _isSending.value
-                  ? const SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: Padding(
-                        padding: EdgeInsets.all(8),
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      ),
-                    )
-                  : IconButton(
-                      onPressed: _sendMessage,
-                      icon: const Icon(Icons.send_rounded),
-                      color: AppColors.mossGreen,
-                      style: IconButton.styleFrom(
-                        backgroundColor:
-                            AppColors.mossGreen.withValues(alpha: 0.12),
-                      ),
+          ),
+          const SizedBox(width: 8),
+          Obx(
+            () => _isSending.value
+                ? const SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Padding(
+                      padding: EdgeInsets.all(8),
+                      child: CircularProgressIndicator(strokeWidth: 2),
                     ),
-            ),
-          ],
-        ),
+                  )
+                : IconButton(
+                    onPressed: _sendMessage,
+                    icon: const Icon(Icons.send_rounded),
+                    color: AppColors.mossGreen,
+                    style: IconButton.styleFrom(
+                      backgroundColor:
+                          AppColors.mossGreen.withValues(alpha: 0.12),
+                    ),
+                  ),
+          ),
+        ],
+      ),
     );
   }
 
   bool _isSameDay(DateTime a, DateTime b) =>
       a.year == b.year && a.month == b.month && a.day == b.day;
 }
-
-// ── Widgets ────────────────────────────────────────────────────────────────
 
 class _MessageBubble extends StatelessWidget {
   final MessageModel message;

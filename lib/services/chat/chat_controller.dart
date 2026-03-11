@@ -21,9 +21,7 @@ class ChatController extends GetxController {
   final RxList<ConversationModel> conversations = <ConversationModel>[].obs;
   final RxBool isLoading = false.obs;
 
-  // conversationId → reactive message list
   final Map<String, RxList<MessageModel>> _messagesCache = {};
-  // otherUserId → ConversationModel (to avoid re-fetching on nav)
   final Map<String, ConversationModel> _conversationByUserId = {};
 
   StreamSubscription<WsOutboundMessage>? _wsSub;
@@ -50,8 +48,6 @@ class ChatController extends GetxController {
     conversations.refresh();
   }
 
-  // ── Lifecycle ──────────────────────────────────────────────────────────────
-
   @override
   void onInit() {
     super.onInit();
@@ -76,14 +72,12 @@ class ChatController extends GetxController {
       }
     });
 
-    // Trigger load once the current user profile arrives.
     ever(userCtrl.user, (user) {
       if (user != null && auth.isAuthenticated.value) {
         _loadConversations();
       }
     });
 
-    // Reload when the member list changes (new connections accepted, etc.)
     ever(network.members, (List<MemberModel> _) {
       if (auth.isAuthenticated.value && userCtrl.user.value != null) {
         _loadConversations();
@@ -104,8 +98,6 @@ class ChatController extends GetxController {
     _wsSub?.cancel();
     super.onClose();
   }
-
-  // ── Public API ─────────────────────────────────────────────────────────────
 
   /// Returns the reactive message list for [conversationId], creating it on
   /// first access. Call [loadMessages] to populate it.
@@ -161,14 +153,12 @@ class ChatController extends GetxController {
     try {
       final message = await _chatService.sendMessage(conversationId, content);
 
-      // Add to local cache immediately (optimistic UI).
       final cache = messagesFor(conversationId);
       if (cache.every((m) => m.id != message.id)) {
         cache.add(message);
       }
       _updateLastMessage(conversationId, message);
 
-      // Broadcast via WebSocket so the other participant receives it live.
       _wsService.sendMessage(
         'conversation:$conversationId',
         message.toJson(),
@@ -180,6 +170,8 @@ class ChatController extends GetxController {
       return false;
     }
   }
+
+  Future<void> refreshConversations() => _loadConversations();
 
   /// Creates or retrieves the conversation with [member]. Returns the
   /// [ConversationModel] so the caller can navigate to the detail page.
@@ -207,8 +199,6 @@ class ChatController extends GetxController {
     }
   }
 
-  // ── Internal ───────────────────────────────────────────────────────────────
-
   Future<void> _loadConversations() async {
     if (_loadingConversations) return;
     _loadingConversations = true;
@@ -223,8 +213,6 @@ class ChatController extends GetxController {
       final network = Get.find<NetworkController>();
 
       for (final conv in convList) {
-        // When the API returns the basic format (no enriched name/user data),
-        // resolve the other participant from the network member list.
         if (conv.otherUserId == null && conv.participants.isNotEmpty) {
           final otherId = conv.participants
               .firstWhereOrNull((p) => p != currentUserId);
@@ -240,12 +228,10 @@ class ChatController extends GetxController {
           }
         }
 
-        // Preserve local unread tracking and any live messages already cached.
         final existing = conversations.firstWhereOrNull((c) => c.id == conv.id);
         if (existing != null) {
           conv.unreadCount = existing.unreadCount;
           conv.firstUnreadAt = existing.firstUnreadAt;
-          // Keep a richer cached last message over the summary text preview.
           if (existing.lastMessage != null &&
               (conv.lastMessage == null ||
                   existing.lastMessage!.createdAt
@@ -293,14 +279,12 @@ class ChatController extends GetxController {
     try {
       final message = MessageModel.fromJson(payload);
 
-      // De-duplicate: skip if already added (e.g. own message after REST save).
       final cache = messagesFor(convId);
       if (cache.any((m) => m.id == message.id)) return;
 
       cache.add(message);
       _updateLastMessage(convId, message);
 
-      // Increment unread count when the user is not currently in this chat.
       if (convId != activeConversationId) {
         final idx = conversations.indexWhere((c) => c.id == convId);
         if (idx != -1) {

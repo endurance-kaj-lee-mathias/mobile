@@ -20,21 +20,18 @@ class QuickActionsSection extends StatelessWidget {
           child: Row(
             children: [
               _ActionTile(
-                icon: null,
                 heroIcon: HeroIcons.phone,
                 label: l10n.quickActionsCrisisLine,
                 color: AppColors.warning,
               ),
               const SizedBox(width: 10),
               _ActionTile(
-                icon: null,
                 heroIcon: HeroIcons.chatOutline,
                 label: l10n.quickActionsMessageBuddy,
                 color: AppColors.mossGreen,
               ),
               const SizedBox(width: 10),
               _ActionTile(
-                icon: null,
                 heroIcon: HeroIcons.userGroupOutline,
                 label: l10n.quickActionsFindTherapist,
                 color: AppColors.dustyBlue,
@@ -48,13 +45,11 @@ class QuickActionsSection extends StatelessWidget {
 }
 
 class _ActionTile extends StatelessWidget {
-  final IconData? icon;
-  final String? heroIcon;
+  final String heroIcon;
   final String label;
   final Color color;
 
   const _ActionTile({
-    required this.icon,
     required this.heroIcon,
     required this.label,
     required this.color,
@@ -87,9 +82,7 @@ class _ActionTile extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: Center(
-                    child: heroIcon != null
-                        ? HeroIcon(heroIcon!, size: 22, color: color)
-                        : Icon(icon, size: 22, color: color),
+                    child: HeroIcon(heroIcon, size: 22, color: color),
                   ),
                 ),
                 const SizedBox(height: 10),

@@ -42,7 +42,8 @@ class _NetworkPageState extends State<NetworkPage> {
           centerTitle: true,
           actions: [
             IconButton(
-              icon: const HeroIcon(HeroIcons.userPlus),              tooltip: l10n.networkAddToNetwork,
+              icon: const HeroIcon(HeroIcons.userPlus),
+              tooltip: l10n.networkAddToNetwork,
               onPressed: () => _showAddFriendSheet(context),
             ),
           ],

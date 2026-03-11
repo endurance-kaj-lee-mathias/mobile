@@ -31,8 +31,6 @@ class WebSocketService extends GetxService {
       .replaceFirst('https://', 'wss://')
       .replaceFirst('http://', 'ws://');
 
-  // ── Public API ─────────────────────────────────────────────────────────────
-
   void connect() {
     _intentionallyClosed = false;
     _reconnectAttempts = 0;
@@ -61,8 +59,6 @@ class WebSocketService extends GetxService {
     isConnected.value = false;
     _subscribedChannels.clear();
   }
-
-  // ── Internal ───────────────────────────────────────────────────────────────
 
   Future<void> _doConnect() async {
     if (_intentionallyClosed) return;

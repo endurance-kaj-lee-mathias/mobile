@@ -70,18 +70,16 @@ class MainShell extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(top: 8),
-                  child: Badge(
-                    isLabelVisible: unreadChats > 0,
-                    label: Text('$unreadChats'),
-                    child: const HeroIcon(HeroIcons.chatOutline),
+                  child: _BadgedIcon(
+                    icon: HeroIcons.chatOutline,
+                    count: unreadChats,
                   ),
                 ),
                 activeIcon: Padding(
                   padding: const EdgeInsets.only(top: 8),
-                  child: Badge(
-                    isLabelVisible: unreadChats > 0,
-                    label: Text('$unreadChats'),
-                    child: const HeroIcon(HeroIcons.chatSolid),
+                  child: _BadgedIcon(
+                    icon: HeroIcons.chatSolid,
+                    count: unreadChats,
                   ),
                 ),
                 label: s.navChats,
@@ -89,18 +87,16 @@ class MainShell extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(top: 8),
-                  child: Badge(
-                    isLabelVisible: incomingCount > 0,
-                    label: Text('$incomingCount'),
-                    child: const HeroIcon(HeroIcons.userGroupOutline),
+                  child: _BadgedIcon(
+                    icon: HeroIcons.userGroupOutline,
+                    count: incomingCount,
                   ),
                 ),
                 activeIcon: Padding(
                   padding: const EdgeInsets.only(top: 8),
-                  child: Badge(
-                    isLabelVisible: incomingCount > 0,
-                    label: Text('$incomingCount'),
-                    child: const HeroIcon(HeroIcons.userGroupSolid),
+                  child: _BadgedIcon(
+                    icon: HeroIcons.userGroupSolid,
+                    count: incomingCount,
                   ),
                 ),
                 label: s.navNetwork,
@@ -139,28 +135,24 @@ class MainShell extends StatelessWidget {
               label: s.navHome,
             ),
             NavigationDestination(
-              icon: Badge(
-                isLabelVisible: unreadChats > 0,
-                label: Text('$unreadChats'),
-                child: const HeroIcon(HeroIcons.chatOutline),
+              icon: _BadgedIcon(
+                icon: HeroIcons.chatOutline,
+                count: unreadChats,
               ),
-              selectedIcon: Badge(
-                isLabelVisible: unreadChats > 0,
-                label: Text('$unreadChats'),
-                child: const HeroIcon(HeroIcons.chatSolid),
+              selectedIcon: _BadgedIcon(
+                icon: HeroIcons.chatSolid,
+                count: unreadChats,
               ),
               label: s.navChats,
             ),
             NavigationDestination(
-              icon: Badge(
-                isLabelVisible: incomingCount > 0,
-                label: Text('$incomingCount'),
-                child: const HeroIcon(HeroIcons.userGroupOutline),
+              icon: _BadgedIcon(
+                icon: HeroIcons.userGroupOutline,
+                count: incomingCount,
               ),
-              selectedIcon: Badge(
-                isLabelVisible: incomingCount > 0,
-                label: Text('$incomingCount'),
-                child: const HeroIcon(HeroIcons.userGroupSolid),
+              selectedIcon: _BadgedIcon(
+                icon: HeroIcons.userGroupSolid,
+                count: incomingCount,
               ),
               label: s.navNetwork,
             ),
@@ -180,6 +172,22 @@ class MainShell extends StatelessWidget {
           ],
         );
       }),
+    );
+  }
+}
+
+class _BadgedIcon extends StatelessWidget {
+  final String icon;
+  final int count;
+
+  const _BadgedIcon({required this.icon, required this.count});
+
+  @override
+  Widget build(BuildContext context) {
+    return Badge(
+      isLabelVisible: count > 0,
+      label: Text('$count'),
+      child: HeroIcon(icon),
     );
   }
 }

@@ -144,7 +144,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       }
     } catch (e) {
       if (mounted) {
-        final l10n = S.of(context);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.profileUpdateError(e.toString())),

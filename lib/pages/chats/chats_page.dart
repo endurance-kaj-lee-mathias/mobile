@@ -43,7 +43,7 @@ class ChatsPage extends StatelessWidget {
         }
 
         return RefreshIndicator(
-          onRefresh: () async => controller.isLoading.value = false,
+          onRefresh: controller.refreshConversations,
           child: ListView.builder(
             padding: const EdgeInsets.only(bottom: 24),
             itemCount: conversations.length,
