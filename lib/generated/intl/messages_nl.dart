@@ -20,25 +20,25 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'nl';
 
-  static String m0(score) => "gem. ${score} vandaag";
+  static String m2(score) => "gem. ${score} vandaag";
 
-  static String m1(score) => "${score}/10";
+  static String m3(score) => "${score}/10";
 
-  static String m2(count) => "${count}u geleden";
+  static String m4(count) => "${count}u geleden";
 
-  static String m3(count) => "${count}m geleden";
+  static String m5(count) => "${count}m geleden";
 
-  static String m4(score) => "Stemming: ${score}/10";
+  static String m6(score) => "Stemming: ${score}/10";
 
-  static String m5(name) => "${name} wordt verwijderd uit uw steunnetwerk.";
+  static String m7(name) => "${name} wordt verwijderd uit uw steunnetwerk.";
 
-  static String m6(username) => "Verzoek verzonden naar @${username}";
+  static String m8(username) => "Verzoek verzonden naar @${username}";
 
-  static String m7(error) => "Fout bij verwijderen: ${error}";
+  static String m9(error) => "Fout bij verwijderen: ${error}";
 
-  static String m8(error) => "Fout bij bijwerken: ${error}";
+  static String m10(error) => "Fout bij bijwerken: ${error}";
 
-  static String m9(minutes) => "${minutes} min lezen";
+  static String m11(minutes) => "${minutes} min lezen";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -54,23 +54,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkInAddButton": MessageLookupByLibrary.simpleMessage(
       "Check-in toevoegen",
     ),
-    "checkInAvgToday": m0,
+    "checkInAvgToday": m2,
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Er is iets misgegaan. Probeer het opnieuw.",
     ),
-    "checkInScoreLabel": m1,
+    "checkInScoreLabel": m3,
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Check-in ingediend!",
     ),
-    "checkInTimeAgoHours": m2,
-    "checkInTimeAgoMinutes": m3,
+    "checkInTimeAgoHours": m4,
+    "checkInTimeAgoMinutes": m5,
     "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
       "Check-in voltooien",
     ),
     "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
       "Check-in voltooid",
     ),
-    "dailyCheckInDoneSubtitle": m4,
+    "dailyCheckInDoneSubtitle": m6,
     "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
       "Hoe voel je je vandaag?",
     ),
@@ -186,7 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "In behandeling",
     ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Verwijderen"),
-    "networkRemoveBody": m5,
+    "networkRemoveBody": m7,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Verwijderen"),
     "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
       "Verwijderen uit netwerk?",
@@ -194,7 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
       "Verwijderd uit netwerk",
     ),
-    "networkRequestSentSuccess": m6,
+    "networkRequestSentSuccess": m8,
     "networkRequests": MessageLookupByLibrary.simpleMessage("Verzoeken"),
     "networkRoleSupport": MessageLookupByLibrary.simpleMessage("Steunnetwerk"),
     "networkRoleTherapist": MessageLookupByLibrary.simpleMessage("Therapeut"),
@@ -223,7 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
       "Account verwijderen",
     ),
-    "profileDeleteError": m7,
+    "profileDeleteError": m9,
     "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
       "Weet u zeker dat u uw account permanent wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt en al uw gegevens gaan verloren.",
     ),
@@ -282,7 +282,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profileSignOut": MessageLookupByLibrary.simpleMessage("Uitloggen"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),
-    "profileUpdateError": m8,
+    "profileUpdateError": m10,
     "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "Profiel succesvol bijgewerkt",
     ),
@@ -313,7 +313,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Welzijn",
     ),
-    "resourceReadTime": m9,
+    "resourceReadTime": m11,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Omgaan met Angst\nin het Dagelijks Leven",
     ),

@@ -19,7 +19,7 @@ class AppConfig {
 
   static const keycloakIssuer = String.fromEnvironment(
     'KEYCLOAK_ISSUER',
-    defaultValue: 'https://127.0.0.1:8443/realms/endurance',
+    defaultValue: 'https://auth.leeco.dev/realms/endurance',
   );
 
   static const keycloakClientId = String.fromEnvironment(
@@ -39,6 +39,6 @@ class AppConfig {
 
   static const apiBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://localhost:8080',
+    defaultValue: 'https://api.leeco.dev',
   );
 }

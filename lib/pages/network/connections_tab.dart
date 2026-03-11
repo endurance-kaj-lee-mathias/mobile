@@ -1,13 +1,16 @@
-import 'package:endurance_mobile_app/components/hero_icon.dart';
+import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/empty_state.dart';
+import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
+import 'package:endurance_mobile_app/services/chat/chat_controller.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ConnectionsTab extends StatelessWidget {
   final NetworkController controller;
@@ -83,6 +86,30 @@ class MemberTile extends StatelessWidget {
 
   const MemberTile({super.key, required this.member, required this.controller});
 
+  Future<void> _openChat(BuildContext context) async {
+    final l10n = S.of(context);
+    final chatController = Get.find<ChatController>();
+    final conv = await chatController.startConversationWith(member);
+    if (conv == null) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(l10n.chatOpenError),
+            backgroundColor: AppColors.error,
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+      return;
+    }
+    if (context.mounted) {
+      context.pushNamed(
+        AppRoutes.chatDetail,
+        pathParameters: {'conversationId': conv.id},
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
@@ -103,11 +130,23 @@ class MemberTile extends StatelessWidget {
         '@${member.username}',
         style: Theme.of(context).textTheme.bodyMedium,
       ),
-      trailing: IconButton(
-        icon: const HeroIcon(HeroIcons.userMinus),
-        color: AppColors.error,
-        tooltip: l10n.networkRemove,
-        onPressed: () => _confirmRemove(context),
+      onTap: () => _openChat(context),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: const HeroIcon(HeroIcons.chatOutline),
+            color: AppColors.mossGreen,
+            tooltip: l10n.navChats,
+            onPressed: () => _openChat(context),
+          ),
+          IconButton(
+            icon: const HeroIcon(HeroIcons.userMinus),
+            color: AppColors.error,
+            tooltip: l10n.networkRemove,
+            onPressed: () => _confirmRemove(context),
+          ),
+        ],
       ),
     );
   }
