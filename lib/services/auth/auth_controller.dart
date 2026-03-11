@@ -1,6 +1,7 @@
 import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/token_model.dart';
 import 'package:endurance_mobile_app/services/auth/auth_storage_service.dart';
+import 'package:endurance_mobile_app/services/user/user_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:get/get.dart';
@@ -71,6 +72,7 @@ class AuthController extends GetxController {
   Future<void> login() async {
     try {
       isLoading.value = true;
+      isInitializing.value = true;
 
       final result = await _appAuth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
@@ -88,11 +90,16 @@ class AuthController extends GetxController {
           idToken: result.idToken,
           expiry: result.accessTokenExpirationDateTime,
         );
+
+        if (!isVeteran) {
+          await _registerAndRefresh();
+        }
       }
     } catch (e) {
       debugPrint('Login error: $e');
     } finally {
       isLoading.value = false;
+      isInitializing.value = false;
     }
   }
 
@@ -162,6 +169,18 @@ class AuthController extends GetxController {
   }
 
   // ── Private helpers ────────────────────────────────────────────────────────
+
+  /// Called after a fresh login when the JWT contains no `veteran` role.
+  /// Requests role assignment from the backend, then refreshes the token so
+  /// the new role is reflected in [userRoles] before the router evaluates.
+  Future<void> _registerAndRefresh() async {
+    try {
+      await UserService().register();
+      await refreshTokens();
+    } catch (e) {
+      debugPrint('AuthController: role assignment failed: $e');
+    }
+  }
 
   /// Called once on startup. Uses the stored refresh token to silently obtain
   /// a fresh access token, restoring the previous session without a browser.

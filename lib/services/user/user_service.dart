@@ -40,6 +40,10 @@ class UserService {
     await _client.patch('/users/me/privacy', data: {'isPrivate': isPrivate});
   }
 
+  Future<void> register() async {
+    await _client.post<void>('/users/me/register');
+  }
+
   Future<void> deleteAccount() async {
     await _client.delete('/users/me');
   }
