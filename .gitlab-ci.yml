@@ -19,13 +19,12 @@ variables:
       - build/
   before_script:
     - mkdir -p .pub-cache
-    # Setup environment and config files from CI/CD variables
     - cp $ENV_FILE .env.json
     - cp $FIREBASE_ANDROID_CONFIG android/app/google-services.json
     - flutter clean
     - flutter pub get
 
-# iOS-specific setup (runs on macOS runner, installs correct Flutter version)
+# iOS-specific setup
 .flutter_setup_ios: &flutter_setup_ios
   variables:
     FLUTTER_VERSION: "3.41.4"
@@ -35,7 +34,6 @@ variables:
       - flutter-macos/
   before_script:
     - mkdir -p .pub-cache
-    # Install correct Flutter version if not already cached
     - |
       if [ ! -d "flutter-macos/bin" ]; then
         curl -fsSL "https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_${FLUTTER_VERSION}-stable.zip" -o /tmp/flutter.zip
@@ -44,32 +42,44 @@ variables:
         rm -rf /tmp/flutter.zip flutter-macos-tmp
       fi
     - export PATH="$CI_PROJECT_DIR/flutter-macos/bin:$PATH"
-    # Setup environment and config files from CI/CD variables
     - cp $ENV_FILE .env.json
     - cp $FIREBASE_IOS_CONFIG ios/Runner/GoogleService-Info.plist
     - flutter clean
     - flutter pub get
 
-# Test stage: lint and tests on all branches with MRs
+# Reusable rule sets
+.rules_mr: &rules_mr
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+.rules_main: &rules_main
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+.rules_test: &rules_test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "develop"
+
+# ── Test ──────────────────────────────────────────────────────────────────────
+
 test_lint:
   stage: test
   <<: *flutter_setup
+  <<: *rules_test
   script:
     - flutter analyze
     - flutter test
-  only:
-    - merge_requests
-    - main
-    - develop
 
-# Build verification for MRs (no artifacts kept)
+# ── Build verify (MRs only) ───────────────────────────────────────────────────
+
 verify_build_android:
   stage: build_verify
   <<: *flutter_setup
+  <<: *rules_mr
   script:
     - flutter build apk --release
-  only:
-    - merge_requests
   artifacts:
     reports:
       dotenv: build.env
@@ -78,47 +88,45 @@ verify_build_android:
 verify_build_ios:
   stage: build_verify
   <<: *flutter_setup_ios
+  <<: *rules_mr
   tags:
     - saas-macos-medium-m1
   script:
     - flutter build ios --release --no-codesign
-  only:
-    - merge_requests
   artifacts:
     reports:
       dotenv: build.env
     expire_in: 1 hour
 
-# Release builds for main branch (artifacts kept)
+# ── Release builds (main only) ────────────────────────────────────────────────
+
 build_android_release:
   stage: build_release
   <<: *flutter_setup
+  <<: *rules_main
   script:
     - flutter build apk --release
     - flutter build appbundle --release
-  only:
-    - main
   artifacts:
     paths:
       - build/app/outputs/flutter-apk/app-release.apk
       - build/app/outputs/bundle/release/app-release.aab
     expire_in: 30 days
-  when: on_success
 
 build_ios_release:
   stage: build_release
   <<: *flutter_setup_ios
+  <<: *rules_main
   tags:
     - saas-macos-medium-m1
   script:
     - flutter build ios --release --no-codesign
-  only:
-    - main
   artifacts:
     paths:
       - build/ios/iphoneos/Runner.app
     expire_in: 30 days
-  when: on_success
+
+# ── Secret detection ──────────────────────────────────────────────────────────
 
 secret_detection:
   stage: secret-detection
