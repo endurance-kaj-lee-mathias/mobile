@@ -6,6 +6,7 @@ import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/chat/chat_models.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class WebSocketService extends GetxService {
@@ -70,13 +71,16 @@ class WebSocketService extends GetxService {
     final token = auth.token.value?.accessToken;
     if (token == null) return;
 
-    final uri = Uri.parse('$_wsBaseUrl/ws?token=$token');
+    final uri = Uri.parse('$_wsBaseUrl/ws');
 
     try {
       _subscription?.cancel();
       _channel?.sink.close();
 
-      _channel = WebSocketChannel.connect(uri);
+      _channel = IOWebSocketChannel.connect(
+        uri,
+        headers: {'Authorization': 'Bearer $token'},
+      );
 
       // In web_socket_channel v3, the connection handshake is asynchronous.
       // Awaiting `ready` ensures the connection is established before we
