@@ -43,6 +43,12 @@
   "chatSend": "Send",
   "chatLoadingError": "Could not open this chat. Please try again.",
   "chatOpenError": "Could not start conversation. Please try again.",
+  "chatUnreadSince": "Unread since {time}",
+  "@chatUnreadSince": {
+    "placeholders": {
+      "time": {"type": "String"}
+    }
+  },
   "profileTitle": "Profile",
   "networkTitle": "My Network",
   "networkSoon": "Network — coming soon",

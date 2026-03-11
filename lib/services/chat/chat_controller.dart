@@ -28,6 +28,28 @@ class ChatController extends GetxController {
 
   StreamSubscription<WsOutboundMessage>? _wsSub;
 
+  /// Guard against concurrent _loadConversations calls.
+  bool _loadingConversations = false;
+
+  /// The conversation the user is currently viewing. Used to suppress unread
+  /// increments for messages that arrive while the chat is open.
+  String? activeConversationId;
+
+  /// Total number of unread messages across all conversations.
+  int get totalUnreadCount =>
+      conversations.fold(0, (sum, c) => sum + c.unreadCount);
+
+  /// Marks all messages in [conversationId] as read.
+  void markAsRead(String conversationId) {
+    final idx = conversations.indexWhere((c) => c.id == conversationId);
+    if (idx == -1) return;
+    final conv = conversations[idx];
+    if (conv.unreadCount == 0) return;
+    conv.unreadCount = 0;
+    conv.firstUnreadAt = null;
+    conversations.refresh();
+  }
+
   // ── Lifecycle ──────────────────────────────────────────────────────────────
 
   @override
@@ -189,8 +211,14 @@ class ChatController extends GetxController {
   // ── Internal ───────────────────────────────────────────────────────────────
 
   Future<void> _loadConversations(List<MemberModel> members) async {
+    if (_loadingConversations) return;
+    _loadingConversations = true;
+
     final myId = Get.find<UserController>().user.value?.id ?? '';
-    if (myId.isEmpty) return; // User not loaded yet — wait for `ever(userCtrl.user, ...)`.
+    if (myId.isEmpty) {
+      _loadingConversations = false;
+      return;
+    }
 
     isLoading.value = conversations.isEmpty;
 
@@ -201,6 +229,14 @@ class ChatController extends GetxController {
       final convList = await _chatService.getConversations();
 
       final futures = convList.map((conv) async {
+        // Preserve unread tracking from the existing conversation object.
+        final existing = conversations.firstWhereOrNull((c) => c.id == conv.id);
+        if (existing != null) {
+          conv.unreadCount = existing.unreadCount;
+          conv.firstUnreadAt = existing.firstUnreadAt;
+          conv.lastMessage ??= existing.lastMessage;
+        }
+
         // Determine the other participant's UUID.
         final otherId = conv.participants.firstWhere(
           (p) => p != myId,
@@ -238,6 +274,7 @@ class ChatController extends GetxController {
       debugPrint('ChatController._loadConversations error: $e');
     } finally {
       isLoading.value = false;
+      _loadingConversations = false;
     }
   }
 
@@ -280,6 +317,17 @@ class ChatController extends GetxController {
 
       cache.add(message);
       _updateLastMessage(convId, message);
+
+      // Increment unread count when the user is not currently in this chat.
+      if (convId != activeConversationId) {
+        final idx = conversations.indexWhere((c) => c.id == convId);
+        if (idx != -1) {
+          final conv = conversations[idx];
+          conv.unreadCount++;
+          conv.firstUnreadAt ??= message.createdAt;
+          conversations.refresh();
+        }
+      }
     } catch (e) {
       debugPrint('ChatController._handleWsMessage error: $e');
     }

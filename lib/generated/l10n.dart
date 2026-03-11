@@ -339,6 +339,16 @@ class S {
     );
   }
 
+  /// `Unread since {time}`
+  String chatUnreadSince(String time) {
+    return Intl.message(
+      'Unread since $time',
+      name: 'chatUnreadSince',
+      desc: '',
+      args: [time],
+    );
+  }
+
   /// `Profile`
   String get profileTitle {
     return Intl.message('Profile', name: 'profileTitle', desc: '', args: []);

@@ -47,6 +47,10 @@ class ConversationModel {
 
   MessageModel? lastMessage;
 
+  // Unread tracking — managed by ChatController, not persisted.
+  int unreadCount;
+  DateTime? firstUnreadAt;
+
   ConversationModel({
     required this.id,
     required this.participants,
@@ -56,6 +60,8 @@ class ConversationModel {
     this.otherUserLastName,
     this.otherUserImage,
     this.lastMessage,
+    this.unreadCount = 0,
+    this.firstUnreadAt,
   });
 
   factory ConversationModel.fromJson(Map<String, dynamic> json) {

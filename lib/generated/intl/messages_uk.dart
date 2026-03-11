@@ -20,25 +20,25 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'uk';
 
-  static String m1(score) => "сер. ${score} сьогодні";
+  static String m2(score) => "сер. ${score} сьогодні";
 
-  static String m2(score) => "${score}/10";
+  static String m3(score) => "${score}/10";
 
-  static String m3(count) => "${count} год тому";
+  static String m4(count) => "${count} год тому";
 
-  static String m4(count) => "${count} хв тому";
+  static String m5(count) => "${count} хв тому";
 
-  static String m5(score) => "Настрій: ${score}/10";
+  static String m6(score) => "Настрій: ${score}/10";
 
-  static String m6(name) => "${name} буде видалено з вашої мережі підтримки.";
+  static String m7(name) => "${name} буде видалено з вашої мережі підтримки.";
 
-  static String m7(username) => "Запит надіслано @${username}";
+  static String m8(username) => "Запит надіслано @${username}";
 
-  static String m8(error) => "Помилка видалення акаунту: ${error}";
+  static String m9(error) => "Помилка видалення акаунту: ${error}";
 
-  static String m9(error) => "Помилка оновлення профілю: ${error}";
+  static String m10(error) => "Помилка оновлення профілю: ${error}";
 
-  static String m10(minutes) => "${minutes} хв читання";
+  static String m11(minutes) => "${minutes} хв читання";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -52,23 +52,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkInAddButton": MessageLookupByLibrary.simpleMessage(
       "Додати перевірку",
     ),
-    "checkInAvgToday": m1,
+    "checkInAvgToday": m2,
     "checkInError": MessageLookupByLibrary.simpleMessage(
       "Щось пішло не так. Спробуйте ще раз.",
     ),
-    "checkInScoreLabel": m2,
+    "checkInScoreLabel": m3,
     "checkInSuccess": MessageLookupByLibrary.simpleMessage(
       "Перевірку надіслано!",
     ),
-    "checkInTimeAgoHours": m3,
-    "checkInTimeAgoMinutes": m4,
+    "checkInTimeAgoHours": m4,
+    "checkInTimeAgoMinutes": m5,
     "dailyCheckInButton": MessageLookupByLibrary.simpleMessage(
       "Виконати перевірку",
     ),
     "dailyCheckInDone": MessageLookupByLibrary.simpleMessage(
       "Перевірку завершено",
     ),
-    "dailyCheckInDoneSubtitle": m5,
+    "dailyCheckInDoneSubtitle": m6,
     "dailyCheckInPending": MessageLookupByLibrary.simpleMessage(
       "Як ви себе почуваєте сьогодні?",
     ),
@@ -180,7 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage("Очікує"),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Видалити"),
-    "networkRemoveBody": m6,
+    "networkRemoveBody": m7,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Видалити"),
     "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
       "Видалити з мережі?",
@@ -188,7 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
       "Видалено з мережі",
     ),
-    "networkRequestSentSuccess": m7,
+    "networkRequestSentSuccess": m8,
     "networkRequests": MessageLookupByLibrary.simpleMessage("Запити"),
     "networkRoleSupport": MessageLookupByLibrary.simpleMessage(
       "Мережа підтримки",
@@ -219,7 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
       "Видалити акаунт",
     ),
-    "profileDeleteError": m8,
+    "profileDeleteError": m9,
     "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
       "Ви впевнені, що хочете назавжди видалити свій акаунт? Цю дію не можна скасувати, усі ваші дані буде втрачено.",
     ),
@@ -278,7 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileSectionIntroduction": MessageLookupByLibrary.simpleMessage("ВСТУП"),
     "profileSignOut": MessageLookupByLibrary.simpleMessage("Вийти"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Профіль"),
-    "profileUpdateError": m9,
+    "profileUpdateError": m10,
     "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "Профіль успішно оновлено",
     ),
@@ -307,7 +307,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
       "Добробут",
     ),
-    "resourceReadTime": m10,
+    "resourceReadTime": m11,
     "resourceTitle1": MessageLookupByLibrary.simpleMessage(
       "Управління тривогою\nу повсякденному житті",
     ),

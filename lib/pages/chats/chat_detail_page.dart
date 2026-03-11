@@ -22,25 +22,78 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   final _scrollController = ScrollController();
   final _isSending = false.obs;
   bool _loadError = false;
+  bool _loadingMessages = false;
 
   late final ChatController _chat;
   late final String _currentUserId;
+
+  /// Snapshot of the first unread message timestamp captured before markAsRead.
+  DateTime? _firstUnreadAt;
 
   @override
   void initState() {
     super.initState();
     _chat = Get.find<ChatController>();
     _currentUserId = Get.find<UserController>().user.value?.id ?? '';
+    _chat.activeConversationId = widget.conversationId;
+    // Snapshot unread info before loading marks them as read.
+    final conv = _chat.conversations
+        .firstWhereOrNull((c) => c.id == widget.conversationId);
+    if (conv != null && conv.unreadCount > 0) {
+      _firstUnreadAt = conv.firstUnreadAt;
+    }
     _loadMessages();
   }
 
   Future<void> _loadMessages() async {
+    if (!mounted) return;
+    setState(() {
+      _loadingMessages = true;
+      _loadError = false;
+    });
     try {
       await _chat.loadMessages(widget.conversationId);
-      WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+      if (!mounted) return;
+      setState(() => _loadingMessages = false);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        // Mark as read only after the frame is fully rendered.
+        _chat.markAsRead(widget.conversationId);
+        _scrollAfterLoad();
+      });
     } catch (e) {
-      if (mounted) setState(() => _loadError = true);
+      if (mounted) {
+        setState(() {
+          _loadingMessages = false;
+          _loadError = true;
+        });
+      }
     }
+  }
+
+  void _scrollAfterLoad() {
+    if (!_scrollController.hasClients) return;
+    if (_firstUnreadAt != null) {
+      _scrollToFirstUnread();
+    } else {
+      _scrollToBottom();
+    }
+  }
+
+  void _scrollToFirstUnread() {
+    if (!_scrollController.hasClients) return;
+    final messages = _chat.messagesFor(widget.conversationId);
+    final firstUnreadIdx =
+        messages.indexWhere((m) => !m.createdAt.isBefore(_firstUnreadAt!));
+    if (firstUnreadIdx <= 0) {
+      _scrollToBottom();
+      return;
+    }
+    // Approximate scroll: each message ~72px, date divider ~48px.
+    // Show one message of context above the first unread message.
+    final unreadCount = messages.length - firstUnreadIdx;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final target = (maxScroll - unreadCount * 72.0 - 48.0).clamp(0.0, maxScroll);
+    _scrollController.jumpTo(target);
   }
 
   void _scrollToBottom({bool animate = false}) {
@@ -73,6 +126,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
 
   @override
   void dispose() {
+    if (_chat.activeConversationId == widget.conversationId) {
+      _chat.activeConversationId = null;
+    }
     _inputController.dispose();
     _scrollController.dispose();
     super.dispose();
@@ -119,7 +175,23 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
 
   Widget _buildMessageList(S l10n) {
     if (_loadError) {
-      return Center(child: Text(l10n.chatLoadingError));
+      return Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(l10n.chatLoadingError),
+            const SizedBox(height: 12),
+            TextButton(
+              onPressed: _loadMessages,
+              child: const Text('Retry'),
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (_loadingMessages) {
+      return const Center(child: CircularProgressIndicator());
     }
 
     return Obx(() {
@@ -154,9 +226,17 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
           final showDate = index == 0 ||
               !_isSameDay(messages[index - 1].createdAt, msg.createdAt);
 
+          // Show "unread since" divider at the first unread message.
+          final showUnreadDivider = _firstUnreadAt != null &&
+              !msg.createdAt.isBefore(_firstUnreadAt!) &&
+              (index == 0 ||
+                  messages[index - 1].createdAt.isBefore(_firstUnreadAt!));
+
           return Column(
             children: [
               if (showDate) _DateDivider(date: msg.createdAt, l10n: l10n),
+              if (showUnreadDivider && !showDate)
+                _UnreadDivider(since: _firstUnreadAt!, l10n: l10n),
               _MessageBubble(message: msg, isOwn: isOwn),
             ],
           );
@@ -167,18 +247,20 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
 
   Widget _buildInputBar(S l10n) {
     final colorScheme = Theme.of(context).colorScheme;
-    return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        decoration: BoxDecoration(
-          color: colorScheme.surface,
-          border: Border(
-            top: BorderSide(
-              color: colorScheme.outlineVariant,
-              width: 0.5,
-            ),
+    // Use viewPadding (not viewInsets) so we always account for the home
+    // indicator / nav bar, regardless of keyboard state.
+    final bottomPad = MediaQuery.viewPaddingOf(context).bottom;
+    return Container(
+      padding: EdgeInsets.fromLTRB(12, 8, 12, 8 + bottomPad),
+      decoration: BoxDecoration(
+        color: colorScheme.surface,
+        border: Border(
+          top: BorderSide(
+            color: colorScheme.outlineVariant,
+            width: 0.5,
           ),
         ),
+      ),
         child: Row(
           children: [
             Expanded(
@@ -230,7 +312,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             ),
           ],
         ),
-      ),
     );
   }
 
@@ -338,6 +419,43 @@ class _DateDivider extends StatelessWidget {
             ),
           ),
           const Expanded(child: Divider()),
+        ],
+      ),
+    );
+  }
+}
+
+class _UnreadDivider extends StatelessWidget {
+  final DateTime since;
+  final S l10n;
+
+  const _UnreadDivider({required this.since, required this.l10n});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final time = DateFormat.Hm().format(since);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        children: [
+          Expanded(
+            child: Divider(color: colorScheme.primary.withValues(alpha: 0.5)),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Text(
+              l10n.chatUnreadSince(time),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: colorScheme.primary,
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+          ),
+          Expanded(
+            child: Divider(color: colorScheme.primary.withValues(alpha: 0.5)),
+          ),
         ],
       ),
     );

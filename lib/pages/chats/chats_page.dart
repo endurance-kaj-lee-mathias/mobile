@@ -109,7 +109,9 @@ class _ConversationTile extends StatelessWidget {
                             child: Text(
                               conversation.displayName,
                               style: textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.w700,
+                                fontWeight: conversation.unreadCount > 0
+                                    ? FontWeight.w800
+                                    : FontWeight.w700,
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -120,7 +122,9 @@ class _ConversationTile extends StatelessWidget {
                             Text(
                               _formatTime(lastMsg.createdAt, l10n),
                               style: textTheme.bodySmall?.copyWith(
-                                color: AppColors.mossGreen,
+                                color: conversation.unreadCount > 0
+                                    ? colorScheme.primary
+                                    : AppColors.mossGreen,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -128,13 +132,45 @@ class _ConversationTile extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 3),
-                      Text(
-                        _lastMessagePreview(lastMsg, l10n),
-                        style: textTheme.bodyMedium?.copyWith(
-                          color: colorScheme.onSurface.withValues(alpha: 0.55),
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _lastMessagePreview(lastMsg, l10n),
+                              style: textTheme.bodyMedium?.copyWith(
+                                color: conversation.unreadCount > 0
+                                    ? colorScheme.onSurface
+                                    : colorScheme.onSurface
+                                        .withValues(alpha: 0.55),
+                                fontWeight: conversation.unreadCount > 0
+                                    ? FontWeight.w600
+                                    : FontWeight.normal,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          if (conversation.unreadCount > 0) ...[
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 7,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                color: colorScheme.primary,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text(
+                                '${conversation.unreadCount}',
+                                style: textTheme.labelSmall?.copyWith(
+                                  color: colorScheme.onPrimary,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ],
                   ),
