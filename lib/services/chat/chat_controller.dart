@@ -262,9 +262,7 @@ class ChatController extends GetxController {
   void _prefetchMissingLastMessages(List<ConversationModel> convList) {
     for (final conv in convList) {
       if (conv.lastMessage != null) continue;
-      _chatService.getMessages(conv.id, limit: 1).then((msgs) {
-        if (msgs.isNotEmpty) _updateLastMessage(conv.id, msgs.first);
-      }).catchError((_) {});
+      loadMessages(conv.id).catchError((_) {});
     }
   }
 
