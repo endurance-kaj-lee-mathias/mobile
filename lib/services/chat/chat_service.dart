@@ -8,19 +8,20 @@ class ChatService {
   final Dio _client;
 
   /// Returns all conversations that the current user participates in.
+  ///
+  /// Supports both the enriched summary format (`conversationId`, `firstName`,
+  /// etc.) and the basic format (`id`, `participants`, `createdAt`), so the
+  /// app stays functional regardless of which version the backend serves.
   Future<List<ConversationModel>> getConversations() async {
     final resp = await _client.get<List<dynamic>>('/chats');
-    return (resp.data ?? [])
-        .cast<Map<String, dynamic>>()
-        .map(ConversationModel.fromJson)
+    final list = (resp.data ?? []).cast<Map<String, dynamic>>();
+    if (list.isEmpty) return [];
+    final isEnriched = list.first.containsKey('conversationId');
+    return list
+        .map(isEnriched
+            ? ConversationModel.fromSummaryJson
+            : ConversationModel.fromJson)
         .toList();
-  }
-
-  /// Returns basic profile info for [userId]. Used to enrich conversations
-  /// when the other participant is not in the current user's network member list.
-  Future<Map<String, dynamic>> getUser(String userId) async {
-    final resp = await _client.get<Map<String, dynamic>>('/users/$userId');
-    return resp.data ?? {};
   }
 
   /// Creates a new conversation with [participantId] or returns the existing one.

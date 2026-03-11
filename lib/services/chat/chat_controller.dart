@@ -64,9 +64,8 @@ class ChatController extends GetxController {
       if (isAuth) {
         _wsService.connect();
         _setupWsListener();
-        // Wait for user to load before we can determine "other" participant.
         if (userCtrl.user.value != null) {
-          _loadConversations(network.members);
+          _loadConversations();
         }
       } else {
         _wsService.disconnect();
@@ -80,14 +79,14 @@ class ChatController extends GetxController {
     // Trigger load once the current user profile arrives.
     ever(userCtrl.user, (user) {
       if (user != null && auth.isAuthenticated.value) {
-        _loadConversations(network.members);
+        _loadConversations();
       }
     });
 
     // Reload when the member list changes (new connections accepted, etc.)
     ever(network.members, (List<MemberModel> _) {
       if (auth.isAuthenticated.value && userCtrl.user.value != null) {
-        _loadConversations(network.members);
+        _loadConversations();
       }
     });
 
@@ -95,7 +94,7 @@ class ChatController extends GetxController {
       _wsService.connect();
       _setupWsListener();
       if (userCtrl.user.value != null) {
-        _loadConversations(network.members);
+        _loadConversations();
       }
     }
   }
@@ -210,66 +209,60 @@ class ChatController extends GetxController {
 
   // ── Internal ───────────────────────────────────────────────────────────────
 
-  Future<void> _loadConversations(List<MemberModel> members) async {
+  Future<void> _loadConversations() async {
     if (_loadingConversations) return;
     _loadingConversations = true;
 
-    final myId = Get.find<UserController>().user.value?.id ?? '';
-    if (myId.isEmpty) {
-      _loadingConversations = false;
-      return;
-    }
-
     isLoading.value = conversations.isEmpty;
-
-    // Build a lookup map for quick member enrichment by their user UUID.
-    final memberByUserId = {for (final m in members) m.id: m};
 
     try {
       final convList = await _chatService.getConversations();
 
-      final futures = convList.map((conv) async {
-        // Preserve unread tracking from the existing conversation object.
+      final currentUserId =
+          Get.find<UserController>().user.value?.id ?? '';
+      final network = Get.find<NetworkController>();
+
+      for (final conv in convList) {
+        // When the API returns the basic format (no enriched name/user data),
+        // resolve the other participant from the network member list.
+        if (conv.otherUserId == null && conv.participants.isNotEmpty) {
+          final otherId = conv.participants
+              .firstWhereOrNull((p) => p != currentUserId);
+          if (otherId != null) {
+            final member = network.members.firstWhereOrNull(
+              (m) => m.id == otherId || m.veteran == otherId,
+            );
+            if (member != null) {
+              _enrichFromMember(conv, member);
+            } else {
+              conv.otherUserId = otherId;
+            }
+          }
+        }
+
+        // Preserve local unread tracking and any live messages already cached.
         final existing = conversations.firstWhereOrNull((c) => c.id == conv.id);
         if (existing != null) {
           conv.unreadCount = existing.unreadCount;
           conv.firstUnreadAt = existing.firstUnreadAt;
-          conv.lastMessage ??= existing.lastMessage;
+          // Keep a richer cached last message over the summary text preview.
+          if (existing.lastMessage != null &&
+              (conv.lastMessage == null ||
+                  existing.lastMessage!.createdAt
+                      .isAfter(conv.lastMessage!.createdAt))) {
+            conv.lastMessage = existing.lastMessage;
+          }
         }
 
-        // Determine the other participant's UUID.
-        final otherId = conv.participants.firstWhere(
-          (p) => p != myId,
-          orElse: () => conv.participants.isNotEmpty ? conv.participants.first : '',
-        );
-
-        conv.otherUserId = otherId;
-
-        // Enrich with known member data or fetch from API.
-        final knownMember = memberByUserId[otherId];
-        if (knownMember != null) {
-          _enrichFromMember(conv, knownMember);
-        } else if (otherId.isNotEmpty) {
-          await _enrichFromApi(conv, otherId);
-        }
-
-        _conversationByUserId[otherId] = conv;
-
-        // Load the latest message for the preview.
-        if (conv.lastMessage == null) {
-          try {
-            final msgs = await _chatService.getMessages(conv.id, limit: 1);
-            if (msgs.isNotEmpty) conv.lastMessage = msgs.first;
-          } catch (_) {}
+        if (conv.otherUserId != null) {
+          _conversationByUserId[conv.otherUserId!] = conv;
         }
 
         _wsService.subscribe('conversation:${conv.id}');
-        return conv;
-      });
+      }
 
-      final loaded = (await Future.wait(futures)).toList();
-      _sortConversations(loaded);
-      conversations.assignAll(loaded);
+      _sortConversations(convList);
+      conversations.assignAll(convList);
     } catch (e) {
       debugPrint('ChatController._loadConversations error: $e');
     } finally {
@@ -283,17 +276,6 @@ class ChatController extends GetxController {
     conv.otherUserFirstName = member.firstName;
     conv.otherUserLastName = member.lastName;
     conv.otherUserImage = member.image;
-  }
-
-  Future<void> _enrichFromApi(ConversationModel conv, String userId) async {
-    try {
-      final userInfo = await _chatService.getUser(userId);
-      conv.otherUserFirstName = userInfo['firstName']?.toString();
-      conv.otherUserLastName = userInfo['lastName']?.toString();
-      conv.otherUserImage = userInfo['image']?.toString();
-    } catch (e) {
-      debugPrint('ChatController._enrichFromApi error for $userId: $e');
-    }
   }
 
   void _setupWsListener() {

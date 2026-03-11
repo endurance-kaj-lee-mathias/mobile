@@ -77,6 +77,37 @@ class ConversationModel {
     );
   }
 
+  /// Parses the response from `GET /chats`, which returns a pre-enriched
+  /// summary including the other participant's profile and latest message.
+  factory ConversationModel.fromSummaryJson(Map<String, dynamic> json) {
+    final convId = json['conversationId']?.toString() ?? '';
+    final latestText = json['latestMessage'] as String?;
+    final latestSentBy = json['latestMessageSentBy']?.toString();
+    final latestAtRaw = json['latestMessageAt']?.toString();
+
+    MessageModel? lastMessage;
+    if (latestText != null && latestAtRaw != null) {
+      lastMessage = MessageModel(
+        id: '',
+        conversationId: convId,
+        senderId: latestSentBy ?? '',
+        content: latestText,
+        createdAt: DateTime.parse(latestAtRaw),
+      );
+    }
+
+    return ConversationModel(
+      id: convId,
+      participants: const [],
+      createdAt: DateTime.now(),
+      otherUserId: json['otherUserId']?.toString(),
+      otherUserFirstName: json['firstName']?.toString(),
+      otherUserLastName: json['lastName']?.toString(),
+      otherUserImage: json['imageUrl']?.toString(),
+      lastMessage: lastMessage,
+    );
+  }
+
   String get displayName {
     final first = otherUserFirstName ?? '';
     final last = otherUserLastName ?? '';
