@@ -112,14 +112,6 @@ class DailyCheckInController extends GetxController {
     isSubmitting.value = true;
     submitError.value = null;
 
-    final previousEntry = weekEntries
-        .where((e) => e.createdAt != null)
-        .fold<MoodEntryModel?>(
-          null,
-          (prev, e) =>
-              prev == null || e.createdAt!.isAfter(prev.createdAt!) ? e : prev,
-        );
-
     try {
       await _moodService.submitEntry(
         MoodEntryModel(date: _todayString(), moodScore: moodScore, notes: notes),
@@ -128,7 +120,7 @@ class DailyCheckInController extends GetxController {
       _loadWeekEntries().ignore();
 
       if (includeHealthData.value && hasHealthPermission.value) {
-        _submitHealthSample(since: previousEntry?.createdAt).ignore();
+        _submitHealthSample().ignore();
       }
 
       return true;
@@ -141,7 +133,7 @@ class DailyCheckInController extends GetxController {
     }
   }
 
-  Future<void> _submitHealthSample({DateTime? since}) async {
+  Future<void> _submitHealthSample() async {
     if (!hasHealthPermission.value) {
       debugPrint('_submitHealthSample: skipped — no health permission');
       return;
@@ -152,6 +144,11 @@ class DailyCheckInController extends GetxController {
       debugPrint('_submitHealthSample: skipped — no userId');
       return;
     }
+
+    // Use the backend's last submitted sample as the window start so we never
+    // overlap data that was already sent, regardless of check-in history.
+    final since = await _stressService.getLatestSampleTimestamp();
+    debugPrint('_submitHealthSample: using since=$since');
 
     final snapshot = await _healthService.readSnapshot(since: since);
     debugPrint(
