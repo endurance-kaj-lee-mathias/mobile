@@ -39,10 +39,25 @@ class HealthService {
 
   final _health = Health();
 
-  /// Requests health permissions. Returns true if at least read-access for
-  /// HEART_RATE and STEPS was granted.
+  /// Returns true if health data is accessible on this device.
+  /// On Android this means Health Connect is installed.
+  Future<bool> isAvailable() async {
+    try {
+      return await _health.isHealthConnectAvailable();
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// Requests health permissions.
+  /// On Android, prompts Health Connect installation if it is not available.
+  /// Returns true if permissions were granted.
   Future<bool> requestPermissions() async {
     try {
+      if (!(await _health.isHealthConnectAvailable())) {
+        await _health.installHealthConnect();
+        return false;
+      }
       final granted = await _health.requestAuthorization(
         _types,
         permissions: List.filled(_types.length, HealthDataAccess.READ),
@@ -57,6 +72,7 @@ class HealthService {
   /// Returns true if health permissions are already granted.
   Future<bool> hasPermissions() async {
     try {
+      if (!(await _health.isHealthConnectAvailable())) return false;
       final result = await _health.hasPermissions(_types);
       return result == true;
     } catch (_) {
@@ -64,10 +80,12 @@ class HealthService {
     }
   }
 
-  /// Reads a 24-hour health snapshot ending now.
-  Future<HealthSnapshot?> readSnapshot() async {
+  /// Reads a health snapshot ending now, starting from [since] but capped at 72 hours.
+  /// If [since] is null or older than 72 hours, uses 72 hours ago as the start.
+  Future<HealthSnapshot?> readSnapshot({DateTime? since}) async {
     final end = DateTime.now();
-    final start = end.subtract(const Duration(hours: 24));
+    final cap = end.subtract(const Duration(hours: 72));
+    final start = (since != null && since.isAfter(cap)) ? since : cap;
 
     try {
       final points = await _health.getHealthDataFromTypes(

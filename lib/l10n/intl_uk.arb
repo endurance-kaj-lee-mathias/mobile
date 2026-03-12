@@ -1,15 +1,12 @@
 {
   "appTitle": "Endurance",
   "tagline": "Послуги Понад Службою",
-
   "logout": "Вийти",
   "submitLabel": "Надіслати",
   "cancelLabel": "Скасувати",
-
   "accessRestricted": "Доступ Обмежено",
   "accessRestrictedBody": "Вибачте, доступ до Endurance зарезервований для перевірених ветеранів. Ваш обліковий запис наразі не має необхідного доступу.",
   "useWebVersion": "Скористайтеся нашою веб-версією",
-
   "welcomeDescription": "Безпечний простір для тих, хто служив. Endurance поєднує вас з людьми, які мають для вас найбільше значення, на ваших умовах, у вашому темпі.",
   "featurePrivacyTitle": "Ваша конфіденційність, завжди",
   "featurePrivacyDesc": "Без відстеження та стеження. Ви повністю контролюєте, хто що бачить.",
@@ -20,7 +17,6 @@
   "featureSharingTitle": "Спільний доступ на основі дозволів",
   "featureSharingDesc": "Ви вирішуєте, що саме може бачити ваша мережа підтримки. Відкличте доступ у будь-який час.",
   "getStarted": "Почати",
-
   "navHome": "Головна",
   "navChats": "Чати",
   "navNetwork": "Моя Мережа",
@@ -29,16 +25,16 @@
   "profileTitle": "Профіль",
   "networkTitle": "Моя Мережа",
   "networkSoon": "Мережа — незабаром",
-
   "homeWelcomePrefix": "З поверненням,",
-
   "dailyCheckInTitle": "Щоденна перевірка",
   "dailyCheckInPending": "Як ви себе почуваєте сьогодні?",
   "dailyCheckInDone": "Перевірку завершено",
   "dailyCheckInDoneSubtitle": "Настрій: {score}/10",
   "@dailyCheckInDoneSubtitle": {
     "placeholders": {
-      "score": { "type": "int" }
+      "score": {
+        "type": "int"
+      }
     }
   },
   "dailyCheckInButton": "Виконати перевірку",
@@ -51,24 +47,18 @@
   "notesHint": "Як ви себе почуваєте? (макс. 500 символів)",
   "checkInSuccess": "Перевірку надіслано!",
   "checkInError": "Щось пішло не так. Спробуйте ще раз.",
-
-  "healthPermissionBody": "Дозвольте Endurance читати дані про здоров'я (пульс, кроки, сон) для збагачення перевірки.",
   "healthPermissionGrant": "Надати доступ",
-  "healthDataIncluded": "Дані про здоров'я будуть включені",
-
+  "healthDataIncluded": "Включити дані про здоров'я",
   "quickActionsSectionTitle": "ШВИДКІ ДІЇ",
   "quickActionsCrisisLine": "Лінія\nкризи",
   "quickActionsMessageBuddy": "Написати\nдругу",
   "quickActionsFindTherapist": "Знайти\nтерапевта",
-
   "upcomingSectionTitle": "НАЙБЛИЖЧЕ",
   "upcomingAppointmentTitle": "Сеанс терапії",
   "upcomingAppointmentWith": "з Др. Сарою Мітчелл",
   "upcomingAppointmentTime": "Завтра · 14:00",
-
   "supportNetworkSectionTitle": "МОЯ МЕРЕЖА ПІДТРИМКИ",
   "supportNetworkMore": "ще",
-
   "networkConnections": "Зв'язки",
   "networkRequests": "Запити",
   "networkGroupSupport": "МЕРЕЖА ПІДТРИМКИ",
@@ -93,7 +83,9 @@
   "networkRemoveBody": "{name} буде видалено з вашої мережі підтримки.",
   "@networkRemoveBody": {
     "placeholders": {
-      "name": { "type": "String" }
+      "name": {
+        "type": "String"
+      }
     }
   },
   "networkRemoveConfirm": "Видалити",
@@ -109,7 +101,9 @@
   "networkRequestSentSuccess": "Запит надіслано @{username}",
   "@networkRequestSentSuccess": {
     "placeholders": {
-      "username": { "type": "String" }
+      "username": {
+        "type": "String"
+      }
     }
   },
   "networkRemovedSuccess": "Видалено з мережі",
@@ -120,10 +114,8 @@
   "networkErrorAlreadyConnected": "Вже підключені або запит вже очікує розгляду",
   "networkErrorCannotSend": "Не вдається надіслати запит цьому користувачу",
   "networkErrorCannotRemove": "Не вдається видалити цей зв'язок. Це може бути відоме обмеження сервера — попросіть їх видалити вас.",
-
   "moodTrendSectionTitle": "ЦЕЙ ТИЖДЕНЬ",
   "moodOverviewTitle": "Огляд настрою",
-
   "resourcesSectionTitle": "РЕСУРСИ",
   "resourceCategoryMentalHealth": "Психічне здоров'я",
   "resourceCategoryCommunity": "Спільнота",
@@ -136,7 +128,9 @@
   "resourceReadTime": "{minutes} хв читання",
   "@resourceReadTime": {
     "placeholders": {
-      "minutes": { "type": "int" }
+      "minutes": {
+        "type": "int"
+      }
     }
   },
   "profileSectionIntroduction": "ВСТУП",
@@ -155,12 +149,20 @@
   "profileDeleteMessage": "Ви впевнені, що хочете назавжди видалити свій акаунт? Цю дію не можна скасувати, усі ваші дані буде втрачено.",
   "profileDeleteError": "Помилка видалення акаунту: {error}",
   "@profileDeleteError": {
-    "placeholders": { "error": { "type": "String" } }
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   },
   "profileUpdateSuccess": "Профіль успішно оновлено",
   "profileUpdateError": "Помилка оновлення профілю: {error}",
   "@profileUpdateError": {
-    "placeholders": { "error": { "type": "String" } }
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   },
   "profileEditTitle": "Редагувати профіль",
   "profileEditSaveButton": "Зберегти зміни",

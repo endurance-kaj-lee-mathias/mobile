@@ -125,10 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
-      "Health data will be included",
-    ),
-    "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
-      "Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.",
+      "Include health data",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Allow access",

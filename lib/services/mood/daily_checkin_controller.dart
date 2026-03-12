@@ -34,6 +34,9 @@ class DailyCheckInController extends GetxController {
   /// Whether health permissions have been granted.
   final RxBool hasHealthPermission = false.obs;
 
+  /// Whether health data should be included in the next submission.
+  final RxBool includeHealthData = false.obs;
+
   /// True while a submission is in progress.
   final RxBool isSubmitting = false.obs;
 
@@ -106,13 +109,16 @@ class DailyCheckInController extends GetxController {
   }
 
   Future<void> _checkHealthPermission() async {
-    hasHealthPermission.value = await _healthService.hasPermissions();
+    final granted = await _healthService.hasPermissions();
+    hasHealthPermission.value = granted;
+    includeHealthData.value = granted;
   }
 
   /// Requests health permissions from the OS. Returns true when granted.
   Future<bool> requestHealthPermission() async {
     final granted = await _healthService.requestPermissions();
     hasHealthPermission.value = granted;
+    if (granted) includeHealthData.value = true;
     return granted;
   }
 
@@ -120,6 +126,16 @@ class DailyCheckInController extends GetxController {
   Future<bool> submit({required int moodScore, String? notes}) async {
     isSubmitting.value = true;
     submitError.value = null;
+
+    // Capture the most recent previous entry time before submitting so the
+    // health snapshot window starts from there (capped at 72 h).
+    final previousEntry = weekEntries
+        .where((e) => e.createdAt != null)
+        .fold<MoodEntryModel?>(
+          null,
+          (prev, e) =>
+              prev == null || e.createdAt!.isAfter(prev.createdAt!) ? e : prev,
+        );
 
     try {
       await _moodService.submitEntry(
@@ -129,8 +145,10 @@ class DailyCheckInController extends GetxController {
       // Refresh so derived getters (todayEntries, hasDoneToday, …) update.
       _loadWeekEntries().ignore();
 
-      // Attempt to attach health data (best-effort, never blocks submission).
-      _submitHealthSample().ignore();
+      // Attempt to attach health data only when the user opted in.
+      if (includeHealthData.value && hasHealthPermission.value) {
+        _submitHealthSample(since: previousEntry?.createdAt).ignore();
+      }
 
       return true;
     } catch (e) {
@@ -142,13 +160,13 @@ class DailyCheckInController extends GetxController {
     }
   }
 
-  Future<void> _submitHealthSample() async {
+  Future<void> _submitHealthSample({DateTime? since}) async {
     if (!hasHealthPermission.value) return;
 
     final userId = Get.find<UserController>().user.value?.id;
     if (userId == null || userId.isEmpty) return;
 
-    final snapshot = await _healthService.readSnapshot();
+    final snapshot = await _healthService.readSnapshot(since: since);
     if (snapshot == null || !snapshot.canSubmitStress) return;
 
     try {

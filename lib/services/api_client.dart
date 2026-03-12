@@ -2,9 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:endurance_mobile_app/config/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:get/get.dart' as getx;
-import 'package:flutter/foundation.dart';
 
-final bool _enableVerboseLogging = !kReleaseMode;
+final bool _enableVerboseLogging = false;
 
 Dio buildApiClient() =>
     Dio(BaseOptions(baseUrl: AppConfig.apiBaseUrl))
@@ -21,10 +20,6 @@ Dio buildApiClient() =>
           ),
       ]);
 
-/// Silently handles 2xx responses with no body (e.g. 204 No Content).
-/// Dio tries to JSON-decode empty bodies by default, throwing a
-/// FormatException wrapped in DioException [unknown]. This interceptor
-/// resolves those as successful empty responses instead.
 class _EmptyBodyInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
@@ -32,9 +27,6 @@ class _EmptyBodyInterceptor extends Interceptor {
         err.type == DioExceptionType.unknown && err.error is FormatException;
 
     if (isParseError) {
-      // Dio throws this when it tries to JSON-decode an empty body (e.g. 204
-      // No Content). err.response is null because the exception is raised
-      // before Dio attaches the response object. Treat it as a success.
       final status = err.response?.statusCode ?? 204;
       handler.resolve(
         Response<void>(
@@ -50,7 +42,6 @@ class _EmptyBodyInterceptor extends Interceptor {
 }
 
 class _AuthInterceptor extends Interceptor {
-  // Prevents multiple concurrent refreshes when several requests 401 at once.
   Future<bool>? _pendingRefresh;
 
   static const _retriedKey = '_auth_retried';
@@ -78,7 +69,6 @@ class _AuthInterceptor extends Interceptor {
       return;
     }
 
-    // Collapse concurrent refreshes into one network call.
     _pendingRefresh ??= _doRefresh().whenComplete(() {
       _pendingRefresh = null;
     });
@@ -89,7 +79,6 @@ class _AuthInterceptor extends Interceptor {
       return;
     }
 
-    // Retry the original request with the new token.
     try {
       final auth = getx.Get.find<AuthController>();
       final retryOptions = err.requestOptions
@@ -107,8 +96,6 @@ class _AuthInterceptor extends Interceptor {
     final auth = getx.Get.find<AuthController>();
     final ok = await auth.refreshTokens();
     if (!ok) {
-      // Refresh token is also expired — clear the session so the router
-      // sends the user back to the login screen.
       await auth.clearSession();
     }
     return ok;

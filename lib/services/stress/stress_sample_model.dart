@@ -20,13 +20,13 @@ class StressSampleModel {
   });
 
   Map<String, dynamic> toJson() => {
-    'user_id': userId,
-    'timestamp_utc': timestampUtc.toUtc().toIso8601String(),
-    'window_minutes': windowMinutes,
-    'mean_hr': meanHr,
-    'rmssd_ms': rmssdMs,
-    if (restingHr != null) 'resting_hr': restingHr,
+    'userId': userId,
+    'timestamp': timestampUtc.toUtc().toIso8601String(),
+    'windowMinutes': windowMinutes,
+    'meanHr': meanHr,
+    'rmssdMs': rmssdMs,
+    if (restingHr != null) 'restingHr': restingHr,
     if (steps != null) 'steps': steps,
-    if (sleepDebtHours != null) 'sleep_debt_hours': sleepDebtHours,
+    if (sleepDebtHours != null) 'sleepDebtHours': sleepDebtHours,
   };
 }
