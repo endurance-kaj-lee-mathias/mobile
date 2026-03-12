@@ -25,32 +25,15 @@ class DailyCheckInController extends GetxController {
 
   Timer? _clockTimer;
 
-  /// Increments every minute so that Obx widgets re-render relative timestamps.
   final RxInt clockTick = 0.obs;
-
-  /// True while entries are being fetched from the backend.
   final RxBool isLoading = false.obs;
-
-  /// Whether health permissions have been granted.
   final RxBool hasHealthPermission = false.obs;
-
-  /// Whether health data should be included in the next submission.
   final RxBool includeHealthData = false.obs;
-
-  /// True while a submission is in progress.
   final RxBool isSubmitting = false.obs;
-
-  /// Non-null if the last submission failed.
   final Rxn<String> submitError = Rxn<String>();
 
-  /// All mood entries for the current user, most-recent first.
   final RxList<MoodEntryModel> weekEntries = <MoodEntryModel>[].obs;
 
-  // ---------------------------------------------------------------------------
-  // Derived state — reading these inside Obx() reacts to weekEntries changes.
-  // ---------------------------------------------------------------------------
-
-  /// All entries submitted today, sorted newest-first.
   List<MoodEntryModel> get todayEntries {
     final today = _todayString();
     final entries = weekEntries.where((e) => e.date == today).toList();
@@ -63,14 +46,11 @@ class DailyCheckInController extends GetxController {
     return entries;
   }
 
-  /// Whether at least one check-in has been submitted today.
   bool get hasDoneToday => todayEntries.isNotEmpty;
 
-  /// The most-recently submitted entry for today, or null if none.
   MoodEntryModel? get lastTodayEntry =>
       todayEntries.isNotEmpty ? todayEntries.first : null;
 
-  /// Average mood score across all of today's entries, or null if none.
   double? get avgTodayScore {
     final entries = todayEntries;
     if (entries.isEmpty) return null;
@@ -92,9 +72,16 @@ class DailyCheckInController extends GetxController {
     super.onClose();
   }
 
-  /// Fetches all mood entries from the backend.
-  /// Call this when the home screen becomes visible.
-  Future<void> load() => _loadWeekEntries();
+  Future<void> load() async {
+    await _checkHealthPermissionOnVisible();
+    return _loadWeekEntries();
+  }
+
+  Future<void> _checkHealthPermissionOnVisible() async {
+    final granted = await _healthService.hasOrRequestPermissions();
+    hasHealthPermission.value = granted;
+    includeHealthData.value = granted;
+  }
 
   Future<void> _loadWeekEntries() async {
     isLoading.value = true;
@@ -114,7 +101,6 @@ class DailyCheckInController extends GetxController {
     includeHealthData.value = granted;
   }
 
-  /// Requests health permissions from the OS. Returns true when granted.
   Future<bool> requestHealthPermission() async {
     final granted = await _healthService.requestPermissions();
     hasHealthPermission.value = granted;
@@ -122,13 +108,10 @@ class DailyCheckInController extends GetxController {
     return granted;
   }
 
-  /// Submits a new check-in entry. Multiple submissions per day are allowed.
   Future<bool> submit({required int moodScore, String? notes}) async {
     isSubmitting.value = true;
     submitError.value = null;
 
-    // Capture the most recent previous entry time before submitting so the
-    // health snapshot window starts from there (capped at 72 h).
     final previousEntry = weekEntries
         .where((e) => e.createdAt != null)
         .fold<MoodEntryModel?>(
@@ -142,10 +125,8 @@ class DailyCheckInController extends GetxController {
         MoodEntryModel(date: _todayString(), moodScore: moodScore, notes: notes),
       );
 
-      // Refresh so derived getters (todayEntries, hasDoneToday, …) update.
       _loadWeekEntries().ignore();
 
-      // Attempt to attach health data only when the user opted in.
       if (includeHealthData.value && hasHealthPermission.value) {
         _submitHealthSample(since: previousEntry?.createdAt).ignore();
       }
@@ -161,12 +142,23 @@ class DailyCheckInController extends GetxController {
   }
 
   Future<void> _submitHealthSample({DateTime? since}) async {
-    if (!hasHealthPermission.value) return;
+    if (!hasHealthPermission.value) {
+      debugPrint('_submitHealthSample: skipped — no health permission');
+      return;
+    }
 
     final userId = Get.find<UserController>().user.value?.id;
-    if (userId == null || userId.isEmpty) return;
+    if (userId == null || userId.isEmpty) {
+      debugPrint('_submitHealthSample: skipped — no userId');
+      return;
+    }
 
     final snapshot = await _healthService.readSnapshot(since: since);
+    debugPrint(
+      '_submitHealthSample: snapshot=$snapshot '
+      'meanHr=${snapshot?.meanHr} hrv=${snapshot?.hrvMs} '
+      'steps=${snapshot?.steps} canSubmit=${snapshot?.canSubmitStress}',
+    );
     if (snapshot == null || !snapshot.canSubmitStress) return;
 
     try {
@@ -176,12 +168,13 @@ class DailyCheckInController extends GetxController {
           timestampUtc: snapshot.windowEnd.toUtc(),
           windowMinutes: snapshot.windowMinutes,
           meanHr: snapshot.meanHr!,
-          rmssdMs: snapshot.rmssdMs!,
+          rmssdMs: snapshot.hrvMs!,
           restingHr: snapshot.restingHr,
           steps: snapshot.steps,
           sleepDebtHours: snapshot.sleepDebtHours,
         ),
       );
+      debugPrint('_submitHealthSample: stress sample posted successfully');
     } catch (e) {
       debugPrint('DailyCheckInController._submitHealthSample error: $e');
     }
