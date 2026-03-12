@@ -1,17 +1,18 @@
 {
   "appTitle": "Endurance",
-  "@appTitle": { "description": "The application name." },
+  "@appTitle": {
+    "description": "The application name."
+  },
   "tagline": "Services Beyond Service",
-  "@tagline": { "description": "Tagline shown on the splash and welcome screens." },
-
+  "@tagline": {
+    "description": "Tagline shown on the splash and welcome screens."
+  },
   "logout": "Logout",
   "submitLabel": "Submit",
   "cancelLabel": "Cancel",
-
   "accessRestricted": "Access Restricted",
   "accessRestrictedBody": "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
   "useWebVersion": "Use our web version instead",
-
   "welcomeDescription": "A safe space built for those who served. Endurance connects you with the people who matter most, on your own terms, at your own pace.",
   "featurePrivacyTitle": "Your privacy, always",
   "featurePrivacyDesc": "No tracking, no surveillance. You are in full control of who sees what.",
@@ -22,7 +23,6 @@
   "featureSharingTitle": "Permission-based sharing",
   "featureSharingDesc": "You decide exactly what your support network can see. Revoke access any time.",
   "getStarted": "Get Started",
-
   "navHome": "Home",
   "navChats": "Chats",
   "navNetwork": "My Network",
@@ -32,7 +32,11 @@
   "chatsEmptyBody": "Tap on someone in your support network to start a conversation.",
   "chatsMessagePreviewYou": "You: {message}",
   "@chatsMessagePreviewYou": {
-    "placeholders": { "message": { "type": "String" } }
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
   },
   "chatsNoMessages": "No messages yet",
   "chatsYou": "You",
@@ -46,7 +50,9 @@
   "chatUnreadSince": "Unread since {time}",
   "@chatUnreadSince": {
     "placeholders": {
-      "time": {"type": "String"}
+      "time": {
+        "type": "String"
+      }
     }
   },
   "profileTitle": "Profile",
@@ -76,7 +82,9 @@
   "networkRemoveBody": "{name} will be removed from your support network.",
   "@networkRemoveBody": {
     "placeholders": {
-      "name": { "type": "String" }
+      "name": {
+        "type": "String"
+      }
     }
   },
   "networkRemoveConfirm": "Remove",
@@ -92,7 +100,9 @@
   "networkRequestSentSuccess": "Request sent to @{username}",
   "@networkRequestSentSuccess": {
     "placeholders": {
-      "username": { "type": "String" }
+      "username": {
+        "type": "String"
+      }
     }
   },
   "networkRemovedSuccess": "Removed from network",
@@ -103,10 +113,10 @@
   "networkErrorAlreadyConnected": "Already connected or a request is already pending",
   "networkErrorCannotSend": "Cannot send a request to this user",
   "networkErrorCannotRemove": "Cannot remove this connection. This may be a known server limitation — ask them to remove you instead.",
-
   "homeWelcomePrefix": "Welcome back,",
-  "@homeWelcomePrefix": { "description": "Greeting prefix on the home screen, followed by the user's first name." },
-
+  "@homeWelcomePrefix": {
+    "description": "Greeting prefix on the home screen, followed by the user's first name."
+  },
   "dailyCheckInTitle": "Daily Check-In",
   "dailyCheckInPending": "How are you feeling today?",
   "dailyCheckInDone": "Check-in complete",
@@ -114,7 +124,9 @@
   "@dailyCheckInDoneSubtitle": {
     "description": "Subtitle shown when check-in is complete, displaying the mood score.",
     "placeholders": {
-      "score": { "type": "int" }
+      "score": {
+        "type": "int"
+      }
     }
   },
   "dailyCheckInButton": "Complete check-in",
@@ -123,55 +135,56 @@
   "@checkInScoreLabel": {
     "description": "Inline mood score display (e.g. '7/10') shown in the check-in card.",
     "placeholders": {
-      "score": { "type": "int" }
+      "score": {
+        "type": "int"
+      }
     }
   },
   "checkInTimeAgoMinutes": "{count}m ago",
   "@checkInTimeAgoMinutes": {
     "description": "How long ago the last check-in was, in minutes.",
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "checkInTimeAgoHours": "{count}h ago",
   "@checkInTimeAgoHours": {
     "description": "How long ago the last check-in was, in hours.",
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "checkInAvgToday": "avg {score} today",
   "@checkInAvgToday": {
     "description": "Average mood score for today shown when multiple check-ins exist.",
     "placeholders": {
-      "score": { "type": "String" }
+      "score": {
+        "type": "String"
+      }
     }
   },
   "notesLabel": "Notes (optional)",
   "notesHint": "How are you feeling? (max 500 characters)",
   "checkInSuccess": "Check-in submitted!",
   "checkInError": "Something went wrong. Please try again.",
-
-  "healthPermissionBody": "Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.",
   "healthPermissionGrant": "Allow access",
-  "healthDataIncluded": "Health data will be included",
-
+  "healthDataIncluded": "Include health data",
   "quickActionsSectionTitle": "QUICK ACTIONS",
   "quickActionsCrisisLine": "Crisis\nLine",
   "quickActionsMessageBuddy": "Message\nBuddy",
   "quickActionsFindTherapist": "Find\nTherapist",
-
   "upcomingSectionTitle": "UPCOMING",
   "upcomingAppointmentTitle": "Therapy Session",
   "upcomingAppointmentWith": "with Dr. Sarah Mitchell",
   "upcomingAppointmentTime": "Tomorrow · 14:00",
-
   "supportNetworkSectionTitle": "MY SUPPORT NETWORK",
   "supportNetworkMore": "more",
-
   "moodTrendSectionTitle": "THIS WEEK",
   "moodOverviewTitle": "Mood Overview",
-
   "resourcesSectionTitle": "RESOURCES",
   "resourceCategoryMentalHealth": "Mental Health",
   "resourceCategoryCommunity": "Community",
@@ -185,7 +198,9 @@
   "@resourceReadTime": {
     "description": "Read time label on a resource card.",
     "placeholders": {
-      "minutes": { "type": "int" }
+      "minutes": {
+        "type": "int"
+      }
     }
   },
   "profileSectionIntroduction": "INTRODUCTION",
@@ -204,12 +219,20 @@
   "profileDeleteMessage": "Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be lost.",
   "profileDeleteError": "Error deleting account: {error}",
   "@profileDeleteError": {
-    "placeholders": { "error": { "type": "String" } }
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   },
   "profileUpdateSuccess": "Profile updated successfully",
   "profileUpdateError": "Error updating profile: {error}",
   "@profileUpdateError": {
-    "placeholders": { "error": { "type": "String" } }
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   },
   "profileEditTitle": "Edit Profile",
   "profileEditSaveButton": "Save Changes",

@@ -1,15 +1,12 @@
 {
   "appTitle": "Endurance",
   "tagline": "Diensten Boven Dienst",
-
   "logout": "Uitloggen",
   "submitLabel": "Indienen",
   "cancelLabel": "Annuleren",
-
   "accessRestricted": "Toegang Beperkt",
   "accessRestrictedBody": "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
   "useWebVersion": "Gebruik onze webversie",
-
   "welcomeDescription": "Een veilige plek gebouwd voor degenen die gediend hebben. Endurance verbindt u met de mensen die er het meest toe doen, op uw eigen voorwaarden, in uw eigen tempo.",
   "featurePrivacyTitle": "Uw privacy, altijd",
   "featurePrivacyDesc": "Geen tracking, geen surveillance. U heeft volledige controle over wie wat ziet.",
@@ -20,7 +17,6 @@
   "featureSharingTitle": "Delen op basis van toestemming",
   "featureSharingDesc": "U bepaalt precies wat uw ondersteuningsnetwerk kan zien. Toegang intrekken op elk moment.",
   "getStarted": "Aan de slag",
-
   "navHome": "Thuis",
   "navChats": "Chats",
   "navNetwork": "Mijn Netwerk",
@@ -29,16 +25,16 @@
   "profileTitle": "Profiel",
   "networkTitle": "Mijn Netwerk",
   "networkSoon": "Netwerk — binnenkort beschikbaar",
-
   "homeWelcomePrefix": "Welkom terug,",
-
   "dailyCheckInTitle": "Dagelijkse check-in",
   "dailyCheckInPending": "Hoe voel je je vandaag?",
   "dailyCheckInDone": "Check-in voltooid",
   "dailyCheckInDoneSubtitle": "Stemming: {score}/10",
   "@dailyCheckInDoneSubtitle": {
     "placeholders": {
-      "score": { "type": "int" }
+      "score": {
+        "type": "int"
+      }
     }
   },
   "dailyCheckInButton": "Check-in voltooien",
@@ -51,24 +47,18 @@
   "notesHint": "Hoe voel je je? (max. 500 tekens)",
   "checkInSuccess": "Check-in ingediend!",
   "checkInError": "Er is iets misgegaan. Probeer het opnieuw.",
-
-  "healthPermissionBody": "Sta Endurance toe uw gezondheidsgegevens (hartslag, stappen, slaap) te lezen om uw check-in te verrijken.",
   "healthPermissionGrant": "Toegang verlenen",
-  "healthDataIncluded": "Gezondheidsgegevens worden opgenomen",
-
+  "healthDataIncluded": "Gezondheidsgegevens opnemen",
   "quickActionsSectionTitle": "SNELLE ACTIES",
   "quickActionsCrisisLine": "Crisis-\nlijn",
   "quickActionsMessageBuddy": "Bericht\nVriend",
   "quickActionsFindTherapist": "Vind\nTherapeut",
-
   "upcomingSectionTitle": "AANKOMEND",
   "upcomingAppointmentTitle": "Therapiesessie",
   "upcomingAppointmentWith": "met Dr. Sarah Mitchell",
   "upcomingAppointmentTime": "Morgen · 14:00",
-
   "supportNetworkSectionTitle": "MIJN STEUNNETWERK",
   "supportNetworkMore": "meer",
-
   "networkConnections": "Verbindingen",
   "networkRequests": "Verzoeken",
   "networkGroupSupport": "STEUNNETWERK",
@@ -93,7 +83,9 @@
   "networkRemoveBody": "{name} wordt verwijderd uit uw steunnetwerk.",
   "@networkRemoveBody": {
     "placeholders": {
-      "name": { "type": "String" }
+      "name": {
+        "type": "String"
+      }
     }
   },
   "networkRemoveConfirm": "Verwijderen",
@@ -109,7 +101,9 @@
   "networkRequestSentSuccess": "Verzoek verzonden naar @{username}",
   "@networkRequestSentSuccess": {
     "placeholders": {
-      "username": { "type": "String" }
+      "username": {
+        "type": "String"
+      }
     }
   },
   "networkRemovedSuccess": "Verwijderd uit netwerk",
@@ -120,10 +114,8 @@
   "networkErrorAlreadyConnected": "Al verbonden of er is al een verzoek in behandeling",
   "networkErrorCannotSend": "Kan geen verzoek sturen naar deze gebruiker",
   "networkErrorCannotRemove": "Kan deze verbinding niet verwijderen. Dit kan een bekende serverbeperking zijn — vraag hen om u te verwijderen.",
-
   "moodTrendSectionTitle": "DEZE WEEK",
   "moodOverviewTitle": "Stemmingsoverzicht",
-
   "resourcesSectionTitle": "BRONNEN",
   "resourceCategoryMentalHealth": "Geestelijke Gezondheid",
   "resourceCategoryCommunity": "Gemeenschap",
@@ -136,7 +128,9 @@
   "resourceReadTime": "{minutes} min lezen",
   "@resourceReadTime": {
     "placeholders": {
-      "minutes": { "type": "int" }
+      "minutes": {
+        "type": "int"
+      }
     }
   },
   "profileSectionIntroduction": "INTRODUCTIE",
@@ -155,12 +149,20 @@
   "profileDeleteMessage": "Weet u zeker dat u uw account permanent wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt en al uw gegevens gaan verloren.",
   "profileDeleteError": "Fout bij verwijderen: {error}",
   "@profileDeleteError": {
-    "placeholders": { "error": { "type": "String" } }
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   },
   "profileUpdateSuccess": "Profiel succesvol bijgewerkt",
   "profileUpdateError": "Fout bij bijwerken: {error}",
   "@profileUpdateError": {
-    "placeholders": { "error": { "type": "String" } }
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   },
   "profileEditTitle": "Profiel bewerken",
   "profileEditSaveButton": "Wijzigingen opslaan",

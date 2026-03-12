@@ -907,16 +907,6 @@ class S {
     );
   }
 
-  /// `Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.`
-  String get healthPermissionBody {
-    return Intl.message(
-      'Allow Endurance to read your health data (heart rate, steps, sleep) to enrich your check-in.',
-      name: 'healthPermissionBody',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Allow access`
   String get healthPermissionGrant {
     return Intl.message(
@@ -927,10 +917,10 @@ class S {
     );
   }
 
-  /// `Health data will be included`
+  /// `Include health data`
   String get healthDataIncluded {
     return Intl.message(
-      'Health data will be included',
+      'Include health data',
       name: 'healthDataIncluded',
       desc: '',
       args: [],

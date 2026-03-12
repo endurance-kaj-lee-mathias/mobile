@@ -103,10 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Aan de slag"),
     "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
-      "Gezondheidsgegevens worden opgenomen",
-    ),
-    "healthPermissionBody": MessageLookupByLibrary.simpleMessage(
-      "Sta Endurance toe uw gezondheidsgegevens (hartslag, stappen, slaap) te lezen om uw check-in te verrijken.",
+      "Gezondheidsgegevens opnemen",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Toegang verlenen",

@@ -93,57 +93,52 @@ class _CheckInBottomSheetState extends State<CheckInBottomSheet> {
           ),
           const SizedBox(height: 16),
 
-          // Health permission prompt / confirmation
+          // Health data opt-in checkbox
           Obx(() {
-            if (controller.hasHealthPermission.value) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Row(
-                  children: [
-                    HeroIcon(
-                      HeroIcons.signal,
-                      size: 16,
-                      color: AppColors.success,
-                    ),
-                    const SizedBox(width: 6),
-                    Text(
-                      l10n.healthDataIncluded,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-              );
-            }
+            final hasPerm = controller.hasHealthPermission.value;
+            final include = controller.includeHealthData.value;
             return Container(
               margin: const EdgeInsets.only(bottom: 16),
-              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: Theme.of(
                   context,
                 ).colorScheme.onSurface.withValues(alpha: 0.06),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Row(
-                children: [
-                  const HeroIcon(HeroIcons.signal, size: 20),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      l10n.healthPermissionBody,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
+              child: CheckboxListTile(
+                value: hasPerm ? include : false,
+                onChanged: hasPerm
+                    ? (v) => controller.includeHealthData.value = v ?? false
+                    : (v) async {
+                        if (v == true) await controller.requestHealthPermission();
+                      },
+                title: Text(
+                  l10n.healthDataIncluded,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
                   ),
-                  const SizedBox(width: 8),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      minimumSize: Size.zero,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                    onPressed: () async => controller.requestHealthPermission(),
-                    child: Text(l10n.healthPermissionGrant),
-                  ),
-                ],
+                ),
+                subtitle: hasPerm
+                    ? null
+                    : Text(
+                        l10n.healthPermissionGrant,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                secondary: HeroIcon(
+                  HeroIcons.signal,
+                  size: 20,
+                  color: (hasPerm && include) ? AppColors.success : null,
+                ),
+                controlAffinity: ListTileControlAffinity.leading,
+                activeColor: AppColors.mossGreen,
+                checkColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 4,
+                ),
               ),
             );
           }),

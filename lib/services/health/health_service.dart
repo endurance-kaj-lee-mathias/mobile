@@ -1,10 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:health/health.dart';
 
-/// Aggregated health metrics for the past 24 hours.
 class HealthSnapshot {
   final double? meanHr;
-  final double? rmssdMs;
+  final double? hrvMs;
   final double? restingHr;
   final int? steps;
   final double? sleepDebtHours;
@@ -13,7 +14,7 @@ class HealthSnapshot {
 
   const HealthSnapshot({
     this.meanHr,
-    this.rmssdMs,
+    this.hrvMs,
     this.restingHr,
     this.steps,
     this.sleepDebtHours,
@@ -21,15 +22,14 @@ class HealthSnapshot {
     required this.windowEnd,
   });
 
-  /// True when required stress fields are present (needed to POST /stress/samples).
-  bool get canSubmitStress => meanHr != null && rmssdMs != null;
+  bool get canSubmitStress => meanHr != null && hrvMs != null;
 
   int get windowMinutes =>
       windowEnd.difference(windowStart).inMinutes.clamp(1, 1440 * 7);
 }
 
 class HealthService {
-  static final _types = [
+  static final _typesAndroid = [
     HealthDataType.HEART_RATE,
     HealthDataType.HEART_RATE_VARIABILITY_RMSSD,
     HealthDataType.RESTING_HEART_RATE,
@@ -37,12 +37,28 @@ class HealthService {
     HealthDataType.SLEEP_SESSION,
   ];
 
+  static final _typesIOS = [
+    HealthDataType.HEART_RATE,
+    HealthDataType.HEART_RATE_VARIABILITY_SDNN,
+    HealthDataType.RESTING_HEART_RATE,
+    HealthDataType.STEPS,
+    HealthDataType.SLEEP_ASLEEP,
+    HealthDataType.SLEEP_DEEP,
+    HealthDataType.SLEEP_REM,
+    HealthDataType.SLEEP_LIGHT,
+  ];
+
+  static List<HealthDataType> get _types =>
+      Platform.isIOS ? _typesIOS : _typesAndroid;
+
   final _health = Health();
 
-  /// Requests health permissions. Returns true if at least read-access for
-  /// HEART_RATE and STEPS was granted.
   Future<bool> requestPermissions() async {
     try {
+      if (Platform.isAndroid && !(await _health.isHealthConnectAvailable())) {
+        await _health.installHealthConnect();
+        return false;
+      }
       final granted = await _health.requestAuthorization(
         _types,
         permissions: List.filled(_types.length, HealthDataAccess.READ),
@@ -54,9 +70,11 @@ class HealthService {
     }
   }
 
-  /// Returns true if health permissions are already granted.
   Future<bool> hasPermissions() async {
     try {
+      if (Platform.isAndroid && !(await _health.isHealthConnectAvailable())) {
+        return false;
+      }
       final result = await _health.hasPermissions(_types);
       return result == true;
     } catch (_) {
@@ -64,10 +82,27 @@ class HealthService {
     }
   }
 
-  /// Reads a 24-hour health snapshot ending now.
-  Future<HealthSnapshot?> readSnapshot() async {
+  Future<bool> hasOrRequestPermissions() async {
+    try {
+      if (Platform.isAndroid && !(await _health.isHealthConnectAvailable())) {
+        return false;
+      }
+      final result = await _health.hasPermissions(_types);
+      if (result != null) return result;
+      return await _health.requestAuthorization(
+        _types,
+        permissions: List.filled(_types.length, HealthDataAccess.READ),
+      );
+    } catch (e) {
+      debugPrint('HealthService.hasOrRequestPermissions error: $e');
+      return false;
+    }
+  }
+
+  Future<HealthSnapshot?> readSnapshot({DateTime? since}) async {
     final end = DateTime.now();
-    final start = end.subtract(const Duration(hours: 24));
+    final cap = end.subtract(const Duration(hours: 72));
+    final start = (since != null && since.isAfter(cap)) ? since : cap;
 
     try {
       final points = await _health.getHealthDataFromTypes(
@@ -76,7 +111,6 @@ class HealthService {
         types: _types,
       );
 
-      // Mean HR
       final hrPoints = points
           .where((p) => p.type == HealthDataType.HEART_RATE)
           .map((p) => (p.value as NumericHealthValue).numericValue.toDouble())
@@ -85,14 +119,15 @@ class HealthService {
           ? null
           : hrPoints.reduce((a, b) => a + b) / hrPoints.length;
 
-      // RMSSD — take the most recent sample
-      final rmssdPoints = points
-          .where((p) => p.type == HealthDataType.HEART_RATE_VARIABILITY_RMSSD)
+      final hrvType = Platform.isIOS
+          ? HealthDataType.HEART_RATE_VARIABILITY_SDNN
+          : HealthDataType.HEART_RATE_VARIABILITY_RMSSD;
+      final hrvPoints = points
+          .where((p) => p.type == hrvType)
           .map((p) => (p.value as NumericHealthValue).numericValue.toDouble())
           .toList();
-      final double? rmssdMs = rmssdPoints.isEmpty ? null : rmssdPoints.last;
+      final double? hrvMs = hrvPoints.isEmpty ? null : hrvPoints.last;
 
-      // Resting HR — take the most recent sample
       final restingPoints = points
           .where((p) => p.type == HealthDataType.RESTING_HEART_RATE)
           .map((p) => (p.value as NumericHealthValue).numericValue.toDouble())
@@ -101,7 +136,6 @@ class HealthService {
           ? null
           : restingPoints.last;
 
-      // Steps — sum all samples
       final stepPoints = points
           .where((p) => p.type == HealthDataType.STEPS)
           .map((p) => (p.value as NumericHealthValue).numericValue.toInt())
@@ -110,9 +144,16 @@ class HealthService {
           ? null
           : stepPoints.reduce((a, b) => a + b);
 
-      // Sleep debt: recommended 8h minus total sleep in window
+      final sleepTypes = Platform.isIOS
+          ? {
+              HealthDataType.SLEEP_ASLEEP,
+              HealthDataType.SLEEP_DEEP,
+              HealthDataType.SLEEP_REM,
+              HealthDataType.SLEEP_LIGHT,
+            }
+          : {HealthDataType.SLEEP_SESSION};
       final sleepSeconds = points
-          .where((p) => p.type == HealthDataType.SLEEP_SESSION)
+          .where((p) => sleepTypes.contains(p.type))
           .map((p) => p.dateTo.difference(p.dateFrom).inSeconds)
           .fold<int>(0, (sum, s) => sum + s);
       final double? sleepDebt = sleepSeconds == 0
@@ -121,7 +162,7 @@ class HealthService {
 
       return HealthSnapshot(
         meanHr: meanHr,
-        rmssdMs: rmssdMs,
+        hrvMs: hrvMs,
         restingHr: restingHr,
         steps: steps,
         sleepDebtHours: sleepDebt,
@@ -134,3 +175,4 @@ class HealthService {
     }
   }
 }
+
