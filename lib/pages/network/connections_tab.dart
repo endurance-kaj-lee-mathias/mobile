@@ -2,9 +2,11 @@ import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/empty_state.dart';
 import 'package:endurance_mobile_app/components/hero_icon.dart';
+import 'package:endurance_mobile_app/components/privacy_menu.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
+import 'package:endurance_mobile_app/pages/network/user_privacy_sheet.dart';
 import 'package:endurance_mobile_app/services/chat/chat_controller.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
@@ -140,11 +142,14 @@ class MemberTile extends StatelessWidget {
             tooltip: l10n.navChats,
             onPressed: () => _openChat(context),
           ),
-          IconButton(
-            icon: const HeroIcon(HeroIcons.userMinus),
-            color: AppColors.error,
-            tooltip: l10n.networkRemove,
-            onPressed: () => _confirmRemove(context),
+          PrivacyMenu(
+            member: member,
+            onPrivacyPressed: () => showUserPrivacySheet(
+              context,
+              member: member,
+              controller: controller,
+            ),
+            onRemovePressed: () => _confirmRemove(context),
           ),
         ],
       ),
