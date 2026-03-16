@@ -28,11 +28,13 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   final userCtrl = Get.find<UserController>();
   final _formKey = GlobalKey<FormState>();
   bool _isSaving = false;
+  late bool _isPrivate;
 
   @override
   void initState() {
     super.initState();
     final user = userCtrl.user.value;
+    _isPrivate = user?.isPrivate ?? false;
     final auth = Get.find<AuthController>();
 
     _firstNameController = TextEditingController(text: user?.firstName ?? '');
@@ -106,6 +108,10 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       }
       if (_aboutController.text != (user?.about ?? '')) {
         await userCtrl.updateAbout(_aboutController.text);
+      }
+
+      if (_isPrivate != (user?.isPrivate ?? false)) {
+        await userCtrl.updatePrivacy(_isPrivate);
       }
 
       final street = _streetController.text.trim();
@@ -290,6 +296,26 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                     maxLines: 4,
                     maxLength: 500,
                     textCapitalization: TextCapitalization.sentences,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 28),
+
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: SectionHeader(label: l10n.profileLabelPrivacy),
+              ),
+              _FieldGroup(
+                colorScheme: colorScheme,
+                children: [
+                  SwitchListTile(
+                    title: Text(l10n.profilePrivateAccount,
+                        style: const TextStyle(fontWeight: FontWeight.w600)),
+                    subtitle: Text(l10n.featurePrivacyDesc,
+                        style: Theme.of(context).textTheme.bodySmall),
+                    value: _isPrivate,
+                    onChanged: (val) => setState(() => _isPrivate = val),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   ),
                 ],
               ),

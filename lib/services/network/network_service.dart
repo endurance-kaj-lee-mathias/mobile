@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:endurance_mobile_app/services/network/invite_model.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
+import 'package:endurance_mobile_app/services/network/privacy_model.dart';
 import 'package:get/get.dart';
 
 class NetworkService {
@@ -51,5 +52,36 @@ class NetworkService {
   Future<InviteListModel> listInvites() async {
     final response = await _client.get<Map<String, dynamic>>('/support/');
     return InviteListModel.fromJson(response.data!);
+  }
+
+  Future<List<SharingRuleModel>> getSharingRules() async {
+    final response = await _client.get<List<dynamic>>('/sharing/rules');
+    return (response.data ?? [])
+        .cast<Map<String, dynamic>>()
+        .map(SharingRuleModel.fromJson)
+        .toList();
+  }
+
+  Future<SharingRuleModel> createSharingRule(
+    String viewerId,
+    SharingResource resource,
+    SharingEffect effect,
+  ) async {
+    final response = await _client.post<Map<String, dynamic>>(
+      '/sharing/rules',
+      data: {
+        'viewerId': viewerId,
+        'resource': resource.value,
+        'effect': effect.value,
+      },
+    );
+    return SharingRuleModel.fromJson(response.data!);
+  }
+
+  Future<void> deleteSharingRule(String ruleId) async {
+    await _client.delete<void>(
+      '/sharing/rules/$ruleId',
+      options: Options(responseType: ResponseType.plain),
+    );
   }
 }

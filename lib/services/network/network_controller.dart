@@ -5,6 +5,7 @@ import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/network/invite_model.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
 import 'package:endurance_mobile_app/services/network/network_service.dart';
+import 'package:endurance_mobile_app/services/network/privacy_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -22,9 +23,12 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
   final RxList<MemberModel> members = <MemberModel>[].obs;
   final RxList<InviteModel> incoming = <InviteModel>[].obs;
   final RxList<InviteModel> outgoing = <InviteModel>[].obs;
+  final RxMap<String, List<SharingRuleModel>> sharingRulesByViewer =
+      <String, List<SharingRuleModel>>{}.obs;
 
   final RxBool isLoadingMembers = false.obs;
   final RxBool isLoadingInvites = false.obs;
+  final RxBool isLoadingSharingRules = false.obs;
   final RxBool isActing = false.obs;
   final RxBool isSending = false.obs;
   final Rxn<NetworkInviteError> sendError = Rxn<NetworkInviteError>();
@@ -117,11 +121,13 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     if (_isOnNetworkTab && outgoing.isNotEmpty) {
       await loadMembers();
     }
+    await loadSharingRules();
   }
 
   void handlePushNotification() => load();
 
-  Future<void> load() => Future.wait([loadMembers(), loadInvites()]);
+  Future<void> load() =>
+      Future.wait([loadMembers(), loadInvites(), loadSharingRules()]);
 
   Future<void> loadMembers() async {
     if (members.isEmpty) isLoadingMembers.value = true;
@@ -215,6 +221,50 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
       isActing.value = false;
     }
   }
+
+  Future<void> loadSharingRules() async {
+    try {
+      final rules = await _service.getSharingRules();
+      final byViewer = <String, List<SharingRuleModel>>{};
+      for (final rule in rules) {
+        byViewer.putIfAbsent(rule.viewerId, () => []).add(rule);
+      }
+      sharingRulesByViewer.value = byViewer;
+    } catch (e) {
+      debugPrint('Failed to load sharing rules: $e');
+    } finally {
+      isLoadingSharingRules.value = false;
+    }
+  }
+
+  Future<bool> updateSharingRule(
+    String viewerId,
+    SharingResource resource,
+    SharingEffect effect,
+  ) async {
+    try {
+      await _service.createSharingRule(viewerId, resource, effect);
+      await loadSharingRules();
+      return true;
+    } catch (e) {
+      debugPrint('Failed to update sharing rule: $e');
+      return false;
+    }
+  }
+
+  Future<bool> removeSharingRule(String ruleId) async {
+    try {
+      await _service.deleteSharingRule(ruleId);
+      await loadSharingRules();
+      return true;
+    } catch (e) {
+      debugPrint('Failed to remove sharing rule: $e');
+      return false;
+    }
+  }
+
+  List<SharingRuleModel> getRulesForViewer(String viewerId) =>
+      sharingRulesByViewer[viewerId] ?? [];
 }
 
 class NetworkRemoveNotAllowedError implements Exception {
