@@ -1,4 +1,4 @@
-import 'package:endurance_mobile_app/config/app_config.dart';
+import 'package:endurance_mobile_app/core/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/token_model.dart';
 import 'package:endurance_mobile_app/services/auth/auth_storage_service.dart';
 import 'package:endurance_mobile_app/services/user/user_service.dart';

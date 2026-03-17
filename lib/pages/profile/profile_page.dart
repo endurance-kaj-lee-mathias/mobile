@@ -4,7 +4,7 @@ import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
-import 'package:endurance_mobile_app/pages/profile_edit.dart';
+import 'package:endurance_mobile_app/pages/profile/profile_edit_page.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_model.dart';

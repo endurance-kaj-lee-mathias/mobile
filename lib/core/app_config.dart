@@ -34,7 +34,7 @@ class AppConfig {
 
   static const webAppUrl = String.fromEnvironment(
     'WEB_APP_URL',
-    defaultValue: 'https://endurance.kdg.be',
+    defaultValue: 'https://app.leeco.dev',
   );
 
   static const apiBaseUrl = String.fromEnvironment(

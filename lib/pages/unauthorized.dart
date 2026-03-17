@@ -1,5 +1,5 @@
 import 'package:endurance_mobile_app/components/hero_icon.dart';
-import 'package:endurance_mobile_app/config/app_config.dart';
+import 'package:endurance_mobile_app/core/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';

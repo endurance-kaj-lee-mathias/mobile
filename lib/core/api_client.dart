@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:endurance_mobile_app/config/app_config.dart';
+import 'package:endurance_mobile_app/core/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:get/get.dart' as getx;
 

@@ -1,7 +1,7 @@
 import 'package:endurance_mobile_app/app/router.dart';
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
-import 'package:endurance_mobile_app/services/api_client.dart';
+import 'package:endurance_mobile_app/core/api_client.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/chat/chat_controller.dart';
 import 'package:endurance_mobile_app/services/chat/websocket_service.dart';

@@ -44,11 +44,17 @@ Key controllers: `AuthController`, `UserController`, `ChatController`, `NetworkC
 
 ### API client
 
-`lib/services/api_client.dart` builds a Dio instance with two interceptors:
+`lib/core/api_client.dart` builds a Dio instance with two interceptors:
 - `_AuthInterceptor` — attaches Bearer token from `AuthController`, handles 401 by refreshing the Keycloak token and retrying
 - `_EmptyBodyInterceptor` — handles 204 empty responses
 
-Environment config (API base URL, Keycloak settings) is injected at compile time via `--dart-define-from-file` and read from `lib/config/app_config.dart`.
+Environment config (API base URL, Keycloak settings) is injected at compile time via `--dart-define-from-file` and read from `lib/core/app_config.dart`.
+
+### Core infrastructure
+
+`lib/core/` contains cross-cutting infrastructure:
+- `api_client.dart` — Dio instance factory with auth and error interceptors
+- `app_config.dart` — compile-time environment constants (`AppConfig`)
 
 ### Authentication
 
