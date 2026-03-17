@@ -23,6 +23,7 @@ class MainShell extends StatelessWidget {
     AppRoutes.home,
     AppRoutes.chats,
     AppRoutes.network,
+    AppRoutes.agenda,
     AppRoutes.profile,
   ];
 
@@ -102,6 +103,17 @@ class MainShell extends StatelessWidget {
                 label: s.navNetwork,
               ),
               BottomNavigationBarItem(
+                icon: const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: HeroIcon(HeroIcons.calendarOutline),
+                ),
+                activeIcon: const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: HeroIcon(HeroIcons.calendarSolid),
+                ),
+                label: s.navAgenda,
+              ),
+              BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: _ProfileNavIcon(
@@ -155,6 +167,11 @@ class MainShell extends StatelessWidget {
                 count: incomingCount,
               ),
               label: s.navNetwork,
+            ),
+            NavigationDestination(
+              icon: const HeroIcon(HeroIcons.calendarOutline),
+              selectedIcon: const HeroIcon(HeroIcons.calendarSolid),
+              label: s.navAgenda,
             ),
             NavigationDestination(
               icon: _ProfileNavIcon(

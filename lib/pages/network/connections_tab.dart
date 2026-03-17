@@ -6,6 +6,7 @@ import 'package:endurance_mobile_app/components/privacy_menu.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
+import 'package:endurance_mobile_app/pages/agenda/slot_picker_sheet.dart';
 import 'package:endurance_mobile_app/pages/network/user_privacy_sheet.dart';
 import 'package:endurance_mobile_app/services/chat/chat_controller.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
@@ -150,6 +151,8 @@ class MemberTile extends StatelessWidget {
               controller: controller,
             ),
             onRemovePressed: () => _confirmRemove(context),
+            onBookAppointmentPressed: () =>
+                SlotPickerSheet.show(context, member: member),
           ),
         ],
       ),

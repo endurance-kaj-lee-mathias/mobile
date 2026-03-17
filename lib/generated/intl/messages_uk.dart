@@ -38,17 +38,109 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m10(error) => "Помилка оновлення профілю: ${error}";
 
-  static String m11(minutes) => "${minutes} хв читання";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Доступ Обмежено"),
     "accessRestrictedBody": MessageLookupByLibrary.simpleMessage(
       "Вибачте, доступ до Endurance зарезервований для перевірених ветеранів. Ваш обліковий запис наразі не має необхідного доступу.",
     ),
+    "agendaAddAvailability": MessageLookupByLibrary.simpleMessage(
+      "Додати доступність",
+    ),
+    "agendaAddSlotButton": MessageLookupByLibrary.simpleMessage("Додати"),
+    "agendaAddSlotDuration": MessageLookupByLibrary.simpleMessage("Тривалість"),
+    "agendaAddSlotError": MessageLookupByLibrary.simpleMessage(
+      "Не вдалося додати доступність. Спробуйте ще раз.",
+    ),
+    "agendaAddSlotRecurring": MessageLookupByLibrary.simpleMessage(
+      "Повторювати щотижня",
+    ),
+    "agendaAddSlotRecurringHint": MessageLookupByLibrary.simpleMessage(
+      "Створює доступність на наступні 8 тижнів",
+    ),
+    "agendaAddSlotStartTime": MessageLookupByLibrary.simpleMessage(
+      "Час початку",
+    ),
+    "agendaAddSlotSuccess": MessageLookupByLibrary.simpleMessage(
+      "Доступність додана!",
+    ),
+    "agendaBookButton": MessageLookupByLibrary.simpleMessage("Записатися"),
+    "agendaBookError": MessageLookupByLibrary.simpleMessage(
+      "Не вдалося забронювати слот. Спробуйте ще раз.",
+    ),
+    "agendaBookedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Зустріч заброньована!",
+    ),
+    "agendaCancelBody": MessageLookupByLibrary.simpleMessage(
+      "Це звільнить часовий слот для інших.",
+    ),
+    "agendaCancelConfirm": MessageLookupByLibrary.simpleMessage(
+      "Скасувати зустріч",
+    ),
+    "agendaCancelTitle": MessageLookupByLibrary.simpleMessage(
+      "Скасувати зустріч?",
+    ),
+    "agendaCancelledSuccess": MessageLookupByLibrary.simpleMessage(
+      "Зустріч скасовано",
+    ),
+    "agendaEmptyAvailability": MessageLookupByLibrary.simpleMessage(
+      "Доступність не задана",
+    ),
+    "agendaEmptyAvailabilityBody": MessageLookupByLibrary.simpleMessage(
+      "Додайте часові вікна для вашої мережі.",
+    ),
+    "agendaEmptyBody": MessageLookupByLibrary.simpleMessage(
+      "Забронюйте час у когось із вашої мережі підтримки.",
+    ),
+    "agendaEmptyTitle": MessageLookupByLibrary.simpleMessage("Немає зустрічей"),
+    "agendaExportCalendar": MessageLookupByLibrary.simpleMessage(
+      "Експорт календаря",
+    ),
+    "agendaExportError": MessageLookupByLibrary.simpleMessage(
+      "Не вдалося експортувати календар. Спробуйте ще раз.",
+    ),
+    "agendaExportSuccess": MessageLookupByLibrary.simpleMessage(
+      "Календар експортовано!",
+    ),
+    "agendaNoAppointmentsBody": MessageLookupByLibrary.simpleMessage(
+      "Забронюйте слот через вашу мережу.",
+    ),
+    "agendaNoSlots": MessageLookupByLibrary.simpleMessage(
+      "Немає доступних слотів на наступні 30 днів",
+    ),
+    "agendaPast": MessageLookupByLibrary.simpleMessage("МИНУЛІ"),
+    "agendaSlotAvailable": MessageLookupByLibrary.simpleMessage("Доступно"),
+    "agendaSlotBooked": MessageLookupByLibrary.simpleMessage("Заброньовано"),
+    "agendaSlotDeleteAllSeries": MessageLookupByLibrary.simpleMessage(
+      "Всі майбутні",
+    ),
+    "agendaSlotDeleteBody": MessageLookupByLibrary.simpleMessage(
+      "Це часове вікно буде видалено.",
+    ),
+    "agendaSlotDeleteConfirm": MessageLookupByLibrary.simpleMessage("Видалити"),
+    "agendaSlotDeleteSeriesTitle": MessageLookupByLibrary.simpleMessage(
+      "Видалити повторювану доступність?",
+    ),
+    "agendaSlotDeleteThisOnly": MessageLookupByLibrary.simpleMessage(
+      "Тільки цю",
+    ),
+    "agendaSlotDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Видалити доступність?",
+    ),
+    "agendaSlotDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Доступність видалено",
+    ),
+    "agendaTabAppointments": MessageLookupByLibrary.simpleMessage("Зустрічі"),
+    "agendaTabAvailability": MessageLookupByLibrary.simpleMessage(
+      "Моя доступність",
+    ),
+    "agendaTitle": MessageLookupByLibrary.simpleMessage("Розклад"),
+    "agendaUpcoming": MessageLookupByLibrary.simpleMessage("МАЙБУТНІ"),
+    "agendaUpcomingNoAppointments": MessageLookupByLibrary.simpleMessage(
+      "Немає майбутніх зустрічей",
+    ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Скасувати"),
-    "chatsSoon": MessageLookupByLibrary.simpleMessage("Чати — незабаром"),
     "checkInAddButton": MessageLookupByLibrary.simpleMessage(
       "Додати перевірку",
     ),
@@ -112,6 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage(
       "ЦЕЙ ТИЖДЕНЬ",
     ),
+    "navAgenda": MessageLookupByLibrary.simpleMessage("Розклад"),
     "navChats": MessageLookupByLibrary.simpleMessage("Чати"),
     "navHome": MessageLookupByLibrary.simpleMessage("Головна"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Моя Мережа"),
@@ -123,6 +216,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkAddSomeone": MessageLookupByLibrary.simpleMessage("Додати когось"),
     "networkAddToNetwork": MessageLookupByLibrary.simpleMessage(
       "Додати до мережі",
+    ),
+    "networkBookAppointment": MessageLookupByLibrary.simpleMessage(
+      "Записатися на прийом",
+    ),
+    "networkBookAppointmentSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Переглянути доступні слоти",
     ),
     "networkConnections": MessageLookupByLibrary.simpleMessage("Зв\'язки"),
     "networkDeclinedSuccess": MessageLookupByLibrary.simpleMessage(
@@ -176,6 +275,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Нотатка (необов\'язково)",
     ),
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage("Очікує"),
+    "networkPrivacySettings": MessageLookupByLibrary.simpleMessage(
+      "Налаштування конфіденційності",
+    ),
+    "networkPrivacySettingsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Керуйте доступом цієї людини",
+    ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Видалити"),
     "networkRemoveBody": m7,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Видалити"),
@@ -196,7 +301,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Надіслати запит",
     ),
     "networkSent": MessageLookupByLibrary.simpleMessage("НАДІСЛАНІ"),
-    "networkSoon": MessageLookupByLibrary.simpleMessage("Мережа — незабаром"),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Моя Мережа"),
     "networkUsernameHint": MessageLookupByLibrary.simpleMessage(
       "напр. ivan_petrenko",
@@ -282,11 +386,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileUsernameCopied": MessageLookupByLibrary.simpleMessage(
       "Ім\'я користувача скопійовано",
     ),
+    "quickActionsBookSession": MessageLookupByLibrary.simpleMessage(
+      "Записатись\nна сеанс",
+    ),
     "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
       "Лінія\nкризи",
-    ),
-    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
-      "Знайти\nтерапевта",
     ),
     "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
       "Написати\nдругу",
@@ -294,45 +398,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "ШВИДКІ ДІЇ",
     ),
-    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
-      "Спільнота",
-    ),
-    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
-      "Психічне здоров\'я",
-    ),
-    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage("Фізичне"),
-    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
-      "Добробут",
-    ),
-    "resourceReadTime": m11,
-    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
-      "Управління тривогою\nу повсякденному житті",
-    ),
-    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
-      "Знайдіть\nсвою групу ветеранів",
-    ),
-    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
-      "Техніки сну\nдля ветеранів",
-    ),
-    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
-      "Вправи як\nінструмент відновлення",
-    ),
-    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("РЕСУРСИ"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Надіслати"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("ще"),
     "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
       "МОЯ МЕРЕЖА ПІДТРИМКИ",
     ),
     "tagline": MessageLookupByLibrary.simpleMessage("Послуги Понад Службою"),
-    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
-      "Завтра · 14:00",
-    ),
-    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
-      "Сеанс терапії",
-    ),
-    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
-      "з Др. Сарою Мітчелл",
-    ),
     "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("НАЙБЛИЖЧЕ"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Скористайтеся нашою веб-версією",

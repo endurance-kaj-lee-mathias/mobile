@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/pages/agenda/agenda_page.dart';
 import 'package:endurance_mobile_app/pages/network/network_page.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/app/route_guard.dart';
@@ -18,6 +19,7 @@ abstract class AppRoutes {
   static const chats = 'chats';
   static const chatDetail = 'chatDetail';
   static const network = 'network';
+  static const agenda = 'agenda';
   static const profile = 'profile';
 }
 
@@ -82,6 +84,12 @@ final GoRouter router = GoRouter(
           name: AppRoutes.network,
           redirect: RouteGuard.veteranOnly,
           builder: (_, _) => const NetworkPage(),
+        ),
+        GoRoute(
+          path: '/agenda',
+          name: AppRoutes.agenda,
+          redirect: RouteGuard.veteranOnly,
+          builder: (_, _) => const AgendaPage(),
         ),
         GoRoute(
           path: '/profile',

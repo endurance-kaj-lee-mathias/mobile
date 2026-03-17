@@ -6,9 +6,9 @@ import 'package:endurance_mobile_app/pages/home/daily_check_in_card.dart';
 import 'package:endurance_mobile_app/pages/home/mood_trend_card.dart';
 import 'package:endurance_mobile_app/pages/home/quick_actions_section.dart';
 import 'package:endurance_mobile_app/pages/home/quote_banner.dart';
-import 'package:endurance_mobile_app/pages/home/resources_section.dart';
 import 'package:endurance_mobile_app/pages/home/support_network_section.dart';
 import 'package:endurance_mobile_app/pages/home/upcoming_appointment_card.dart';
+import 'package:endurance_mobile_app/services/calendar/calendar_controller.dart';
 import 'package:endurance_mobile_app/services/mood/daily_checkin_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     Get.find<DailyCheckInController>().load();
+    Get.find<CalendarController>().loadAppointments();
   }
 
   @override
@@ -91,16 +92,15 @@ class _HomePageState extends State<HomePage> {
           const QuickActionsSection(),
           const SizedBox(height: 24),
 
-          const UpcomingAppointmentCard(),
+          Obx(() => UpcomingAppointmentCard(
+            appointment: Get.find<CalendarController>().nextAppointment,
+          )),
           const SizedBox(height: 24),
 
           const SupportNetworkSection(),
           const SizedBox(height: 24),
 
           const MoodTrendCard(),
-          const SizedBox(height: 24),
-
-          const ResourcesSection(),
         ],
       ),
     );

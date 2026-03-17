@@ -9,6 +9,7 @@ import 'package:endurance_mobile_app/services/mood/daily_checkin_controller.dart
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:endurance_mobile_app/services/notification/notification_controller.dart';
 import 'package:endurance_mobile_app/services/quote/quote_controller.dart';
+import 'package:endurance_mobile_app/services/calendar/calendar_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ void main() async {
   Get.put(NetworkController());
   Get.put(WebSocketService());
   Get.put(ChatController());
+  Get.put(CalendarController());
   runApp(const MyApp());
 }
 

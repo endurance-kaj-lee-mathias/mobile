@@ -38,19 +38,111 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m10(error) => "Fout bij bijwerken: ${error}";
 
-  static String m11(minutes) => "${minutes} min lezen";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Toegang Beperkt"),
     "accessRestrictedBody": MessageLookupByLibrary.simpleMessage(
       "Sorry, toegang tot Endurance is voorbehouden aan geverifieerde veteranen. Uw account heeft momenteel niet de vereiste toegang.",
     ),
+    "agendaAddAvailability": MessageLookupByLibrary.simpleMessage(
+      "Beschikbaarheid toevoegen",
+    ),
+    "agendaAddSlotButton": MessageLookupByLibrary.simpleMessage("Toevoegen"),
+    "agendaAddSlotDuration": MessageLookupByLibrary.simpleMessage("Duur"),
+    "agendaAddSlotError": MessageLookupByLibrary.simpleMessage(
+      "Kon beschikbaarheid niet toevoegen. Probeer het opnieuw.",
+    ),
+    "agendaAddSlotRecurring": MessageLookupByLibrary.simpleMessage(
+      "Wekelijks herhalen",
+    ),
+    "agendaAddSlotRecurringHint": MessageLookupByLibrary.simpleMessage(
+      "Maakt beschikbaarheid voor de komende 8 weken",
+    ),
+    "agendaAddSlotStartTime": MessageLookupByLibrary.simpleMessage("Starttijd"),
+    "agendaAddSlotSuccess": MessageLookupByLibrary.simpleMessage(
+      "Beschikbaarheid toegevoegd!",
+    ),
+    "agendaBookButton": MessageLookupByLibrary.simpleMessage("Afspraak boeken"),
+    "agendaBookError": MessageLookupByLibrary.simpleMessage(
+      "Kon slot niet boeken. Probeer het opnieuw.",
+    ),
+    "agendaBookedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Afspraak geboekt!",
+    ),
+    "agendaCancelBody": MessageLookupByLibrary.simpleMessage(
+      "Dit maakt het tijdslot vrij voor anderen.",
+    ),
+    "agendaCancelConfirm": MessageLookupByLibrary.simpleMessage(
+      "Afspraak annuleren",
+    ),
+    "agendaCancelTitle": MessageLookupByLibrary.simpleMessage(
+      "Afspraak annuleren?",
+    ),
+    "agendaCancelledSuccess": MessageLookupByLibrary.simpleMessage(
+      "Afspraak geannuleerd",
+    ),
+    "agendaEmptyAvailability": MessageLookupByLibrary.simpleMessage(
+      "Geen beschikbaarheid ingesteld",
+    ),
+    "agendaEmptyAvailabilityBody": MessageLookupByLibrary.simpleMessage(
+      "Voeg tijdvensters toe voor uw netwerk.",
+    ),
+    "agendaEmptyBody": MessageLookupByLibrary.simpleMessage(
+      "Boek een slot met iemand uit uw ondersteuningsnetwerk.",
+    ),
+    "agendaEmptyTitle": MessageLookupByLibrary.simpleMessage(
+      "Nog geen afspraken",
+    ),
+    "agendaExportCalendar": MessageLookupByLibrary.simpleMessage(
+      "Agenda exporteren",
+    ),
+    "agendaExportError": MessageLookupByLibrary.simpleMessage(
+      "Kon agenda niet exporteren. Probeer het opnieuw.",
+    ),
+    "agendaExportSuccess": MessageLookupByLibrary.simpleMessage(
+      "Agenda geëxporteerd!",
+    ),
+    "agendaNoAppointmentsBody": MessageLookupByLibrary.simpleMessage(
+      "Boek een slot via uw netwerk om te beginnen.",
+    ),
+    "agendaNoSlots": MessageLookupByLibrary.simpleMessage(
+      "Geen beschikbare slots de komende 30 dagen",
+    ),
+    "agendaPast": MessageLookupByLibrary.simpleMessage("VERLEDEN"),
+    "agendaSlotAvailable": MessageLookupByLibrary.simpleMessage("Beschikbaar"),
+    "agendaSlotBooked": MessageLookupByLibrary.simpleMessage("Geboekt"),
+    "agendaSlotDeleteAllSeries": MessageLookupByLibrary.simpleMessage(
+      "Alle toekomstige",
+    ),
+    "agendaSlotDeleteBody": MessageLookupByLibrary.simpleMessage(
+      "Dit tijdvenster wordt verwijderd.",
+    ),
+    "agendaSlotDeleteConfirm": MessageLookupByLibrary.simpleMessage(
+      "Verwijderen",
+    ),
+    "agendaSlotDeleteSeriesTitle": MessageLookupByLibrary.simpleMessage(
+      "Terugkerende beschikbaarheid verwijderen?",
+    ),
+    "agendaSlotDeleteThisOnly": MessageLookupByLibrary.simpleMessage(
+      "Alleen deze",
+    ),
+    "agendaSlotDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Beschikbaarheid verwijderen?",
+    ),
+    "agendaSlotDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Beschikbaarheid verwijderd",
+    ),
+    "agendaTabAppointments": MessageLookupByLibrary.simpleMessage("Afspraken"),
+    "agendaTabAvailability": MessageLookupByLibrary.simpleMessage(
+      "Mijn beschikbaarheid",
+    ),
+    "agendaTitle": MessageLookupByLibrary.simpleMessage("Schema"),
+    "agendaUpcoming": MessageLookupByLibrary.simpleMessage("AANKOMEND"),
+    "agendaUpcomingNoAppointments": MessageLookupByLibrary.simpleMessage(
+      "Geen aankomende afspraken",
+    ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Annuleren"),
-    "chatsSoon": MessageLookupByLibrary.simpleMessage(
-      "Chats — binnenkort beschikbaar",
-    ),
     "checkInAddButton": MessageLookupByLibrary.simpleMessage(
       "Check-in toevoegen",
     ),
@@ -114,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Stemmingsoverzicht",
     ),
     "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage("DEZE WEEK"),
+    "navAgenda": MessageLookupByLibrary.simpleMessage("Schema"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Thuis"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
@@ -127,6 +220,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "networkAddToNetwork": MessageLookupByLibrary.simpleMessage(
       "Toevoegen aan netwerk",
+    ),
+    "networkBookAppointment": MessageLookupByLibrary.simpleMessage(
+      "Afspraak boeken",
+    ),
+    "networkBookAppointmentSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Beschikbare tijdslots bekijken",
     ),
     "networkConnections": MessageLookupByLibrary.simpleMessage("Verbindingen"),
     "networkDeclinedSuccess": MessageLookupByLibrary.simpleMessage(
@@ -182,6 +281,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage(
       "In behandeling",
     ),
+    "networkPrivacySettings": MessageLookupByLibrary.simpleMessage(
+      "Privacyinstellingen",
+    ),
+    "networkPrivacySettingsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Beheer wat deze persoon kan zien",
+    ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Verwijderen"),
     "networkRemoveBody": m7,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Verwijderen"),
@@ -200,9 +305,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Verzoek verzenden",
     ),
     "networkSent": MessageLookupByLibrary.simpleMessage("VERZONDEN"),
-    "networkSoon": MessageLookupByLibrary.simpleMessage(
-      "Netwerk — binnenkort beschikbaar",
-    ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
     "networkUsernameHint": MessageLookupByLibrary.simpleMessage(
       "bijv. jan_janssen",
@@ -286,11 +388,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileUsernameCopied": MessageLookupByLibrary.simpleMessage(
       "Gebruikersnaam gekopieerd naar klembord",
     ),
+    "quickActionsBookSession": MessageLookupByLibrary.simpleMessage(
+      "Sessie\nboeken",
+    ),
     "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
       "Crisis-\nlijn",
-    ),
-    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
-      "Vind\nTherapeut",
     ),
     "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
       "Bericht\nVriend",
@@ -298,47 +400,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "SNELLE ACTIES",
     ),
-    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
-      "Gemeenschap",
-    ),
-    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
-      "Geestelijke Gezondheid",
-    ),
-    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage(
-      "Lichamelijk",
-    ),
-    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
-      "Welzijn",
-    ),
-    "resourceReadTime": m11,
-    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
-      "Omgaan met Angst\nin het Dagelijks Leven",
-    ),
-    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
-      "Jouw\nVeteranengroep Vinden",
-    ),
-    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
-      "Slaaptechnieken\nvoor Veteranen",
-    ),
-    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
-      "Beweging als\nHerstelinstrument",
-    ),
-    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("BRONNEN"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Indienen"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("meer"),
     "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
       "MIJN STEUNNETWERK",
     ),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
-    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
-      "Morgen · 14:00",
-    ),
-    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
-      "Therapiesessie",
-    ),
-    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
-      "met Dr. Sarah Mitchell",
-    ),
     "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("AANKOMEND"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",

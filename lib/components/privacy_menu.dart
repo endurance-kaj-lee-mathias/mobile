@@ -1,6 +1,7 @@
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
 import 'package:flutter/material.dart';
 
@@ -8,15 +9,18 @@ class PrivacyMenu extends StatelessWidget {
   final MemberModel member;
   final VoidCallback onPrivacyPressed;
   final VoidCallback onRemovePressed;
+  final VoidCallback? onBookAppointmentPressed;
 
   const PrivacyMenu({
     super.key,
     required this.member,
     required this.onPrivacyPressed,
     required this.onRemovePressed,
+    this.onBookAppointmentPressed,
   });
 
   void _showMenu(BuildContext context) {
+    final l10n = S.of(context);
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -68,10 +72,24 @@ class PrivacyMenu extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 24),
+            if (onBookAppointmentPressed != null) ...[
+              ListTile(
+                leading: const HeroIcon(HeroIcons.calendarDays,
+                    size: 24, color: AppColors.mossGreen),
+                title: Text(l10n.networkBookAppointment),
+                subtitle: Text(l10n.networkBookAppointmentSubtitle),
+                contentPadding: EdgeInsets.zero,
+                onTap: () {
+                  Navigator.pop(ctx);
+                  onBookAppointmentPressed!();
+                },
+              ),
+              const Divider(height: 1),
+            ],
             ListTile(
               leading: const HeroIcon(HeroIcons.shieldOutline, size: 24),
-              title: const Text('Privacy settings'),
-              subtitle: const Text('Control what this person can see'),
+              title: Text(l10n.networkPrivacySettings),
+              subtitle: Text(l10n.networkPrivacySettingsSubtitle),
               contentPadding: EdgeInsets.zero,
               onTap: () {
                 Navigator.pop(ctx);
@@ -82,9 +100,9 @@ class PrivacyMenu extends StatelessWidget {
             ListTile(
               leading: const HeroIcon(HeroIcons.userMinus,
                   size: 24, color: AppColors.error),
-              title: const Text(
-                'Remove',
-                style: TextStyle(color: AppColors.error),
+              title: Text(
+                l10n.networkRemove,
+                style: const TextStyle(color: AppColors.error),
               ),
               subtitle: const Text(
                 'Remove from your network',
