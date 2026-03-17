@@ -204,5 +204,45 @@
   "networkBookAppointment": "Записаться на приём",
   "networkBookAppointmentSubtitle": "Просмотр доступных слотов",
   "networkPrivacySettings": "Настройки конфиденциальности",
-  "networkPrivacySettingsSubtitle": "Управляйте доступом этого человека"
+  "networkPrivacySettingsSubtitle": "Управляйте доступом этого человека",
+  "healthOverviewTitle": "Мои данные о здоровье",
+  "healthMoodSectionTitle": "ИСТОРИЯ НАСТРОЕНИЯ",
+  "healthInsightsSectionTitle": "АНАЛИТИКА",
+  "healthDeleteAllMoodButton": "Удалить все данные о настроении",
+  "healthDeleteAllMoodTitle": "Удалить все данные о настроении?",
+  "healthDeleteAllMoodBody": "Это безвозвратно удалит все ваши записи о настроении.",
+  "healthDeleteAllMoodConfirm": "Удалить всё",
+  "healthDeleteStressButton": "Удалить все данные о здоровье",
+  "healthDeleteStressTitle": "Удалить все данные о здоровье?",
+  "healthDeleteStressBody": "Это безвозвратно удалит все ваши показатели стресса и данные датчиков.",
+  "healthDeleteStressConfirm": "Удалить всё",
+  "healthEntryDeleteTitle": "Удалить запись?",
+  "healthEntryDeleteConfirm": "Удалить",
+  "healthMoodDeletedSuccess": "Запись о настроении удалена",
+  "healthMoodAllDeletedSuccess": "Все данные о настроении удалены",
+  "healthStressDeletedSuccess": "Все данные о здоровье удалены",
+  "healthDeleteError": "Что-то пошло не так. Попробуйте ещё раз.",
+  "healthNoMoodEntries": "Нет записей о настроении на этой неделе",
+  "healthNoInsights": "Пока нет аналитики",
+  "healthNoInsightsBody": "Выполните check-in с данными умных часов, чтобы увидеть показатели стресса.",
+  "healthStressScoreLabel": "Уровень стресса: {score}",
+  "@healthStressScoreLabel": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "healthStressComputedAt": "Вычислено {date}",
+  "@healthStressComputedAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "healthCategoryLow": "Низкий",
+  "healthCategoryModerate": "Умеренный",
+  "healthCategoryHigh": "Высокий",
+  "healthCategoryVeryHigh": "Очень высокий"
 }

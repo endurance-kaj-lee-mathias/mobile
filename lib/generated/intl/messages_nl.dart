@@ -30,13 +30,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m6(score) => "Stemming: ${score}/10";
 
-  static String m7(name) => "${name} wordt verwijderd uit uw steunnetwerk.";
+  static String m7(date) => "Berekend op ${date}";
 
-  static String m8(username) => "Verzoek verzonden naar @${username}";
+  static String m8(score) => "Stressscore: ${score}";
 
-  static String m9(error) => "Fout bij verwijderen: ${error}";
+  static String m9(name) => "${name} wordt verwijderd uit uw steunnetwerk.";
 
-  static String m10(error) => "Fout bij bijwerken: ${error}";
+  static String m10(username) => "Verzoek verzonden naar @${username}";
+
+  static String m11(error) => "Fout bij verwijderen: ${error}";
+
+  static String m12(error) => "Fout bij bijwerken: ${error}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -194,12 +198,78 @@ class MessageLookup extends MessageLookupByLibrary {
       "Delen op basis van toestemming",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Aan de slag"),
+    "healthCategoryHigh": MessageLookupByLibrary.simpleMessage("Hoog"),
+    "healthCategoryLow": MessageLookupByLibrary.simpleMessage("Laag"),
+    "healthCategoryModerate": MessageLookupByLibrary.simpleMessage("Matig"),
+    "healthCategoryVeryHigh": MessageLookupByLibrary.simpleMessage("Zeer hoog"),
     "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
       "Gezondheidsgegevens opnemen",
+    ),
+    "healthDeleteAllMoodBody": MessageLookupByLibrary.simpleMessage(
+      "Dit verwijdert al uw stemmings-check-ins permanent.",
+    ),
+    "healthDeleteAllMoodButton": MessageLookupByLibrary.simpleMessage(
+      "Verwijder alle stemmingsdata",
+    ),
+    "healthDeleteAllMoodConfirm": MessageLookupByLibrary.simpleMessage(
+      "Alles verwijderen",
+    ),
+    "healthDeleteAllMoodTitle": MessageLookupByLibrary.simpleMessage(
+      "Alle stemmingsdata verwijderen?",
+    ),
+    "healthDeleteError": MessageLookupByLibrary.simpleMessage(
+      "Er is iets misgegaan. Probeer het opnieuw.",
+    ),
+    "healthDeleteStressBody": MessageLookupByLibrary.simpleMessage(
+      "Dit verwijdert al uw stressscores en gezondheidsmetingen permanent.",
+    ),
+    "healthDeleteStressButton": MessageLookupByLibrary.simpleMessage(
+      "Verwijder alle gezondheidsdata",
+    ),
+    "healthDeleteStressConfirm": MessageLookupByLibrary.simpleMessage(
+      "Alles verwijderen",
+    ),
+    "healthDeleteStressTitle": MessageLookupByLibrary.simpleMessage(
+      "Alle gezondheidsdata verwijderen?",
+    ),
+    "healthEntryDeleteConfirm": MessageLookupByLibrary.simpleMessage(
+      "Verwijderen",
+    ),
+    "healthEntryDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Invoer verwijderen?",
+    ),
+    "healthInsightsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "INZICHTEN",
+    ),
+    "healthMoodAllDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Alle stemmingsdata verwijderd",
+    ),
+    "healthMoodDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Stemmingsinvoer verwijderd",
+    ),
+    "healthMoodSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "STEMMINGSGESCHIEDENIS",
+    ),
+    "healthNoInsights": MessageLookupByLibrary.simpleMessage(
+      "Nog geen inzichten",
+    ),
+    "healthNoInsightsBody": MessageLookupByLibrary.simpleMessage(
+      "Voltooi een check-in met uw smartwatchgegevens om stressinzichten te zien.",
+    ),
+    "healthNoMoodEntries": MessageLookupByLibrary.simpleMessage(
+      "Geen stemmingsinvoer deze week",
+    ),
+    "healthOverviewTitle": MessageLookupByLibrary.simpleMessage(
+      "Mijn gezondheidsdata",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Toegang verlenen",
     ),
+    "healthStressComputedAt": m7,
+    "healthStressDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Alle gezondheidsdata verwijderd",
+    ),
+    "healthStressScoreLabel": m8,
     "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("Welkom terug,"),
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
     "moodOverviewTitle": MessageLookupByLibrary.simpleMessage(
@@ -288,7 +358,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Beheer wat deze persoon kan zien",
     ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Verwijderen"),
-    "networkRemoveBody": m7,
+    "networkRemoveBody": m9,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Verwijderen"),
     "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
       "Verwijderen uit netwerk?",
@@ -296,7 +366,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
       "Verwijderd uit netwerk",
     ),
-    "networkRequestSentSuccess": m8,
+    "networkRequestSentSuccess": m10,
     "networkRequests": MessageLookupByLibrary.simpleMessage("Verzoeken"),
     "networkRoleSupport": MessageLookupByLibrary.simpleMessage("Steunnetwerk"),
     "networkRoleTherapist": MessageLookupByLibrary.simpleMessage("Therapeut"),
@@ -322,7 +392,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
       "Account verwijderen",
     ),
-    "profileDeleteError": m9,
+    "profileDeleteError": m11,
     "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
       "Weet u zeker dat u uw account permanent wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt en al uw gegevens gaan verloren.",
     ),
@@ -381,7 +451,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profileSignOut": MessageLookupByLibrary.simpleMessage("Uitloggen"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profiel"),
-    "profileUpdateError": m10,
+    "profileUpdateError": m12,
     "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "Profiel succesvol bijgewerkt",
     ),

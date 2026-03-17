@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/health/health_service.dart';
 import 'package:endurance_mobile_app/services/mood/mood_entry_model.dart';
 import 'package:endurance_mobile_app/services/mood/mood_service.dart';
@@ -64,6 +65,10 @@ class DailyCheckInController extends GetxController {
     _clockTimer = Timer.periodic(const Duration(minutes: 1), (_) {
       clockTick.value++;
     });
+    final auth = Get.find<AuthController>();
+    ever(auth.isAuthenticated, (bool authenticated) {
+      if (!authenticated) weekEntries.clear();
+    });
   }
 
   @override
@@ -114,7 +119,7 @@ class DailyCheckInController extends GetxController {
 
     try {
       await _moodService.submitEntry(
-        MoodEntryModel(date: _todayString(), moodScore: moodScore, notes: notes),
+        MoodEntryModel(id: '', date: _todayString(), moodScore: moodScore, notes: notes),
       );
 
       _loadWeekEntries().ignore();

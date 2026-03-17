@@ -34,14 +34,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m6(score) => "Mood score: ${score}/10";
 
-  static String m7(name) =>
+  static String m7(date) => "Computed ${date}";
+
+  static String m8(score) => "Stress score: ${score}";
+
+  static String m9(name) =>
       "${name} will be removed from your support network.";
 
-  static String m8(username) => "Request sent to @${username}";
+  static String m10(username) => "Request sent to @${username}";
 
-  static String m9(error) => "Error deleting account: ${error}";
+  static String m11(error) => "Error deleting account: ${error}";
 
-  static String m10(error) => "Error updating profile: ${error}";
+  static String m12(error) => "Error updating profile: ${error}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -222,12 +226,74 @@ class MessageLookup extends MessageLookupByLibrary {
       "Permission-based sharing",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "healthCategoryHigh": MessageLookupByLibrary.simpleMessage("High"),
+    "healthCategoryLow": MessageLookupByLibrary.simpleMessage("Low"),
+    "healthCategoryModerate": MessageLookupByLibrary.simpleMessage("Moderate"),
+    "healthCategoryVeryHigh": MessageLookupByLibrary.simpleMessage("Very High"),
     "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
       "Include health data",
+    ),
+    "healthDeleteAllMoodBody": MessageLookupByLibrary.simpleMessage(
+      "This will permanently remove all your mood check-in entries. This action cannot be undone.",
+    ),
+    "healthDeleteAllMoodButton": MessageLookupByLibrary.simpleMessage(
+      "Delete all mood data",
+    ),
+    "healthDeleteAllMoodConfirm": MessageLookupByLibrary.simpleMessage(
+      "Delete All",
+    ),
+    "healthDeleteAllMoodTitle": MessageLookupByLibrary.simpleMessage(
+      "Delete all mood data?",
+    ),
+    "healthDeleteError": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong. Please try again.",
+    ),
+    "healthDeleteStressBody": MessageLookupByLibrary.simpleMessage(
+      "This will permanently remove all your stress scores and health samples. This action cannot be undone.",
+    ),
+    "healthDeleteStressButton": MessageLookupByLibrary.simpleMessage(
+      "Delete all health data",
+    ),
+    "healthDeleteStressConfirm": MessageLookupByLibrary.simpleMessage(
+      "Delete All",
+    ),
+    "healthDeleteStressTitle": MessageLookupByLibrary.simpleMessage(
+      "Delete all health data?",
+    ),
+    "healthEntryDeleteConfirm": MessageLookupByLibrary.simpleMessage("Delete"),
+    "healthEntryDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Delete entry?",
+    ),
+    "healthInsightsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "INSIGHTS",
+    ),
+    "healthMoodAllDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "All mood data deleted",
+    ),
+    "healthMoodDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Mood entry deleted",
+    ),
+    "healthMoodSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "MOOD HISTORY",
+    ),
+    "healthNoInsights": MessageLookupByLibrary.simpleMessage("No insights yet"),
+    "healthNoInsightsBody": MessageLookupByLibrary.simpleMessage(
+      "Complete a check-in with your smartwatch data to see stress insights here.",
+    ),
+    "healthNoMoodEntries": MessageLookupByLibrary.simpleMessage(
+      "No mood entries this week",
+    ),
+    "healthOverviewTitle": MessageLookupByLibrary.simpleMessage(
+      "My Health Data",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Allow access",
     ),
+    "healthStressComputedAt": m7,
+    "healthStressDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "All health data deleted",
+    ),
+    "healthStressScoreLabel": m8,
     "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("Welcome back,"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "moodOverviewTitle": MessageLookupByLibrary.simpleMessage("Mood Overview"),
@@ -310,7 +376,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Control what this person can see",
     ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Remove"),
-    "networkRemoveBody": m7,
+    "networkRemoveBody": m9,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Remove"),
     "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
       "Remove from network?",
@@ -318,7 +384,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
       "Removed from network",
     ),
-    "networkRequestSentSuccess": m8,
+    "networkRequestSentSuccess": m10,
     "networkRequests": MessageLookupByLibrary.simpleMessage("Requests"),
     "networkRoleSupport": MessageLookupByLibrary.simpleMessage(
       "Support Network",
@@ -342,7 +408,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
       "Delete Account",
     ),
-    "profileDeleteError": m9,
+    "profileDeleteError": m11,
     "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be lost.",
     ),
@@ -401,7 +467,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profileSignOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
-    "profileUpdateError": m10,
+    "profileUpdateError": m12,
     "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "Profile updated successfully",
     ),

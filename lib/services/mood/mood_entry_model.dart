@@ -1,10 +1,12 @@
 class MoodEntryModel {
+  final String id;
   final String date;
   final int moodScore;
   final String? notes;
   final DateTime? createdAt;
 
   const MoodEntryModel({
+    required this.id,
     required this.date,
     required this.moodScore,
     this.notes,
@@ -12,6 +14,7 @@ class MoodEntryModel {
   });
 
   factory MoodEntryModel.fromJson(Map<String, dynamic> json) => MoodEntryModel(
+    id: json['id'] as String,
     date: json['date'] as String,
     moodScore: (json['moodScore'] as int).clamp(0, 10),
     notes: json['notes'] as String?,

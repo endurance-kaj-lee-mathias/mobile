@@ -30,13 +30,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m6(score) => "Настрій: ${score}/10";
 
-  static String m7(name) => "${name} буде видалено з вашої мережі підтримки.";
+  static String m7(date) => "Обчислено ${date}";
 
-  static String m8(username) => "Запит надіслано @${username}";
+  static String m8(score) => "Рівень стресу: ${score}";
 
-  static String m9(error) => "Помилка видалення акаунту: ${error}";
+  static String m9(name) => "${name} буде видалено з вашої мережі підтримки.";
 
-  static String m10(error) => "Помилка оновлення профілю: ${error}";
+  static String m10(username) => "Запит надіслано @${username}";
+
+  static String m11(error) => "Помилка видалення акаунту: ${error}";
+
+  static String m12(error) => "Помилка оновлення профілю: ${error}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -192,12 +196,80 @@ class MessageLookup extends MessageLookupByLibrary {
       "Спільний доступ на основі дозволів",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Почати"),
+    "healthCategoryHigh": MessageLookupByLibrary.simpleMessage("Високий"),
+    "healthCategoryLow": MessageLookupByLibrary.simpleMessage("Низький"),
+    "healthCategoryModerate": MessageLookupByLibrary.simpleMessage("Помірний"),
+    "healthCategoryVeryHigh": MessageLookupByLibrary.simpleMessage(
+      "Дуже високий",
+    ),
     "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
       "Включити дані про здоров\'я",
+    ),
+    "healthDeleteAllMoodBody": MessageLookupByLibrary.simpleMessage(
+      "Це назавжди видалить усі ваші записи про настрій.",
+    ),
+    "healthDeleteAllMoodButton": MessageLookupByLibrary.simpleMessage(
+      "Видалити всі дані про настрій",
+    ),
+    "healthDeleteAllMoodConfirm": MessageLookupByLibrary.simpleMessage(
+      "Видалити все",
+    ),
+    "healthDeleteAllMoodTitle": MessageLookupByLibrary.simpleMessage(
+      "Видалити всі дані про настрій?",
+    ),
+    "healthDeleteError": MessageLookupByLibrary.simpleMessage(
+      "Щось пішло не так. Спробуйте ще раз.",
+    ),
+    "healthDeleteStressBody": MessageLookupByLibrary.simpleMessage(
+      "Це назавжди видалить усі ваші показники стресу та дані датчиків.",
+    ),
+    "healthDeleteStressButton": MessageLookupByLibrary.simpleMessage(
+      "Видалити всі дані про здоров\'я",
+    ),
+    "healthDeleteStressConfirm": MessageLookupByLibrary.simpleMessage(
+      "Видалити все",
+    ),
+    "healthDeleteStressTitle": MessageLookupByLibrary.simpleMessage(
+      "Видалити всі дані про здоров\'я?",
+    ),
+    "healthEntryDeleteConfirm": MessageLookupByLibrary.simpleMessage(
+      "Видалити",
+    ),
+    "healthEntryDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Видалити запис?",
+    ),
+    "healthInsightsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "АНАЛІТИКА",
+    ),
+    "healthMoodAllDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Усі дані про настрій видалено",
+    ),
+    "healthMoodDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Запис про настрій видалено",
+    ),
+    "healthMoodSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "ІСТОРІЯ НАСТРОЮ",
+    ),
+    "healthNoInsights": MessageLookupByLibrary.simpleMessage(
+      "Ще немає аналітики",
+    ),
+    "healthNoInsightsBody": MessageLookupByLibrary.simpleMessage(
+      "Виконайте перевірку з даними смарт-годинника, щоб побачити показники стресу.",
+    ),
+    "healthNoMoodEntries": MessageLookupByLibrary.simpleMessage(
+      "Немає записів про настрій цього тижня",
+    ),
+    "healthOverviewTitle": MessageLookupByLibrary.simpleMessage(
+      "Мої дані про здоров\'я",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Надати доступ",
     ),
+    "healthStressComputedAt": m7,
+    "healthStressDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Усі дані про здоров\'я видалено",
+    ),
+    "healthStressScoreLabel": m8,
     "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage("З поверненням,"),
     "logout": MessageLookupByLibrary.simpleMessage("Вийти"),
     "moodOverviewTitle": MessageLookupByLibrary.simpleMessage("Огляд настрою"),
@@ -282,7 +354,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Керуйте доступом цієї людини",
     ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Видалити"),
-    "networkRemoveBody": m7,
+    "networkRemoveBody": m9,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Видалити"),
     "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
       "Видалити з мережі?",
@@ -290,7 +362,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
       "Видалено з мережі",
     ),
-    "networkRequestSentSuccess": m8,
+    "networkRequestSentSuccess": m10,
     "networkRequests": MessageLookupByLibrary.simpleMessage("Запити"),
     "networkRoleSupport": MessageLookupByLibrary.simpleMessage(
       "Мережа підтримки",
@@ -320,7 +392,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
       "Видалити акаунт",
     ),
-    "profileDeleteError": m9,
+    "profileDeleteError": m11,
     "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
       "Ви впевнені, що хочете назавжди видалити свій акаунт? Цю дію не можна скасувати, усі ваші дані буде втрачено.",
     ),
@@ -379,7 +451,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileSectionIntroduction": MessageLookupByLibrary.simpleMessage("ВСТУП"),
     "profileSignOut": MessageLookupByLibrary.simpleMessage("Вийти"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Профіль"),
-    "profileUpdateError": m10,
+    "profileUpdateError": m12,
     "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "Профіль успішно оновлено",
     ),

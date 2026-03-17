@@ -23,4 +23,18 @@ class MoodService {
         .map(MoodEntryModel.fromJson)
         .toList();
   }
+
+  Future<void> deleteEntry(String entryId) async {
+    await _client.delete<void>(
+      '/mood/entries/$entryId',
+      options: Options(responseType: ResponseType.plain),
+    );
+  }
+
+  Future<void> deleteAllEntries() async {
+    await _client.delete<void>(
+      '/mood/entries/me/all',
+      options: Options(responseType: ResponseType.plain),
+    );
+  }
 }

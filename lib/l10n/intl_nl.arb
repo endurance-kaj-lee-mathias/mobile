@@ -204,5 +204,45 @@
   "networkBookAppointment": "Afspraak boeken",
   "networkBookAppointmentSubtitle": "Beschikbare tijdslots bekijken",
   "networkPrivacySettings": "Privacyinstellingen",
-  "networkPrivacySettingsSubtitle": "Beheer wat deze persoon kan zien"
+  "networkPrivacySettingsSubtitle": "Beheer wat deze persoon kan zien",
+  "healthOverviewTitle": "Mijn gezondheidsdata",
+  "healthMoodSectionTitle": "STEMMINGSGESCHIEDENIS",
+  "healthInsightsSectionTitle": "INZICHTEN",
+  "healthDeleteAllMoodButton": "Verwijder alle stemmingsdata",
+  "healthDeleteAllMoodTitle": "Alle stemmingsdata verwijderen?",
+  "healthDeleteAllMoodBody": "Dit verwijdert al uw stemmings-check-ins permanent.",
+  "healthDeleteAllMoodConfirm": "Alles verwijderen",
+  "healthDeleteStressButton": "Verwijder alle gezondheidsdata",
+  "healthDeleteStressTitle": "Alle gezondheidsdata verwijderen?",
+  "healthDeleteStressBody": "Dit verwijdert al uw stressscores en gezondheidsmetingen permanent.",
+  "healthDeleteStressConfirm": "Alles verwijderen",
+  "healthEntryDeleteTitle": "Invoer verwijderen?",
+  "healthEntryDeleteConfirm": "Verwijderen",
+  "healthMoodDeletedSuccess": "Stemmingsinvoer verwijderd",
+  "healthMoodAllDeletedSuccess": "Alle stemmingsdata verwijderd",
+  "healthStressDeletedSuccess": "Alle gezondheidsdata verwijderd",
+  "healthDeleteError": "Er is iets misgegaan. Probeer het opnieuw.",
+  "healthNoMoodEntries": "Geen stemmingsinvoer deze week",
+  "healthNoInsights": "Nog geen inzichten",
+  "healthNoInsightsBody": "Voltooi een check-in met uw smartwatchgegevens om stressinzichten te zien.",
+  "healthStressScoreLabel": "Stressscore: {score}",
+  "@healthStressScoreLabel": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "healthStressComputedAt": "Berekend op {date}",
+  "@healthStressComputedAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "healthCategoryLow": "Laag",
+  "healthCategoryModerate": "Matig",
+  "healthCategoryHigh": "Hoog",
+  "healthCategoryVeryHigh": "Zeer hoog"
 }

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:endurance_mobile_app/services/stress/stress_sample_model.dart';
+import 'package:endurance_mobile_app/services/stress/stress_score_model.dart';
 import 'package:get/get.dart';
 
 class StressService {
@@ -28,5 +29,28 @@ class StressService {
       if (e.response?.statusCode == 404) return null;
       rethrow;
     }
+  }
+
+  Future<({List<StressScoreModel> items, int total})> getScores({
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    final response = await _client.get<Map<String, dynamic>>(
+      '/stress/scores/latest',
+      queryParameters: {'limit': limit, 'offset': offset},
+    );
+    final data = response.data!;
+    final items = (data['items'] as List<dynamic>)
+        .cast<Map<String, dynamic>>()
+        .map(StressScoreModel.fromJson)
+        .toList();
+    return (items: items, total: data['total'] as int);
+  }
+
+  Future<void> deleteSamples() async {
+    await _client.delete<void>(
+      '/stress/samples/me',
+      options: Options(responseType: ResponseType.plain),
+    );
   }
 }

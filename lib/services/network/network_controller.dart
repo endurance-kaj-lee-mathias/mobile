@@ -57,6 +57,10 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
         _restartPolling();
       } else {
         _stopPolling();
+        members.clear();
+        incoming.clear();
+        outgoing.clear();
+        sharingRulesByViewer.clear();
       }
     });
 

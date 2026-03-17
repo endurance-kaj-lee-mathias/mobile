@@ -4,6 +4,7 @@ import 'package:endurance_mobile_app/components/hero_icon.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
+import 'package:endurance_mobile_app/pages/health/health_overview_page.dart';
 import 'package:endurance_mobile_app/pages/profile/profile_edit_page.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
@@ -237,6 +238,17 @@ class ProfilePage extends StatelessWidget {
                   ),
                   icon: const HeroIcon(HeroIcons.pencil, size: 18, color: Colors.white),
                   label: Text(l10n.profileEditButton),
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const HealthOverviewPage())),
+                  icon: const HeroIcon(HeroIcons.chartLine, size: 18),
+                  label: Text(l10n.healthOverviewTitle),
                 ),
               ),
               const SizedBox(height: 10),

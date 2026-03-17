@@ -204,5 +204,45 @@
   "networkBookAppointment": "Записатися на прийом",
   "networkBookAppointmentSubtitle": "Переглянути доступні слоти",
   "networkPrivacySettings": "Налаштування конфіденційності",
-  "networkPrivacySettingsSubtitle": "Керуйте доступом цієї людини"
+  "networkPrivacySettingsSubtitle": "Керуйте доступом цієї людини",
+  "healthOverviewTitle": "Мої дані про здоров'я",
+  "healthMoodSectionTitle": "ІСТОРІЯ НАСТРОЮ",
+  "healthInsightsSectionTitle": "АНАЛІТИКА",
+  "healthDeleteAllMoodButton": "Видалити всі дані про настрій",
+  "healthDeleteAllMoodTitle": "Видалити всі дані про настрій?",
+  "healthDeleteAllMoodBody": "Це назавжди видалить усі ваші записи про настрій.",
+  "healthDeleteAllMoodConfirm": "Видалити все",
+  "healthDeleteStressButton": "Видалити всі дані про здоров'я",
+  "healthDeleteStressTitle": "Видалити всі дані про здоров'я?",
+  "healthDeleteStressBody": "Це назавжди видалить усі ваші показники стресу та дані датчиків.",
+  "healthDeleteStressConfirm": "Видалити все",
+  "healthEntryDeleteTitle": "Видалити запис?",
+  "healthEntryDeleteConfirm": "Видалити",
+  "healthMoodDeletedSuccess": "Запис про настрій видалено",
+  "healthMoodAllDeletedSuccess": "Усі дані про настрій видалено",
+  "healthStressDeletedSuccess": "Усі дані про здоров'я видалено",
+  "healthDeleteError": "Щось пішло не так. Спробуйте ще раз.",
+  "healthNoMoodEntries": "Немає записів про настрій цього тижня",
+  "healthNoInsights": "Ще немає аналітики",
+  "healthNoInsightsBody": "Виконайте перевірку з даними смарт-годинника, щоб побачити показники стресу.",
+  "healthStressScoreLabel": "Рівень стресу: {score}",
+  "@healthStressScoreLabel": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "healthStressComputedAt": "Обчислено {date}",
+  "@healthStressComputedAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "healthCategoryLow": "Низький",
+  "healthCategoryModerate": "Помірний",
+  "healthCategoryHigh": "Високий",
+  "healthCategoryVeryHigh": "Дуже високий"
 }

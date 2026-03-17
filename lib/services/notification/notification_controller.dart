@@ -21,6 +21,7 @@ class NotificationController extends GetxController {
 
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
   final NotificationService _notificationService;
+  String? _pendingRoute;
 
   @override
   void onInit() {
@@ -31,6 +32,11 @@ class NotificationController extends GetxController {
     ever(auth.isAuthenticated, (bool authenticated) {
       if (authenticated) {
         _syncToken();
+        if (auth.isVeteran && _pendingRoute != null) {
+          final route = _pendingRoute!;
+          _pendingRoute = null;
+          router.push(route);
+        }
       } else {
         _clearToken();
       }
@@ -111,8 +117,13 @@ class NotificationController extends GetxController {
   void _handleMessage(RemoteMessage message) {
     debugPrint('Notification tapped: ${message.data}');
     final route = message.data['route'] as String?;
-    if (route != null) {
-      router.go(route);
+    if (route == null) return;
+
+    final auth = Get.find<AuthController>();
+    if (auth.isAuthenticated.value && auth.isVeteran) {
+      router.push(route);
+    } else {
+      _pendingRoute = route;
     }
   }
 }

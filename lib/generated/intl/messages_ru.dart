@@ -30,13 +30,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m6(score) => "Настроение: ${score}/10";
 
-  static String m7(name) => "${name} будет удалён из вашей сети поддержки.";
+  static String m7(date) => "Вычислено ${date}";
 
-  static String m8(username) => "Запрос отправлен @${username}";
+  static String m8(score) => "Уровень стресса: ${score}";
 
-  static String m9(error) => "Ошибка удаления аккаунта: ${error}";
+  static String m9(name) => "${name} будет удалён из вашей сети поддержки.";
 
-  static String m10(error) => "Ошибка обновления профиля: ${error}";
+  static String m10(username) => "Запрос отправлен @${username}";
+
+  static String m11(error) => "Ошибка удаления аккаунта: ${error}";
+
+  static String m12(error) => "Ошибка обновления профиля: ${error}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -196,12 +200,78 @@ class MessageLookup extends MessageLookupByLibrary {
       "Совместный доступ на основе разрешений",
     ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Начать"),
+    "healthCategoryHigh": MessageLookupByLibrary.simpleMessage("Высокий"),
+    "healthCategoryLow": MessageLookupByLibrary.simpleMessage("Низкий"),
+    "healthCategoryModerate": MessageLookupByLibrary.simpleMessage("Умеренный"),
+    "healthCategoryVeryHigh": MessageLookupByLibrary.simpleMessage(
+      "Очень высокий",
+    ),
     "healthDataIncluded": MessageLookupByLibrary.simpleMessage(
       "Включить данные о здоровье",
+    ),
+    "healthDeleteAllMoodBody": MessageLookupByLibrary.simpleMessage(
+      "Это безвозвратно удалит все ваши записи о настроении.",
+    ),
+    "healthDeleteAllMoodButton": MessageLookupByLibrary.simpleMessage(
+      "Удалить все данные о настроении",
+    ),
+    "healthDeleteAllMoodConfirm": MessageLookupByLibrary.simpleMessage(
+      "Удалить всё",
+    ),
+    "healthDeleteAllMoodTitle": MessageLookupByLibrary.simpleMessage(
+      "Удалить все данные о настроении?",
+    ),
+    "healthDeleteError": MessageLookupByLibrary.simpleMessage(
+      "Что-то пошло не так. Попробуйте ещё раз.",
+    ),
+    "healthDeleteStressBody": MessageLookupByLibrary.simpleMessage(
+      "Это безвозвратно удалит все ваши показатели стресса и данные датчиков.",
+    ),
+    "healthDeleteStressButton": MessageLookupByLibrary.simpleMessage(
+      "Удалить все данные о здоровье",
+    ),
+    "healthDeleteStressConfirm": MessageLookupByLibrary.simpleMessage(
+      "Удалить всё",
+    ),
+    "healthDeleteStressTitle": MessageLookupByLibrary.simpleMessage(
+      "Удалить все данные о здоровье?",
+    ),
+    "healthEntryDeleteConfirm": MessageLookupByLibrary.simpleMessage("Удалить"),
+    "healthEntryDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Удалить запись?",
+    ),
+    "healthInsightsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "АНАЛИТИКА",
+    ),
+    "healthMoodAllDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Все данные о настроении удалены",
+    ),
+    "healthMoodDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Запись о настроении удалена",
+    ),
+    "healthMoodSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "ИСТОРИЯ НАСТРОЕНИЯ",
+    ),
+    "healthNoInsights": MessageLookupByLibrary.simpleMessage(
+      "Пока нет аналитики",
+    ),
+    "healthNoInsightsBody": MessageLookupByLibrary.simpleMessage(
+      "Выполните check-in с данными умных часов, чтобы увидеть показатели стресса.",
+    ),
+    "healthNoMoodEntries": MessageLookupByLibrary.simpleMessage(
+      "Нет записей о настроении на этой неделе",
+    ),
+    "healthOverviewTitle": MessageLookupByLibrary.simpleMessage(
+      "Мои данные о здоровье",
     ),
     "healthPermissionGrant": MessageLookupByLibrary.simpleMessage(
       "Разрешить доступ",
     ),
+    "healthStressComputedAt": m7,
+    "healthStressDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Все данные о здоровье удалены",
+    ),
+    "healthStressScoreLabel": m8,
     "homeWelcomePrefix": MessageLookupByLibrary.simpleMessage(
       "С возвращением,",
     ),
@@ -290,7 +360,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Управляйте доступом этого человека",
     ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Удалить"),
-    "networkRemoveBody": m7,
+    "networkRemoveBody": m9,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Удалить"),
     "networkRemoveTitle": MessageLookupByLibrary.simpleMessage(
       "Удалить из сети?",
@@ -298,7 +368,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRemovedSuccess": MessageLookupByLibrary.simpleMessage(
       "Удалено из сети",
     ),
-    "networkRequestSentSuccess": m8,
+    "networkRequestSentSuccess": m10,
     "networkRequests": MessageLookupByLibrary.simpleMessage("Запросы"),
     "networkRoleSupport": MessageLookupByLibrary.simpleMessage(
       "Сеть поддержки",
@@ -328,7 +398,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileDeleteAccountButton": MessageLookupByLibrary.simpleMessage(
       "Удалить аккаунт",
     ),
-    "profileDeleteError": m9,
+    "profileDeleteError": m11,
     "profileDeleteMessage": MessageLookupByLibrary.simpleMessage(
       "Вы уверены, что хотите навсегда удалить свой аккаунт? Это действие необратимо, все данные будут утеряны.",
     ),
@@ -391,7 +461,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profileSignOut": MessageLookupByLibrary.simpleMessage("Выйти"),
     "profileTitle": MessageLookupByLibrary.simpleMessage("Профиль"),
-    "profileUpdateError": m10,
+    "profileUpdateError": m12,
     "profileUpdateSuccess": MessageLookupByLibrary.simpleMessage(
       "Профиль успешно обновлён",
     ),
