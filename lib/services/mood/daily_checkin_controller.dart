@@ -114,7 +114,7 @@ class DailyCheckInController extends GetxController {
 
     try {
       await _moodService.submitEntry(
-        MoodEntryModel(date: _todayString(), moodScore: moodScore, notes: notes),
+        MoodEntryModel(id: '', date: _todayString(), moodScore: moodScore, notes: notes),
       );
 
       _loadWeekEntries().ignore();

@@ -1736,6 +1736,256 @@ class S {
       args: [],
     );
   }
+
+  /// `My Health Data`
+  String get healthOverviewTitle {
+    return Intl.message(
+      'My Health Data',
+      name: 'healthOverviewTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MOOD HISTORY`
+  String get healthMoodSectionTitle {
+    return Intl.message(
+      'MOOD HISTORY',
+      name: 'healthMoodSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `INSIGHTS`
+  String get healthInsightsSectionTitle {
+    return Intl.message(
+      'INSIGHTS',
+      name: 'healthInsightsSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete all mood data`
+  String get healthDeleteAllMoodButton {
+    return Intl.message(
+      'Delete all mood data',
+      name: 'healthDeleteAllMoodButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete all mood data?`
+  String get healthDeleteAllMoodTitle {
+    return Intl.message(
+      'Delete all mood data?',
+      name: 'healthDeleteAllMoodTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will permanently remove all your mood check-in entries. This action cannot be undone.`
+  String get healthDeleteAllMoodBody {
+    return Intl.message(
+      'This will permanently remove all your mood check-in entries. This action cannot be undone.',
+      name: 'healthDeleteAllMoodBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete All`
+  String get healthDeleteAllMoodConfirm {
+    return Intl.message(
+      'Delete All',
+      name: 'healthDeleteAllMoodConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete all health data`
+  String get healthDeleteStressButton {
+    return Intl.message(
+      'Delete all health data',
+      name: 'healthDeleteStressButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete all health data?`
+  String get healthDeleteStressTitle {
+    return Intl.message(
+      'Delete all health data?',
+      name: 'healthDeleteStressTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will permanently remove all your stress scores and health samples. This action cannot be undone.`
+  String get healthDeleteStressBody {
+    return Intl.message(
+      'This will permanently remove all your stress scores and health samples. This action cannot be undone.',
+      name: 'healthDeleteStressBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete All`
+  String get healthDeleteStressConfirm {
+    return Intl.message(
+      'Delete All',
+      name: 'healthDeleteStressConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete entry?`
+  String get healthEntryDeleteTitle {
+    return Intl.message(
+      'Delete entry?',
+      name: 'healthEntryDeleteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get healthEntryDeleteConfirm {
+    return Intl.message(
+      'Delete',
+      name: 'healthEntryDeleteConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mood entry deleted`
+  String get healthMoodDeletedSuccess {
+    return Intl.message(
+      'Mood entry deleted',
+      name: 'healthMoodDeletedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All mood data deleted`
+  String get healthMoodAllDeletedSuccess {
+    return Intl.message(
+      'All mood data deleted',
+      name: 'healthMoodAllDeletedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All health data deleted`
+  String get healthStressDeletedSuccess {
+    return Intl.message(
+      'All health data deleted',
+      name: 'healthStressDeletedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong. Please try again.`
+  String get healthDeleteError {
+    return Intl.message(
+      'Something went wrong. Please try again.',
+      name: 'healthDeleteError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No mood entries this week`
+  String get healthNoMoodEntries {
+    return Intl.message(
+      'No mood entries this week',
+      name: 'healthNoMoodEntries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No insights yet`
+  String get healthNoInsights {
+    return Intl.message(
+      'No insights yet',
+      name: 'healthNoInsights',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete a check-in with your smartwatch data to see stress insights here.`
+  String get healthNoInsightsBody {
+    return Intl.message(
+      'Complete a check-in with your smartwatch data to see stress insights here.',
+      name: 'healthNoInsightsBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stress score: {score}`
+  String healthStressScoreLabel(String score) {
+    return Intl.message(
+      'Stress score: $score',
+      name: 'healthStressScoreLabel',
+      desc: '',
+      args: [score],
+    );
+  }
+
+  /// `Computed {date}`
+  String healthStressComputedAt(String date) {
+    return Intl.message(
+      'Computed $date',
+      name: 'healthStressComputedAt',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `Low`
+  String get healthCategoryLow {
+    return Intl.message('Low', name: 'healthCategoryLow', desc: '', args: []);
+  }
+
+  /// `Moderate`
+  String get healthCategoryModerate {
+    return Intl.message(
+      'Moderate',
+      name: 'healthCategoryModerate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High`
+  String get healthCategoryHigh {
+    return Intl.message('High', name: 'healthCategoryHigh', desc: '', args: []);
+  }
+
+  /// `Very High`
+  String get healthCategoryVeryHigh {
+    return Intl.message(
+      'Very High',
+      name: 'healthCategoryVeryHigh',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

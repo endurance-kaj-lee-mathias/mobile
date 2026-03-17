@@ -5,6 +5,7 @@ import 'package:endurance_mobile_app/core/api_client.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/chat/chat_controller.dart';
 import 'package:endurance_mobile_app/services/chat/websocket_service.dart';
+import 'package:endurance_mobile_app/services/health/health_overview_controller.dart';
 import 'package:endurance_mobile_app/services/mood/daily_checkin_controller.dart';
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:endurance_mobile_app/services/notification/notification_controller.dart';
@@ -25,6 +26,7 @@ void main() async {
   Get.put(UserController());
   Get.put(NotificationController());
   Get.put(DailyCheckInController());
+  Get.put(HealthOverviewController());
   Get.put(QuoteController());
   Get.put(NetworkController());
   Get.put(WebSocketService());

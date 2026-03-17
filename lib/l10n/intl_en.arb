@@ -273,5 +273,45 @@
   "networkBookAppointment": "Book Appointment",
   "networkBookAppointmentSubtitle": "View available time slots",
   "networkPrivacySettings": "Privacy settings",
-  "networkPrivacySettingsSubtitle": "Control what this person can see"
+  "networkPrivacySettingsSubtitle": "Control what this person can see",
+  "healthOverviewTitle": "My Health Data",
+  "healthMoodSectionTitle": "MOOD HISTORY",
+  "healthInsightsSectionTitle": "INSIGHTS",
+  "healthDeleteAllMoodButton": "Delete all mood data",
+  "healthDeleteAllMoodTitle": "Delete all mood data?",
+  "healthDeleteAllMoodBody": "This will permanently remove all your mood check-in entries. This action cannot be undone.",
+  "healthDeleteAllMoodConfirm": "Delete All",
+  "healthDeleteStressButton": "Delete all health data",
+  "healthDeleteStressTitle": "Delete all health data?",
+  "healthDeleteStressBody": "This will permanently remove all your stress scores and health samples. This action cannot be undone.",
+  "healthDeleteStressConfirm": "Delete All",
+  "healthEntryDeleteTitle": "Delete entry?",
+  "healthEntryDeleteConfirm": "Delete",
+  "healthMoodDeletedSuccess": "Mood entry deleted",
+  "healthMoodAllDeletedSuccess": "All mood data deleted",
+  "healthStressDeletedSuccess": "All health data deleted",
+  "healthDeleteError": "Something went wrong. Please try again.",
+  "healthNoMoodEntries": "No mood entries this week",
+  "healthNoInsights": "No insights yet",
+  "healthNoInsightsBody": "Complete a check-in with your smartwatch data to see stress insights here.",
+  "healthStressScoreLabel": "Stress score: {score}",
+  "@healthStressScoreLabel": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "healthStressComputedAt": "Computed {date}",
+  "@healthStressComputedAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "healthCategoryLow": "Low",
+  "healthCategoryModerate": "Moderate",
+  "healthCategoryHigh": "High",
+  "healthCategoryVeryHigh": "Very High"
 }
