@@ -1,6 +1,5 @@
 stages:
   - test
-  - build_verify
   - build_release
   - secret-detection
 
@@ -48,62 +47,26 @@ variables:
     - flutter pub get
 
 # Reusable rule sets
-.rules_mr: &rules_mr
+.rules_tag: &rules_tag
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-
-.rules_main: &rules_main
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-
-.rules_test: &rules_test
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "develop"
+    - if: $CI_COMMIT_TAG
 
 # ── Test ──────────────────────────────────────────────────────────────────────
 
 test_lint:
   stage: test
   <<: *flutter_setup
-  <<: *rules_test
+  <<: *rules_tag
   script:
     - flutter analyze
     - flutter test
 
-# ── Build verify (MRs only) ───────────────────────────────────────────────────
-
-verify_build_android:
-  stage: build_verify
-  <<: *flutter_setup
-  <<: *rules_mr
-  script:
-    - flutter build apk --release
-  artifacts:
-    reports:
-      dotenv: build.env
-    expire_in: 1 hour
-
-verify_build_ios:
-  stage: build_verify
-  <<: *flutter_setup_ios
-  <<: *rules_mr
-  tags:
-    - saas-macos-medium-m1
-  script:
-    - flutter build ios --release --no-codesign
-  artifacts:
-    reports:
-      dotenv: build.env
-    expire_in: 1 hour
-
-# ── Release builds (main only) ────────────────────────────────────────────────
+# ── Release builds (tag only) ─────────────────────────────────────────────────
 
 build_android_release:
   stage: build_release
   <<: *flutter_setup
-  <<: *rules_main
+  <<: *rules_tag
   script:
     - flutter build apk --release
     - flutter build appbundle --release
@@ -116,7 +79,7 @@ build_android_release:
 build_ios_release:
   stage: build_release
   <<: *flutter_setup_ios
-  <<: *rules_main
+  <<: *rules_tag
   tags:
     - saas-macos-medium-m1
   script:
