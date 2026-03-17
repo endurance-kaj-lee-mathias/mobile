@@ -6,7 +6,7 @@ import 'package:endurance_mobile_app/components/main_shell.dart';
 import 'package:endurance_mobile_app/pages/chats/chat_detail_page.dart';
 import 'package:endurance_mobile_app/pages/chats/chats_page.dart';
 import 'package:endurance_mobile_app/pages/home/home_page.dart';
-import 'package:endurance_mobile_app/pages/profile.dart';
+import 'package:endurance_mobile_app/pages/profile/profile_page.dart';
 import 'package:endurance_mobile_app/pages/splash.dart';
 import 'package:endurance_mobile_app/pages/unauthorized.dart';
 import 'package:endurance_mobile_app/pages/welcome.dart';

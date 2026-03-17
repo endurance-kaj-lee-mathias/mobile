@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:endurance_mobile_app/config/app_config.dart';
+import 'package:endurance_mobile_app/core/app_config.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/chat/chat_models.dart';
 import 'package:flutter/foundation.dart';
