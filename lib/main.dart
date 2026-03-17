@@ -26,7 +26,7 @@ void main() async {
   Get.put(UserController());
   Get.put(NotificationController());
   Get.put(DailyCheckInController());
-  Get.put(HealthOverviewController());
+  Get.lazyPut(() => HealthOverviewController());
   Get.put(QuoteController());
   Get.put(NetworkController());
   Get.put(WebSocketService());
