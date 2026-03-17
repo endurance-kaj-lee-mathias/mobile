@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/mood/mood_entry_model.dart';
 import 'package:endurance_mobile_app/services/mood/mood_service.dart';
 import 'package:endurance_mobile_app/services/stress/stress_score_model.dart';
@@ -20,6 +21,22 @@ class HealthOverviewController extends GetxController {
   final RxBool isDeletingMood = false.obs;
   final RxBool isDeletingStress = false.obs;
   final RxInt stressTotal = 0.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    final auth = Get.find<AuthController>();
+    ever(auth.isAuthenticated, (bool authenticated) {
+      if (authenticated) {
+        load();
+      } else {
+        moodEntries.clear();
+        stressScores.clear();
+        stressTotal.value = 0;
+      }
+    });
+    if (auth.isAuthenticated.value) load();
+  }
 
   Future<void> load() => Future.wait([_loadMoodEntries(), _loadStressScores()]);
 

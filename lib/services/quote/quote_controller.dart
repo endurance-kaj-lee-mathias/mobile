@@ -1,3 +1,4 @@
+import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/quote/quote_model.dart';
 import 'package:endurance_mobile_app/services/quote/quote_service.dart';
 import 'package:flutter/foundation.dart';
@@ -15,7 +16,11 @@ class QuoteController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _fetch();
+    final auth = Get.find<AuthController>();
+    ever(auth.isAuthenticated, (bool authenticated) {
+      if (authenticated) _fetch();
+    });
+    if (auth.isAuthenticated.value) _fetch();
   }
 
   Future<void> _fetch() async {

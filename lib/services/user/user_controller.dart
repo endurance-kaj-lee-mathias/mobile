@@ -20,7 +20,11 @@ class UserController extends GetxController {
     // Load profile whenever the user becomes authenticated (covers both
     // initial session restore and fresh logins).
     ever(auth.isAuthenticated, (bool authenticated) {
-      if (authenticated) _loadProfile();
+      if (authenticated) {
+        _loadProfile();
+      } else {
+        user.value = null;
+      }
     });
 
     // If auth is already done by the time this controller initialises, load now.

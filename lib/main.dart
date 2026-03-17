@@ -27,11 +27,11 @@ void main() async {
   Get.put(NotificationController());
   Get.put(DailyCheckInController());
   Get.lazyPut(() => HealthOverviewController());
-  Get.put(QuoteController());
+  Get.lazyPut(() => QuoteController());
   Get.put(NetworkController());
   Get.put(WebSocketService());
   Get.put(ChatController());
-  Get.put(CalendarController());
+  Get.lazyPut(() => CalendarController());
   runApp(const MyApp());
 }
 

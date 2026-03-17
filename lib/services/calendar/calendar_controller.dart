@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
 import 'package:endurance_mobile_app/services/calendar/calendar_models.dart';
 import 'package:endurance_mobile_app/services/calendar/calendar_service.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
@@ -15,6 +16,22 @@ class CalendarController extends GetxController {
   final CalendarService _service;
 
   final appointments = <CalendarEventModel>[].obs;
+  @override
+  void onInit() {
+    super.onInit();
+    final auth = Get.find<AuthController>();
+    ever(auth.isAuthenticated, (bool authenticated) {
+      if (authenticated) {
+        loadAppointments();
+      } else {
+        appointments.clear();
+        mySlots.clear();
+      }
+    });
+    if (auth.isAuthenticated.value) loadAppointments();
+  }
+
+
   final mySlots = <SlotModel>[].obs;
   final isLoadingAppointments = false.obs;
   final isLoadingMySlots = false.obs;
