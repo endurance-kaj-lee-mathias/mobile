@@ -234,16 +234,6 @@ class S {
     return Intl.message('You', name: 'navProfile', desc: '', args: []);
   }
 
-  /// `Chats — coming soon`
-  String get chatsSoon {
-    return Intl.message(
-      'Chats — coming soon',
-      name: 'chatsSoon',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `No conversations yet`
   String get chatsEmptyTitle {
     return Intl.message(
@@ -357,16 +347,6 @@ class S {
   /// `My Network`
   String get networkTitle {
     return Intl.message('My Network', name: 'networkTitle', desc: '', args: []);
-  }
-
-  /// `Network — coming soon`
-  String get networkSoon {
-    return Intl.message(
-      'Network — coming soon',
-      name: 'networkSoon',
-      desc: '',
-      args: [],
-    );
   }
 
   /// `Connections`
@@ -958,10 +938,10 @@ class S {
   }
 
   /// `Book\nSession`
-  String get quickActionsFindTherapist {
+  String get quickActionsBookSession {
     return Intl.message(
       'Book\nSession',
-      name: 'quickActionsFindTherapist',
+      name: 'quickActionsBookSession',
       desc: '',
       args: [],
     );
@@ -972,36 +952,6 @@ class S {
     return Intl.message(
       'UPCOMING',
       name: 'upcomingSectionTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Therapy Session`
-  String get upcomingAppointmentTitle {
-    return Intl.message(
-      'Therapy Session',
-      name: 'upcomingAppointmentTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `with Dr. Sarah Mitchell`
-  String get upcomingAppointmentWith {
-    return Intl.message(
-      'with Dr. Sarah Mitchell',
-      name: 'upcomingAppointmentWith',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Tomorrow · 14:00`
-  String get upcomingAppointmentTime {
-    return Intl.message(
-      'Tomorrow · 14:00',
-      name: 'upcomingAppointmentTime',
       desc: '',
       args: [],
     );
@@ -1039,106 +989,6 @@ class S {
       name: 'moodOverviewTitle',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `RESOURCES`
-  String get resourcesSectionTitle {
-    return Intl.message(
-      'RESOURCES',
-      name: 'resourcesSectionTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Mental Health`
-  String get resourceCategoryMentalHealth {
-    return Intl.message(
-      'Mental Health',
-      name: 'resourceCategoryMentalHealth',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Community`
-  String get resourceCategoryCommunity {
-    return Intl.message(
-      'Community',
-      name: 'resourceCategoryCommunity',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Wellbeing`
-  String get resourceCategoryWellbeing {
-    return Intl.message(
-      'Wellbeing',
-      name: 'resourceCategoryWellbeing',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Physical`
-  String get resourceCategoryPhysical {
-    return Intl.message(
-      'Physical',
-      name: 'resourceCategoryPhysical',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Managing Anxiety\nin Everyday Life`
-  String get resourceTitle1 {
-    return Intl.message(
-      'Managing Anxiety\nin Everyday Life',
-      name: 'resourceTitle1',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Finding Your\nVeterans Group`
-  String get resourceTitle2 {
-    return Intl.message(
-      'Finding Your\nVeterans Group',
-      name: 'resourceTitle2',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sleep Techniques\nfor Veterans`
-  String get resourceTitle3 {
-    return Intl.message(
-      'Sleep Techniques\nfor Veterans',
-      name: 'resourceTitle3',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Exercise as a\nHealing Tool`
-  String get resourceTitle4 {
-    return Intl.message(
-      'Exercise as a\nHealing Tool',
-      name: 'resourceTitle4',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{minutes} min read`
-  String resourceReadTime(int minutes) {
-    return Intl.message(
-      '$minutes min read',
-      name: 'resourceReadTime',
-      desc: 'Read time label on a resource card.',
-      args: [minutes],
     );
   }
 
@@ -1742,11 +1592,11 @@ class S {
     );
   }
 
-  /// `End Time`
-  String get agendaAddSlotEndTime {
+  /// `Duration`
+  String get agendaAddSlotDuration {
     return Intl.message(
-      'End Time',
-      name: 'agendaAddSlotEndTime',
+      'Duration',
+      name: 'agendaAddSlotDuration',
       desc: '',
       args: [],
     );

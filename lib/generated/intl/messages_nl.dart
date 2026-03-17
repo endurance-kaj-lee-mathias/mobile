@@ -38,8 +38,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m10(error) => "Fout bij bijwerken: ${error}";
 
-  static String m11(minutes) => "${minutes} min lezen";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage("Toegang Beperkt"),
@@ -50,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Beschikbaarheid toevoegen",
     ),
     "agendaAddSlotButton": MessageLookupByLibrary.simpleMessage("Toevoegen"),
-    "agendaAddSlotEndTime": MessageLookupByLibrary.simpleMessage("Eindtijd"),
+    "agendaAddSlotDuration": MessageLookupByLibrary.simpleMessage("Duur"),
     "agendaAddSlotError": MessageLookupByLibrary.simpleMessage(
       "Kon beschikbaarheid niet toevoegen. Probeer het opnieuw.",
     ),
@@ -145,9 +143,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Annuleren"),
-    "chatsSoon": MessageLookupByLibrary.simpleMessage(
-      "Chats — binnenkort beschikbaar",
-    ),
     "checkInAddButton": MessageLookupByLibrary.simpleMessage(
       "Check-in toevoegen",
     ),
@@ -310,9 +305,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Verzoek verzenden",
     ),
     "networkSent": MessageLookupByLibrary.simpleMessage("VERZONDEN"),
-    "networkSoon": MessageLookupByLibrary.simpleMessage(
-      "Netwerk — binnenkort beschikbaar",
-    ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Mijn Netwerk"),
     "networkUsernameHint": MessageLookupByLibrary.simpleMessage(
       "bijv. jan_janssen",
@@ -396,11 +388,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileUsernameCopied": MessageLookupByLibrary.simpleMessage(
       "Gebruikersnaam gekopieerd naar klembord",
     ),
+    "quickActionsBookSession": MessageLookupByLibrary.simpleMessage(
+      "Sessie\nboeken",
+    ),
     "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
       "Crisis-\nlijn",
-    ),
-    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
-      "Sessie\nboeken",
     ),
     "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
       "Bericht\nVriend",
@@ -408,47 +400,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "SNELLE ACTIES",
     ),
-    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
-      "Gemeenschap",
-    ),
-    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
-      "Geestelijke Gezondheid",
-    ),
-    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage(
-      "Lichamelijk",
-    ),
-    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
-      "Welzijn",
-    ),
-    "resourceReadTime": m11,
-    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
-      "Omgaan met Angst\nin het Dagelijks Leven",
-    ),
-    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
-      "Jouw\nVeteranengroep Vinden",
-    ),
-    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
-      "Slaaptechnieken\nvoor Veteranen",
-    ),
-    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
-      "Beweging als\nHerstelinstrument",
-    ),
-    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("BRONNEN"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Indienen"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("meer"),
     "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
       "MIJN STEUNNETWERK",
     ),
     "tagline": MessageLookupByLibrary.simpleMessage("Diensten Boven Dienst"),
-    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
-      "Morgen · 14:00",
-    ),
-    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
-      "Therapiesessie",
-    ),
-    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
-      "met Dr. Sarah Mitchell",
-    ),
     "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("AANKOMEND"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Gebruik onze webversie",

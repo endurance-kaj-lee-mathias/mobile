@@ -38,8 +38,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m10(error) => "Ошибка обновления профиля: ${error}";
 
-  static String m11(minutes) => "${minutes} мин чтения";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage(
@@ -52,8 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Добавить доступность",
     ),
     "agendaAddSlotButton": MessageLookupByLibrary.simpleMessage("Добавить"),
-    "agendaAddSlotEndTime": MessageLookupByLibrary.simpleMessage(
-      "Время окончания",
+    "agendaAddSlotDuration": MessageLookupByLibrary.simpleMessage(
+      "Продолжительность",
     ),
     "agendaAddSlotError": MessageLookupByLibrary.simpleMessage(
       "Не удалось добавить доступность. Попробуйте ещё раз.",
@@ -147,7 +145,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Отмена"),
-    "chatsSoon": MessageLookupByLibrary.simpleMessage("Чаты — скоро"),
     "checkInAddButton": MessageLookupByLibrary.simpleMessage(
       "Добавить отметку",
     ),
@@ -312,7 +309,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Отправить запрос",
     ),
     "networkSent": MessageLookupByLibrary.simpleMessage("ОТПРАВЛЕННЫЕ"),
-    "networkSoon": MessageLookupByLibrary.simpleMessage("Сеть — скоро"),
     "networkTitle": MessageLookupByLibrary.simpleMessage("Моя Сеть"),
     "networkUsernameHint": MessageLookupByLibrary.simpleMessage(
       "например, ivan_ivanov",
@@ -402,11 +398,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileUsernameCopied": MessageLookupByLibrary.simpleMessage(
       "Имя пользователя скопировано",
     ),
+    "quickActionsBookSession": MessageLookupByLibrary.simpleMessage(
+      "Записаться\nна сеанс",
+    ),
     "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
       "Линия\nкризиса",
-    ),
-    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
-      "Записаться\nна сеанс",
     ),
     "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
       "Написать\nдругу",
@@ -414,47 +410,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "БЫСТРЫЕ ДЕЙСТВИЯ",
     ),
-    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
-      "Сообщество",
-    ),
-    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
-      "Психическое здоровье",
-    ),
-    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage(
-      "Физическое",
-    ),
-    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
-      "Благополучие",
-    ),
-    "resourceReadTime": m11,
-    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
-      "Управление тревогой\nв повседневной жизни",
-    ),
-    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
-      "Найти\nсвою группу ветеранов",
-    ),
-    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
-      "Техники сна\nдля ветеранов",
-    ),
-    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
-      "Упражнения как\nинструмент исцеления",
-    ),
-    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("РЕСУРСЫ"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Отправить"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("ещё"),
     "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
       "МОЯ СЕТЬ ПОДДЕРЖКИ",
     ),
     "tagline": MessageLookupByLibrary.simpleMessage("Услуги Сверх Службы"),
-    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
-      "Завтра · 14:00",
-    ),
-    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
-      "Сеанс терапии",
-    ),
-    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
-      "с Др. Сарой Митчелл",
-    ),
     "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("ПРЕДСТОЯЩЕЕ"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Используйте нашу веб-версию",

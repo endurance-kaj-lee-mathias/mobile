@@ -79,10 +79,13 @@ class CalendarService {
   }
 
   Future<List<int>> exportCalendar() async {
-    final response = await _client.get<List<int>>(
+    final response = await _client.get<dynamic>(
       '/calendar/me/export',
       options: Options(responseType: ResponseType.bytes),
     );
-    return response.data ?? [];
+    final data = response.data;
+    if (data is List<int>) return data;
+    if (data is List) return List<int>.from(data);
+    return [];
   }
 }

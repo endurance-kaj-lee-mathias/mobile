@@ -153,7 +153,7 @@ class _AddSlotSheetState extends State<AddSlotSheet> {
           ),
           const SizedBox(height: 16),
           Text(
-            l10n.agendaAddSlotEndTime,
+            l10n.agendaAddSlotDuration,
             style: textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w600,
               color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),

@@ -43,8 +43,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m10(error) => "Error updating profile: ${error}";
 
-  static String m11(minutes) => "${minutes} min read";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessRestricted": MessageLookupByLibrary.simpleMessage(
@@ -57,7 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Add Availability",
     ),
     "agendaAddSlotButton": MessageLookupByLibrary.simpleMessage("Add"),
-    "agendaAddSlotEndTime": MessageLookupByLibrary.simpleMessage("End Time"),
+    "agendaAddSlotDuration": MessageLookupByLibrary.simpleMessage("Duration"),
     "agendaAddSlotError": MessageLookupByLibrary.simpleMessage(
       "Could not add availability. Please try again.",
     ),
@@ -174,7 +172,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "chatsMessagePreviewYou": m1,
     "chatsNoMessages": MessageLookupByLibrary.simpleMessage("No messages yet"),
     "chatsSayHi": MessageLookupByLibrary.simpleMessage("Say hi! 👋"),
-    "chatsSoon": MessageLookupByLibrary.simpleMessage("Chats — coming soon"),
     "chatsToday": MessageLookupByLibrary.simpleMessage("Today"),
     "chatsYesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
     "chatsYou": MessageLookupByLibrary.simpleMessage("You"),
@@ -330,9 +327,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRoleVeteran": MessageLookupByLibrary.simpleMessage("Veteran"),
     "networkSendRequest": MessageLookupByLibrary.simpleMessage("Send Request"),
     "networkSent": MessageLookupByLibrary.simpleMessage("SENT"),
-    "networkSoon": MessageLookupByLibrary.simpleMessage(
-      "Network — coming soon",
-    ),
     "networkTitle": MessageLookupByLibrary.simpleMessage("My Network"),
     "networkUsernameHint": MessageLookupByLibrary.simpleMessage(
       "e.g. john_doe",
@@ -414,11 +408,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileUsernameCopied": MessageLookupByLibrary.simpleMessage(
       "Username copied to clipboard",
     ),
+    "quickActionsBookSession": MessageLookupByLibrary.simpleMessage(
+      "Book\nSession",
+    ),
     "quickActionsCrisisLine": MessageLookupByLibrary.simpleMessage(
       "Crisis\nLine",
-    ),
-    "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
-      "Book\nSession",
     ),
     "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
       "Message\nBuddy",
@@ -426,47 +420,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "QUICK ACTIONS",
     ),
-    "resourceCategoryCommunity": MessageLookupByLibrary.simpleMessage(
-      "Community",
-    ),
-    "resourceCategoryMentalHealth": MessageLookupByLibrary.simpleMessage(
-      "Mental Health",
-    ),
-    "resourceCategoryPhysical": MessageLookupByLibrary.simpleMessage(
-      "Physical",
-    ),
-    "resourceCategoryWellbeing": MessageLookupByLibrary.simpleMessage(
-      "Wellbeing",
-    ),
-    "resourceReadTime": m11,
-    "resourceTitle1": MessageLookupByLibrary.simpleMessage(
-      "Managing Anxiety\nin Everyday Life",
-    ),
-    "resourceTitle2": MessageLookupByLibrary.simpleMessage(
-      "Finding Your\nVeterans Group",
-    ),
-    "resourceTitle3": MessageLookupByLibrary.simpleMessage(
-      "Sleep Techniques\nfor Veterans",
-    ),
-    "resourceTitle4": MessageLookupByLibrary.simpleMessage(
-      "Exercise as a\nHealing Tool",
-    ),
-    "resourcesSectionTitle": MessageLookupByLibrary.simpleMessage("RESOURCES"),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Submit"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("more"),
     "supportNetworkSectionTitle": MessageLookupByLibrary.simpleMessage(
       "MY SUPPORT NETWORK",
     ),
     "tagline": MessageLookupByLibrary.simpleMessage("Services Beyond Service"),
-    "upcomingAppointmentTime": MessageLookupByLibrary.simpleMessage(
-      "Tomorrow · 14:00",
-    ),
-    "upcomingAppointmentTitle": MessageLookupByLibrary.simpleMessage(
-      "Therapy Session",
-    ),
-    "upcomingAppointmentWith": MessageLookupByLibrary.simpleMessage(
-      "with Dr. Sarah Mitchell",
-    ),
     "upcomingSectionTitle": MessageLookupByLibrary.simpleMessage("UPCOMING"),
     "useWebVersion": MessageLookupByLibrary.simpleMessage(
       "Use our web version instead",

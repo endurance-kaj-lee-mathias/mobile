@@ -37,7 +37,7 @@ class QuickActionsSection extends StatelessWidget {
               const SizedBox(width: 10),
               _ActionTile(
                 heroIcon: HeroIcons.calendarDays,
-                label: l10n.quickActionsFindTherapist,
+                label: l10n.quickActionsBookSession,
                 color: AppColors.dustyBlue,
                 onTap: () => context.goNamed(AppRoutes.agenda),
               ),
