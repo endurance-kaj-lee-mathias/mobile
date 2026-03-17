@@ -957,10 +957,10 @@ class S {
     );
   }
 
-  /// `Find\nTherapist`
+  /// `Book\nSession`
   String get quickActionsFindTherapist {
     return Intl.message(
-      'Find\nTherapist',
+      'Book\nSession',
       name: 'quickActionsFindTherapist',
       desc: '',
       args: [],
@@ -1472,6 +1472,416 @@ class S {
     return Intl.message(
       'First name is required',
       name: 'profileEditFirstNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Schedule`
+  String get navAgenda {
+    return Intl.message('Schedule', name: 'navAgenda', desc: '', args: []);
+  }
+
+  /// `Schedule`
+  String get agendaTitle {
+    return Intl.message('Schedule', name: 'agendaTitle', desc: '', args: []);
+  }
+
+  /// `Appointments`
+  String get agendaTabAppointments {
+    return Intl.message(
+      'Appointments',
+      name: 'agendaTabAppointments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Availability`
+  String get agendaTabAvailability {
+    return Intl.message(
+      'My Availability',
+      name: 'agendaTabAvailability',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPCOMING`
+  String get agendaUpcoming {
+    return Intl.message('UPCOMING', name: 'agendaUpcoming', desc: '', args: []);
+  }
+
+  /// `PAST`
+  String get agendaPast {
+    return Intl.message('PAST', name: 'agendaPast', desc: '', args: []);
+  }
+
+  /// `No appointments yet`
+  String get agendaEmptyTitle {
+    return Intl.message(
+      'No appointments yet',
+      name: 'agendaEmptyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book a slot with someone from your support network.`
+  String get agendaEmptyBody {
+    return Intl.message(
+      'Book a slot with someone from your support network.',
+      name: 'agendaEmptyBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Appointment`
+  String get agendaBookButton {
+    return Intl.message(
+      'Book Appointment',
+      name: 'agendaBookButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel appointment?`
+  String get agendaCancelTitle {
+    return Intl.message(
+      'Cancel appointment?',
+      name: 'agendaCancelTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will free up the time slot for others.`
+  String get agendaCancelBody {
+    return Intl.message(
+      'This will free up the time slot for others.',
+      name: 'agendaCancelBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Appointment`
+  String get agendaCancelConfirm {
+    return Intl.message(
+      'Cancel Appointment',
+      name: 'agendaCancelConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Appointment cancelled`
+  String get agendaCancelledSuccess {
+    return Intl.message(
+      'Appointment cancelled',
+      name: 'agendaCancelledSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No available slots in the next 30 days`
+  String get agendaNoSlots {
+    return Intl.message(
+      'No available slots in the next 30 days',
+      name: 'agendaNoSlots',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Appointment booked!`
+  String get agendaBookedSuccess {
+    return Intl.message(
+      'Appointment booked!',
+      name: 'agendaBookedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not book this slot. Please try again.`
+  String get agendaBookError {
+    return Intl.message(
+      'Could not book this slot. Please try again.',
+      name: 'agendaBookError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Availability`
+  String get agendaAddAvailability {
+    return Intl.message(
+      'Add Availability',
+      name: 'agendaAddAvailability',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No availability set`
+  String get agendaEmptyAvailability {
+    return Intl.message(
+      'No availability set',
+      name: 'agendaEmptyAvailability',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add time windows for your network to book.`
+  String get agendaEmptyAvailabilityBody {
+    return Intl.message(
+      'Add time windows for your network to book.',
+      name: 'agendaEmptyAvailabilityBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booked`
+  String get agendaSlotBooked {
+    return Intl.message('Booked', name: 'agendaSlotBooked', desc: '', args: []);
+  }
+
+  /// `Available`
+  String get agendaSlotAvailable {
+    return Intl.message(
+      'Available',
+      name: 'agendaSlotAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove availability?`
+  String get agendaSlotDeleteTitle {
+    return Intl.message(
+      'Remove availability?',
+      name: 'agendaSlotDeleteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This time window will be removed.`
+  String get agendaSlotDeleteBody {
+    return Intl.message(
+      'This time window will be removed.',
+      name: 'agendaSlotDeleteBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove`
+  String get agendaSlotDeleteConfirm {
+    return Intl.message(
+      'Remove',
+      name: 'agendaSlotDeleteConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove recurring availability?`
+  String get agendaSlotDeleteSeriesTitle {
+    return Intl.message(
+      'Remove recurring availability?',
+      name: 'agendaSlotDeleteSeriesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Only this one`
+  String get agendaSlotDeleteThisOnly {
+    return Intl.message(
+      'Only this one',
+      name: 'agendaSlotDeleteThisOnly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All future occurrences`
+  String get agendaSlotDeleteAllSeries {
+    return Intl.message(
+      'All future occurrences',
+      name: 'agendaSlotDeleteAllSeries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Availability removed`
+  String get agendaSlotDeletedSuccess {
+    return Intl.message(
+      'Availability removed',
+      name: 'agendaSlotDeletedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Time`
+  String get agendaAddSlotStartTime {
+    return Intl.message(
+      'Start Time',
+      name: 'agendaAddSlotStartTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End Time`
+  String get agendaAddSlotEndTime {
+    return Intl.message(
+      'End Time',
+      name: 'agendaAddSlotEndTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repeat weekly`
+  String get agendaAddSlotRecurring {
+    return Intl.message(
+      'Repeat weekly',
+      name: 'agendaAddSlotRecurring',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Creates availability for the next 8 weeks`
+  String get agendaAddSlotRecurringHint {
+    return Intl.message(
+      'Creates availability for the next 8 weeks',
+      name: 'agendaAddSlotRecurringHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get agendaAddSlotButton {
+    return Intl.message('Add', name: 'agendaAddSlotButton', desc: '', args: []);
+  }
+
+  /// `Availability added!`
+  String get agendaAddSlotSuccess {
+    return Intl.message(
+      'Availability added!',
+      name: 'agendaAddSlotSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not add availability. Please try again.`
+  String get agendaAddSlotError {
+    return Intl.message(
+      'Could not add availability. Please try again.',
+      name: 'agendaAddSlotError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export Calendar`
+  String get agendaExportCalendar {
+    return Intl.message(
+      'Export Calendar',
+      name: 'agendaExportCalendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calendar exported!`
+  String get agendaExportSuccess {
+    return Intl.message(
+      'Calendar exported!',
+      name: 'agendaExportSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not export calendar. Please try again.`
+  String get agendaExportError {
+    return Intl.message(
+      'Could not export calendar. Please try again.',
+      name: 'agendaExportError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No upcoming appointments`
+  String get agendaUpcomingNoAppointments {
+    return Intl.message(
+      'No upcoming appointments',
+      name: 'agendaUpcomingNoAppointments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book a slot from your network to get started.`
+  String get agendaNoAppointmentsBody {
+    return Intl.message(
+      'Book a slot from your network to get started.',
+      name: 'agendaNoAppointmentsBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Appointment`
+  String get networkBookAppointment {
+    return Intl.message(
+      'Book Appointment',
+      name: 'networkBookAppointment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View available time slots`
+  String get networkBookAppointmentSubtitle {
+    return Intl.message(
+      'View available time slots',
+      name: 'networkBookAppointmentSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy settings`
+  String get networkPrivacySettings {
+    return Intl.message(
+      'Privacy settings',
+      name: 'networkPrivacySettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Control what this person can see`
+  String get networkPrivacySettingsSubtitle {
+    return Intl.message(
+      'Control what this person can see',
+      name: 'networkPrivacySettingsSubtitle',
       desc: '',
       args: [],
     );

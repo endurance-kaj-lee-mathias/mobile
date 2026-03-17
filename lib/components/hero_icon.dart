@@ -60,4 +60,8 @@ abstract final class HeroIcons {
   static const String heartOutline   = 'assets/icons/outline/heart.svg';
   static const String signal         = 'assets/icons/outline/signal.svg';
   static const String ellipsisCircle = 'assets/icons/outline/ellipsis-horizontal-circle.svg';
+
+  // Agenda / calendar
+  static const String calendarOutline = 'assets/icons/outline/calendar.svg';
+  static const String calendarSolid   = 'assets/icons/solid/calendar.svg';
 }

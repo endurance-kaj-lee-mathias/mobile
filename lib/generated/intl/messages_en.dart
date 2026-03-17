@@ -53,6 +53,107 @@ class MessageLookup extends MessageLookupByLibrary {
     "accessRestrictedBody": MessageLookupByLibrary.simpleMessage(
       "Sorry, access to Endurance is reserved for verified veterans. Your account does not currently have the required access.",
     ),
+    "agendaAddAvailability": MessageLookupByLibrary.simpleMessage(
+      "Add Availability",
+    ),
+    "agendaAddSlotButton": MessageLookupByLibrary.simpleMessage("Add"),
+    "agendaAddSlotEndTime": MessageLookupByLibrary.simpleMessage("End Time"),
+    "agendaAddSlotError": MessageLookupByLibrary.simpleMessage(
+      "Could not add availability. Please try again.",
+    ),
+    "agendaAddSlotRecurring": MessageLookupByLibrary.simpleMessage(
+      "Repeat weekly",
+    ),
+    "agendaAddSlotRecurringHint": MessageLookupByLibrary.simpleMessage(
+      "Creates availability for the next 8 weeks",
+    ),
+    "agendaAddSlotStartTime": MessageLookupByLibrary.simpleMessage(
+      "Start Time",
+    ),
+    "agendaAddSlotSuccess": MessageLookupByLibrary.simpleMessage(
+      "Availability added!",
+    ),
+    "agendaBookButton": MessageLookupByLibrary.simpleMessage(
+      "Book Appointment",
+    ),
+    "agendaBookError": MessageLookupByLibrary.simpleMessage(
+      "Could not book this slot. Please try again.",
+    ),
+    "agendaBookedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Appointment booked!",
+    ),
+    "agendaCancelBody": MessageLookupByLibrary.simpleMessage(
+      "This will free up the time slot for others.",
+    ),
+    "agendaCancelConfirm": MessageLookupByLibrary.simpleMessage(
+      "Cancel Appointment",
+    ),
+    "agendaCancelTitle": MessageLookupByLibrary.simpleMessage(
+      "Cancel appointment?",
+    ),
+    "agendaCancelledSuccess": MessageLookupByLibrary.simpleMessage(
+      "Appointment cancelled",
+    ),
+    "agendaEmptyAvailability": MessageLookupByLibrary.simpleMessage(
+      "No availability set",
+    ),
+    "agendaEmptyAvailabilityBody": MessageLookupByLibrary.simpleMessage(
+      "Add time windows for your network to book.",
+    ),
+    "agendaEmptyBody": MessageLookupByLibrary.simpleMessage(
+      "Book a slot with someone from your support network.",
+    ),
+    "agendaEmptyTitle": MessageLookupByLibrary.simpleMessage(
+      "No appointments yet",
+    ),
+    "agendaExportCalendar": MessageLookupByLibrary.simpleMessage(
+      "Export Calendar",
+    ),
+    "agendaExportError": MessageLookupByLibrary.simpleMessage(
+      "Could not export calendar. Please try again.",
+    ),
+    "agendaExportSuccess": MessageLookupByLibrary.simpleMessage(
+      "Calendar exported!",
+    ),
+    "agendaNoAppointmentsBody": MessageLookupByLibrary.simpleMessage(
+      "Book a slot from your network to get started.",
+    ),
+    "agendaNoSlots": MessageLookupByLibrary.simpleMessage(
+      "No available slots in the next 30 days",
+    ),
+    "agendaPast": MessageLookupByLibrary.simpleMessage("PAST"),
+    "agendaSlotAvailable": MessageLookupByLibrary.simpleMessage("Available"),
+    "agendaSlotBooked": MessageLookupByLibrary.simpleMessage("Booked"),
+    "agendaSlotDeleteAllSeries": MessageLookupByLibrary.simpleMessage(
+      "All future occurrences",
+    ),
+    "agendaSlotDeleteBody": MessageLookupByLibrary.simpleMessage(
+      "This time window will be removed.",
+    ),
+    "agendaSlotDeleteConfirm": MessageLookupByLibrary.simpleMessage("Remove"),
+    "agendaSlotDeleteSeriesTitle": MessageLookupByLibrary.simpleMessage(
+      "Remove recurring availability?",
+    ),
+    "agendaSlotDeleteThisOnly": MessageLookupByLibrary.simpleMessage(
+      "Only this one",
+    ),
+    "agendaSlotDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Remove availability?",
+    ),
+    "agendaSlotDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Availability removed",
+    ),
+    "agendaTabAppointments": MessageLookupByLibrary.simpleMessage(
+      "Appointments",
+    ),
+    "agendaTabAvailability": MessageLookupByLibrary.simpleMessage(
+      "My Availability",
+    ),
+    "agendaTitle": MessageLookupByLibrary.simpleMessage("Schedule"),
+    "agendaUpcoming": MessageLookupByLibrary.simpleMessage("UPCOMING"),
+    "agendaUpcomingNoAppointments": MessageLookupByLibrary.simpleMessage(
+      "No upcoming appointments",
+    ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "chatInputHint": MessageLookupByLibrary.simpleMessage("Message…"),
@@ -134,6 +235,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "moodOverviewTitle": MessageLookupByLibrary.simpleMessage("Mood Overview"),
     "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage("THIS WEEK"),
+    "navAgenda": MessageLookupByLibrary.simpleMessage("Schedule"),
     "navChats": MessageLookupByLibrary.simpleMessage("Chats"),
     "navHome": MessageLookupByLibrary.simpleMessage("Home"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("My Network"),
@@ -145,6 +247,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkAddSomeone": MessageLookupByLibrary.simpleMessage("Add Someone"),
     "networkAddToNetwork": MessageLookupByLibrary.simpleMessage(
       "Add to Network",
+    ),
+    "networkBookAppointment": MessageLookupByLibrary.simpleMessage(
+      "Book Appointment",
+    ),
+    "networkBookAppointmentSubtitle": MessageLookupByLibrary.simpleMessage(
+      "View available time slots",
     ),
     "networkConnections": MessageLookupByLibrary.simpleMessage("Connections"),
     "networkDeclinedSuccess": MessageLookupByLibrary.simpleMessage(
@@ -198,6 +306,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Note (optional)",
     ),
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage("Pending"),
+    "networkPrivacySettings": MessageLookupByLibrary.simpleMessage(
+      "Privacy settings",
+    ),
+    "networkPrivacySettingsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Control what this person can see",
+    ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Remove"),
     "networkRemoveBody": m7,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Remove"),
@@ -304,7 +418,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Crisis\nLine",
     ),
     "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
-      "Find\nTherapist",
+      "Book\nSession",
     ),
     "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
       "Message\nBuddy",

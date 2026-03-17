@@ -48,6 +48,103 @@ class MessageLookup extends MessageLookupByLibrary {
     "accessRestrictedBody": MessageLookupByLibrary.simpleMessage(
       "Извините, доступ к Endurance зарезервирован для проверенных ветеранов. Ваша учётная запись в настоящее время не имеет необходимого доступа.",
     ),
+    "agendaAddAvailability": MessageLookupByLibrary.simpleMessage(
+      "Добавить доступность",
+    ),
+    "agendaAddSlotButton": MessageLookupByLibrary.simpleMessage("Добавить"),
+    "agendaAddSlotEndTime": MessageLookupByLibrary.simpleMessage(
+      "Время окончания",
+    ),
+    "agendaAddSlotError": MessageLookupByLibrary.simpleMessage(
+      "Не удалось добавить доступность. Попробуйте ещё раз.",
+    ),
+    "agendaAddSlotRecurring": MessageLookupByLibrary.simpleMessage(
+      "Повторять еженедельно",
+    ),
+    "agendaAddSlotRecurringHint": MessageLookupByLibrary.simpleMessage(
+      "Создаёт доступность на ближайшие 8 недель",
+    ),
+    "agendaAddSlotStartTime": MessageLookupByLibrary.simpleMessage(
+      "Время начала",
+    ),
+    "agendaAddSlotSuccess": MessageLookupByLibrary.simpleMessage(
+      "Доступность добавлена!",
+    ),
+    "agendaBookButton": MessageLookupByLibrary.simpleMessage("Записаться"),
+    "agendaBookError": MessageLookupByLibrary.simpleMessage(
+      "Не удалось забронировать слот. Попробуйте ещё раз.",
+    ),
+    "agendaBookedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Встреча забронирована!",
+    ),
+    "agendaCancelBody": MessageLookupByLibrary.simpleMessage(
+      "Это освободит временной слот для других.",
+    ),
+    "agendaCancelConfirm": MessageLookupByLibrary.simpleMessage(
+      "Отменить встречу",
+    ),
+    "agendaCancelTitle": MessageLookupByLibrary.simpleMessage(
+      "Отменить встречу?",
+    ),
+    "agendaCancelledSuccess": MessageLookupByLibrary.simpleMessage(
+      "Встреча отменена",
+    ),
+    "agendaEmptyAvailability": MessageLookupByLibrary.simpleMessage(
+      "Доступность не задана",
+    ),
+    "agendaEmptyAvailabilityBody": MessageLookupByLibrary.simpleMessage(
+      "Добавьте временные окна для вашей сети.",
+    ),
+    "agendaEmptyBody": MessageLookupByLibrary.simpleMessage(
+      "Забронируйте время у кого-то из вашей сети поддержки.",
+    ),
+    "agendaEmptyTitle": MessageLookupByLibrary.simpleMessage("Нет встреч"),
+    "agendaExportCalendar": MessageLookupByLibrary.simpleMessage(
+      "Экспорт календаря",
+    ),
+    "agendaExportError": MessageLookupByLibrary.simpleMessage(
+      "Не удалось экспортировать календарь. Попробуйте ещё раз.",
+    ),
+    "agendaExportSuccess": MessageLookupByLibrary.simpleMessage(
+      "Календарь экспортирован!",
+    ),
+    "agendaNoAppointmentsBody": MessageLookupByLibrary.simpleMessage(
+      "Забронируйте слот через ваш нетворк.",
+    ),
+    "agendaNoSlots": MessageLookupByLibrary.simpleMessage(
+      "Нет доступных слотов на ближайшие 30 дней",
+    ),
+    "agendaPast": MessageLookupByLibrary.simpleMessage("ПРОШЕДШИЕ"),
+    "agendaSlotAvailable": MessageLookupByLibrary.simpleMessage("Доступно"),
+    "agendaSlotBooked": MessageLookupByLibrary.simpleMessage("Забронировано"),
+    "agendaSlotDeleteAllSeries": MessageLookupByLibrary.simpleMessage(
+      "Все будущие",
+    ),
+    "agendaSlotDeleteBody": MessageLookupByLibrary.simpleMessage(
+      "Это временное окно будет удалено.",
+    ),
+    "agendaSlotDeleteConfirm": MessageLookupByLibrary.simpleMessage("Удалить"),
+    "agendaSlotDeleteSeriesTitle": MessageLookupByLibrary.simpleMessage(
+      "Удалить повторяющуюся доступность?",
+    ),
+    "agendaSlotDeleteThisOnly": MessageLookupByLibrary.simpleMessage(
+      "Только эту",
+    ),
+    "agendaSlotDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Убрать доступность?",
+    ),
+    "agendaSlotDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Доступность удалена",
+    ),
+    "agendaTabAppointments": MessageLookupByLibrary.simpleMessage("Встречи"),
+    "agendaTabAvailability": MessageLookupByLibrary.simpleMessage(
+      "Моя доступность",
+    ),
+    "agendaTitle": MessageLookupByLibrary.simpleMessage("Расписание"),
+    "agendaUpcoming": MessageLookupByLibrary.simpleMessage("ПРЕДСТОЯЩИЕ"),
+    "agendaUpcomingNoAppointments": MessageLookupByLibrary.simpleMessage(
+      "Нет предстоящих встреч",
+    ),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "chatsSoon": MessageLookupByLibrary.simpleMessage("Чаты — скоро"),
@@ -116,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Обзор настроения",
     ),
     "moodTrendSectionTitle": MessageLookupByLibrary.simpleMessage("ЭТА НЕДЕЛЯ"),
+    "navAgenda": MessageLookupByLibrary.simpleMessage("Расписание"),
     "navChats": MessageLookupByLibrary.simpleMessage("Чаты"),
     "navHome": MessageLookupByLibrary.simpleMessage("Главная"),
     "navNetwork": MessageLookupByLibrary.simpleMessage("Моя Сеть"),
@@ -129,6 +227,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "networkAddToNetwork": MessageLookupByLibrary.simpleMessage(
       "Добавить в сеть",
+    ),
+    "networkBookAppointment": MessageLookupByLibrary.simpleMessage(
+      "Записаться на приём",
+    ),
+    "networkBookAppointmentSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Просмотр доступных слотов",
     ),
     "networkConnections": MessageLookupByLibrary.simpleMessage("Связи"),
     "networkDeclinedSuccess": MessageLookupByLibrary.simpleMessage(
@@ -182,6 +286,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Заметка (необязательно)",
     ),
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage("В ожидании"),
+    "networkPrivacySettings": MessageLookupByLibrary.simpleMessage(
+      "Настройки конфиденциальности",
+    ),
+    "networkPrivacySettingsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Управляйте доступом этого человека",
+    ),
     "networkRemove": MessageLookupByLibrary.simpleMessage("Удалить"),
     "networkRemoveBody": m7,
     "networkRemoveConfirm": MessageLookupByLibrary.simpleMessage("Удалить"),
@@ -296,7 +406,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Линия\nкризиса",
     ),
     "quickActionsFindTherapist": MessageLookupByLibrary.simpleMessage(
-      "Найти\nтерапевта",
+      "Записаться\nна сеанс",
     ),
     "quickActionsMessageBuddy": MessageLookupByLibrary.simpleMessage(
       "Написать\nдругу",
