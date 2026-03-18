@@ -39,7 +39,6 @@ class ConversationModel {
   final List<String> participants;
   final DateTime createdAt;
 
-  // Enriched from the member list — not part of the API response.
   String? otherUserId;
   String? otherUserFirstName;
   String? otherUserLastName;
@@ -47,7 +46,6 @@ class ConversationModel {
 
   MessageModel? lastMessage;
 
-  // Unread tracking — managed by ChatController, not persisted.
   int unreadCount;
   DateTime? firstUnreadAt;
 
@@ -77,10 +75,8 @@ class ConversationModel {
     );
   }
 
-  /// Parses the response from `GET /chats`, which returns a pre-enriched
-  /// summary including the other participant's profile and latest message.
   factory ConversationModel.fromSummaryJson(Map<String, dynamic> json) {
-    final convId = json['conversationId']?.toString() ?? '';
+    final convId = json['id']?.toString() ?? '';
     final latestText = json['latestMessage'] as String?;
     final latestSentBy = json['latestMessageSentBy']?.toString();
     final latestAtRaw = json['latestMessageAt']?.toString();
@@ -103,7 +99,7 @@ class ConversationModel {
       otherUserId: json['otherUserId']?.toString(),
       otherUserFirstName: json['firstName']?.toString(),
       otherUserLastName: json['lastName']?.toString(),
-      otherUserImage: json['imageUrl']?.toString(),
+      otherUserImage: json['image']?.toString(),
       lastMessage: lastMessage,
     );
   }
@@ -115,23 +111,30 @@ class ConversationModel {
   }
 }
 
-/// A message broadcast from the WebSocket server to subscribed clients.
 class WsOutboundMessage {
   final String channel;
-  final String from;
-  final dynamic payload;
+  final String senderId;
+  final String username;
+  final String content;
+  final DateTime createdAt;
 
   WsOutboundMessage({
     required this.channel,
-    required this.from,
-    required this.payload,
+    required this.senderId,
+    required this.username,
+    required this.content,
+    required this.createdAt,
   });
 
   factory WsOutboundMessage.fromJson(Map<String, dynamic> json) {
     return WsOutboundMessage(
       channel: json['channel']?.toString() ?? '',
-      from: json['from']?.toString() ?? '',
-      payload: json['payload'],
+      senderId: json['senderId']?.toString() ?? '',
+      username: json['username']?.toString() ?? '',
+      content: json['content']?.toString() ?? '',
+      createdAt: json['createdAt'] != null
+          ? DateTime.parse(json['createdAt'].toString())
+          : DateTime.now(),
     );
   }
 }

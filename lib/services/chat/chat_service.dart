@@ -7,16 +7,11 @@ class ChatService {
 
   final Dio _client;
 
-  /// Returns all conversations that the current user participates in.
-  ///
-  /// Supports both the enriched summary format (`conversationId`, `firstName`,
-  /// etc.) and the basic format (`id`, `participants`, `createdAt`), so the
-  /// app stays functional regardless of which version the backend serves.
   Future<List<ConversationModel>> getConversations() async {
     final resp = await _client.get<List<dynamic>>('/chats');
     final list = (resp.data ?? []).cast<Map<String, dynamic>>();
     if (list.isEmpty) return [];
-    final isEnriched = list.first.containsKey('conversationId');
+    final isEnriched = list.first.containsKey('otherUserId');
     return list
         .map(isEnriched
             ? ConversationModel.fromSummaryJson
@@ -24,8 +19,6 @@ class ChatService {
         .toList();
   }
 
-  /// Creates a new conversation with [participantId] or returns the existing one.
-  /// [participantId] must be the user UUID (MemberModel.veteran), not the support ID.
   Future<ConversationModel> startConversation(String participantId) async {
     final resp = await _client.post<Map<String, dynamic>>(
       '/chats',
@@ -34,8 +27,6 @@ class ChatService {
     return ConversationModel.fromJson(resp.data!);
   }
 
-  /// Returns messages for [conversationId] ordered by [createdAt] descending
-  /// (newest first from the API). Frontend reverses for display.
   Future<List<MessageModel>> getMessages(
     String conversationId, {
     int limit = 30,
@@ -51,7 +42,6 @@ class ChatService {
         .toList();
   }
 
-  /// Sends [content] to [conversationId] and returns the persisted message.
   Future<MessageModel> sendMessage(
     String conversationId,
     String content,
