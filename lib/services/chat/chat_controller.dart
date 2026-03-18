@@ -25,19 +25,11 @@ class ChatController extends GetxController {
   final Map<String, ConversationModel> _conversationByUserId = {};
 
   StreamSubscription<WsOutboundMessage>? _wsSub;
-
-  /// Guard against concurrent _loadConversations calls.
   bool _loadingConversations = false;
-
-  /// The conversation the user is currently viewing. Used to suppress unread
-  /// increments for messages that arrive while the chat is open.
   String? activeConversationId;
-
-  /// Total number of unread messages across all conversations.
   int get totalUnreadCount =>
       conversations.fold(0, (sum, c) => sum + c.unreadCount);
 
-  /// Marks all messages in [conversationId] as read.
   void markAsRead(String conversationId) {
     final idx = conversations.indexWhere((c) => c.id == conversationId);
     if (idx == -1) return;
@@ -99,20 +91,16 @@ class ChatController extends GetxController {
     super.onClose();
   }
 
-  /// Returns the reactive message list for [conversationId], creating it on
-  /// first access. Call [loadMessages] to populate it.
   RxList<MessageModel> messagesFor(String conversationId) =>
       _messagesCache.putIfAbsent(conversationId, () => <MessageModel>[].obs);
 
-  /// Loads messages for [conversationId] from the API unless already cached.
-  /// Set [refresh] to true to force a reload.
   Future<void> loadMessages(
     String conversationId, {
     bool refresh = false,
     int limit = 50,
   }) async {
     final cache = _messagesCache[conversationId];
-    if (cache != null && cache.isNotEmpty && !refresh) return;
+    if (cache != null && cache.isNotEmpty && cache.any((m) => m.id.isNotEmpty) && !refresh) return;
 
     try {
       final msgs = await _chatService.getMessages(
@@ -130,7 +118,6 @@ class ChatController extends GetxController {
     }
   }
 
-  /// Load more (older) messages for pagination.
   Future<void> loadMoreMessages(String conversationId) async {
     final existing = messagesFor(conversationId);
     try {
@@ -147,22 +134,21 @@ class ChatController extends GetxController {
     }
   }
 
-  /// Sends [content] to [conversationId]. Persists via REST then broadcasts
-  /// via WebSocket so the other participant receives it in real time.
   Future<bool> sendMessage(String conversationId, String content) async {
     try {
       final message = await _chatService.sendMessage(conversationId, content);
 
       final cache = messagesFor(conversationId);
-      if (cache.every((m) => m.id != message.id)) {
+      final alreadyExists = cache.any((m) =>
+          m.id == message.id ||
+          (m.senderId == message.senderId &&
+              m.content == message.content &&
+              m.createdAt.difference(message.createdAt).abs() <=
+                  const Duration(seconds: 2)));
+      if (!alreadyExists) {
         cache.add(message);
       }
       _updateLastMessage(conversationId, message);
-
-      _wsService.sendMessage(
-        'conversation:$conversationId',
-        message.toJson(),
-      );
 
       return true;
     } catch (e) {
@@ -173,8 +159,6 @@ class ChatController extends GetxController {
 
   Future<void> refreshConversations() => _loadConversations();
 
-  /// Creates or retrieves the conversation with [member]. Returns the
-  /// [ConversationModel] so the caller can navigate to the detail page.
   Future<ConversationModel?> startConversationWith(MemberModel member) async {
     final userId = member.id;
     if (_conversationByUserId.containsKey(userId)) {
@@ -282,14 +266,22 @@ class ChatController extends GetxController {
     if (!wsMsg.channel.startsWith('conversation:')) return;
     final convId = wsMsg.channel.replaceFirst('conversation:', '');
 
-    final payload = wsMsg.payload;
-    if (payload is! Map<String, dynamic>) return;
-
     try {
-      final message = MessageModel.fromJson(payload);
+      final message = MessageModel(
+        id: '',
+        conversationId: convId,
+        senderId: wsMsg.senderId,
+        content: wsMsg.content,
+        createdAt: wsMsg.createdAt,
+      );
 
       final cache = messagesFor(convId);
-      if (cache.any((m) => m.id == message.id)) return;
+      if (cache.any((m) =>
+          m.senderId == message.senderId &&
+          m.content == message.content &&
+          m.createdAt.difference(message.createdAt).abs() <= const Duration(seconds: 2))) {
+        return;
+      }
 
       cache.add(message);
       _updateLastMessage(convId, message);
