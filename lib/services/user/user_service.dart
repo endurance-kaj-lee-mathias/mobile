@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:endurance_mobile_app/services/user/user_model.dart';
 import 'package:get/get.dart';
 
+
 class UserService {
   UserService({Dio? client}) : _client = client ?? Get.find<Dio>();
 
@@ -66,5 +67,21 @@ class UserService {
       },
     );
     return AddressModel.fromJson(response.data!);
+  }
+
+  Future<void> updateRiskLevel(String riskLevel) async {
+    await _client.put<void>(
+      '/users/me/risk-level',
+      data: {'riskLevel': riskLevel},
+      options: Options(responseType: ResponseType.plain),
+    );
+  }
+
+  Future<List<VeteranSupportModel>> getSupportWithMoodSummaries() async {
+    final response = await _client.get<List<dynamic>>('/users/me/support');
+    return (response.data ?? [])
+        .cast<Map<String, dynamic>>()
+        .map(VeteranSupportModel.fromJson)
+        .toList();
   }
 }

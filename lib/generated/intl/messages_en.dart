@@ -434,6 +434,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profileEditLastName": MessageLookupByLibrary.simpleMessage("Last Name"),
     "profileEditPhone": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "profileEditPhotoUrl": MessageLookupByLibrary.simpleMessage(
+      "Profile Photo URL",
+    ),
+    "profileEditPhotoUrlHint": MessageLookupByLibrary.simpleMessage(
+      "Enter a public image URL",
+    ),
     "profileEditPostalCode": MessageLookupByLibrary.simpleMessage(
       "Postal Code",
     ),
@@ -449,6 +455,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "CONTACT",
     ),
     "profileEditSectionName": MessageLookupByLibrary.simpleMessage("NAME"),
+    "profileEditSectionPhoto": MessageLookupByLibrary.simpleMessage("PHOTO"),
     "profileEditStreet": MessageLookupByLibrary.simpleMessage("Street"),
     "profileEditTitle": MessageLookupByLibrary.simpleMessage("Edit Profile"),
     "profileLabelAddress": MessageLookupByLibrary.simpleMessage("Address"),

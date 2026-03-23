@@ -145,6 +145,18 @@ class _MoodSection extends StatelessWidget {
                     .toList(),
               ),
             ),
+          if (ctrl.hasMoreMoodEntries || ctrl.isLoadingMoreMood.value) ...[
+            const SizedBox(height: 8),
+            SizedBox(
+              width: double.infinity,
+              child: ctrl.isLoadingMoreMood.value
+                  ? const Center(child: CircularProgressIndicator())
+                  : OutlinedButton(
+                      onPressed: ctrl.loadMoreMoodEntries,
+                      child: const Text('Load older entries'),
+                    ),
+            ),
+          ],
           const SizedBox(height: 8),
           _DeleteAllButton(
             label: l10n.healthDeleteAllMoodButton,

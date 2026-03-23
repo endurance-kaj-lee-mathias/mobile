@@ -40,11 +40,12 @@ class StressService {
       queryParameters: {'limit': limit, 'offset': offset},
     );
     final data = response.data!;
-    final items = (data['items'] as List<dynamic>)
+    final items = ((data['data'] as List<dynamic>?) ?? [])
         .cast<Map<String, dynamic>>()
         .map(StressScoreModel.fromJson)
         .toList();
-    return (items: items, total: data['total'] as int);
+    final pagination = data['pagination'] as Map<String, dynamic>? ?? {};
+    return (items: items, total: pagination['total_items'] as int? ?? 0);
   }
 
   Future<void> deleteSamples() async {

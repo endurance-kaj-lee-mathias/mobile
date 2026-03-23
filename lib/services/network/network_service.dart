@@ -84,4 +84,20 @@ class NetworkService {
       options: Options(responseType: ResponseType.plain),
     );
   }
+
+  Future<List<ResourcePrivacyModel>> getResourcePrivacy() async {
+    final response = await _client.get<List<dynamic>>('/sharing/resources');
+    return (response.data ?? [])
+        .cast<Map<String, dynamic>>()
+        .map(ResourcePrivacyModel.fromJson)
+        .toList();
+  }
+
+  Future<void> setResourcePrivacy(String resource, {required bool isPrivate}) async {
+    await _client.patch<void>(
+      '/sharing/resources/$resource/privacy',
+      data: {'isPrivate': isPrivate},
+      options: Options(responseType: ResponseType.plain),
+    );
+  }
 }
