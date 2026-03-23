@@ -81,7 +81,7 @@ class _SlotPickerSheetState extends State<SlotPickerSheet> {
     final nav = Navigator.of(context);
     final messenger = ScaffoldMessenger.of(context);
     try {
-      await Get.find<CalendarController>().bookSlot(slot.id);
+      await Get.find<CalendarController>().bookSlot(slot.id, isUrgent: slot.isUrgent);
       nav.pop();
       messenger.showSnackBar(SnackBar(
         content: Text(l10n.agendaBookedSuccess),
@@ -198,6 +198,14 @@ class _SlotPickerSheetState extends State<SlotPickerSheet> {
       grouped.putIfAbsent(key, () => []).add(slot);
     }
 
+    // Sort: urgent first, then by start time within each day
+    for (final slots in grouped.values) {
+      slots.sort((a, b) {
+        if (a.isUrgent == b.isUrgent) return a.startTime.compareTo(b.startTime);
+        return a.isUrgent ? -1 : 1;
+      });
+    }
+
     final days = grouped.keys.toList();
     return ListView.builder(
       controller: scrollController,
@@ -232,8 +240,14 @@ class _SlotTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
     final start = DateFormat('HH:mm').format(slot.startTime.toLocal());
     final end = DateFormat('HH:mm').format(slot.endTime.toLocal());
+
+    final iconColor = slot.isUrgent ? AppColors.warning : AppColors.dustyBlue;
+    final iconBg = slot.isUrgent
+        ? AppColors.warning.withValues(alpha: 0.15)
+        : AppColors.dustyBlue.withValues(alpha: 0.12);
 
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -241,15 +255,27 @@ class _SlotTile extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: AppColors.dustyBlue.withValues(alpha: 0.12),
+          color: iconBg,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: const Icon(Icons.access_time, size: 20, color: AppColors.dustyBlue),
+        child: Icon(Icons.access_time, size: 20, color: iconColor),
       ),
       title: Text('$start – $end',
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontWeight: FontWeight.w600,
               )),
+      trailing: slot.isUrgent
+          ? Chip(
+              label: Text(
+                l10n.agendaUrgentLabel,
+                style: const TextStyle(fontSize: 11, color: AppColors.warning),
+              ),
+              backgroundColor: AppColors.warning.withValues(alpha: 0.12),
+              side: BorderSide.none,
+              visualDensity: VisualDensity.compact,
+              padding: EdgeInsets.zero,
+            )
+          : null,
       onTap: onTap,
     );
   }

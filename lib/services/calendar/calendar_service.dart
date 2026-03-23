@@ -31,10 +31,10 @@ class CalendarService {
     return list.cast<Map<String, dynamic>>().map(SlotModel.fromJson).toList();
   }
 
-  Future<void> bookSlot(String slotId) async {
+  Future<void> bookSlot(String slotId, {bool isUrgent = false}) async {
     await _client.post<void>(
       '/calendar/slots/$slotId/book',
-      data: {'urgent': false},
+      data: {'urgent': isUrgent},
       options: Options(responseType: ResponseType.plain),
     );
   }

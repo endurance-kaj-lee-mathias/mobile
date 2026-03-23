@@ -76,6 +76,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "agendaBookError": MessageLookupByLibrary.simpleMessage(
       "Не удалось забронировать слот. Попробуйте ещё раз.",
     ),
+    "agendaBookUrgentSlot": MessageLookupByLibrary.simpleMessage(
+      "Book urgent slot",
+    ),
     "agendaBookedSuccess": MessageLookupByLibrary.simpleMessage(
       "Встреча забронирована!",
     ),
@@ -110,11 +113,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "agendaExportSuccess": MessageLookupByLibrary.simpleMessage(
       "Календарь экспортирован!",
     ),
+    "agendaHighRiskBody": MessageLookupByLibrary.simpleMessage(
+      "Your care team has flagged you as high risk. Please reach out.",
+    ),
+    "agendaHighRiskTitle": MessageLookupByLibrary.simpleMessage(
+      "You may need support",
+    ),
     "agendaNoAppointmentsBody": MessageLookupByLibrary.simpleMessage(
       "Забронируйте слот через ваш нетворк.",
     ),
     "agendaNoSlots": MessageLookupByLibrary.simpleMessage(
       "Нет доступных слотов на ближайшие 30 дней",
+    ),
+    "agendaNoUrgentSlots": MessageLookupByLibrary.simpleMessage(
+      "No urgent slots available right now",
     ),
     "agendaPast": MessageLookupByLibrary.simpleMessage("ПРОШЕДШИЕ"),
     "agendaSlotAvailable": MessageLookupByLibrary.simpleMessage("Доступно"),
@@ -142,11 +154,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "agendaTabAvailability": MessageLookupByLibrary.simpleMessage(
       "Моя доступность",
     ),
+    "agendaTalkToTherapist": MessageLookupByLibrary.simpleMessage(
+      "Talk to therapist",
+    ),
     "agendaTitle": MessageLookupByLibrary.simpleMessage("Расписание"),
     "agendaUpcoming": MessageLookupByLibrary.simpleMessage("ПРЕДСТОЯЩИЕ"),
     "agendaUpcomingNoAppointments": MessageLookupByLibrary.simpleMessage(
       "Нет предстоящих встреч",
     ),
+    "agendaUrgentAppointment": MessageLookupByLibrary.simpleMessage(
+      "Urgent appointment",
+    ),
+    "agendaUrgentLabel": MessageLookupByLibrary.simpleMessage("Urgent"),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "checkInAddButton": MessageLookupByLibrary.simpleMessage(

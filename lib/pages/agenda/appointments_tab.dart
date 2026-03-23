@@ -9,8 +9,10 @@ import 'package:endurance_mobile_app/pages/agenda/slot_picker_sheet.dart';
 import 'package:endurance_mobile_app/services/calendar/calendar_controller.dart';
 import 'package:endurance_mobile_app/services/calendar/calendar_models.dart';
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
+import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 // Exported helper so AgendaPage can reuse the same member picker.
@@ -77,10 +79,13 @@ class AppointmentsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = S.of(context);
     final controller = Get.find<CalendarController>();
+    final userCtrl = Get.find<UserController>();
 
     return RefreshIndicator(
       onRefresh: controller.loadAppointments,
       child: Obx(() {
+        final isHighRisk = userCtrl.user.value?.riskLevel == 'high';
+
         if (controller.isLoadingAppointments.value) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -96,18 +101,26 @@ class AppointmentsTab extends StatelessWidget {
           ..sort((a, b) => b.startTime.compareTo(a.startTime));
 
         if (upcoming.isEmpty && past.isEmpty) {
-          return EmptyState(
-            heroIconPath: HeroIcons.calendarDays,
-            title: l10n.agendaEmptyTitle,
-            body: l10n.agendaEmptyBody,
-            actionLabel: l10n.agendaBookButton,
-            onAction: () => showMemberPickerSheet(context),
+          return Column(
+            children: [
+              if (isHighRisk) const _HighRiskBanner(),
+              Expanded(
+                child: EmptyState(
+                  heroIconPath: HeroIcons.calendarDays,
+                  title: l10n.agendaEmptyTitle,
+                  body: l10n.agendaEmptyBody,
+                  actionLabel: l10n.agendaBookButton,
+                  onAction: () => showMemberPickerSheet(context),
+                ),
+              ),
+            ],
           );
         }
 
         return ListView(
           padding: const EdgeInsets.only(bottom: 100),
           children: [
+            if (isHighRisk) const _HighRiskBanner(),
             if (upcoming.isNotEmpty) ...[
               SectionHeader(
                 label: l10n.agendaUpcoming,
@@ -133,7 +146,164 @@ class AppointmentsTab extends StatelessWidget {
       }),
     );
   }
+}
 
+class _HighRiskBanner extends StatefulWidget {
+  const _HighRiskBanner();
+
+  @override
+  State<_HighRiskBanner> createState() => _HighRiskBannerState();
+}
+
+class _HighRiskBannerState extends State<_HighRiskBanner> {
+  bool _isLoadingSlot = false;
+
+  Future<void> _bookUrgentSlot() async {
+    final l10n = S.of(context);
+    setState(() => _isLoadingSlot = true);
+
+    SlotModel? slot;
+    try {
+      slot = await Get.find<CalendarController>().getFirstAvailableUrgentSlot();
+    } catch (_) {
+      slot = null;
+    } finally {
+      if (mounted) setState(() => _isLoadingSlot = false);
+    }
+
+    if (!mounted) return;
+
+    if (slot == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(l10n.agendaNoUrgentSlots),
+        behavior: SnackBarBehavior.floating,
+      ));
+      return;
+    }
+
+    final dateStr = DateFormat('EEE d MMM · HH:mm').format(slot.startTime.toLocal());
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.agendaBookButton),
+        content: Text(dateStr),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.cancelLabel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.agendaBookButton),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !mounted) return;
+
+    try {
+      await Get.find<CalendarController>().bookSlot(slot.id, isUrgent: true);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(l10n.agendaBookedSuccess),
+          backgroundColor: AppColors.mossGreen,
+          behavior: SnackBarBehavior.floating,
+        ));
+      }
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(l10n.agendaBookError),
+          backgroundColor: AppColors.error,
+          behavior: SnackBarBehavior.floating,
+        ));
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = S.of(context);
+    final textTheme = Theme.of(context).textTheme;
+
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 16, 16, 4),
+      decoration: BoxDecoration(
+        color: AppColors.warning.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(12),
+        border: Border(
+          left: BorderSide(color: AppColors.warning, width: 4),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.warning_amber_rounded,
+                    color: AppColors.warning, size: 20),
+                const SizedBox(width: 8),
+                Text(
+                  l10n.agendaHighRiskTitle,
+                  style: textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.warning,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 6),
+            Text(
+              l10n.agendaHighRiskBody,
+              style: textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => context.go('/chats'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.warning,
+                      side: const BorderSide(color: AppColors.warning),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                    ),
+                    child: Text(l10n.agendaTalkToTherapist,
+                        style: const TextStyle(fontSize: 13)),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: _isLoadingSlot ? null : _bookUrgentSlot,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.warning,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                    ),
+                    child: _isLoadingSlot
+                        ? const SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text(l10n.agendaBookUrgentSlot,
+                            style: const TextStyle(fontSize: 13)),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _AppointmentCard extends StatelessWidget {
@@ -160,6 +330,12 @@ class _AppointmentCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
+    final iconColor =
+        appointment.urgent ? AppColors.warning : AppColors.dustyBlue;
+    final iconBg = appointment.urgent
+        ? AppColors.warning.withValues(alpha: 0.12)
+        : AppColors.dustyBlue.withValues(alpha: 0.12);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       child: BorderedCard(
@@ -171,12 +347,12 @@ class _AppointmentCard extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: AppColors.dustyBlue.withValues(alpha: 0.12),
+                  color: iconBg,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const HeroIcon(
+                child: HeroIcon(
                   HeroIcons.calendarDays,
-                  color: AppColors.dustyBlue,
+                  color: iconColor,
                   size: 22,
                 ),
               ),
@@ -185,11 +361,30 @@ class _AppointmentCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      appointment.title ?? '',
-                      style: textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            appointment.title ?? '',
+                            style: textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        if (appointment.urgent)
+                          Chip(
+                            label: Text(
+                              l10n.agendaUrgentLabel,
+                              style: const TextStyle(
+                                  fontSize: 11, color: AppColors.warning),
+                            ),
+                            backgroundColor:
+                                AppColors.warning.withValues(alpha: 0.12),
+                            side: BorderSide.none,
+                            visualDensity: VisualDensity.compact,
+                            padding: EdgeInsets.zero,
+                          ),
+                      ],
                     ),
                     const SizedBox(height: 2),
                     Row(
