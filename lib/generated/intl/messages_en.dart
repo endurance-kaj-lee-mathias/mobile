@@ -81,6 +81,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "agendaBookError": MessageLookupByLibrary.simpleMessage(
       "Could not book this slot. Please try again.",
     ),
+    "agendaBookUrgentSlot": MessageLookupByLibrary.simpleMessage(
+      "Book urgent slot",
+    ),
     "agendaBookedSuccess": MessageLookupByLibrary.simpleMessage(
       "Appointment booked!",
     ),
@@ -117,11 +120,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "agendaExportSuccess": MessageLookupByLibrary.simpleMessage(
       "Calendar exported!",
     ),
+    "agendaHighRiskBody": MessageLookupByLibrary.simpleMessage(
+      "Your care team has flagged you as high risk. Please reach out.",
+    ),
+    "agendaHighRiskTitle": MessageLookupByLibrary.simpleMessage(
+      "You may need support",
+    ),
     "agendaNoAppointmentsBody": MessageLookupByLibrary.simpleMessage(
       "Book a slot from your network to get started.",
     ),
     "agendaNoSlots": MessageLookupByLibrary.simpleMessage(
       "No available slots in the next 30 days",
+    ),
+    "agendaNoUrgentSlots": MessageLookupByLibrary.simpleMessage(
+      "No urgent slots available right now",
     ),
     "agendaPast": MessageLookupByLibrary.simpleMessage("PAST"),
     "agendaSlotAvailable": MessageLookupByLibrary.simpleMessage("Available"),
@@ -151,11 +163,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "agendaTabAvailability": MessageLookupByLibrary.simpleMessage(
       "My Availability",
     ),
+    "agendaTalkToTherapist": MessageLookupByLibrary.simpleMessage(
+      "Talk to therapist",
+    ),
     "agendaTitle": MessageLookupByLibrary.simpleMessage("Schedule"),
     "agendaUpcoming": MessageLookupByLibrary.simpleMessage("UPCOMING"),
     "agendaUpcomingNoAppointments": MessageLookupByLibrary.simpleMessage(
       "No upcoming appointments",
     ),
+    "agendaUrgentAppointment": MessageLookupByLibrary.simpleMessage(
+      "Urgent appointment",
+    ),
+    "agendaUrgentLabel": MessageLookupByLibrary.simpleMessage("Urgent"),
     "appTitle": MessageLookupByLibrary.simpleMessage("Endurance"),
     "cancelLabel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "chatInputHint": MessageLookupByLibrary.simpleMessage("Message…"),

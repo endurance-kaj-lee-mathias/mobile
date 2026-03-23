@@ -84,9 +84,22 @@ class CalendarController extends GetxController {
     await loadAppointments();
   }
 
-  Future<void> bookSlot(String slotId) async {
-    await _service.bookSlot(slotId);
+  Future<void> bookSlot(String slotId, {bool isUrgent = false}) async {
+    await _service.bookSlot(slotId, isUrgent: isUrgent);
     await loadAppointments();
+  }
+
+  Future<SlotModel?> getFirstAvailableUrgentSlot() async {
+    final now = DateTime.now();
+    final slots = await _service.getSlots(
+      from: now,
+      to: now.add(const Duration(days: 30)),
+    );
+    final urgent = slots
+        .where((s) => s.isUrgent && !s.isBooked)
+        .toList()
+      ..sort((a, b) => a.startTime.compareTo(b.startTime));
+    return urgent.isEmpty ? null : urgent.first;
   }
 
   Future<void> createSlot({

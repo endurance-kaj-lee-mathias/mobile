@@ -1727,6 +1727,76 @@ class S {
     );
   }
 
+  /// `Urgent`
+  String get agendaUrgentLabel {
+    return Intl.message(
+      'Urgent',
+      name: 'agendaUrgentLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You may need support`
+  String get agendaHighRiskTitle {
+    return Intl.message(
+      'You may need support',
+      name: 'agendaHighRiskTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your care team has flagged you as high risk. Please reach out.`
+  String get agendaHighRiskBody {
+    return Intl.message(
+      'Your care team has flagged you as high risk. Please reach out.',
+      name: 'agendaHighRiskBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Talk to therapist`
+  String get agendaTalkToTherapist {
+    return Intl.message(
+      'Talk to therapist',
+      name: 'agendaTalkToTherapist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book urgent slot`
+  String get agendaBookUrgentSlot {
+    return Intl.message(
+      'Book urgent slot',
+      name: 'agendaBookUrgentSlot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No urgent slots available right now`
+  String get agendaNoUrgentSlots {
+    return Intl.message(
+      'No urgent slots available right now',
+      name: 'agendaNoUrgentSlots',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Urgent appointment`
+  String get agendaUrgentAppointment {
+    return Intl.message(
+      'Urgent appointment',
+      name: 'agendaUrgentAppointment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Book Appointment`
   String get networkBookAppointment {
     return Intl.message(
