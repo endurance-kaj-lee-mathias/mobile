@@ -1327,6 +1327,36 @@ class S {
     );
   }
 
+  /// `PHOTO`
+  String get profileEditSectionPhoto {
+    return Intl.message(
+      'PHOTO',
+      name: 'profileEditSectionPhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile Photo URL`
+  String get profileEditPhotoUrl {
+    return Intl.message(
+      'Profile Photo URL',
+      name: 'profileEditPhotoUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a public image URL`
+  String get profileEditPhotoUrlHint {
+    return Intl.message(
+      'Enter a public image URL',
+      name: 'profileEditPhotoUrlHint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Schedule`
   String get navAgenda {
     return Intl.message('Schedule', name: 'navAgenda', desc: '', args: []);

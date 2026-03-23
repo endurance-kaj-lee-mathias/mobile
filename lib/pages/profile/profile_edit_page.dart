@@ -14,6 +14,7 @@ class ProfileEditPage extends StatefulWidget {
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
+  late TextEditingController _imageController;
   late TextEditingController _firstNameController;
   late TextEditingController _lastNameController;
   late TextEditingController _phoneController;
@@ -37,6 +38,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     _isPrivate = user?.isPrivate ?? false;
     final auth = Get.find<AuthController>();
 
+    _imageController = TextEditingController(text: user?.image ?? '');
     _firstNameController = TextEditingController(text: user?.firstName ?? '');
     _lastNameController = TextEditingController(text: user?.lastName ?? '');
     _phoneController = TextEditingController(
@@ -55,6 +57,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
   @override
   void dispose() {
+    _imageController.dispose();
     _firstNameController.dispose();
     _lastNameController.dispose();
     _phoneController.dispose();
@@ -108,6 +111,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       }
       if (_aboutController.text != (user?.about ?? '')) {
         await userCtrl.updateAbout(_aboutController.text);
+      }
+      if (_imageController.text != (user?.image ?? '')) {
+        await userCtrl.updateImage(_imageController.text);
       }
 
       if (_isPrivate != (user?.isPrivate ?? false)) {
@@ -179,6 +185,51 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: SectionHeader(label: l10n.profileEditSectionPhoto),
+              ),
+              _FieldGroup(
+                colorScheme: colorScheme,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: ValueListenableBuilder<TextEditingValue>(
+                      valueListenable: _imageController,
+                      builder: (context, value, _) {
+                        final url = value.text.trim();
+                        return Center(
+                          child: CircleAvatar(
+                            radius: 48,
+                            backgroundImage:
+                                url.isNotEmpty ? NetworkImage(url) : null,
+                            onBackgroundImageError:
+                                url.isNotEmpty ? (e, _) {} : null,
+                            backgroundColor:
+                                AppColors.mossGreen.withValues(alpha: 0.15),
+                            child: url.isEmpty
+                                ? Icon(Icons.person,
+                                    size: 48,
+                                    color: AppColors.mossGreen
+                                        .withValues(alpha: 0.6))
+                                : null,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  _divider(colorScheme),
+                  TextFormField(
+                    controller: _imageController,
+                    decoration: _field(l10n.profileEditPhotoUrl,
+                        hint: l10n.profileEditPhotoUrlHint),
+                    keyboardType: TextInputType.url,
+                    autocorrect: false,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 28),
+
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: SectionHeader(label: l10n.profileEditSectionName),

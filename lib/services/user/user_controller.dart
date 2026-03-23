@@ -90,6 +90,15 @@ class UserController extends GetxController {
     }
   }
 
+  Future<void> updateImage(String imageUrl) async {
+    try {
+      await _service.updateImage(imageUrl);
+    } catch (e) {
+      debugPrint('Failed to update image: $e');
+      rethrow;
+    }
+  }
+
   Future<void> updatePrivacy(bool isPrivate) async {
     try {
       await _service.updatePrivacy(isPrivate);

@@ -426,6 +426,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profileEditLastName": MessageLookupByLibrary.simpleMessage("Фамилия"),
     "profileEditPhone": MessageLookupByLibrary.simpleMessage("Номер телефона"),
+    "profileEditPhotoUrl": MessageLookupByLibrary.simpleMessage(
+      "URL фото профиля",
+    ),
+    "profileEditPhotoUrlHint": MessageLookupByLibrary.simpleMessage(
+      "Введите публичную ссылку на изображение",
+    ),
     "profileEditPostalCode": MessageLookupByLibrary.simpleMessage(
       "Почтовый индекс",
     ),
@@ -439,6 +445,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "КОНТАКТЫ",
     ),
     "profileEditSectionName": MessageLookupByLibrary.simpleMessage("ИМЯ"),
+    "profileEditSectionPhoto": MessageLookupByLibrary.simpleMessage("ФОТО"),
     "profileEditStreet": MessageLookupByLibrary.simpleMessage("Улица"),
     "profileEditTitle": MessageLookupByLibrary.simpleMessage(
       "Редактировать профиль",

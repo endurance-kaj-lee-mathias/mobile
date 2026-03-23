@@ -420,6 +420,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profileEditLastName": MessageLookupByLibrary.simpleMessage("Achternaam"),
     "profileEditPhone": MessageLookupByLibrary.simpleMessage("Telefoonnummer"),
+    "profileEditPhotoUrl": MessageLookupByLibrary.simpleMessage(
+      "Profielfoto-URL",
+    ),
+    "profileEditPhotoUrlHint": MessageLookupByLibrary.simpleMessage(
+      "Voer een openbare afbeeldings-URL in",
+    ),
     "profileEditPostalCode": MessageLookupByLibrary.simpleMessage("Postcode"),
     "profileEditRegion": MessageLookupByLibrary.simpleMessage("Regio / Staat"),
     "profileEditSaveButton": MessageLookupByLibrary.simpleMessage(
@@ -431,6 +437,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "CONTACT",
     ),
     "profileEditSectionName": MessageLookupByLibrary.simpleMessage("NAAM"),
+    "profileEditSectionPhoto": MessageLookupByLibrary.simpleMessage("FOTO"),
     "profileEditStreet": MessageLookupByLibrary.simpleMessage("Straat"),
     "profileEditTitle": MessageLookupByLibrary.simpleMessage(
       "Profiel bewerken",
