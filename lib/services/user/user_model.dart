@@ -37,6 +37,7 @@ class UserModel {
   final String? introduction;
   final String? image;
   final bool isPrivate;
+  final String riskLevel;
   final AddressModel? address;
 
   const UserModel({
@@ -49,6 +50,7 @@ class UserModel {
     this.introduction,
     this.image,
     this.isPrivate = false,
+    this.riskLevel = 'normal',
     this.address,
   });
 
@@ -63,7 +65,42 @@ class UserModel {
       introduction: json['introduction']?.toString(),
       image: json['image']?.toString(),
       isPrivate: json['isPrivate'] as bool? ?? false,
+      riskLevel: json['riskLevel']?.toString() ?? 'normal',
       address: json['address'] != null ? AddressModel.fromJson(json['address']) : null,
+    );
+  }
+}
+
+class VeteranSupportModel {
+  final String id;
+  final String firstName;
+  final String lastName;
+  final String? username;
+  final String? image;
+  final int? latestScore;
+  final DateTime? lastUpdatedAt;
+
+  const VeteranSupportModel({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    this.username,
+    this.image,
+    this.latestScore,
+    this.lastUpdatedAt,
+  });
+
+  factory VeteranSupportModel.fromJson(Map<String, dynamic> json) {
+    return VeteranSupportModel(
+      id: json['id']?.toString() ?? '',
+      firstName: json['firstName']?.toString() ?? '',
+      lastName: json['lastName']?.toString() ?? '',
+      username: json['username']?.toString(),
+      image: json['image']?.toString(),
+      latestScore: json['latestScore'] as int?,
+      lastUpdatedAt: json['lastUpdatedAt'] != null
+          ? DateTime.tryParse(json['lastUpdatedAt'] as String)
+          : null,
     );
   }
 }

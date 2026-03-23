@@ -16,6 +16,8 @@ class CalendarController extends GetxController {
   final CalendarService _service;
 
   final appointments = <CalendarEventModel>[].obs;
+  final nextAppointment = Rxn<CalendarEventModel>();
+
   @override
   void onInit() {
     super.onInit();
@@ -26,29 +28,31 @@ class CalendarController extends GetxController {
       } else {
         appointments.clear();
         mySlots.clear();
+        _updateNextAppointment();
       }
     });
     if (auth.isAuthenticated.value) loadAppointments();
   }
 
+  void _updateNextAppointment() {
+    final now = DateTime.now();
+    final upcoming = appointments
+        .where((a) => a.startTime.isAfter(now))
+        .toList()
+      ..sort((a, b) => a.startTime.compareTo(b.startTime));
+    nextAppointment.value = upcoming.isEmpty ? null : upcoming.first;
+  }
 
   final mySlots = <SlotModel>[].obs;
   final isLoadingAppointments = false.obs;
   final isLoadingMySlots = false.obs;
-
-  CalendarEventModel? get nextAppointment {
-    final now = DateTime.now();
-    final upcoming = appointments.where((a) => a.startTime.isAfter(now)).toList();
-    if (upcoming.isEmpty) return null;
-    upcoming.sort((a, b) => a.startTime.compareTo(b.startTime));
-    return upcoming.first;
-  }
 
   Future<void> loadAppointments() async {
     isLoadingAppointments.value = true;
     try {
       final list = await _service.getAppointments();
       appointments.assignAll(list);
+      _updateNextAppointment();
     } catch (e) {
       debugPrint('CalendarController.loadAppointments error: $e');
     } finally {

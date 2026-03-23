@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     Get.find<DailyCheckInController>().load();
-    Get.find<CalendarController>().loadAppointments();
   }
 
   @override
@@ -93,7 +92,7 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 24),
 
           Obx(() => UpcomingAppointmentCard(
-            appointment: Get.find<CalendarController>().nextAppointment,
+            appointment: Get.find<CalendarController>().nextAppointment.value,
           )),
           const SizedBox(height: 24),
 

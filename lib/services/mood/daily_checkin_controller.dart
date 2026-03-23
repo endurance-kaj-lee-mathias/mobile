@@ -91,7 +91,7 @@ class DailyCheckInController extends GetxController {
   Future<void> _loadWeekEntries() async {
     isLoading.value = true;
     try {
-      final entries = await _moodService.getWeekEntries();
+      final entries = await _moodService.getTwoRecentWeeksEntries();
       weekEntries.assignAll(entries);
     } catch (e) {
       debugPrint('DailyCheckInController._loadWeekEntries error: $e');

@@ -33,6 +33,20 @@ extension SharingEffectExt on SharingEffect {
       };
 }
 
+class ResourcePrivacyModel {
+  final String resource;
+  final bool isPrivate;
+
+  const ResourcePrivacyModel({required this.resource, required this.isPrivate});
+
+  factory ResourcePrivacyModel.fromJson(Map<String, dynamic> json) {
+    return ResourcePrivacyModel(
+      resource: json['resource']?.toString() ?? '',
+      isPrivate: json['isPrivate'] as bool? ?? false,
+    );
+  }
+}
+
 class SharingRuleModel {
   final String id;
   final String viewerId;

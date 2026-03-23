@@ -25,6 +25,8 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
   final RxList<InviteModel> outgoing = <InviteModel>[].obs;
   final RxMap<String, List<SharingRuleModel>> sharingRulesByViewer =
       <String, List<SharingRuleModel>>{}.obs;
+  final RxList<ResourcePrivacyModel> resourcePrivacy =
+      <ResourcePrivacyModel>[].obs;
 
   final RxBool isLoadingMembers = false.obs;
   final RxBool isLoadingInvites = false.obs;
@@ -61,6 +63,7 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
         incoming.clear();
         outgoing.clear();
         sharingRulesByViewer.clear();
+        resourcePrivacy.clear();
       }
     });
 
@@ -130,8 +133,8 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
 
   void handlePushNotification() => load();
 
-  Future<void> load() =>
-      Future.wait([loadMembers(), loadInvites(), loadSharingRules()]);
+  Future<void> load() => Future.wait(
+      [loadMembers(), loadInvites(), loadSharingRules(), loadResourcePrivacy()]);
 
   Future<void> loadMembers() async {
     if (members.isEmpty) isLoadingMembers.value = true;
@@ -223,6 +226,23 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
       return false;
     } finally {
       isActing.value = false;
+    }
+  }
+
+  Future<void> loadResourcePrivacy() async {
+    try {
+      final loaded = await _service.getResourcePrivacy();
+      final defaults = {
+        for (final r in SharingResource.values) r.value: false,
+      };
+      for (final m in loaded) {
+        defaults[m.resource] = m.isPrivate;
+      }
+      resourcePrivacy.value = defaults.entries
+          .map((e) => ResourcePrivacyModel(resource: e.key, isPrivate: e.value))
+          .toList();
+    } catch (e) {
+      debugPrint('Failed to load resource privacy: $e');
     }
   }
 

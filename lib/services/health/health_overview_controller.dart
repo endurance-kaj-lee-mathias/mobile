@@ -17,10 +17,16 @@ class HealthOverviewController extends GetxController {
   final RxList<MoodEntryModel> moodEntries = <MoodEntryModel>[].obs;
   final RxList<StressScoreModel> stressScores = <StressScoreModel>[].obs;
   final RxBool isLoadingMood = false.obs;
+  final RxBool isLoadingMoreMood = false.obs;
   final RxBool isLoadingScores = false.obs;
   final RxBool isDeletingMood = false.obs;
   final RxBool isDeletingStress = false.obs;
   final RxInt stressTotal = 0.obs;
+
+  int _nextWeekOffset = 0;
+  int _totalWeeks = 0;
+
+  bool get hasMoreMoodEntries => _nextWeekOffset < _totalWeeks;
 
   @override
   void onInit() {
@@ -42,12 +48,32 @@ class HealthOverviewController extends GetxController {
 
   Future<void> _loadMoodEntries() async {
     isLoadingMood.value = true;
+    _nextWeekOffset = 0;
+    _totalWeeks = 0;
     try {
-      moodEntries.assignAll(await _moodService.getWeekEntries());
+      final result = await _moodService.getEntriesForWeek(0);
+      moodEntries.assignAll(result.entries);
+      _totalWeeks = result.totalWeeks;
+      _nextWeekOffset = 1;
     } catch (e) {
       debugPrint('HealthOverviewController._loadMoodEntries: $e');
     } finally {
       isLoadingMood.value = false;
+    }
+  }
+
+  Future<void> loadMoreMoodEntries() async {
+    if (!hasMoreMoodEntries || isLoadingMoreMood.value) return;
+    isLoadingMoreMood.value = true;
+    try {
+      final result = await _moodService.getEntriesForWeek(_nextWeekOffset);
+      moodEntries.addAll(result.entries);
+      _totalWeeks = result.totalWeeks;
+      _nextWeekOffset++;
+    } catch (e) {
+      debugPrint('HealthOverviewController.loadMoreMoodEntries: $e');
+    } finally {
+      isLoadingMoreMood.value = false;
     }
   }
 
@@ -83,6 +109,8 @@ class HealthOverviewController extends GetxController {
     try {
       await _moodService.deleteAllEntries();
       moodEntries.clear();
+      _nextWeekOffset = 0;
+      _totalWeeks = 0;
       return true;
     } catch (e) {
       debugPrint('deleteAllMood: $e');

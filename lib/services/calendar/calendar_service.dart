@@ -78,6 +78,23 @@ class CalendarService {
     );
   }
 
+  Future<List<CalendarEventModel>> getAppointmentsForDay(String day) async {
+    final response = await _client.get<List<dynamic>>('/calendar/appointments/me/$day');
+    final list = response.data ?? [];
+    return list.cast<Map<String, dynamic>>().map(CalendarEventModel.fromJson).toList();
+  }
+
+  Future<SlotWithProviderModel?> getFirstAvailableSlot() async {
+    final response = await _client.get<Map<String, dynamic>>('/calendar/slots/first-available');
+    if (response.data == null) return null;
+    return SlotWithProviderModel.fromJson(response.data!);
+  }
+
+  Future<SlotWithProviderModel> getSlotDetails(String slotId) async {
+    final response = await _client.get<Map<String, dynamic>>('/calendar/slots/$slotId/details');
+    return SlotWithProviderModel.fromJson(response.data!);
+  }
+
   Future<List<int>> exportCalendar() async {
     final response = await _client.get<dynamic>(
       '/calendar/me/export',

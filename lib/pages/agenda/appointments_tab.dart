@@ -186,7 +186,7 @@ class _AppointmentCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      appointment.title,
+                      appointment.title ?? '',
                       style: textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
