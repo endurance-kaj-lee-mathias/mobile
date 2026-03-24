@@ -1,5 +1,6 @@
 import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/user_avatar.dart';
+import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/network/member_model.dart';
 import 'package:endurance_mobile_app/services/network/network_controller.dart';
 import 'package:endurance_mobile_app/services/network/privacy_model.dart';
@@ -44,6 +45,16 @@ class _UserPrivacySheetState extends State<UserPrivacySheet> {
   ) {
     final rule = rules.firstWhereOrNull((r) => r.resource == resource);
     return rule == null || rule.effect == SharingEffect.allow;
+  }
+
+  String _resourceLabel(BuildContext context, SharingResource resource) {
+    final l10n = S.of(context);
+    return switch (resource) {
+      SharingResource.userProfile => l10n.sharingResourceProfile,
+      SharingResource.stressScores => l10n.sharingResourceStressScores,
+      SharingResource.moodEntries => l10n.sharingResourceMoodEntries,
+      SharingResource.calendar => l10n.sharingResourceCalendar,
+    };
   }
 
   Future<void> _savePrivacySetting(
@@ -95,7 +106,7 @@ class _UserPrivacySheetState extends State<UserPrivacySheet> {
                             ?.copyWith(fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        'Privacy settings',
+                        S.of(context).networkPrivacySettings,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: AppColors.lightTextSecondary,
                             ),
@@ -121,14 +132,14 @@ class _UserPrivacySheetState extends State<UserPrivacySheet> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              resource.displayName,
+                              _resourceLabel(context, resource),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
                                   ?.copyWith(fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              isAllowed ? 'Can access' : 'Cannot access',
+                              isAllowed ? S.of(context).networkPrivacyCanAccess : S.of(context).networkPrivacyCannotAccess,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
@@ -174,7 +185,7 @@ class _UserPrivacySheetState extends State<UserPrivacySheet> {
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
-                child: const Text('Done'),
+                child: Text(S.of(context).networkPrivacyDone),
               ),
             ),
           ),

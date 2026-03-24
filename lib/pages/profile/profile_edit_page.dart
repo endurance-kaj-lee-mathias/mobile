@@ -2,6 +2,8 @@ import 'package:endurance_mobile_app/app/themes.dart';
 import 'package:endurance_mobile_app/components/section_header.dart';
 import 'package:endurance_mobile_app/generated/l10n.dart';
 import 'package:endurance_mobile_app/services/auth/auth_controller.dart';
+import 'package:endurance_mobile_app/services/network/network_controller.dart';
+import 'package:endurance_mobile_app/services/network/privacy_model.dart';
 import 'package:endurance_mobile_app/services/user/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,15 +29,23 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   late TextEditingController _countryController;
 
   final userCtrl = Get.find<UserController>();
+  final _networkCtrl = Get.find<NetworkController>();
   final _formKey = GlobalKey<FormState>();
   bool _isSaving = false;
   late bool _isPrivate;
+  late Map<SharingResource, bool> _resourcePrivacy;
 
   @override
   void initState() {
     super.initState();
     final user = userCtrl.user.value;
     _isPrivate = user?.isPrivate ?? false;
+    _resourcePrivacy = {
+      for (final r in SharingResource.values)
+        r: _networkCtrl.resourcePrivacy
+            .firstWhereOrNull((m) => m.resource == r.value)
+            ?.isPrivate ?? false,
+    };
     final auth = Get.find<AuthController>();
 
     _imageController = TextEditingController(text: user?.image ?? '');
@@ -118,6 +128,18 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
       if (_isPrivate != (user?.isPrivate ?? false)) {
         await userCtrl.updatePrivacy(_isPrivate);
+      }
+
+      for (final resource in SharingResource.values) {
+        final currentIsPrivate = _networkCtrl.resourcePrivacy
+            .firstWhereOrNull((m) => m.resource == resource.value)
+            ?.isPrivate ?? false;
+        if (_resourcePrivacy[resource] != currentIsPrivate) {
+          await _networkCtrl.updateResourcePrivacy(
+            resource.value,
+            isPrivate: _resourcePrivacy[resource]!,
+          );
+        }
       }
 
       final street = _streetController.text.trim();
@@ -360,14 +382,50 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 colorScheme: colorScheme,
                 children: [
                   SwitchListTile(
-                    title: Text(l10n.profilePrivateAccount,
-                        style: const TextStyle(fontWeight: FontWeight.w600)),
+                    title: Text(l10n.profilePrivateAccount),
                     subtitle: Text(l10n.featurePrivacyDesc,
                         style: Theme.of(context).textTheme.bodySmall),
                     value: _isPrivate,
                     onChanged: (val) => setState(() => _isPrivate = val),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   ),
+                ],
+              ),
+              const SizedBox(height: 28),
+
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: SectionHeader(label: l10n.profilePrivacyResourcesTitle),
+              ),
+              _FieldGroup(
+                colorScheme: colorScheme,
+                children: [
+                  for (int i = 0; i < SharingResource.values.length; i++) ...[
+                    if (i > 0) _divider(colorScheme),
+                    Builder(builder: (context) {
+                      final resource = SharingResource.values[i];
+                      final isAccessible = !(_resourcePrivacy[resource] ?? false);
+                      return SwitchListTile(
+                        title: Text(_resourceLabel(context, resource)),
+                        subtitle: Text(
+                          isAccessible
+                              ? l10n.networkPrivacyCanAccess
+                              : l10n.networkPrivacyCannotAccess,
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: isAccessible
+                                    ? AppColors.mossGreen
+                                    : AppColors.error,
+                              ),
+                        ),
+                        value: isAccessible,
+                        onChanged: (val) => setState(
+                          () => _resourcePrivacy[resource] = !val,
+                        ),
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                      );
+                    }),
+                  ],
                 ],
               ),
               const SizedBox(height: 32),
@@ -393,6 +451,16 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         ),
       ),
     );
+  }
+
+  String _resourceLabel(BuildContext context, SharingResource resource) {
+    final l10n = S.of(context);
+    return switch (resource) {
+      SharingResource.userProfile => l10n.sharingResourceProfile,
+      SharingResource.stressScores => l10n.sharingResourceStressScores,
+      SharingResource.moodEntries => l10n.sharingResourceMoodEntries,
+      SharingResource.calendar => l10n.sharingResourceCalendar,
+    };
   }
 
   Widget _divider(ColorScheme cs) =>

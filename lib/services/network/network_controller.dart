@@ -287,6 +287,17 @@ class NetworkController extends GetxController with WidgetsBindingObserver {
     }
   }
 
+  Future<bool> updateResourcePrivacy(String resource, {required bool isPrivate}) async {
+    try {
+      await _service.setResourcePrivacy(resource, isPrivate: isPrivate);
+      await loadResourcePrivacy();
+      return true;
+    } catch (e) {
+      debugPrint('Failed to update resource privacy: $e');
+      return false;
+    }
+  }
+
   List<SharingRuleModel> getRulesForViewer(String viewerId) =>
       sharingRulesByViewer[viewerId] ?? [];
 }

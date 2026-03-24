@@ -1837,6 +1837,81 @@ class S {
     );
   }
 
+  /// `Can access`
+  String get networkPrivacyCanAccess {
+    return Intl.message(
+      'Can access',
+      name: 'networkPrivacyCanAccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cannot access`
+  String get networkPrivacyCannotAccess {
+    return Intl.message(
+      'Cannot access',
+      name: 'networkPrivacyCannotAccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get networkPrivacyDone {
+    return Intl.message('Done', name: 'networkPrivacyDone', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get sharingResourceProfile {
+    return Intl.message(
+      'Profile',
+      name: 'sharingResourceProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stress scores`
+  String get sharingResourceStressScores {
+    return Intl.message(
+      'Stress scores',
+      name: 'sharingResourceStressScores',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mood entries`
+  String get sharingResourceMoodEntries {
+    return Intl.message(
+      'Mood entries',
+      name: 'sharingResourceMoodEntries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calendar`
+  String get sharingResourceCalendar {
+    return Intl.message(
+      'Calendar',
+      name: 'sharingResourceCalendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WHAT YOU SHARE BY DEFAULT`
+  String get profilePrivacyResourcesTitle {
+    return Intl.message(
+      'WHAT YOU SHARE BY DEFAULT',
+      name: 'profilePrivacyResourcesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `My Health Data`
   String get healthOverviewTitle {
     return Intl.message(

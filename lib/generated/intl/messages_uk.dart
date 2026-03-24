@@ -366,6 +366,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Нотатка (необов\'язково)",
     ),
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage("Очікує"),
+    "networkPrivacyCanAccess": MessageLookupByLibrary.simpleMessage(
+      "Має доступ",
+    ),
+    "networkPrivacyCannotAccess": MessageLookupByLibrary.simpleMessage(
+      "Немає доступу",
+    ),
+    "networkPrivacyDone": MessageLookupByLibrary.simpleMessage("Готово"),
     "networkPrivacySettings": MessageLookupByLibrary.simpleMessage(
       "Налаштування конфіденційності",
     ),
@@ -467,6 +474,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileLabelPrivacy": MessageLookupByLibrary.simpleMessage(
       "Конфіденційність",
     ),
+    "profilePrivacyResourcesTitle": MessageLookupByLibrary.simpleMessage(
+      "ЩО ВИ ДІЛИТЕСЬ ЗА ЗАМОВЧУВАННЯМ",
+    ),
     "profilePrivateAccount": MessageLookupByLibrary.simpleMessage(
       "Закритий акаунт",
     ),
@@ -495,6 +505,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "ШВИДКІ ДІЇ",
+    ),
+    "sharingResourceCalendar": MessageLookupByLibrary.simpleMessage("Календар"),
+    "sharingResourceMoodEntries": MessageLookupByLibrary.simpleMessage(
+      "Записи настрою",
+    ),
+    "sharingResourceProfile": MessageLookupByLibrary.simpleMessage("Профіль"),
+    "sharingResourceStressScores": MessageLookupByLibrary.simpleMessage(
+      "Рівень стресу",
     ),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Надіслати"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("ще"),
