@@ -370,6 +370,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage(
       "In behandeling",
     ),
+    "networkPrivacyCanAccess": MessageLookupByLibrary.simpleMessage(
+      "Heeft toegang",
+    ),
+    "networkPrivacyCannotAccess": MessageLookupByLibrary.simpleMessage(
+      "Heeft geen toegang",
+    ),
+    "networkPrivacyDone": MessageLookupByLibrary.simpleMessage("Klaar"),
     "networkPrivacySettings": MessageLookupByLibrary.simpleMessage(
       "Privacyinstellingen",
     ),
@@ -465,6 +472,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileLabelEmail": MessageLookupByLibrary.simpleMessage("E-mail"),
     "profileLabelPhone": MessageLookupByLibrary.simpleMessage("Telefoon"),
     "profileLabelPrivacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+    "profilePrivacyResourcesTitle": MessageLookupByLibrary.simpleMessage(
+      "WAT U STANDAARD DEELT",
+    ),
     "profilePrivateAccount": MessageLookupByLibrary.simpleMessage(
       "Privéaccount",
     ),
@@ -495,6 +505,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "SNELLE ACTIES",
+    ),
+    "sharingResourceCalendar": MessageLookupByLibrary.simpleMessage("Kalender"),
+    "sharingResourceMoodEntries": MessageLookupByLibrary.simpleMessage(
+      "Stemmingsregistraties",
+    ),
+    "sharingResourceProfile": MessageLookupByLibrary.simpleMessage("Profiel"),
+    "sharingResourceStressScores": MessageLookupByLibrary.simpleMessage(
+      "Stressscores",
     ),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Indienen"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("meer"),

@@ -388,6 +388,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Note (optional)",
     ),
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage("Pending"),
+    "networkPrivacyCanAccess": MessageLookupByLibrary.simpleMessage(
+      "Can access",
+    ),
+    "networkPrivacyCannotAccess": MessageLookupByLibrary.simpleMessage(
+      "Cannot access",
+    ),
+    "networkPrivacyDone": MessageLookupByLibrary.simpleMessage("Done"),
     "networkPrivacySettings": MessageLookupByLibrary.simpleMessage(
       "Privacy settings",
     ),
@@ -481,6 +488,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileLabelEmail": MessageLookupByLibrary.simpleMessage("Email"),
     "profileLabelPhone": MessageLookupByLibrary.simpleMessage("Phone"),
     "profileLabelPrivacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+    "profilePrivacyResourcesTitle": MessageLookupByLibrary.simpleMessage(
+      "WHAT YOU SHARE BY DEFAULT",
+    ),
     "profilePrivateAccount": MessageLookupByLibrary.simpleMessage(
       "Private Account",
     ),
@@ -511,6 +521,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "QUICK ACTIONS",
+    ),
+    "sharingResourceCalendar": MessageLookupByLibrary.simpleMessage("Calendar"),
+    "sharingResourceMoodEntries": MessageLookupByLibrary.simpleMessage(
+      "Mood entries",
+    ),
+    "sharingResourceProfile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "sharingResourceStressScores": MessageLookupByLibrary.simpleMessage(
+      "Stress scores",
     ),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Submit"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("more"),

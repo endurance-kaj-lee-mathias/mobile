@@ -372,6 +372,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Заметка (необязательно)",
     ),
     "networkPendingLabel": MessageLookupByLibrary.simpleMessage("В ожидании"),
+    "networkPrivacyCanAccess": MessageLookupByLibrary.simpleMessage(
+      "Есть доступ",
+    ),
+    "networkPrivacyCannotAccess": MessageLookupByLibrary.simpleMessage(
+      "Нет доступа",
+    ),
+    "networkPrivacyDone": MessageLookupByLibrary.simpleMessage("Готово"),
     "networkPrivacySettings": MessageLookupByLibrary.simpleMessage(
       "Настройки конфиденциальности",
     ),
@@ -475,6 +482,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileLabelPrivacy": MessageLookupByLibrary.simpleMessage(
       "Конфиденциальность",
     ),
+    "profilePrivacyResourcesTitle": MessageLookupByLibrary.simpleMessage(
+      "ЧТО ВЫ ДЕЛИТЕСЬ ПО УМОЛЧАНИЮ",
+    ),
     "profilePrivateAccount": MessageLookupByLibrary.simpleMessage(
       "Закрытый аккаунт",
     ),
@@ -505,6 +515,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quickActionsSectionTitle": MessageLookupByLibrary.simpleMessage(
       "БЫСТРЫЕ ДЕЙСТВИЯ",
+    ),
+    "sharingResourceCalendar": MessageLookupByLibrary.simpleMessage(
+      "Календарь",
+    ),
+    "sharingResourceMoodEntries": MessageLookupByLibrary.simpleMessage(
+      "Записи настроения",
+    ),
+    "sharingResourceProfile": MessageLookupByLibrary.simpleMessage("Профиль"),
+    "sharingResourceStressScores": MessageLookupByLibrary.simpleMessage(
+      "Уровень стресса",
     ),
     "submitLabel": MessageLookupByLibrary.simpleMessage("Отправить"),
     "supportNetworkMore": MessageLookupByLibrary.simpleMessage("ещё"),
